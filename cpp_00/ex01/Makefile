@@ -1,9 +1,14 @@
-NAME		:= megaphone
+NAME		:= myphonebook
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
-SRCS		:= megaphone.cpp
+SRCS		:= 	main.cpp \
+				PhoneBook.cpp \
+				Contact.cpp
+
+HEADER		:= PhoneBook.hpp \
+				Contact.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
@@ -20,12 +25,12 @@ YELLOW		=	\e[93;5;226m
 
 .PHONY: all clean fclean re
 
-$(NAME) : $(OBJS)
+$(NAME) : $(OBJS) $(HEADER)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 	@printf "$(GREEN)Successful compilation\n$(RESET)"
 #@printf "$(_SUCCESS) $(GREEN)Successful compilation\n$(RESET)"
 
-%.o: %.cpp
+%.o: %.cpp $(HEADER)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
