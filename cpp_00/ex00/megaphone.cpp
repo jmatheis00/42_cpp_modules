@@ -1,35 +1,20 @@
 #include <iostream>
-
-using namespace std;
-
-int ft_strlen(char *str)
-{
-    int len = 0;
-    while (str[len])
-        len++;
-    return (len);
-}
+#include <string>
 
 int main(int argc, char **argv)
 {
-    int i = 0;
-    int len = 0;
     if (argc > 1)
     {
-        while (i++ < argc - 1)
+        for (int i = 1; argv[i]; i++)
         {
-            int count = -1;
-            len = ft_strlen(argv[i]);
-            while (count++ < len)
-            {
-                if (argv[i][count] >= 'a' || argv[i][count] >= 'z')
-                    argv[i][count] -= 32;
-                cout << argv[i][count];
-            }
+            std::string str = argv[i];
+            for (int count = 0; str[count]; count++)
+                str[count] = std::toupper(str[count]);
+            std::cout << str;
         }
-        cout << endl;
     }
     else
-        cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << endl;
+        std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
+    std::cout << std::endl;
     return (0);
 }
