@@ -2,35 +2,16 @@
 #include "Contact.hpp"
 #include <iostream>
 
-std::string PhoneBook::start_phonebook()
+void PhoneBook::check_action()
 {
-	std::string str;
-    std::cout << "YOUR AWESOME PHONEBOOK" << std::endl;
-    std::cout << "Possibilities:" << std::endl;
-    std::cout << "\tADD" << std::endl;
-    std::cout << "\tSEARCH" << std::endl;
-    std::cout << "\tEXIT" << std::endl;
-    std:: cout << "your choice: ";
-    getline(std::cin, str); //reading whole line
-	return (str);
-}
-
-void PhoneBook::check_action(std::string act)
-{
-	std::cout << act << std::endl; //testing
-	if (!act.compare("ADD"))
+    getline(std::cin, _action); //reading whole line
+	std::cout << _action << std::endl; //testing
+	if (!_action.compare("ADD"))
 	{
 		std::cout << "action is add" << std::endl;
-		// input information of new contact
-		// one field at a time
 		// fields can't be empty
-		// 1. first name
-		// 2. last name
-		// 3. nickname
-		// 4. phone number
-		// 5. darkest secret
 	}
-	else if (!act.compare("SEARCH"))
+	else if (!_action.compare("SEARCH"))
 	{
 		std::cout << "action is search" << std::endl;
 		// PhoneBook::contact[num] = addcontact(PhoneBook::contact[num]);
@@ -45,7 +26,7 @@ void PhoneBook::check_action(std::string act)
 		// if index is out of range or wrong, define a relevant behavior
 		//  otherwise display contact information, one field per line
 	}
-	else if (!act.compare("EXIT"))
+	else if (!_action.compare("EXIT"))
 	{
 		std::cout << "action is exit" << std::endl;
 	}
@@ -53,4 +34,10 @@ void PhoneBook::check_action(std::string act)
 	{
 		std::cout << "no valid input (any other input is discarded)" << std::endl;
 	}
+}
+
+void PhoneBook::add_contact(Contact contact)
+{
+    contacts[_num] = contact;
+    _num++;
 }

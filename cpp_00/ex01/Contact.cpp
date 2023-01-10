@@ -2,20 +2,59 @@
 #include "Contact.hpp"
 #include <iostream>
 
-std::string Contact::add_data(std::string type)
+void Contact::init_firstname()
 {
-	std::string str;
-	std:: cout << "Enter" << type << ": ";
-    getline(std::cin, str);
-	return(str);
+	std::string data;
+    std::cout << "Enter first name:" << std::endl;
+    getline(std::cin, data);
+	_firstname = data;
+}
+void Contact::init_lastname()
+{
+	std::string data;
+    std::cout << "Enter last name:" << std::endl;
+    getline(std::cin, data);
+	_lastname = data;
+}
+void Contact::init_nickname()
+{
+	std::string data;
+    std::cout << "Enter nickname:" << std::endl;
+    getline(std::cin, data);
+	_nickname = data;
+}
+void Contact::init_phonenumber()
+{
+	std::string data;
+    std::cout << "Enter phone number:" << std::endl;
+    getline(std::cin, data);
+	_phonenumber = data;
+}
+void Contact::init_darkestsecret()
+{
+	std::string data;
+    std::cout << "Enter darkest secret:" << std::endl;
+    getline(std::cin, data);
+	_darkestsecret = data;
 }
 
-void Contact::add_contact()
+std::string Contact::firstname()
 {
-	Contact c;
-	c.firstname = add_data("first name");
-	c.lastname = add_data("last name");
-	c.nickname = add_data("nickname");
-	c.phonenumber = add_data("phone number");
-	c.darkestsecret = add_data("darkest secret");
+	return(_firstname);
+}
+std::string Contact::lastname()
+{
+	return(_lastname);
+}
+std::string Contact::nickname()
+{
+	return(_nickname);
+}
+std::string Contact::phonenumber()
+{
+	return(_phonenumber);
+}
+std::string Contact::darkestsecret()
+{
+	return(_darkestsecret);
 }

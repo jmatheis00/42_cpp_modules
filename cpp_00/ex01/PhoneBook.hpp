@@ -6,13 +6,12 @@
 class PhoneBook
 {
     private:
-        // int num;
+        int _num;  
+        std::string _action;
     public:
-        std::string action;
-        std::string start_phonebook();
-        void check_action(std::string act);
-        Contact *contact;
-
+        Contact contacts[8];
+        void check_action();
+        void add_contact(Contact contact);
 };
 
 #endif
