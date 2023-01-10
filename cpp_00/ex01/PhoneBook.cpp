@@ -2,31 +2,55 @@
 #include "Contact.hpp"
 #include <iostream>
 
-void start_phonebook(void)
+std::string PhoneBook::start_phonebook()
 {
-	PhoneBook   pb;
-
+	std::string str;
     std::cout << "YOUR AWESOME PHONEBOOK" << std::endl;
     std::cout << "Possibilities:" << std::endl;
     std::cout << "\tADD" << std::endl;
     std::cout << "\tSEARCH" << std::endl;
     std::cout << "\tEXIT" << std::endl;
     std:: cout << "your choice: ";
-    // std:: cin >> str; //reading one string
-    getline(std::cin, pb.action); //reading whole line
-    // std::cout << pb.action << std::endl; //testing
+    getline(std::cin, str); //reading whole line
+	return (str);
 }
 
-void check_action(void)
+void PhoneBook::check_action(std::string act)
 {
-	PhoneBook	pb;
-	std::cout << pb.action << std::endl; //testing
-	if (pb.action.compare("ADD") == 0)
+	std::cout << act << std::endl; //testing
+	if (!act.compare("ADD"))
 	{
 		std::cout << "action is add" << std::endl;
+		// input information of new contact
+		// one field at a time
+		// fields can't be empty
+		// 1. first name
+		// 2. last name
+		// 3. nickname
+		// 4. phone number
+		// 5. darkest secret
+	}
+	else if (!act.compare("SEARCH"))
+	{
+		std::cout << "action is search" << std::endl;
+		// PhoneBook::contact[num] = addcontact(PhoneBook::contact[num]);
+		// num++;
+		// display the saved contacts as a list of 4 Columns:
+			// index, firstname, lastname, nickname
+		// Each column must be 10 chars wide
+		// A pipe character separates them
+		// if text is longer than the column it must be truncated
+		//  & last displayable character must be replaced by a dot (.)
+		// then prompt the user again for the index of the entry to display
+		// if index is out of range or wrong, define a relevant behavior
+		//  otherwise display contact information, one field per line
+	}
+	else if (!act.compare("EXIT"))
+	{
+		std::cout << "action is exit" << std::endl;
 	}
 	else
 	{
-		std::cout << "no valid action" << std::endl;
+		std::cout << "no valid input (any other input is discarded)" << std::endl;
 	}
 }

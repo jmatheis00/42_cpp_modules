@@ -3,8 +3,8 @@ NAME		:= myphonebook
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
-SRCS		:= 	main.cpp \
-				PhoneBook.cpp \
+SRCS		:= 	PhoneBook.cpp \
+				main.cpp \
 				Contact.cpp
 
 HEADER		:= PhoneBook.hpp \

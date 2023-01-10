@@ -1,6 +1,7 @@
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 #include <iostream>
+#include "Contact.hpp"
 
 class PhoneBook
 {
@@ -8,10 +9,10 @@ class PhoneBook
         // int num;
     public:
         std::string action;
+        std::string start_phonebook();
+        void check_action(std::string act);
+        Contact *contact;
 
 };
-
-void start_phonebook(void);
-void check_action(void);
 
 #endif

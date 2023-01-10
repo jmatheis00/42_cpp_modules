@@ -4,9 +4,12 @@
 
 int main(void)
 {
-    // PhoneBook   pb;
-    start_phonebook();
-    check_action();
+    PhoneBook pb;
+    Contact c;
+
+    pb.action = pb.start_phonebook();
+    pb.check_action(pb.action);
+    c.add_contact(); //should be class function
+    std:: cout << c.firstname << std::endl;
     return (0);
 }
-// std::cin.ignore(-1, EOF);
