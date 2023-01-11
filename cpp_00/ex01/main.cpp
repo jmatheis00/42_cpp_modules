@@ -22,7 +22,7 @@ int main(void)
     Contact contact;
     std::string act;
 
-    start_phonebook();
+    pb.start_phonebook();
     while (act.compare("EXIT"))
     {
         std::cout << MAGENTA << "\nChoose one of the following actions:\n" << RESET << std::endl;
@@ -42,14 +42,4 @@ int main(void)
             std::cout << BOLDRED << "INVALID INPUT, PLEASE TRY AGAIN" << RESET << std::endl;
     }
     return (0);
-}
-
-void start_phonebook()
-{
-    std::cout << MAGENTA<< " _____  _    _  ____  _   _ ______ ____   ____   ____  _  __" << RESET<< std::endl;
-    std::cout << MAGENTA<< "|  __ \\| |  | |/ __ \\| \\ | |  ____|  _ \\ / __ \\ / __ \\| |/ /" << RESET<< std::endl;
-    std::cout << MAGENTA<< "| |__) | |__| | |  | |  \\| | |__  | |_) | |  | | |  | | ' /" << RESET<< std::endl; 
-    std::cout << MAGENTA<< "|  ___/|  __  | |  | | . ` |  __| |  _ <| |  | | |  | |  <" << RESET<< std::endl;  
-    std::cout << MAGENTA<< "| |    | |  | | |__| | |\\  | |____| |_) | |__| | |__| | . \\" << RESET<< std::endl; 
-    std::cout << MAGENTA<< "|_|    |_|  |_|\\____/|_| \\_|______|____/ \\____/ \\____/|_|\\_\\" << RESET<< std::endl;                                            
 }

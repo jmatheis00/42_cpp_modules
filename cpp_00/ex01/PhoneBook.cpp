@@ -45,12 +45,11 @@ void PhoneBook::search_contact()
 	}
 	for (int count = 0; count < _num; count++)
 	{
+		// CHECK DATA
 		std::cout << count + 1 << "         ";
 		search_get_spaces(contacts[count].firstname());
 		search_get_spaces(contacts[count].lastname());
 		search_get_spaces(contacts[count].nickname());
-		search_get_spaces(contacts[count].phonenumber());
-		search_get_spaces(contacts[count].darkestsecret());
 		std::cout << "|" << std::endl;
 	}
 	show_contact_info();
@@ -87,4 +86,16 @@ void PhoneBook::show_contact_info()
 		else
 			std::cout << "invalid index, please try again" << std::endl;
 	}
+}
+
+void PhoneBook::start_phonebook()
+{
+    _num = 0;
+	_oldest = 0;
+    std::cout << MAGENTA<< " _____  _    _  ____  _   _ ______ ____   ____   ____  _  __" << RESET<< std::endl;
+    std::cout << MAGENTA<< "|  __ \\| |  | |/ __ \\| \\ | |  ____|  _ \\ / __ \\ / __ \\| |/ /" << RESET<< std::endl;
+    std::cout << MAGENTA<< "| |__) | |__| | |  | |  \\| | |__  | |_) | |  | | |  | | ' /" << RESET<< std::endl; 
+    std::cout << MAGENTA<< "|  ___/|  __  | |  | | . ` |  __| |  _ <| |  | | |  | |  <" << RESET<< std::endl;  
+    std::cout << MAGENTA<< "| |    | |  | | |__| | |\\  | |____| |_) | |__| | |__| | . \\" << RESET<< std::endl; 
+    std::cout << MAGENTA<< "|_|    |_|  |_|\\____/|_| \\_|______|____/ \\____/ \\____/|_|\\_\\" << RESET<< std::endl;                                            
 }

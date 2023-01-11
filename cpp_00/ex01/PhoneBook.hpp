@@ -45,6 +45,8 @@ class PhoneBook
         void search_contact();
         void search_get_spaces(std::string tmp);
         void show_contact_info();
+        void start_phonebook();
+
 };
 
 #endif
