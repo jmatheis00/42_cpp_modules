@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:17 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/11 10:57:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:57:00 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,24 @@
 class Contact
 {
     private:
-        std::string _firstname;
-        std::string _lastname;
-        std::string _nickname;
-        std::string _phonenumber;
-        std::string _darkestsecret;
+        std::string firstname_;
+        std::string lastname_;
+        std::string nickname_;
+        std::string phonenumber_;
+        std::string darkestsecret_;
     public:
-        std::string firstname();
-        std::string lastname();
-        std::string nickname();
-        std::string phonenumber();
-        std::string darkestsecret();
-        void init_firstname();
-        void init_lastname();
-        void init_nickname();
-        void init_phonenumber();
-        void init_darkestsecret();
+        Contact();
+        ~Contact();
+        void set_firstname();
+        void set_lastname();
+        void set_nickname();
+        void set_phonenumber();
+        void set_darkestsecret();
+        std::string get_firstname();
+        std::string get_lastname();
+        std::string get_nickname();
+        std::string get_phonenumber();
+        std::string get_darkestsecret();
 };
 
 #endif

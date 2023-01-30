@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:37 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/11 16:18:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:59:11 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,11 @@
 class PhoneBook
 {
     private:
-        int _num;
-        int _oldest;
+        int num_;
+        int oldest_;
     public:
+        PhoneBook();
+        ~PhoneBook();
         Contact contacts[8];
         void check_action();
         void add_contact(Contact contact);
@@ -46,7 +48,6 @@ class PhoneBook
         void search_get_spaces(std::string tmp);
         void show_contact_info();
         void start_phonebook();
-
 };
 
 #endif

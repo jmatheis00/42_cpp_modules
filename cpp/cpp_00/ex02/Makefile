@@ -1,9 +1,12 @@
-NAME		:= ex00
+NAME		:= ex02
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
-SRCS		:= megaphone.cpp
+SRCS		:= Account.cpp \
+				tests.cpp
+
+HEADER		:= Account.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
@@ -25,7 +28,7 @@ $(NAME) : $(OBJS)
 	@printf "$(GREEN)Successful compilation\n$(RESET)"
 #@printf "$(_SUCCESS) $(GREEN)Successful compilation\n$(RESET)"
 
-%.o: %.cpp
+%.o: %.cpp $(HEADER)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)

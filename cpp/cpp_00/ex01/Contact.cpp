@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/11 10:57:24 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/01/30 12:57:00 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,18 @@
 #include "Contact.hpp"
 #include <iostream>
 
+Contact::Contact()
+{
+
+}
+
+Contact::~Contact()
+{
+	
+}
+
 // init data of contact
-void Contact::init_firstname()
+void Contact::set_firstname()
 {
 	std::string data;
     std::cout << "Enter first name:" << std::endl;
@@ -26,10 +36,10 @@ void Contact::init_firstname()
 		std::cout << "Enter first name:" << std::endl;
     	getline(std::cin, data);
 	}
-	_firstname = data;
+	firstname_ = data;
 }
 
-void Contact::init_lastname()
+void Contact::set_lastname()
 {
 	std::string data;
     std::cout << "Enter last name:" << std::endl;
@@ -40,10 +50,10 @@ void Contact::init_lastname()
 		std::cout << "Enter last name:" << std::endl;
     	getline(std::cin, data);
 	}
-	_lastname = data;
+	lastname_ = data;
 }
 
-void Contact::init_nickname()
+void Contact::set_nickname()
 {
 	std::string data;
     std::cout << "Enter nickname:" << std::endl;
@@ -54,10 +64,10 @@ void Contact::init_nickname()
 		std::cout << "Enter nickname:" << std::endl;
     	getline(std::cin, data);
 	}
-	_nickname = data;
+	nickname_ = data;
 }
 
-void Contact::init_phonenumber()
+void Contact::set_phonenumber()
 {
 	std::string data;
     std::cout << "Enter phone number:" << std::endl;
@@ -68,10 +78,10 @@ void Contact::init_phonenumber()
 		std::cout << "Enter phone number:" << std::endl;
     	getline(std::cin, data);
 	}
-	_phonenumber = data;
+	phonenumber_ = data;
 }
 
-void Contact::init_darkestsecret()
+void Contact::set_darkestsecret()
 {
 	std::string data;
     std::cout << "Enter darkest secret:" << std::endl;
@@ -82,31 +92,31 @@ void Contact::init_darkestsecret()
 		std::cout << "Enter darkest secret:" << std::endl;
     	getline(std::cin, data);
 	}
-	_darkestsecret = data;
+	darkestsecret_ = data;
 }
 
 // return data of contact
-std::string Contact::firstname()
+std::string Contact::get_firstname()
 {
-	return(_firstname);
+	return(firstname_);
 }
 
-std::string Contact::lastname()
+std::string Contact::get_lastname()
 {
-	return(_lastname);
+	return(lastname_);
 }
 
-std::string Contact::nickname()
+std::string Contact::get_nickname()
 {
-	return(_nickname);
+	return(nickname_);
 }
 
-std::string Contact::phonenumber()
+std::string Contact::get_phonenumber()
 {
-	return(_phonenumber);
+	return(phonenumber_);
 }
 
-std::string Contact::darkestsecret()
+std::string Contact::get_darkestsecret()
 {
-	return(_darkestsecret);
+	return(darkestsecret_);
 }
