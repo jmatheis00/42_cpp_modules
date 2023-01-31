@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 13:05:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/31 16:48:15 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/01/31 19:37:07 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ Account::~Account()
 		_nbAccounts = 0;
 	_displayTimestamp();
 	std::cout <<"index:" << getNbAccounts();
+	std::cout <<";amount:" << _amount;
+	std::cout <<";closed";
 	std::cout << std::endl;
 	_nbAccounts++;
 }
@@ -100,14 +102,14 @@ void Account::makeDeposit( int deposit )
 {
 	if (_nbAccounts == 8)
 		_nbAccounts = 0;
+	_nbDeposits = 1;
 	int	currentamount = _amount;
-	// _nbAccounts = _accountIndex;
-	std::cout << deposit << '\t';
 	_displayTimestamp();
 	std::cout <<"index:" <<  getNbAccounts();
 	std::cout <<";p_amount:" << currentamount;
 	std::cout <<";deposit:" << deposit;
 	std::cout <<";amount:" << currentamount + deposit;
+	std::cout <<";nb_deposits:" << _nbDeposits;
 	std::cout << std::endl;
 	_amount += deposit;
 	_totalAmount += deposit;
@@ -120,10 +122,22 @@ bool Account::makeWithdrawal( int withdrawal )
 	int	currentamount = _amount;
 	if (_nbAccounts == 8)
 		_nbAccounts = 0;
-	std::cout << withdrawal << '\t';
 	_displayTimestamp();
 	std::cout <<"index:" << getNbAccounts();
-	std::cout <<";p_amount:" << currentamount;
+	std::cout <<";p_amount:" << _amount;
+	std::cout <<";withdrawal:";
+	if (withdrawal > currentamount)
+		std::cout <<"refused";
+	else
+	{
+		_nbWithdrawals = 1;
+		std::cout << withdrawal;
+		_amount -= withdrawal;
+		_totalAmount -= withdrawal;
+		std::cout << ";amount:" << currentamount - withdrawal;
+		std::cout << ";nb_withdrawals:" << _nbWithdrawals;
+		_totalNbWithdrawals++;
+	}
 	std::cout <<std::endl;
 	_nbAccounts++;
 	return (withdrawal);
@@ -142,8 +156,8 @@ void Account::displayStatus( void ) const
 	int	currentamount = _amount;
 	std::cout <<"index:" << getNbAccounts();
 	std::cout <<";amount:" << currentamount;
-	std::cout <<";deposits:";
-	std::cout <<";withdrawals:" << getNbWithdrawals();
+	std::cout <<";deposits:" << _nbDeposits;
+	std::cout <<";withdrawals:" << _nbWithdrawals;
 	std::cout << std::endl;
 	_nbAccounts++;
 }
