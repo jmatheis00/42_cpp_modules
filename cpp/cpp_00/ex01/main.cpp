@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:56:56 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/12 12:50:14 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/02/01 16:09:30 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,14 @@ int main(void)
                             << "\t\U0001F50E\tSEARCH\n"
                             << "\t\U0000274C\tEXIT\n"
                             << std::endl
-                            << "your action: " << RESET;     
+                            << "your action: " << RESET;
+        // if (!getline(std::cin, act))
+        //     return (1);
+        // while (getline(std::cin, act))
+        // {
+        //     if (std::cin.eof())
+        //         return (1);
+        // }
         getline(std::cin, act);
         if (!act.compare("ADD"))
             pb.add_contact(contact);
