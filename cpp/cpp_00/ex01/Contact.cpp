@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/30 12:57:00 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/02/07 13:27:55 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,71 +28,106 @@ Contact::~Contact()
 void Contact::set_firstname()
 {
 	std::string data;
-    std::cout << "Enter first name:" << std::endl;
-    getline(std::cin, data);
-	while (data == "")
+    std::cout << "Enter first name: ";
+   	while (getline(std::cin, data))
 	{
-		std::cout << "Field can't be empty" << std::endl;
-		std::cout << "Enter first name:" << std::endl;
-    	getline(std::cin, data);
+		if (data.compare(""))
+		{
+			firstname_ = data;
+			return ;
+		}
+		else
+		{
+			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << "Enter first name: ";
+		}
 	}
-	firstname_ = data;
+	if (!firstname_.compare(""))
+		exit (1);
 }
 
 void Contact::set_lastname()
 {
 	std::string data;
-    std::cout << "Enter last name:" << std::endl;
-    getline(std::cin, data);
-	while (data == "")
+    std::cout << "Enter last name: ";
+	while (getline(std::cin, data))
 	{
-		std::cout << "Field can't be empty" << std::endl;
-		std::cout << "Enter last name:" << std::endl;
-    	getline(std::cin, data);
+		if (data.compare(""))
+		{
+			lastname_ = data;
+			return ;
+		}
+		else
+		{
+			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << "Enter last name: ";
+		}
 	}
-	lastname_ = data;
+	if (!lastname_.compare(""))
+		exit (1);
 }
 
 void Contact::set_nickname()
 {
 	std::string data;
-    std::cout << "Enter nickname:" << std::endl;
-    getline(std::cin, data);
-	while (data == "")
+    std::cout << "Enter nickname: ";
+	while (getline(std::cin, data))
 	{
-		std::cout << "Field can't be empty" << std::endl;
-		std::cout << "Enter nickname:" << std::endl;
-    	getline(std::cin, data);
+		if (data.compare(""))
+		{
+			nickname_ = data;
+			return ;
+		}
+		else
+		{
+			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << "Enter nickname: ";
+		}
 	}
-	nickname_ = data;
+	if (!nickname_.compare(""))
+		exit (1);
 }
 
 void Contact::set_phonenumber()
 {
 	std::string data;
-    std::cout << "Enter phone number:" << std::endl;
-    getline(std::cin, data);
-	while (data == "")
+    std::cout << "Enter phone number: ";
+	while (getline(std::cin, data))
 	{
-		std::cout << "Field can't be empty" << std::endl;
-		std::cout << "Enter phone number:" << std::endl;
-    	getline(std::cin, data);
+		if (data.compare(""))
+		{
+			phonenumber_ = data;
+			return ;
+		}
+		else
+		{
+			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << "Enter phone number: ";
+		}
 	}
-	phonenumber_ = data;
+	if (!phonenumber_.compare(""))
+		exit (1);
 }
 
 void Contact::set_darkestsecret()
 {
 	std::string data;
-    std::cout << "Enter darkest secret:" << std::endl;
-    getline(std::cin, data);
-	while (data == "")
+    std::cout << "Enter darkest secret: ";
+	while (getline(std::cin, data))
 	{
-		std::cout << "Field can't be empty" << std::endl;
-		std::cout << "Enter darkest secret:" << std::endl;
-    	getline(std::cin, data);
+		if (data.compare(""))
+		{
+			darkestsecret_ = data;
+			return ;
+		}
+		else
+		{
+			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << "Enter darkest secret: ";
+		}
 	}
-	darkestsecret_ = data;
+	if (!darkestsecret_.compare(""))
+		exit (1);
 }
 
 // return data of contact

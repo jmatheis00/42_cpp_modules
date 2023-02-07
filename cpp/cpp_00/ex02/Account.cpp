@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/30 13:05:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/02 16:40:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/02/03 13:07:35 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ Account::~Account()
 {
 	_displayTimestamp();
 	std::cout <<"index:" << _accountIndex;
-	std::cout <<";amount:" << _amount;
+	std::cout <<";amount:" << checkAmount();
 	std::cout <<";closed";
 	std::cout << std::endl;
 }
@@ -85,6 +85,12 @@ int	Account::getNbWithdrawals()
 	return(_totalNbWithdrawals);	
 }
 
+// IMPLEEMNT INSTEAD OF _AMOUNT
+int Account::checkAmount( void ) const
+{
+	return(_amount);
+}
+
 void Account::displayAccountsInfos()
 {
 	_displayTimestamp();
@@ -98,7 +104,7 @@ void Account::displayAccountsInfos()
 void Account::makeDeposit( int deposit )
 {
 	_nbDeposits = 1;
-	int	currentamount = _amount;
+	int	currentamount = checkAmount();
 	_displayTimestamp();
 	std::cout <<"index:" <<  _accountIndex;
 	std::cout <<";p_amount:" << currentamount;
@@ -113,10 +119,10 @@ void Account::makeDeposit( int deposit )
 
 bool Account::makeWithdrawal( int withdrawal )
 {
-	int	currentamount = _amount;
+	int	currentamount = checkAmount();
 	_displayTimestamp();
 	std::cout <<"index:" << _accountIndex;
-	std::cout <<";p_amount:" << _amount;
+	std::cout <<";p_amount:" << checkAmount();
 	std::cout <<";withdrawal:";
 	if (withdrawal <= currentamount)
 	{
@@ -134,16 +140,11 @@ bool Account::makeWithdrawal( int withdrawal )
 	return (false);
 }
 
-// IMPLEEMNT INSTEAD OF _AMOUNT
-int Account::checkAmount( void ) const
-{
-	return(_amount);
-}
 
 void Account::displayStatus( void ) const
 {
 	_displayTimestamp();
-	int	currentamount = _amount;
+	int	currentamount = checkAmount();
 	std::cout <<"index:" << _accountIndex;
 	std::cout <<";amount:" << currentamount;
 	std::cout <<";deposits:" << _nbDeposits;
