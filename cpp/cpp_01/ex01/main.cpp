@@ -1,30 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 12:56:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 21:07:09 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/01/12 13:46:09 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/02/07 21:18:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie(std::string name)
+int main(void)
 {
-	_name = name;
-	std::cout << "Created new Zombie named: " << _name << std::endl;
-}
+	int	no;
 
-Zombie::~Zombie()
-{
-	std::cout << "Destroyed Zombie named: " << _name << std::endl;
-}
-
-void Zombie::announce(void)
-{
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+	no = 10;
+	std::cout << GREEN << "\nzombieHorde Test\n" << RESET;
+	Zombie *example = zombieHorde(no, "Foo1"); //calls Constructor
+    if (!example)
+	{
+		std::cout << "Allocation fail" << std::endl;
+		return (1);
+	}
+	for (int i = 0; i < no; i++)
+	{
+		example[i].announce();
+	}
+	delete[] example; // calls Destructor for an array of objects
+	return (0);
 }

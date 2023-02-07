@@ -6,22 +6,26 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:56:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 21:07:09 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:12:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie()
 {
-	_name = name;
-	std::cout << "Created new Zombie named: " << _name << std::endl;
+	std::cout << "Created new Zombie member of a horde" << _name << std::endl;
 }
 
 Zombie::~Zombie()
 {
 	std::cout << "Destroyed Zombie named: " << _name << std::endl;
+}
+
+void	Zombie::set_name(std::string s)
+{
+	_name = s;
 }
 
 void Zombie::announce(void)

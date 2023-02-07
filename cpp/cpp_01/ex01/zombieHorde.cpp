@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.cpp                                         :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/12 12:56:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 21:07:09 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/02/07 18:21:13 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/02/07 21:17:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 #include <iostream>
 
-Zombie::Zombie(std::string name)
+Zombie* zombieHorde(int N, std::string name)
 {
-	_name = name;
-	std::cout << "Created new Zombie named: " << _name << std::endl;
-}
+    Zombie *temp;
 
-Zombie::~Zombie()
-{
-	std::cout << "Destroyed Zombie named: " << _name << std::endl;
-}
-
-void Zombie::announce(void)
-{
-	std::cout << _name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+    temp = new Zombie[N]; // calls Constructor for an array of [N] objects
+    if (!temp)
+	{
+		std::cout << "Allocation fail" << std::endl;
+		return (NULL);
+	}
+    for(int i = 0; i < N; i++)
+    {
+        temp[i].set_name(name);
+    }
+    return (temp);
 }

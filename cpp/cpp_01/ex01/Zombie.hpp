@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:17 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 21:06:56 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/02/07 21:11:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,14 @@ class Zombie
     private:
         std::string _name;
     public:
-        Zombie(std::string name);
+        Zombie();
         ~Zombie();
+        void set_name(std::string s);
         void announce(void);
 
 };
 
+Zombie* zombieHorde( int N, std::string name );
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 

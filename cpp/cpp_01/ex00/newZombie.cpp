@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:43:23 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/12 13:48:28 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/02/07 20:46:15 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,12 @@
 
 Zombie* newZombie(std::string name)
 {
-	std::string n;
-	Zombie *z = NULL;
-	n = name;
-	// z->_name = name;
+	Zombie *z = new Zombie(name);
+	if (!z)
+	{
+		std::cout << "Allocation fail" << std::endl;
+		return (NULL);
+	}
 	return (z);
 }
 // It creates a zombie, name it,
