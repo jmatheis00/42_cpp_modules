@@ -1,14 +1,16 @@
-NAME		:= ex00
+NAME		:= ex03
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
-SRCS		:= Zombie.cpp \
+SRCS		:= Weapon.cpp \
 				main.cpp \
-				newZombie.cpp \
-				randomChump.cpp
+				HumanA.cpp \
+				HumanB.cpp
 
-HEADER		:= Zombie.hpp
+HEADER		:= 	Weapon.hpp \
+				HumanA.hpp \
+				HumanB.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
