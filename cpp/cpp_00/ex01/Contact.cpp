@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 13:27:55 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:16:59 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,36 @@ Contact::~Contact()
 {
 	
 }
+
+// void Contact::set_contactinfo(std::string info, std::string message)
+// {
+// 	std::string	data;
+// 	std::cout << "Enter " << message << ": ";
+// 	while(getline(std::cin, data))
+// 	{
+// 		if(data.compare(""))
+// 		{
+// 			info = data;
+// 			return ;
+// 		}
+// 		else
+// 		{
+// 			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+// 			std::cout << "Enter " << message << ": ";
+// 		}
+// 	}
+// 	if (!info.compare(""))
+// 		exit (1);	
+// }
+
+// void Contact::set_allinfos()
+// {
+// 	set_contactinfo(firstname_, "first name");
+// 	set_contactinfo(lastname_, "last name");
+// 	set_contactinfo(nickname_, "nickname");
+// 	set_contactinfo(phonenumber_, "phone number");
+// 	set_contactinfo(darkestsecret_, "darkest secret");
+// }
 
 // init data of contact
 void Contact::set_firstname()

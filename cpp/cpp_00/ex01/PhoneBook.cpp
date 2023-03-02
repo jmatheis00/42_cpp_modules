@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:11 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 13:36:30 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/02 14:17:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void PhoneBook::add_contact(Contact contact)
     contact.set_nickname();
     contact.set_phonenumber();
     contact.set_darkestsecret();
+	// contact.set_allinfos();
 	if (num_ != 8)
 	{
     	contacts[num_] = contact;
@@ -85,11 +86,11 @@ void PhoneBook::show_contact_info()
 	{	
 		if (index[0] > '0'  && index[0] < num_ + '1' && !index[1])
 		{
-			std::cout << contacts[index[0] - '1'].get_firstname() << std::endl;
-			std::cout << contacts[index[0] - '1'].get_lastname() << std::endl;
-			std::cout << contacts[index[0] - '1'].get_nickname() << std::endl;
-			std::cout << contacts[index[0] - '1'].get_phonenumber() << std::endl;
-			std::cout << contacts[index[0] - '1'].get_darkestsecret() << std::endl;
+			std::cout << "first name:\t" << contacts[index[0] - '1'].get_firstname() << std::endl;
+			std::cout << "last name:\t" << contacts[index[0] - '1'].get_lastname() << std::endl;
+			std::cout << "nickname:\t" << contacts[index[0] - '1'].get_nickname() << std::endl;
+			std::cout << "phone number:\t" << contacts[index[0] - '1'].get_phonenumber() << std::endl;
+			std::cout << "darkest secret:\t" << contacts[index[0] - '1'].get_darkestsecret() << std::endl;
 			return ;
 		}
 		else
