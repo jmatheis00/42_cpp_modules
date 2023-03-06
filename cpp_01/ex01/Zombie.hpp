@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:17 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/02/07 21:11:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/06 15:29:47 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Zombie
 
 };
 
-Zombie* zombieHorde( int N, std::string name );
+Zombie* zombieHorde(int N, std::string name);
 Zombie* newZombie(std::string name);
 void randomChump(std::string name);
 
