@@ -2,7 +2,7 @@
 #include <string>
 
 // convert lowercase to uppercase
-int main(int argc, char **argv)
+int main(int argc, char *argv[])
 {
     if (argc > 1)
     {

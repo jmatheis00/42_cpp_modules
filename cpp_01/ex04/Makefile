@@ -1,14 +1,9 @@
-NAME		:= ex00
+NAME		:= ex04
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
-SRCS		:= Zombie.cpp \
-				main.cpp \
-				newZombie.cpp \
-				randomChump.cpp
-
-HEADER		:= Zombie.hpp
+SRCS		:= main.cpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
@@ -25,12 +20,12 @@ YELLOW		=	\e[93;5;226m
 
 .PHONY: all clean fclean re
 
-$(NAME) : $(OBJS) $(HEADER)
+$(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 	@printf "$(GREEN)Successful compilation\n$(RESET)"
 #@printf "$(_SUCCESS) $(GREEN)Successful compilation\n$(RESET)"
 
-%.o: %.cpp $(HEADER)
+%.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
 all: $(NAME)
