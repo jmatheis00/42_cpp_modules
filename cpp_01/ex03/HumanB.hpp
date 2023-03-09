@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:13:21 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/06 16:22:56 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:27:49 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,12 @@ class HumanB
 {
     private:
         std::string name_;
-        Weapon *weap_;
-        int   hasweapon_;
+        Weapon* weap_;
     public:
         HumanB(std::string name);
         ~HumanB();
         void attack();
-        void setWeapon(Weapon w); //put weapon class in setweapon
+        void setWeapon(Weapon& w); //put weapon class in setweapon
 };
 
 #endif

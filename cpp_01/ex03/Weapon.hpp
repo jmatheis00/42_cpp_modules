@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:13:21 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/06 16:33:00 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:57:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Weapon
         Weapon(std::string type);
         ~Weapon();
         const std::string& getType();
-        void setType(std::string s);
+        void setType(std::string newweapon);
     
 };
 

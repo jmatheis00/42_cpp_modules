@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:13:21 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/06 16:00:53 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/09 15:51:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ class HumanA
 {
     private:
         std::string name_;
-        Weapon *w_;
+        Weapon& w_;
     public:
-        HumanA(std::string name, Weapon w); // takes Weapon in Constructor
+        HumanA(std::string name, Weapon& w); // takes Weapon in Constructor
         ~HumanA();
         void attack();
     

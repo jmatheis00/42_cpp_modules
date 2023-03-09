@@ -6,15 +6,15 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:21:06 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/06 16:32:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/09 16:02:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type)
+Weapon::Weapon(std::string type): type_(type)
 {
-    setType(type);
+
 }
 
 Weapon::~Weapon()
@@ -27,8 +27,9 @@ const std::string& Weapon::getType()
     return (type_);
 }
 
-// need some address manipulation here
-void Weapon::setType(std::string s)
+// value change of type_
+void Weapon::setType(std::string newweapon)
 {
-    type_ = s;
+    type_ = newweapon;
+    std::cout << "Weapon type changed to " << type_ << std::endl;
 }
