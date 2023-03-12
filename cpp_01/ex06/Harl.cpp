@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:37 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/12 15:08:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/12 15:28:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,15 @@ Harl::~Harl()
 
 void Harl::debug()
 {
-	std::cout << "debug message: \n"\
-	"I love having extra bacon for my "\
+	std::cout << RED << "debug message: \n" << RESET \
+	<< "I love having extra bacon for my "\
 	"7XL-double-cheese-triple-pickle-special- ketchup burger. "\
 	"I really do!" << std::endl;
 }
 
 void Harl::info()
 {
-	std::cout << "info message: \n"\
+	std::cout << RED << "info message: \n" << RESET \
 	"I cannot believe adding extra bacon costs more money. "\
 	"You didn’t put enough bacon in my burger! "\
 	"If you did, I wouldn’t be asking for more!" << std::endl;
@@ -48,7 +48,7 @@ void Harl::info()
 
 void Harl::warning()
 {
-	std::cout << "warning message: \n"\
+	std::cout << RED << "warning message: \n" << RESET \
 	"I think I deserve to have some extra bacon for free. "\
 	"I’ve been coming for years whereas you started working here "\
 	"since last month." << std::endl;
@@ -56,18 +56,23 @@ void Harl::warning()
 
 void Harl::error()
 {
-	std::cout << "error message: \n"\
+	std::cout << RED << "error message: \n" << RESET \
 	"This is unacceptable! I want to speak to the manager now."\
 	<< std::endl;
 }
 
+// if case 0 is correct --> everything is correct until "break ;"
 void Harl::complain(std::string level)
 {
 	int	i = 0;
 	while (i < 4 && level.compare(levels[i]))
 		i++;
-	if (level.compare(levels[i]))
-		std::cout << "Please enter a valid level" << std::endl;
-	else
-		(this->*functionpointer[i])();
+	switch(i)
+	{
+		case 0 : (this->*functionpointer[0])();
+		case 1 : (this->*functionpointer[1])();
+		case 2 : (this->*functionpointer[2])();
+		case 3 : (this->*functionpointer[3])(); break ;
+		default: std::cout << "Please enter a valid level" << std::endl;
+	}
 }

@@ -6,24 +6,20 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:48:12 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/12 14:58:21 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/12 15:32:06 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
-int main(void)
+int main(int ac, char *argc[])
 {
+	if (ac != 2)
+	{
+		std::cout << "wrong number of arguments" << std::endl;
+		exit (1);
+	}
 	Harl test;
-	std::cout << GREEN << "INVALID TEST" << RESET << std::endl;
-	test.complain("INVALID");
-	std::cout << GREEN << "DEBUG TEST" << RESET << std::endl;
-	test.complain("DEBUG");
-	std::cout << GREEN << "INFO TEST" << RESET << std::endl;
-	test.complain("INFO");
-	std::cout << GREEN << "WARNING TEST" << RESET << std::endl;
-	test.complain("WARNING");
-	std::cout << GREEN << "ERROR TEST" << RESET << std::endl;
-	test.complain("ERROR");
+	test.complain(argc[1]);
 	return (0);
 }
