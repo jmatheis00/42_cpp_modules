@@ -6,13 +6,15 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/19 01:55:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/21 16:40:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FIXED_HPP
 #define FIXED_HPP
 #include <iostream>
+#include <cmath>
+#include <ostream>
 
 #define RESET       "\033[0m"
 #define RED         "\033[31m"              /* Red */
@@ -23,14 +25,21 @@ class Fixed
 {
 	private:
 		int	fixedval_;
-		static const int fractbits_; //should be init with 8
+		static const int fractbits_;
 	public:
 		Fixed(); //Default Constructor
+		Fixed(int const i);
+		Fixed(float const i);
 		Fixed(const Fixed &copyclass); //Copy Constructor
 		Fixed& operator= (const Fixed& copyop); //copy assignment operator
 		~Fixed(); //Destructor
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
+		float toFloat(void) const;
+		int toInt(void) const;
+		friend std::ostream& operator<<(std::ostream& os, const Fixed& i);
 };
+
+// std::ostream& operator<<(std::ostream& os, const Fixed& i);
 
 #endif
