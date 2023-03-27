@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:17 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/02 14:17:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:50:11 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ class Contact
         void set_nickname();
         void set_phonenumber();
         void set_darkestsecret();
-        // void set_contactinfo(std::string info, std::string message);
-        // void set_allinfos();
+
         std::string get_firstname();
         std::string get_lastname();
         std::string get_nickname();

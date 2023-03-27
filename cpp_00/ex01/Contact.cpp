@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/02 14:16:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/27 19:59:11 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,56 +24,26 @@ Contact::~Contact()
 	
 }
 
-// void Contact::set_contactinfo(std::string info, std::string message)
-// {
-// 	std::string	data;
-// 	std::cout << "Enter " << message << ": ";
-// 	while(getline(std::cin, data))
-// 	{
-// 		if(data.compare(""))
-// 		{
-// 			info = data;
-// 			return ;
-// 		}
-// 		else
-// 		{
-// 			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
-// 			std::cout << "Enter " << message << ": ";
-// 		}
-// 	}
-// 	if (!info.compare(""))
-// 		exit (1);	
-// }
-
-// void Contact::set_allinfos()
-// {
-// 	set_contactinfo(firstname_, "first name");
-// 	set_contactinfo(lastname_, "last name");
-// 	set_contactinfo(nickname_, "nickname");
-// 	set_contactinfo(phonenumber_, "phone number");
-// 	set_contactinfo(darkestsecret_, "darkest secret");
-// }
-
-// init data of contact
+// INIT DATA OF CONTACT
 void Contact::set_firstname()
 {
 	std::string data;
     std::cout << "Enter first name: ";
    	while (getline(std::cin, data))
 	{
-		if (data.compare(""))
+		if (!std::cin.eof() && data.compare(""))
 		{
 			firstname_ = data;
 			return ;
 		}
-		else
+		else if (!std::cin.eof())
 		{
-			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << BOLDRED "Field can't be empty" RESET << std::endl;
 			std::cout << "Enter first name: ";
 		}
 	}
-	if (!firstname_.compare(""))
-		exit (1);
+	if(std::cin.eof())
+		exit(1);
 }
 
 void Contact::set_lastname()
@@ -82,19 +52,19 @@ void Contact::set_lastname()
     std::cout << "Enter last name: ";
 	while (getline(std::cin, data))
 	{
-		if (data.compare(""))
+		if (!std::cin.eof() && data.compare(""))
 		{
 			lastname_ = data;
 			return ;
 		}
-		else
+		else if (!std::cin.eof())
 		{
-			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << BOLDRED "Field can't be empty" RESET << std::endl;
 			std::cout << "Enter last name: ";
 		}
 	}
-	if (!lastname_.compare(""))
-		exit (1);
+	if(std::cin.eof())
+		exit(1);
 }
 
 void Contact::set_nickname()
@@ -103,19 +73,19 @@ void Contact::set_nickname()
     std::cout << "Enter nickname: ";
 	while (getline(std::cin, data))
 	{
-		if (data.compare(""))
+		if (!std::cin.eof() && data.compare(""))
 		{
 			nickname_ = data;
 			return ;
 		}
-		else
+		else if (!std::cin.eof())
 		{
-			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << BOLDRED "Field can't be empty" RESET << std::endl;
 			std::cout << "Enter nickname: ";
 		}
 	}
-	if (!nickname_.compare(""))
-		exit (1);
+	if(std::cin.eof())
+		exit(1);
 }
 
 void Contact::set_phonenumber()
@@ -124,19 +94,19 @@ void Contact::set_phonenumber()
     std::cout << "Enter phone number: ";
 	while (getline(std::cin, data))
 	{
-		if (data.compare(""))
+		if (!std::cin.eof() && data.compare(""))
 		{
 			phonenumber_ = data;
 			return ;
 		}
-		else
+		else if (!std::cin.eof())
 		{
-			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << BOLDRED "Field can't be empty" RESET << std::endl;
 			std::cout << "Enter phone number: ";
 		}
 	}
-	if (!phonenumber_.compare(""))
-		exit (1);
+	if(std::cin.eof())
+		exit(1);
 }
 
 void Contact::set_darkestsecret()
@@ -145,22 +115,22 @@ void Contact::set_darkestsecret()
     std::cout << "Enter darkest secret: ";
 	while (getline(std::cin, data))
 	{
-		if (data.compare(""))
+		if (!std::cin.eof() && data.compare(""))
 		{
 			darkestsecret_ = data;
 			return ;
 		}
-		else
+		else if (!std::cin.eof())
 		{
-			std::cout << BOLDRED << "Field can't be empty" << RESET << std::endl;
+			std::cout << BOLDRED "Field can't be empty" RESET << std::endl;
 			std::cout << "Enter darkest secret: ";
 		}
 	}
-	if (!darkestsecret_.compare(""))
-		exit (1);
+	if(std::cin.eof())
+		exit(1);
 }
 
-// return data of contact
+// RETURN DATA OF CONTACT
 std::string Contact::get_firstname()
 {
 	return(firstname_);

@@ -8,10 +8,9 @@ int main(int argc, char *argv[])
     {
         for (int i = 1; argv[i]; i++)
         {
-            std::string str = argv[i];
-            for (int count = 0; str[count]; count++)
-                str[count] = std::toupper(str[count]);
-            std::cout << str;
+            for (int count = 0; argv[i][count]; count++)
+                argv[i][count] = std::toupper(argv[i][count]);
+            std::cout << argv[i];
         }
     }
     else

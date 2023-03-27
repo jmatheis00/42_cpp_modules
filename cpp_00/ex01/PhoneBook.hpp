@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:37 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/01/30 12:59:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:53:44 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ class PhoneBook
         void search_contact();
         void search_get_spaces(std::string tmp);
         void show_contact_info();
-        void start_phonebook();
 };
 
 #endif

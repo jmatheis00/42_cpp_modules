@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/23 21:48:43 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/27 15:21:37 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,9 @@ class Fixed
 		static const Fixed& max(const Fixed& a, const Fixed& b);		
 
 		// OUTSTREAM OPERATOR OVERLOAD
-		friend std::ostream& operator<<(std::ostream& os, const Fixed& i);
+		// friend std::ostream& operator<<(std::ostream& os, const Fixed& i);
 };
 
-// std::ostream& operator<<(std::ostream& os, const Fixed& i);
+std::ostream& operator<<(std::ostream& os, const Fixed& i);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:11 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/02 14:17:04 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/03/27 20:00:45 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@ PhoneBook::PhoneBook()
 {
     num_ = 0;
 	oldest_ = 0;
+    std::cout << MAGENTA
+	<< " _____  _    _  ____  _   _ ______ ____   ____   ____  _  __" << std::endl
+    << "|  __ \\| |  | |/ __ \\| \\ | |  ____|  _ \\ / __ \\ / __ \\| |/ /" << std::endl
+    << "| |__) | |__| | |  | |  \\| | |__  | |_) | |  | | |  | | ' /" << std::endl
+    << "|  ___/|  __  | |  | | . ` |  __| |  _ <| |  | | |  | |  <" << std::endl
+    << "| |    | |  | | |__| | |\\  | |____| |_) | |__| | |__| | . \\" << std::endl
+    << "|_|    |_|  |_|\\____/|_| \\_|______|____/ \\____/ \\____/|_|\\_\\" RESET<< std::endl;
 }
 
 PhoneBook::~PhoneBook()
@@ -29,11 +36,10 @@ PhoneBook::~PhoneBook()
 void PhoneBook::add_contact(Contact contact)
 {
     contact.set_firstname();
-    contact.set_lastname();
+	contact.set_lastname();
     contact.set_nickname();
     contact.set_phonenumber();
     contact.set_darkestsecret();
-	// contact.set_allinfos();
 	if (num_ != 8)
 	{
     	contacts[num_] = contact;
@@ -63,7 +69,7 @@ void PhoneBook::search_contact()
 		show_contact_info();
 	}
 	else
-		std::cout << BOLDRED << "no contacts saved, add contact/s" << RESET << std::endl;
+		std::cout << BOLDRED "no contacts saved, add contact/s" RESET << std::endl;
 }
 
 void PhoneBook::search_get_spaces(std::string tmp)
@@ -93,20 +99,12 @@ void PhoneBook::show_contact_info()
 			std::cout << "darkest secret:\t" << contacts[index[0] - '1'].get_darkestsecret() << std::endl;
 			return ;
 		}
-		else
+		else if (!std::cin.eof())
 		{
-			std::cout << BOLDRED << "invalid index, please try again" << RESET << std::endl;
+			std::cout << BOLDRED "invalid index, please try again" RESET << std::endl;
 			std::cout << "choose index to see all contact information: ";
 		}
 	}
-}
-
-void PhoneBook::start_phonebook()
-{
-    std::cout << MAGENTA<< " _____  _    _  ____  _   _ ______ ____   ____   ____  _  __" << RESET<< std::endl;
-    std::cout << MAGENTA<< "|  __ \\| |  | |/ __ \\| \\ | |  ____|  _ \\ / __ \\ / __ \\| |/ /" << RESET<< std::endl;
-    std::cout << MAGENTA<< "| |__) | |__| | |  | |  \\| | |__  | |_) | |  | | |  | | ' /" << RESET<< std::endl; 
-    std::cout << MAGENTA<< "|  ___/|  __  | |  | | . ` |  __| |  _ <| |  | | |  | |  <" << RESET<< std::endl;  
-    std::cout << MAGENTA<< "| |    | |  | | |__| | |\\  | |____| |_) | |__| | |__| | . \\" << RESET<< std::endl; 
-    std::cout << MAGENTA<< "|_|    |_|  |_|\\____/|_| \\_|______|____/ \\____/ \\____/|_|\\_\\" << RESET<< std::endl;                                            
+	if(std::cin.eof())
+		exit(1);
 }

@@ -6,11 +6,11 @@
 #    By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:57:42 by jmatheis          #+#    #+#              #
-#    Updated: 2023/01/30 12:29:36 by jmatheis         ###   ########.fr        #
+#    Updated: 2023/03/27 15:54:46 by jmatheis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		:= ex01
+NAME		:= yourphonebook
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
