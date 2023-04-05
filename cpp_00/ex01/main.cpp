@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:56:56 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/27 20:00:01 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:18:36 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 #include "Contact.hpp"
 #include <iostream>
 
-void start_phonebook();
-
 void    main_menu()
 {
-    std::cout << "\nChoose one of the following actions:\n" << std::endl;
-    std::cout << GREEN "\t\U0001F464\tADD\n"
-                        << "\t\U0001F50E\tSEARCH\n"
-                        << "\t\U0000274C\tEXIT\n"
-                        << std::endl << "your action: " RESET;
+    std::cout << GREEN "Choose one of the following actions:\n" << std::endl
+                << "\t\U0001F464\tADD\n"
+                << "\t\U0001F50E\tSEARCH\n"
+                << "\t\U0000274C\tEXIT\n" RESET
+                << std::endl << "your action: ";
 }
 
 int main(void)
@@ -34,22 +32,19 @@ int main(void)
     main_menu();
     while (getline(std::cin, act))
     {
-        if (!act.compare("ADD"))
+        if (act == "ADD")
         {
             pb.add_contact(contact);
             main_menu();
         }
-        else if (!act.compare("SEARCH"))
-        {
+        else if (act == "SEARCH")
             pb.search_contact();
-            // main_menu();
-        }
-        else if (!act.compare("EXIT"))
+        else if (act == "EXIT")
         {
             std::cout << BOLDGREEN "\nGOODBYE" RESET << std::endl;
             return (0);
         }
-        else if (!std::cin.eof()) //handles Ctrl-D, eof false so no ctrl-d
+        else if (!std::cin.eof())
         {
             std::cout << BOLDRED "INVALID INPUT, PLEASE TRY AGAIN" RESET << std::endl;
             main_menu();

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:57:11 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/27 20:00:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:43:25 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <string>
+#include <iomanip>
 
 PhoneBook::PhoneBook()
 {
@@ -74,14 +75,10 @@ void PhoneBook::search_contact()
 
 void PhoneBook::search_get_spaces(std::string tmp)
 {
-	if (tmp.length() > 10)
-		std::cout << "|" << tmp.substr(0,9) << ".";
+	if (tmp.length() <= 10)
+		std::cout << "|" << std::setw(10) << tmp;
 	else
-	{
-		std::cout << "|" << tmp;
-		for (size_t i = 0; i < 10 - tmp.length(); i++)
-			std::cout << " ";
-	}	
+		std::cout << "|" << tmp.substr(0,9) << '.';
 }
 
 void PhoneBook::show_contact_info()
