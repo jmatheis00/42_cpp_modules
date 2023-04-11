@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/22 17:02:09 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:15:28 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,20 @@
 
 const int Fixed::fractbits_ = 8;
 
+// Default Constructor
 Fixed::Fixed() : fixedval_(0)
 {
 	std::cout << "Default constructor called" << std::endl;
 }
 
+// Copy Constructor
 Fixed::Fixed(const Fixed& copyclass)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	Fixed::operator= (copyclass);
 }
 
+// Copy Assignment Operator
 Fixed& Fixed::operator= (const Fixed& copyop)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
@@ -32,6 +35,7 @@ Fixed& Fixed::operator= (const Fixed& copyop)
 	return (*this); //return the existing object
 }
 
+// Destructor
 Fixed::~Fixed()
 {
 	std::cout << "Destructor called" << std::endl;

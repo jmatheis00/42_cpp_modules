@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/23 21:52:14 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:04:34 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Fixed::~Fixed()
 // OTHER MEMBER FUNCTIONS
 Fixed::Fixed(int const i)
 {
-	fixedval_ = roundf(i * (1 << fractbits_));
+	fixedval_ = i * (1 << fractbits_);
 }
 
 Fixed::Fixed(float const i)
@@ -136,19 +136,18 @@ Fixed Fixed::operator/(const Fixed& a) const
 // PRAE X-CREMENT OPERATOR OVERLOADING
 Fixed& Fixed::operator++()
 {
-	++(this->fixedval_);
+	(this->fixedval_)++;
 	return(*this);
 }
 
 Fixed& Fixed::operator--()
 {
-	--(this->fixedval_);
+	(this->fixedval_)--;
 	return(*this);
 }
 
 // POST X-CREMENT OPERATOR OVERLOADING
 // fictive argument to seperate between prae and post
-// https://learn.microsoft.com/en-us/cpp/cpp/increment-and-decrement-operator-overloading-cpp?view=msvc-170
 Fixed Fixed::operator++(int i)
 {
 	Fixed a = *this;

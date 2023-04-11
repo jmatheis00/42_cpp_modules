@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/22 17:01:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 16:46:54 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Fixed::Fixed() : fixedval_(0)
 Fixed::Fixed(int const i)
 {
 	std::cout << "Int constructor called" << std::endl;
-	fixedval_ = roundf(i * (1 << fractbits_));
+	fixedval_ = i * (1 << fractbits_);
 }
 
 // takes a constant float as a parameter
@@ -58,14 +58,12 @@ Fixed::~Fixed()
 // returns raw value of the fixed-point value
 int Fixed::getRawBits(void) const
 {
-	// std::cout << "getRawBits member function called" << std::endl;
 	return(fixedval_);
 }
 
 // sets the raw value of the fixed-point number
 void Fixed::setRawBits(int const raw)
 {
-	// std::cout << "setRawBits member function called" << std::endl;
 	fixedval_ = raw;
 }
 
