@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:45 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 14:21:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:20:56 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,31 @@
 #include <string>
 #include <fstream>
 
+// find() returns std::string::npos if nothing found
 void fill_newfile(std::ifstream& infile, char *argv[])
 {
 	std::string outfile = argv[1];
+	std::string	old_str = argv[2];
+	std::string buff;
 
 	outfile.append(".replace");
 	std::ofstream newfile(outfile);
-	std::string buff;
 	while(getline(infile, buff))
 	{
-		if (!buff.compare(argv[2]))
-			newfile << argv[3];
-		else
-			newfile << buff;
+		std::size_t found_pos;
+		while(buff.find(argv[2]) != std::string::npos)
+		{
+			found_pos = buff.find(old_str);
+			buff.erase(found_pos, old_str.length());
+			buff.insert(found_pos, argv[3]);
+		}
+		newfile << buff;
 		if (!infile.eof())
 			newfile << std::endl;
 	}
 	newfile.close();
 }
 
-// QUESTION::: REPLACING JUST WORDS OR ONLY IF THE LINE IS THE SAME
 // arguments: ./ex04 "filename" "string1" "string2"
 // copy filename content into a new file
 // replace every occurence of s1 with s2
