@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 23:56:41 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/24 13:46:06 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 20:30:53 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ class ClapTrap
         int get_hitpoints() const;
         int get_energypoints() const;
         int get_attackdamage() const;
-
-        // OUTSTREAM OPERATOR OVERLOAD
-		friend std::ostream& operator<<(std::ostream& os, const ClapTrap& i);
 };
+
+// OUTSTREAM OPERATOR OVERLOAD
+std::ostream& operator<<(std::ostream& os, const ClapTrap& i);
 
 #endif
