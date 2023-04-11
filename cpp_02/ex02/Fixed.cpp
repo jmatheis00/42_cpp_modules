@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 17:04:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 17:18:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,21 +133,21 @@ Fixed Fixed::operator/(const Fixed& a) const
 	return(this->toFloat() / a.toFloat());
 }
 
-// PRAE X-CREMENT OPERATOR OVERLOADING
+// PRE X-CREMENT OPERATOR OVERLOADING
 Fixed& Fixed::operator++()
 {
-	(this->fixedval_)++;
+	++(this->fixedval_);
 	return(*this);
 }
 
 Fixed& Fixed::operator--()
 {
-	(this->fixedval_)--;
+	--(this->fixedval_);
 	return(*this);
 }
 
 // POST X-CREMENT OPERATOR OVERLOADING
-// fictive argument to seperate between prae and post
+// fictive argument to seperate between pre and post
 Fixed Fixed::operator++(int i)
 {
 	Fixed a = *this;
