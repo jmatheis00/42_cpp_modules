@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:56:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/06 15:38:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:31:12 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 // Constructor
 Zombie::Zombie()
 {
-	std::cout << "Created new Zombie member of a horde" << _name << std::endl;
+	std::cout << "Created new Zombie member of a horde" << std::endl;
 }
 
 // Destructor

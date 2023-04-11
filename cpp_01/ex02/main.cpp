@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/06 15:48:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/10 20:35:40 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ int main(void)
     std::cout << "string:\t\t" << str << std::endl;
     std::cout << "stringPTR:\t" << *stringPTR << std::endl;
     std::cout << "stringREF:\t" << stringREF << std::endl;
-    // changed value of str
-    // std::cout << GREEN << "\nCHANGED VALUE OF STR\n" << RESET;
-    // str = "BYE";
-    // std::cout << "string:\t\t" << str << std::endl;
-    // std::cout << "stringPTR:\t" << *stringPTR << std::endl;
-    // std::cout << "stringREF:\t" << stringREF << std::endl;   
     return (0);
 }
+// changed value of str
+// std::cout << GREEN << "\nCHANGED VALUE OF STR\n" << RESET;
+// str = "BYE";
+// std::cout << "string:\t\t" << str << std::endl;
+// std::cout << "stringPTR:\t" << *stringPTR << std::endl;
+// std::cout << "stringREF:\t" << stringREF << std::endl;

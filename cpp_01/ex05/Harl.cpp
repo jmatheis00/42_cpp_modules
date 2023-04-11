@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:37 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/12 15:24:28 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 15:57:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,14 @@ void Harl::error()
 void Harl::complain(std::string level)
 {
 	int	i = 0;
-	while (i < 4 && level.compare(levels[i]))
+	while (i < 4)
+	{
+		if (level == levels[i])
+		{
+			(this->*functionpointer[i])();
+			return ;
+		}
 		i++;
-	if (level.compare(levels[i]))
-		std::cout << "Please enter a valid level" << std::endl;
-	else
-		(this->*functionpointer[i])();
+	}
+	std::cout << "Please enter a valid level" << std::endl;
 }

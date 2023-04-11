@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:45 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/09 17:45:47 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/11 14:21:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void fill_newfile(std::ifstream& infile, char *argv[])
 	newfile.close();
 }
 
+// QUESTION::: REPLACING JUST WORDS OR ONLY IF THE LINE IS THE SAME
 // arguments: ./ex04 "filename" "string1" "string2"
 // copy filename content into a new file
 // replace every occurence of s1 with s2
