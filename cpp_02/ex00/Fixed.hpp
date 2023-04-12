@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/19 01:55:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/12 19:38:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Fixed
 {
 	private:
 		int	fixedval_;
-		static const int fractbits_; //should be init with 8
+		static const int fractbits_;
 	public:
 		Fixed(); //Default Constructor
 		Fixed(const Fixed &copyclass); //Copy Constructor
