@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:13:04 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/10 20:41:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:30:50 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 int main()
 {
     {
+        std::cout << YELLOW "HUMAN A TEST" RESET << std::endl;
         Weapon club = Weapon("crude spiked club");
 
         HumanA bob("Bob", club);
@@ -25,6 +26,7 @@ int main()
         bob.attack();
     }
     {
+        std::cout << YELLOW "HUMAN A TEST" RESET << std::endl;
         Weapon club = Weapon("crude spiked club");
 
         HumanB jim("Jim");

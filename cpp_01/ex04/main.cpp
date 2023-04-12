@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:45 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 20:20:56 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:35:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <fstream>
 
 // find() returns std::string::npos if nothing found
-void fill_newfile(std::ifstream& infile, char *argv[])
+void myreplace(std::ifstream& infile, char *argv[])
 {
 	std::string outfile = argv[1];
 	std::string	old_str = argv[2];
@@ -52,7 +52,7 @@ int main(int argc, char *argv[])
         infile.open(argv[1]);
 		if (infile.is_open())
 		{
-			fill_newfile(infile, argv);
+			myreplace(infile, argv);
 			infile.close();
 		}
 		else

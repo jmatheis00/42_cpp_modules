@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:46:09 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/10 20:12:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:19:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ int main(void)
 {
 	std::cout << GREEN << "\nnewZombie Test\n" << RESET;
 	Zombie *example = newZombie("Foo1");
-    if (!example)
-	{
-		std::cout << "Allocation of newZombie failed" << std::endl;
-		return (1);
-	}
 	example->announce();
 	delete example;
 

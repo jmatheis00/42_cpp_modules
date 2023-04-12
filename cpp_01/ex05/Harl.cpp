@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:37 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 15:57:33 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/12 15:20:27 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ Harl::~Harl()
 void Harl::debug()
 {
 	std::cout << RED << "debug message: \n" << RESET \
-	<< "I love having extra bacon for my "\
+	"I love having extra bacon for my "\
 	"7XL-double-cheese-triple-pickle-special- ketchup burger. "\
 	"I really do!" << std::endl;
 }
@@ -61,6 +61,9 @@ void Harl::error()
 	<< std::endl;
 }
 
+// this->* for calling the member function pointer
+// on the current object instance (name of class declared in main)
+// for accessing member function (debug, info, ...)
 void Harl::complain(std::string level)
 {
 	int	i = 0;

@@ -6,12 +6,15 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:48:12 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 15:55:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/12 14:55:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Harl.hpp"
 
+// FUNCTIONPOINTERS: 
+// way to select a function
+// to execute based on run-time values
 int main(void)
 {
 	Harl test;
