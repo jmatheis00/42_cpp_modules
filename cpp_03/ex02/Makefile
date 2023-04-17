@@ -1,14 +1,16 @@
-NAME		:= ex01
+NAME		:= ex02
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
 				ClapTrap.cpp \
-				ScavTrap.cpp
+				ScavTrap.cpp \
+				FragTrap.cpp
 
 HEADER		:= ClapTrap.hpp \
-				ScavTrap.hpp
+				ScavTrap.hpp \
+				FragTrap.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 

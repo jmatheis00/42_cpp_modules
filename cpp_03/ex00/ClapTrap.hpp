@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 23:56:41 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 20:30:37 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/16 13:00:03 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ class ClapTrap
         int energypoints_;
         int attackdamage_;
     public:
-		ClapTrap(std::string name); //Default Constructor
+        ClapTrap(); //Default Constructor
+		ClapTrap(std::string name); 
 		ClapTrap(const ClapTrap &copyclass); //Copy Constructor
 		ClapTrap& operator= (const ClapTrap& copyop); //copy assignment operator
 		~ClapTrap(); //Destructor

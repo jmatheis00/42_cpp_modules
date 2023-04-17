@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/25 14:50:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/16 13:05:59 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,31 @@
 
 int main(void)
 {
-    ClapTrap ex1("ex1");
-    std::cout << GREEN "Starting values" RESET << std::endl;
-    std::cout << ex1 << std::endl;
-    std::cout << GREEN "TEST: NO HITPOINTS" RESET << std::endl;
-    ex1.attack("test");
-    std::cout << ex1 << std::endl;
-    ex1.takeDamage(5);
-    std::cout << ex1 << std::endl;
-    ex1.takeDamage(5);
-    std::cout << ex1 << std::endl;
-    ex1.takeDamage(5);
-
-    std::cout << GREEN "TEST: NO ENERGY" RESET << std::endl;
-    ClapTrap ex2("ex2");
-    std::cout << ex2 << std::endl;
-    for(int i = 0; i < 10; i++)
-        ex2.attack("TEST2");
-    std::cout << ex2 << std::endl;
-    ex2.beRepaired(20);
-    std::cout << ex2 << std::endl;
+    {
+        std::cout << YELLOW "\nTEST: NO HITPOINTS LEFT" RESET << std::endl;
+        ClapTrap first("Bobby");
+        std::cout << GREEN "Starting values" RESET << std::endl;
+        std::cout << first << std::endl;
+        first.attack("Sammy");
+        std::cout << first << std::endl;
+        first.takeDamage(5);
+        std::cout << first << std::endl;
+        first.takeDamage(5);
+        std::cout << first << std::endl;
+        first.takeDamage(5);
+        first.beRepaired(3);
+        first.attack("Sammy");
+    }
+    {
+        std::cout << YELLOW "\nTEST: NO ENERGY POINTS LEFT" RESET << std::endl;
+        ClapTrap second("Sammy");
+        std::cout << second << std::endl;
+        for(int i = 0; i < 10; i++)
+            second.attack("Lissy");
+        std::cout << "\n" << second << std::endl;
+        second.beRepaired(20);
+        second.attack("Lissy");
+        second.takeDamage(2);
+    }
     return (0);
 }

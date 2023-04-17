@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:31:24 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/17 18:43:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/17 19:10:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef FRAGTRAP_HPP
+#define FRAGTRAP_HPP
 
 #include <iostream>
 #include "ClapTrap.hpp"
@@ -26,19 +26,18 @@
 // constructor desctrucor and attack prints different messages
 // uses attributes of ClapTrap
 // new function: void guardGate();
-class ScavTrap : public ClapTrap
+class FragTrap : public ClapTrap
 {
     public:
-        ScavTrap(); //Default Constructor
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &copyclass); //Copy Constructor
-		ScavTrap& operator= (const ScavTrap& copyop); //copy assignment operator
-		~ScavTrap(); //Destructor
+        FragTrap(); //Default Constructor
+		FragTrap(std::string name);
+		FragTrap(const FragTrap &copyclass); //Copy Constructor
+		FragTrap& operator= (const FragTrap& copyop); //copy assignment operator
+		~FragTrap(); //Destructor
 
-        void attack(const std::string& target); //overwritten
-        void guardGate();
+        void highFivesGuys();
 };
 
-std::ostream& operator<<(std::ostream& os, const ScavTrap& i);
+std::ostream& operator<<(std::ostream& os, const FragTrap& i);
 
 #endif

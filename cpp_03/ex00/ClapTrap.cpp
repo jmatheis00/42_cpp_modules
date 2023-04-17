@@ -6,16 +6,22 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/24 21:14:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/16 13:07:42 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
+ClapTrap::ClapTrap(): name_("Default"), 
+    hitpoints_(10), energypoints_(10), attackdamage_(0)
+{
+    std::cout << RED "Default ClapTrap wakes up"  RESET << std::endl;
+}
+
 ClapTrap::ClapTrap(std::string name): name_(name),
     hitpoints_(10), energypoints_(10), attackdamage_(0)
 {
-    std::cout << RED "ClapTramp named " << name_ << " wakes up"  RESET << std::endl;
+    std::cout << RED "ClapTrap named " << name_ << " wakes up"  RESET << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap &copyclass)
@@ -73,21 +79,21 @@ void ClapTrap::attack(const std::string& target)
         energypoints_--;
     }
     else if (energypoints_ == 0)
-        std::cout << YELLOW "ClapTrap " << get_name() << " has no energy left!" RESET << std::endl;
+        std::cout << RED "ClapTrap " << get_name() << " has no energy left, cannot attack someone else!" RESET << std::endl;
     else if (hitpoints_ <= 0)
-        std::cout << YELLOW "ClapTrap " << get_name() << " already died!" RESET << std::endl; 
+        std::cout << RED "ClapTrap " << get_name() << " already died, cannot attack someone else!" RESET << std::endl; 
 }
 
 void ClapTrap::takeDamage(unsigned int amount)
 {
-    if (hitpoints_ > 0)
+    if (hitpoints_ > 0 && energypoints_ > 0)
     {
         std::cout << "ClapTrap " << get_name() << " got attacked, gets "
             << amount << " points of damage!" << std::endl; 
         hitpoints_ -= amount;
     }
     else
-        std::cout << YELLOW "ClapTrap " << get_name() << " already died!" RESET << std::endl; 
+        std::cout << RED "ClapTrap " << get_name() << " already died, cannot take damage anymore!" RESET << std::endl; 
 }
 
 // gets <amount> hit points back
@@ -101,9 +107,9 @@ void ClapTrap::beRepaired(unsigned int amount)
         energypoints_--;
     }
     else if (energypoints_ == 0)
-        std::cout << YELLOW "ClapTrap " << get_name() << " has no energy left!" RESET << std::endl;
+        std::cout << RED "ClapTrap " << get_name() << " has no energy left, cannot repair itself!" RESET << std::endl;
     else if (hitpoints_ <= 0)
-        std::cout << YELLOW "ClapTrap " << get_name() << " already died!" RESET << std::endl;
+        std::cout << RED "ClapTrap " << get_name() << " already died, cannot repair itself!" RESET << std::endl;
 }
 
 // OUTPUT OPERATOR OVERLOADING
