@@ -6,17 +6,21 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:53:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/18 16:32:00 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:33:42 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
+#include "ClapTrap.hpp"
 
 DiamondTrap::DiamondTrap()
 {
     ClapTrap::name_ = "Default_clap_name";
     name_ = "Default";
     hitpoints_ = FragTrap::hitpoints_;
+    ScavTrap::energypoints_ = 50;
     energypoints_ = ScavTrap::energypoints_;
     attackdamage_ = FragTrap::attackdamage_;
     std::cout << RED "Default DiamondTrap wakes up"  RESET << std::endl;
@@ -27,9 +31,12 @@ DiamondTrap::DiamondTrap(std::string name)
     ClapTrap::name_ = name + "_clap_name";
     name_ = name;
     hitpoints_ = FragTrap::hitpoints_;
+    ScavTrap::energypoints_ = 50;
     energypoints_ = ScavTrap::energypoints_;
     attackdamage_ = FragTrap::attackdamage_;
     std::cout << RED "DiamondTrap named " << name_ << " wakes up"  RESET << std::endl;
+    std::cout << attackdamage_ << std::endl;
+    std::cout << FragTrap::get_attackdamage() << std::endl;
 }
 
 DiamondTrap::DiamondTrap(const DiamondTrap &copyclass)

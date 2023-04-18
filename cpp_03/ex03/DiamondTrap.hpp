@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:53:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/18 16:19:08 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/18 22:08:35 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 // constructor desctrucor and attack prints different messages
 // uses attributes of ClapTrap
 // new function: void guardGate();
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
     public:
         DiamondTrap(); //Default Constructor
