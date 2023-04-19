@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:53:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/18 22:08:35 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:49:45 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ class DiamondTrap : public ScavTrap, public FragTrap
 
         void attack(const std::string& target); //overwritten
 		void whoAmI();
+
+		std::string get_name()const;
 	private:
 		std::string name_;
 };

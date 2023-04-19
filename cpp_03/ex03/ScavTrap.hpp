@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:31:24 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/18 15:08:37 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:47:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,10 @@ class ScavTrap : virtual public ClapTrap
 
         void attack(const std::string& target); //overwritten
         void guardGate();
+
+        int get_energy();
+    private:
+        int energy_;
 };
 
 std::ostream& operator<<(std::ostream& os, const ScavTrap& i);

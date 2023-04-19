@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 13:50:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/17 18:43:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 13:46:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ ScavTrap::ScavTrap(): ClapTrap()
     name_ = "Default";
     hitpoints_ = 100;
     energypoints_ = 50;
+    energy_ = energypoints_;
     attackdamage_ = 20;
     std::cout << RED "Default ScavTrap wakes up"  RESET << std::endl;
 }
@@ -27,6 +28,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     name_ = name;
     hitpoints_ = 100;
     energypoints_ = 50;
+    energy_ = energypoints_;
     attackdamage_ = 20;
     std::cout << RED "ScavTrap with name " << name << " wakes up"  RESET << std::endl;
 }
@@ -68,6 +70,11 @@ void ScavTrap::attack(const std::string& target)
 void ScavTrap::guardGate()
 {
     std::cout << "ScavTrap named " << get_name() << " is now in Gate keeper mode." << std::endl;
+}
+
+int ScavTrap::get_energy()
+{
+    return(energy_);
 }
 
 // OUTPUT OPERATOR OVERLOADING
