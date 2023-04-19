@@ -6,16 +6,16 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:28 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:58:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 10:48:22 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WRONGCAT_HPP
 #define WRONGCAT_HPP
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-class WrongCat : public Animal
+class WrongCat : public WrongAnimal
 {
     public:
         WrongCat(); //Default Constructor

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:55:29 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:16:19 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ Cat::Cat() : Animal()
 Cat::Cat(const Cat &copyclass) : Animal(copyclass)
 {
     Cat::operator= (copyclass);
+    std::cout << "Copy Constructor Cat"  RESET << std::endl;
 }
 
 Cat& Cat::operator= (const Cat& copyop)
 {
     type_ = copyop.type_;
-
+    std::cout << "Copy Assignment Operator Cat"  RESET << std::endl;
     return(*this);
 }
 
@@ -38,5 +39,5 @@ Cat::~Cat()
 // OTHER MEMBER FUNCTIONS
 void Cat::makeSound() const
 {
-    std::cout << getType() << "***Cat Sound***" << std::endl;
+    std::cout << getType() << ":\tMEOOOOOWWWWW" << std::endl;
 }

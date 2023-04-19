@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:59:10 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:17:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,13 @@ WrongAnimal::WrongAnimal()
 WrongAnimal::WrongAnimal(const WrongAnimal &copyclass)
 {
     WrongAnimal::operator= (copyclass);
+    std::cout << "Copy Constructor WrongAnimal"  RESET << std::endl;
 }
 
 WrongAnimal& WrongAnimal::operator= (const WrongAnimal& copyop)
 {
     type_ = copyop.type_;
-
+    std::cout << "Copy Assignment Operator WrongAnimal"  RESET << std::endl;
     return(*this);
 }
 
@@ -38,7 +39,7 @@ WrongAnimal::~WrongAnimal()
 // OTHER MEMBER FUNCTIONS
 void WrongAnimal::makeSound() const
 {
-    std::cout << this->getType() << "***WrongAnimal Sound***" << std::endl;
+    std::cout << getType() << ":\t***WrongAnimal Sound***" << std::endl;
 }
 
 std::string WrongAnimal::getType() const

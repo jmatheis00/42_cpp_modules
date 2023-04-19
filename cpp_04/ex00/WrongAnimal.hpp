@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:27:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:59:27 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 11:09:19 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ class WrongAnimal
 		WrongAnimal& operator= (const WrongAnimal& copyop); //copy assignment operator
 		~WrongAnimal(); //Destructor
 
-        virtual void makeSound() const;
+        void makeSound() const;
         std::string getType() const;
 };
 
