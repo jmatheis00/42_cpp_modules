@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/16 13:47:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/18 16:32:32 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ ClapTrap& ClapTrap::operator= (const ClapTrap& copyop)
 
 ClapTrap::~ClapTrap()
 {
-    std::cout << RED "ClapTramp named " << name_ << " dies" RESET << std::endl;
+    std::cout << RED "ClapTrap named " << name_ << " dies" RESET << std::endl;
 }
 
 
