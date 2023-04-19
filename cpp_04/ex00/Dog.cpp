@@ -1,47 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:46:16 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/04/19 09:45:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "Dog.hpp"
 
-Animal::Animal()
+Dog::Dog() : Animal()
 {
-    type_ = "Animal";
-    std::cout << "Default Constructor Animal"  RESET << std::endl;
+    type_ = "Dog";
+    std::cout << "Default Constructor Dog"  RESET << std::endl;
 }
 
-Animal::Animal(const Animal &copyclass)
+Dog::Dog(const Dog &copyclass) : Animal(copyclass)
 {
-    Animal::operator= (copyclass);
+    Dog::operator= (copyclass);
 }
 
-Animal& Animal::operator= (const Animal& copyop)
+Dog& Dog::operator= (const Dog& copyop)
 {
     type_ = copyop.type_;
 
     return(*this);
 }
 
-Animal::~Animal()
+Dog::~Dog()
 {
-    std::cout << RED "Destructor Animal" RESET << std::endl;
+    std::cout << RED "Destructor Dog" RESET << std::endl;
 }
 
 // OTHER MEMBER FUNCTIONS
-void Animal::makeSound() const
+void Dog::makeSound() const
 {
-    std::cout << this->getType() << "***Animal Sound***" << std::endl;
-}
-
-std::string Animal::getType() const
-{
-    return(type_);
+    std::cout << getType() << "***Dog Sound***" << std::endl;
 }

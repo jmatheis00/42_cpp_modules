@@ -1,47 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Animal.cpp                                         :+:      :+:    :+:   */
+/*   WrongAnimal.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:46:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 09:59:10 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Animal.hpp"
+#include "WrongAnimal.hpp"
 
-Animal::Animal()
+WrongAnimal::WrongAnimal()
 {
-    type_ = "Animal";
-    std::cout << "Default Constructor Animal"  RESET << std::endl;
+    type_ = "WrongAnimal";
+    std::cout << "Default Constructor WrongAnimal"  RESET << std::endl;
 }
 
-Animal::Animal(const Animal &copyclass)
+WrongAnimal::WrongAnimal(const WrongAnimal &copyclass)
 {
-    Animal::operator= (copyclass);
+    WrongAnimal::operator= (copyclass);
 }
 
-Animal& Animal::operator= (const Animal& copyop)
+WrongAnimal& WrongAnimal::operator= (const WrongAnimal& copyop)
 {
     type_ = copyop.type_;
 
     return(*this);
 }
 
-Animal::~Animal()
+WrongAnimal::~WrongAnimal()
 {
-    std::cout << RED "Destructor Animal" RESET << std::endl;
+    std::cout << RED "Destructor WrongAnimal" RESET << std::endl;
 }
 
 // OTHER MEMBER FUNCTIONS
-void Animal::makeSound() const
+void WrongAnimal::makeSound() const
 {
-    std::cout << this->getType() << "***Animal Sound***" << std::endl;
+    std::cout << this->getType() << "***WrongAnimal Sound***" << std::endl;
 }
 
-std::string Animal::getType() const
+std::string WrongAnimal::getType() const
 {
     return(type_);
 }
