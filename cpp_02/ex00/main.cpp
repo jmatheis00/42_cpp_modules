@@ -6,21 +6,28 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 16:13:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:49:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 #include <iostream>
 
-
+// Copy Constructor:
+// initializing a previously uninitialized object
+// frome some other object's data
+// Copy Assignment Operator
+// replacing data of a previously initialized
+// object with some other object's data
 int main(void)
 {
     Fixed a;
-    Fixed b(a); // Calls Copy Constructor
+    // Calls Copy Constructor
+    Fixed b(a);
     Fixed c;
 
-    c = b; // Calls Copy Assignment Operator
+    // Calls Copy Assignment Operator
+    c = b; 
 
     std::cout << a.getRawBits() << std::endl;
     std::cout << b.getRawBits() << std::endl;

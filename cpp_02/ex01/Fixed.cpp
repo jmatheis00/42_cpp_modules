@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 16:46:54 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 22:50:25 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,12 @@ Fixed::Fixed(const Fixed& copyclass)
 	Fixed::operator= (copyclass);
 }
 
+//return the existing object
 Fixed& Fixed::operator= (const Fixed& copyop)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	fixedval_ = copyop.getRawBits();
-	return (*this); //return the existing object
+	return (*this);
 }
 
 Fixed::~Fixed()
