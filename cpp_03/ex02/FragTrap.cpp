@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fragtrap.cpp                                       :+:      :+:    :+:   */
+/*   FragTrap.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 13:50:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/17 19:15:54 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:47:55 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys()
 {
-    std::cout << GREEN "HIGH FIVES GUYS!" RESET << std::endl;
+    std::cout << "HIGH FIVES GUYS!" << std::endl;
 }
 
 // OUTPUT OPERATOR OVERLOADING

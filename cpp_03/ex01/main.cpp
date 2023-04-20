@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/17 19:03:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 23:19:12 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,35 +17,48 @@ int main(void)
 {
     {
         std::cout << YELLOW "\nTEST: SCAVTRAP" RESET << std::endl;
+        std::cout << PURPLE "Constructors" RESET<< std::endl;
         ScavTrap second("Sammy");
         std::cout << GREEN "Starting values" RESET << std::endl;
-        std::cout << second << std::endl;        
+        std::cout << second << std::endl;   
+        std::cout << PURPLE "attack() function" RESET << std::endl;    
         second.attack("OTHER");
+        std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
         second.takeDamage(20);
+        std::cout << PURPLE "beRepaired() function" RESET << std::endl;
         second.beRepaired(5);
+        std::cout << PURPLE "guardGate() function" RESET << std::endl;
         second.guardGate();
+        std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
         second.takeDamage(100);
-        
         std::cout << second << std::endl;
+        std::cout << PURPLE "ScavTrap is dead" RESET<< std::endl;
         second.beRepaired(10);
         second.takeDamage(10);
         second.attack("OTHER");
+        std::cout << PURPLE "Destructors" RESET<< std::endl;
     }
-    {
-        std::cout << YELLOW "\nTEST: CLAPTRAP" RESET << std::endl;
-        ClapTrap first("Bobby");
-        std::cout << GREEN "Starting values" RESET << std::endl;
-        std::cout << first << std::endl;
-        first.attack("Sammy");
-        std::cout << first << std::endl;
-        first.takeDamage(5);
-        first.beRepaired(1);
-        std::cout << first << std::endl;
-        first.takeDamage(6);
-        std::cout << first << std::endl;
-        first.takeDamage(5);
-        first.beRepaired(3);
-        first.attack("Sammy");
-    }
+    // {
+    //     std::cout << YELLOW "\nTEST: CLAPTRAP" RESET << std::endl;
+    //     std::cout << PURPLE "Constructors" RESET<< std::endl;
+    //     ClapTrap first("Bobby");
+    //     std::cout << GREEN "Starting values" RESET << std::endl;
+    //     std::cout << first << std::endl;
+    //     std::cout << PURPLE "attack() function" RESET << std::endl;
+    //     first.attack("Sammy");
+    //     std::cout << first << std::endl;
+    //     std::cout << PURPLE "beRepaired() function" RESET << std::endl;
+    //     first.beRepaired(2);
+    //     std::cout << first << std::endl;
+    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;
+    //     first.takeDamage(5);
+    //     first.takeDamage(7);
+    //     std::cout << first << std::endl;
+    //     std::cout << PURPLE "ClapTrap is dead" RESET<< std::endl;
+    //     first.takeDamage(5);
+    //     first.beRepaired(3);
+    //     first.attack("Sammy");
+    //     std::cout << PURPLE "Destructors" RESET<< std::endl;
+    // }
     return (0);
 }

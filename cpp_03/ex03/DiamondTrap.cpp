@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:53:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 13:49:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/20 11:15:29 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,9 +69,9 @@ void DiamondTrap::attack(const std::string& target)
 
 void DiamondTrap::whoAmI()
 {
-    std::cout << YELLOW "ClapTrap name is " << ClapTrap::get_name()
+    std::cout << "ClapTrap name is " << ClapTrap::get_name()
         << " normal name is " << DiamondTrap::name_
-        << RESET << std::endl;
+        << std::endl;
 }
 
 std::string DiamondTrap::get_name() const

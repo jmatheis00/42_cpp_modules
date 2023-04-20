@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 11:40:09 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/19 12:44:10 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 {
     {
         std::cout << YELLOW "\nANIMAL & DOG & CAT TEST" RESET << std::endl;
-        std::cout << PURPLE "Destructors" RESET << std::endl;
+        std::cout << PURPLE "Constructors" RESET << std::endl;
         const Animal* meta = new Animal();
         const Animal* j = new Dog();
         const Animal* i = new Cat();

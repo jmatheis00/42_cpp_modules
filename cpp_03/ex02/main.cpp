@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 23:21:22 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:44:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,26 @@ int main(void)
 {
     {
         std::cout << YELLOW "\nTEST: FRAGTRAP" RESET << std::endl;
+        std::cout << PURPLE "Constructors" RESET<< std::endl;
         FragTrap third("Tommy");
         std::cout << GREEN "Starting values" RESET << std::endl;
-        std::cout << third << std::endl;        
-        third.attack("OTHER");
-        third.takeDamage(20);
-        third.beRepaired(5);
-        third.highFivesGuys();
-        third.takeDamage(100);
-        
         std::cout << third << std::endl;
+        std::cout << PURPLE "attack() function" RESET<< std::endl;    
+        third.attack("OTHER");
+        std::cout << PURPLE "takeDamage() function" RESET<< std::endl;    
+        third.takeDamage(20);
+        std::cout << PURPLE "beRepaired() function" RESET<< std::endl;    
+        third.beRepaired(5);
+        std::cout << PURPLE "highFivesGuys() function" RESET<< std::endl;    
+        third.highFivesGuys();
+        std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
+        third.takeDamage(100);
+        std::cout << third << std::endl;
+        std::cout << PURPLE "ScavTrap() is dead" RESET<< std::endl;
         third.beRepaired(10);
         third.takeDamage(10);
         third.attack("OTHER");
+        std::cout << PURPLE "Destructors" RESET<< std::endl;
     }
     //   {
     //     std::cout << YELLOW "\nTEST: SCAVTRAP" RESET << std::endl;

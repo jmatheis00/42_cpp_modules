@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 23:56:41 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/16 13:47:15 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/20 10:50:42 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 #define RED         "\033[31m"              /* Red */
 #define GREEN       "\033[32m"              /* Green */
 #define YELLOW      "\033[33m"              /* Yellow */
+#define PURPLE      "\033[35m"              /* Purple */
 
 class ClapTrap
 {
