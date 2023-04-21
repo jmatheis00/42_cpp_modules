@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/20 11:07:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/21 10:29:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,24 @@ int main(void)
         std::cout << YELLOW "\nTEST: DIAMONDTRAP" RESET << std::endl;
         std::cout << PURPLE "Constructors" RESET<< std::endl;
         DiamondTrap fourth("Danny");
+        DiamondTrap other(fourth);
         std::cout << GREEN "Starting values" RESET << std::endl;
-        std::cout << fourth << std::endl;    
+        std::cout << other << std::endl;    
         std::cout << PURPLE "attack() function" RESET<< std::endl;
-        fourth.attack("OTHER");
+        other.attack("OTHER");
         std::cout << PURPLE "takeDamage() function" RESET<< std::endl;    
-        fourth.takeDamage(20);
+        other.takeDamage(20);
         std::cout << PURPLE "beRepaired() function" RESET<< std::endl;       
-        fourth.beRepaired(5);
+        other.beRepaired(5);
         std::cout << PURPLE "whoAmI() function" RESET<< std::endl;    
-        fourth.whoAmI();
+        other.whoAmI();
         std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
-        fourth.takeDamage(100);
-        std::cout << fourth << std::endl;
+        other.takeDamage(100);
+        std::cout << other << std::endl;
         std::cout << PURPLE "DiamondTrap() is dead" RESET<< std::endl;
-        fourth.beRepaired(10);
-        fourth.takeDamage(10);
-        fourth.attack("OTHER");
+        other.beRepaired(10);
+        other.takeDamage(10);
+        other.attack("OTHER");
         std::cout << PURPLE "Destructors" RESET<< std::endl;
     }
     // {
