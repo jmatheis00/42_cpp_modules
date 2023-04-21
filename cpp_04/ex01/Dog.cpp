@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 14:59:10 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:36:32 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ Dog::Dog() : Animal()
     std::cout << "Default Constructor Dog" << std::endl;
 }
 
+// there is no this->brain_ existing -> not freeing
 Dog::Dog(const Dog &copyclass) : Animal(copyclass)
 {
-    Dog::operator= (copyclass);
     std::cout << "Copy Constructor Dog" << std::endl;
+    brain_ = new Brain(*copyclass.brain_);
+    type_ = copyclass.type_;
 }
 
+// delete here because this->brain_ exists/allocated
 Dog& Dog::operator= (const Dog& copyop)
 {
     type_ = copyop.type_;

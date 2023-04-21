@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 14:23:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:32:46 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,17 @@ Cat::Cat() : Animal()
 
 Cat::Cat(const Cat &copyclass) : Animal(copyclass)
 {
-    Cat::operator= (copyclass);
+    brain_ = new Brain(*copyclass.brain_);
+    type_ = copyclass.type_;
     std::cout << "Copy Constructor Cat" << std::endl;
 }
 
 Cat& Cat::operator= (const Cat& copyop)
 {
     type_ = copyop.type_;
-    *brain_ = *(copyop.brain_);
+    if (brain_)
+        delete brain_;
+    brain_ = new Brain(*copyop.brain_);
     std::cout << "Copy Assignment Operator Cat" << std::endl;
     return(*this);
 }

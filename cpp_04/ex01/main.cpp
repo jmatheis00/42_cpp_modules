@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 15:01:00 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/21 11:45:26 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,8 @@ int main()
     std::cout << PURPLE "Compare Bello's with Luna's second idea'" RESET << std::endl;
     std::cout << Bello->getidea(1) << std::endl;
     std::cout << Luna->getidea(1) << std::endl; //should be unchanged/independent
-    
     std::cout << PURPLE "Destructors for Bello and Luna" RESET << std::endl;
-    delete Luna;
-    delete Bello;
-
+    delete (Bello);
+    delete (Luna);
     return 0;
 }
