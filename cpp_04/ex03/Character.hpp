@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:21:08 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 12:56:55 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:53:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,27 @@
 #define CHARACTER_HPP
 
 #include <iostream>
+#include "ICharacter.hpp"
 
 // inherits from ICharacter?
 // CANONICAL FORM!
-class Character
+class Character : public ICharacter
 {
     private:
+        AMateria* inventory_[4];
         std::string name_;
-    public:
         Character(); //Default Constructor
+    public:
         Character(std::string name);
 		Character(const Character &copyclass); //Copy Constructor
 		Character& operator= (const Character& copyop); //copy assignment operator
-		virtual ~Character(); //Destructor       
+		virtual ~Character(); //Destructor
+
+        // from ICharacter
+        std::string const & getName() const;
+        void equip(AMateria *m);
+        void unequip(int idx);
+        void use(int idx, ICharacter& target);
 
 };
 

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 12:18:38 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:05:49 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ Cure::~Cure()
 // OTHER MEMBER FUNCTIONS
 
 // Return a new instance of the same type
-Cure* Cure::clone() const
+AMateria* Cure::clone() const
 {
-    
+    AMateria* newest = new Cure((*this));
+    return(newest);
 }

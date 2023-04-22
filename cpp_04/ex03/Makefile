@@ -8,9 +8,7 @@ SRCS		:= main.cpp \
 				Character.cpp \
 				Cure.cpp \
 				Ice.cpp \
-				ICharacter.cpp \
-				MateriaSource.cpp \
-				IMateriaSource.hpp
+				MateriaSource.cpp
 
 HEADER		:= AMateria.hpp \
 				Character.hpp \

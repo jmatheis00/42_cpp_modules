@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:13:20 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 12:01:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:46:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
+// Forward declaration necessary when we use
+// reference or pointer to this class
+class ICharacter;
+
 // ABSTRACT CLASS
 // add virtual AMateria()
 // whole canoncial form ???
@@ -30,8 +34,8 @@ class AMateria
     protected:
         std::string type_;
         // [...]
-        AMateria(); //Default Constructor
     public:
+        AMateria(); //Default Constructor
         AMateria(std::string const& type);
 
 		AMateria(const AMateria &copyclass); //Copy Constructor
@@ -39,7 +43,7 @@ class AMateria
 		virtual ~AMateria(); //Destructor
 
         // [...]
-        std::string const& getType() const; //returns the materia type
+        virtual std::string const& getType() const; //returns the materia type
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

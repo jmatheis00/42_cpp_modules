@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 12:19:15 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:05:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ Ice::~Ice()
 // OTHER MEMBER FUNCTIONS
 
 // Return a new instance of the same type
-Ice* Ice::clone() const
+AMateria* Ice::clone() const
 {
-    
+    AMateria* newest = new Ice((*this));
+    return(newest);
 }

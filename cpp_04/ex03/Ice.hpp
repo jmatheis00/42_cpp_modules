@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:21:08 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 12:19:47 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:05:06 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Ice : public AMateria
 		Ice& operator= (const Ice& copyop); //copy assignment operator
 		virtual ~Ice(); //Destructor       
 
-        Ice* clone() const;
+        AMateria* clone() const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:21:08 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 12:18:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 20:05:00 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class Cure : public AMateria
 		Cure& operator= (const Cure& copyop); //copy assignment operator
 		virtual ~Cure(); //Destructor  
 
-        Cure* clone() const;     
+        AMateria* clone() const;     
 
 };
 
