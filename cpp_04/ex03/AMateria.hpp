@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:13:20 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 13:03:52 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/22 12:01:59 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,16 @@
 class AMateria
 {
     protected:
+        std::string type_;
         // [...]
+        AMateria(); //Default Constructor
     public:
         AMateria(std::string const& type);
+
+		AMateria(const AMateria &copyclass); //Copy Constructor
+		AMateria& operator= (const AMateria& copyop); //copy assignment operator
+		virtual ~AMateria(); //Destructor
+
         // [...]
         std::string const& getType() const; //returns the materia type
         virtual AMateria* clone() const = 0;

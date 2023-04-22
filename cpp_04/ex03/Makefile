@@ -9,14 +9,16 @@ SRCS		:= main.cpp \
 				Cure.cpp \
 				Ice.cpp \
 				ICharacter.cpp \
-				MateriaSource.cpp
+				MateriaSource.cpp \
+				IMateriaSource.hpp
 
 HEADER		:= AMateria.hpp \
 				Character.hpp \
 				Cure.hpp \
 				Ice.hpp \
 				ICharacter.hpp \
-				MateriaSource.hpp
+				MateriaSource.hpp \
+				IMateriaSource.hpp
 
 
 OBJS		:= $(SRCS:%.cpp=%.o)
