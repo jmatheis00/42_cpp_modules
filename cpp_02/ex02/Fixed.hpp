@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 20:30:05 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:23:40 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ class Fixed
 		// fictive argument to seperate between prae and post
 		Fixed operator++(int i);
 		Fixed operator--(int i);
+
 		int getRawBits(void) const;
 		void setRawBits(int const raw);
 		float toFloat(void) const;

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 17:25:35 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/24 09:04:53 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,9 @@ int main(void)
     Fixed a;
     Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
 
+    float t = 42.42;
+    std::cout << t << std::endl;
+    
     std::cout << GREEN "\nSTARTING VALUES" RESET << std::endl;
     std::cout << "a:\t" << a << std::endl;
     std::cout << "b:\t" << b << std::endl;
@@ -42,8 +45,8 @@ int main(void)
     std::cout << "a:\t\t\t" << a << std::endl;
 
     std::cout << GREEN "\nMember Functions" RESET << std::endl;
-    std::cout << "Max:\t" << Fixed::max( a, b ) << std::endl;
-    std::cout << "Min:\t" << Fixed::min( a, b ) << std::endl;
+    std::cout << "Max:\t" << b.max( a, b ) << std::endl;
+    std::cout << "Min:\t" << b.min( a, b ) << std::endl;
 
     return (0);
 }

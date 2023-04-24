@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/11 16:56:18 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:20:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ class Fixed
 		int toInt(void) const;
 };
 
+// OUTSTREAM OPERATOR OVERLOAD
 std::ostream& operator<<(std::ostream& os, const Fixed& i);
 
 #endif

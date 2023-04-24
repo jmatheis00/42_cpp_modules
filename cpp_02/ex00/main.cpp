@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 22:49:33 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/24 08:16:36 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,10 @@
 int main(void)
 {
     Fixed a;
+
     // Calls Copy Constructor
     Fixed b(a);
+
     Fixed c;
 
     // Calls Copy Assignment Operator
