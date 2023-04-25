@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 19:58:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 20:44:13 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:54:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,5 @@ std::string const& AMateria::getType() const
 
 void AMateria::use(ICharacter& target)
 {
-    target=(ICharacter&)target;
+    (void)target;
 }

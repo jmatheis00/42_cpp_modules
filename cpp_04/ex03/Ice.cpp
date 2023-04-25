@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 20:05:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:30:00 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ AMateria* Ice::clone() const
 {
     AMateria* newest = new Ice((*this));
     return(newest);
+}
+
+void Ice::use(ICharacter& target)
+{
+    std::cout << "* shoots an ice bolt at "
+    << target.getName() << " *" << std::endl;
 }

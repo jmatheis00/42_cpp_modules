@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 20:05:49 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:30:03 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,10 @@ AMateria* Cure::clone() const
 {
     AMateria* newest = new Cure((*this));
     return(newest);
+}
+
+void Cure::use(ICharacter& target)
+{
+    std::cout << "* heals " << target.getName()
+    << "\'s wounds *" << std::endl;
 }

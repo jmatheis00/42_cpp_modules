@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:21:08 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 20:05:06 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 16:58:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ class Ice : public AMateria
 		virtual ~Ice(); //Destructor       
 
         AMateria* clone() const;
+        void use(ICharacter& target);
+
 };
 
 #endif

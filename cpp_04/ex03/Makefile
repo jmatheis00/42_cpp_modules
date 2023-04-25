@@ -1,6 +1,6 @@
 NAME		:= ex03
 
-CXX			:= c++ -fsanitize=address
+CXX			:= c++ #-fsanitize=address
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
