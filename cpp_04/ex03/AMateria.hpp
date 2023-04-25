@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:13:20 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 20:46:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:51:40 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ class AMateria
     protected:
         std::string type_;
         // [...]
-    public:
         AMateria(); //Default Constructor
+    public:
         AMateria(std::string const& type);
 
 		AMateria(const AMateria &copyclass); //Copy Constructor

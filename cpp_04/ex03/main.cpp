@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:47:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 17:28:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 18:16:25 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,21 @@ int main()
     me->equip(tmp);
 
     ICharacter* bob = new Character("bob");
+    std::cout << RED "DEEP COPY CHECK" RESET << std::endl;
+    AMateria* deep;
+    deep = src->createMateria("sss");
+    me->equip(deep);
+    deep = src->createMateria("ice");
+    me->equip(deep);
 
-    me->use(0, *bob);
-    me->use(1, *bob);
+    me->use(2, *bob);
+    me->use(3, *bob);
+
+    me->use(2, *bob);
+    me->use(3, *bob);
+
+    // me->use(0, *bob);
+    // me->use(1, *bob);
 
     delete bob;
     delete me;

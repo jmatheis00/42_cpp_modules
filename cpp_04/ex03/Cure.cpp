@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 17:30:03 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/25 17:58:55 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,8 +41,7 @@ Cure::~Cure()
 // Return a new instance of the same type
 AMateria* Cure::clone() const
 {
-    AMateria* newest = new Cure((*this));
-    return(newest);
+    return(new Cure(*this));
 }
 
 void Cure::use(ICharacter& target)
