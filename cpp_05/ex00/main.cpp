@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 01:12:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 01:20:51 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,22 @@ int main()
     std::cout << YELLOW "\nTEST: CONSTRUCTOR GRADE TOO LOW" RESET << std::endl;
     try
     {
+        std::cout << "Grade: 151" << std::endl;
         Bureaucrat Bob1("Bob1", 151);
     }
-    catch(Bureaucrat::GradeTooLowException &b)
+    catch(std::exception &b)
     {
-        std::cout << b.what() << std::endl;
+        std::cout << RED << b.what() << RESET<< std::endl;
     }
     std::cout << YELLOW "\nTEST: CONSTRUCTOR GRADE TOO HIGH" RESET << std::endl;
     try
     {
+        std::cout << "Grade: 0" << std::endl;
         Bureaucrat Bob2("Bob2", 0);
     }
-    catch(Bureaucrat::GradeTooHighException &b)
+    catch(std::exception &b)
     {
-        std::cout << b.what() << std::endl;
+        std::cout << RED << b.what() << RESET<< std::endl;
     }
     std::cout << YELLOW "\nTEST: INCREMENTING GRADE -> TOO HIGH" RESET << std::endl;
     Bureaucrat Bob3("Bob3", 2);
@@ -40,9 +42,9 @@ int main()
         Bob3.incrementGrade();
         Bob3.incrementGrade();
     }
-    catch(Bureaucrat::GradeTooHighException &b)
+    catch(std::exception &b)
     {
-        std::cout << b.what() << std::endl;
+        std::cout << RED << b.what() << RESET<< std::endl;
         std::cout << Bob3 << std::endl;
     }
     std::cout << YELLOW "\nTEST: DECREMENTING GRADE -> TOO LOW" RESET << std::endl;
@@ -54,12 +56,14 @@ int main()
         Bob4->decrementGrade();
         Bob4->decrementGrade();
         Bob4->decrementGrade();
+        std::cout << "This should not get printed" << std::endl;
     }
-    catch(Bureaucrat::GradeTooLowException &b)
+    catch(std::exception &b)
     {
-        std::cout << b.what() << std::endl;
+        std::cout << RED << b.what() << RESET<< std::endl;
         std::cout << *Bob4 << std::endl;
     }
+    std::cout << std::endl;
     delete Bob4;
     return 0;
 }
