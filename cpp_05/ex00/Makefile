@@ -1,22 +1,12 @@
-NAME		:= ex02
+NAME		:= ex00
 
-CXX			:= c++ #-fsanitize=address
+CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
-				Animal.cpp \
-				Dog.cpp \
-				Cat.cpp \
-				WrongAnimal.cpp \
-				WrongCat.cpp \
-				Brain.cpp
+				Bureaucrat.cpp
 
-HEADER		:= Animal.hpp \
-				Dog.hpp \
-				Cat.hpp \
-				WrongAnimal.hpp \
-				WrongCat.hpp \
-				Brain.hpp
+HEADER		:= Bureaucrat.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
