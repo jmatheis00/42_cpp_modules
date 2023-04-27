@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:31:24 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 18:29:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:00:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@
 #define GREEN       "\033[32m"              /* Green */
 #define YELLOW      "\033[33m"              /* Yellow */
 
-// INHERITED FROM CLAPTRAP
-// constructors & destructor
-// constructor desctrucor and attack prints different messages
-// uses attributes of ClapTrap
-// new function: void guardGate();
 class FragTrap : virtual public ClapTrap
 {
     public:

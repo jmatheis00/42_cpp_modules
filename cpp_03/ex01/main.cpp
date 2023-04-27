@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 10:46:35 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 09:57:58 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int main(void)
         std::cout << PURPLE "guardGate() function" RESET << std::endl;
         second.guardGate();
         std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
-        second.takeDamage(100);
+        second.takeDamage(85);
         std::cout << second << std::endl;
         std::cout << PURPLE "ScavTrap is dead" RESET<< std::endl;
         second.beRepaired(10);

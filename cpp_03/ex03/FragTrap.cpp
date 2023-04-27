@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 13:50:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 10:31:13 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 10:11:48 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ FragTrap::~FragTrap()
 
 void FragTrap::highFivesGuys()
 {
-    std::cout << GREEN "HIGH FIVES GUYS!" RESET << std::endl;
+    std::cout << "HIGH FIVES GUYS!" << std::endl;
 }
 
 // OUTPUT OPERATOR OVERLOADING
