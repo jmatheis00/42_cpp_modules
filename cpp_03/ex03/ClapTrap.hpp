@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 23:56:41 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 10:06:36 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:38:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ class ClapTrap
 		ClapTrap(std::string name); 
 		ClapTrap(const ClapTrap &copyclass); //Copy Constructor
 		ClapTrap& operator= (const ClapTrap& copyop); //copy assignment operator
-		~ClapTrap(); //Destructor
+		virtual ~ClapTrap(); //Destructor
     
         void attack(const std::string& target);
         void takeDamage(unsigned int amount);

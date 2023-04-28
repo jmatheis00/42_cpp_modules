@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 09:59:27 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:37:56 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(void)
         std::cout << YELLOW "\nTEST: FRAGTRAP" RESET << std::endl;
         std::cout << PURPLE "Constructors" RESET<< std::endl;
         FragTrap third("Tommy");
+        // ClapTrap *third = new FragTrap();
         std::cout << GREEN "Starting values" RESET << std::endl;
         std::cout << third << std::endl;
         std::cout << PURPLE "attack() function" RESET<< std::endl;    

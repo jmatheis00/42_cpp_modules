@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:27:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 11:09:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:43:25 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class WrongAnimal
         WrongAnimal(); //Default Constructor
 		WrongAnimal(const WrongAnimal &copyclass); //Copy Constructor
 		WrongAnimal& operator= (const WrongAnimal& copyop); //copy assignment operator
-		~WrongAnimal(); //Destructor
+		virtual ~WrongAnimal(); //Destructor
 
         void makeSound() const;
         std::string getType() const;
