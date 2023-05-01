@@ -6,64 +6,73 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 01:20:51 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:43:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main()
 {
-    std::cout << YELLOW "\nTEST: CONSTRUCTOR GRADE TOO LOW" RESET << std::endl;
+    std::cout << PURPLE "Destructors" RESET << std::endl;
+    Form forms("contract", 50, 60);
+    Bureaucrat b("Bob", 70);
+    Bureaucrat c("Sam", 20);
+
+    std::cout << YELLOW "\nTEST: FORM GRADES TOO HIGH OR TOO LOW" RESET << std::endl;
     try
     {
-        std::cout << "Grade: 151" << std::endl;
-        Bureaucrat Bob1("Bob1", 151);
+        Form fail("contract2", 12, 0);
+    }
+    catch(const std::exception& e)
+    {
+        std::cout << RED << e.what() << RESET << std::endl;
+    }
+
+    std::cout << YELLOW "\nTEST: GRADE TOO LOW FOR SIGNING" RESET << std::endl;
+    std::cout << GREEN "FORM INFORMATION" RESET << std::endl;
+    std::cout << forms << std::endl;
+    std::cout << GREEN "BUREAUCRAT INFORMATION" RESET << std::endl;
+    std::cout << b << std::endl;
+    try 
+    {
+        b.signForm(forms);
     }
     catch(std::exception &b)
     {
-        std::cout << RED << b.what() << RESET<< std::endl;
+        // not necessary cause exception gets catched in signForm
+        std::cout << RED << b.what() << RESET << std::endl;
     }
-    std::cout << YELLOW "\nTEST: CONSTRUCTOR GRADE TOO HIGH" RESET << std::endl;
-    try
+
+    std::cout << YELLOW "\nTEST: GRADE GETS SIGNED" RESET << std::endl;
+    std::cout << GREEN "FORM INFORMATION" RESET << std::endl;
+    std::cout << forms << std::endl;
+    std::cout << GREEN "BUREAUCRAT INFORMATION" RESET << std::endl;
+    std::cout << c << std::endl;
+    try 
     {
-        std::cout << "Grade: 0" << std::endl;
-        Bureaucrat Bob2("Bob2", 0);
+        c.signForm(forms);
     }
     catch(std::exception &b)
     {
-        std::cout << RED << b.what() << RESET<< std::endl;
+        std::cout << RED << b.what() << RESET << std::endl;
     }
-    std::cout << YELLOW "\nTEST: INCREMENTING GRADE -> TOO HIGH" RESET << std::endl;
-    Bureaucrat Bob3("Bob3", 2);
-    std::cout << Bob3 << std::endl;
-    try
+
+    std::cout << YELLOW "\nTEST: GRADE WAS ALREADY SIGNED" RESET << std::endl;
+    std::cout << GREEN "FORM INFORMATION" RESET << std::endl;
+    std::cout << forms << std::endl;
+    std::cout << GREEN "BUREAUCRAT INFORMATION" RESET << std::endl;
+    std::cout << c << std::endl;
+    try 
     {
-        Bob3.incrementGrade();
-        Bob3.incrementGrade();
+        c.signForm(forms);
     }
     catch(std::exception &b)
     {
-        std::cout << RED << b.what() << RESET<< std::endl;
-        std::cout << Bob3 << std::endl;
+        // not necessary cause exception gets catched in signForm
+        std::cout << RED << b.what() << RESET << std::endl;
     }
-    std::cout << YELLOW "\nTEST: DECREMENTING GRADE -> TOO LOW" RESET << std::endl;
-    Bureaucrat *Bob4 = new Bureaucrat("Bob4", 150);
-    std::cout << *Bob4 << std::endl;
-    try
-    {
-        Bob4->decrementGrade();
-        Bob4->decrementGrade();
-        Bob4->decrementGrade();
-        Bob4->decrementGrade();
-        std::cout << "This should not get printed" << std::endl;
-    }
-    catch(std::exception &b)
-    {
-        std::cout << RED << b.what() << RESET<< std::endl;
-        std::cout << *Bob4 << std::endl;
-    }
-    std::cout << std::endl;
-    delete Bob4;
+    std::cout << PURPLE "Destructors" RESET << std::endl;
     return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 01:18:03 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/01 14:38:43 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,22 @@ void Bureaucrat::decrementGrade()
 	grade_++;
 	if (grade_ > 150)
 		throw GradeTooLowException();
+}
+
+void Bureaucrat::signForm(Form &forms)
+{
+	try
+	{
+		forms.beSigned(*this);
+		std::cout << GREEN << this->getName() << " signed "
+			<< forms.getName() << RESET << std::endl;
+	}
+	catch(std::exception &b)
+	{
+		std::cout << RED << this->getName() << " couldn't sign "
+			<< forms.getName() << " because " RESET << std::endl;		
+		std::cout << RED << b.what() << RESET << std::endl;
+	}
 }
 
 // EXCEPTION FUNCTIONS

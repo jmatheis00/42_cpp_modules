@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
+/*   Form.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:51:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/01 00:32:29 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/04/28 16:51:18 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/05/01 13:52:19 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "Bureaucrat.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -23,23 +23,25 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-class Form;
+class Bureaucrat;
 
-class Bureaucrat
+class Form
 {
     public:
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(const Bureaucrat &copyclass); //Copy Constructor
-		Bureaucrat& operator= (const Bureaucrat& copyop); //copy assignment operator
-		~Bureaucrat(); //Destructor
-	
-		std::string getName() const;
-		int getGrade() const;
-		void incrementGrade(); //increment should give a lower grade (Better)
-		void decrementGrade(); //decrement should give a higher grade (Worse)
+		Form(std::string name, int signgrade, int executegrade);
+		Form(const Form &copyclass); //Copy Constructor
+		Form& operator= (const Form& copyop); //copy assignment operator
+		~Form(); //Destructor
 
-		void signForm(Form &forms);
-		// Exceptions
+        // Getters
+		std::string getName() const;
+		bool isSignedOrNot() const;
+		int getSignedGrade() const;
+		int getExecutedGrade() const;
+
+        void beSigned(Bureaucrat &bureau);
+
+        // Exceptions
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const throw();
@@ -48,14 +50,20 @@ class Bureaucrat
 			public:
 				virtual const char* what() const throw();
 		};
+		class GradeAlreadySignedException: public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 	private:
-		Bureaucrat(); //Default Constructor
+        Form(); //Default Constructor
 		std::string const name_;
-		int grade_;
-		
+        bool issigned_;
+        int const signgrade_;
+        int const executegrade_;
+
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& i);
+std::ostream& operator<<(std::ostream& os, const Form& i);
 
 #endif
