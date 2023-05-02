@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 10:33:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/02 14:42:46 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void ClapTrap::attack(const std::string& target)
             << target << ", causing " << get_attackdamage() << " points of damage!" << std::endl;
         energypoints_--;
     }
-    else if (energypoints_ == 0)
+    else if (energypoints_ <= 0)
         std::cout << RED "ClapTrap " << get_name() << " has no energy left, cannot attack someone else!" RESET << std::endl;
     else if (hitpoints_ <= 0)
         std::cout << RED "ClapTrap " << get_name() << " already died, cannot attack someone else!" RESET << std::endl; 

@@ -1,7 +1,7 @@
 NAME		:= ex03
 
 CXX			:= c++
-CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
+CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98 -Wno-shadow
 
 SRCS		:= main.cpp \
 				ClapTrap.cpp \

@@ -6,14 +6,14 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 13:50:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 10:34:56 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/02 15:20:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 #include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap(): ClapTrap()
+ScavTrap::ScavTrap()
 {
     name_ = "Default";
     hitpoints_ = 100;
@@ -31,7 +31,7 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
     std::cout << RED "ScavTrap with name " << name << " wakes up"  RESET << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap &copyclass): ClapTrap(copyclass)
+ScavTrap::ScavTrap(const ScavTrap &copyclass) : ClapTrap(copyclass)
 {
     std::cout << "Copy Constructor ScavTrap" << std::endl;
     ScavTrap::operator= (copyclass);
