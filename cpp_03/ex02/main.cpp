@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/02 17:03:32 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/02 17:39:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int main(void)
         std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
         tommy.takeDamage(85);
         std::cout << PURPLE "Copy Test" RESET << std::endl;
-        std::cout << GREEN "sammy (original Sammy)" RESET << std::endl;
+        std::cout << GREEN "tommy (original Tommy)" RESET << std::endl;
         std::cout << tommy;
         std::cout << GREEN "other (Copy Constructor)" RESET << std::endl;
         std::cout << other;
@@ -71,7 +71,7 @@ int main(void)
     //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
     //     sammy.takeDamage(85);
     //     std::cout << PURPLE "Copy Test" RESET << std::endl;
-    //     std::cout << GREEN "sammy (original Bobby)" RESET << std::endl;
+    //     std::cout << GREEN "sammy (original Sammy)" RESET << std::endl;
     //     std::cout << sammy;
     //     std::cout << GREEN "other (Copy Constructor)" RESET << std::endl;
     //     std::cout << other;
