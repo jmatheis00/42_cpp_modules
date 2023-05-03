@@ -6,28 +6,28 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 11:16:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/03 11:56:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 
-Dog::Dog() : Animal()
+Dog::Dog()
 {
     type_ = "Dog";
-    std::cout << "Default Constructor Dog"  RESET << std::endl;
+    std::cout << "Default Constructor Dog" << std::endl;
 }
 
 Dog::Dog(const Dog &copyclass) : Animal(copyclass)
 {
+    std::cout << "Copy Constructor Dog" << std::endl;
     Dog::operator= (copyclass);
-    std::cout << "Copy Constructor Dog"  RESET << std::endl;
 }
 
 Dog& Dog::operator= (const Dog& copyop)
 {
     type_ = copyop.type_;
-    std::cout << "Copy Assignment Operator Dog"  RESET << std::endl;
+    std::cout << "Copy Assignment Operator Dog" << std::endl;
     return(*this);
 }
 
