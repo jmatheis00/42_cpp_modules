@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 12:57:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:54:45 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,11 @@
     // idk.makeSound();
 int main()
 {
+    // {
+    //     std::cout << YELLOW "Instantiate an Animal object shouldn't work" RESET << std::endl;
+    //     const Animal* j = new Animal;
+    //     j->getType();
+    // }
     {
         std::cout << YELLOW "Animal array test" RESET << std::endl;
         const Animal* j[8];
