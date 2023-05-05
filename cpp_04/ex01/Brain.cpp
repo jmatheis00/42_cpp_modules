@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:56:40 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 11:11:46 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:44:21 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,17 @@ Brain::Brain()
 
 Brain::Brain(const Brain &copyclass)
 {
-    Brain::operator= (copyclass);
     std::cout << "Copy Constructor Brain" << std::endl;
-}
+    for(int i = 0; i < 100; i++)
+        ideas_[i] = copyclass.ideas_[i];}
 
 Brain& Brain::operator= (const Brain& copyop)
 {
-    for(int i = 0; i < 100; i++)
-        ideas_[i] = copyop.ideas_[i];
+    if (this != &copyop)
+    {
+        for(int i = 0; i < 100; i++)
+            ideas_[i] = copyop.ideas_[i];
+    }
     std::cout << "Copy Assignment Operator Brain" << std::endl;
     return(*this);
 }

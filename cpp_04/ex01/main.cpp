@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/28 16:41:54 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/05 12:57:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,48 @@
 #include "Brain.hpp"
 
 // turn in more tests!
+// Copy Assignment Operator:
+// Bereits initialisiertes Objekt wird gleich zu einem
+// anderen bereits initialisiertem Objekt gleichgesetzt
+// Andere Cases: Copy Constructor
+    // Dog bello;
+    // Animal idk;
+    // idk = bello; // Copy Assignment Operator 
+    // idk.makeSound();
 int main()
 {
-    std::cout << YELLOW "Animal array test" RESET << std::endl;
-    const Animal* j[8];
-    std::cout << PURPLE "Constructors" RESET << std::endl;   
-    for (int i = 0; i < 8; i++)
     {
-        if (i % 2 == 0)
-            j[i] = new Dog();
-        else
-            j[i] = new Cat();
+        std::cout << YELLOW "Animal array test" RESET << std::endl;
+        const Animal* j[8];
+        std::cout << PURPLE "Constructors" RESET << std::endl;   
+        for (int i = 0; i < 8; i++)
+        {
+            if (i % 2 == 0)
+            {
+                std::cout << GREEN "new dog, array position: " << i << RESET << std::endl;
+                j[i] = new Dog();
+            }
+            else
+            {
+                std::cout << GREEN "new cat, array position: " << i << RESET << std::endl;
+                j[i] = new Cat();
+            }
+        }
+        std::cout << PURPLE "Types & Sounds" RESET << std::endl;
+        for (int i = 0; i < 8; i++)
+        {
+            std::cout << j[i]->getType() << std::endl;
+            j[i]->makeSound();
+        }
+        std::cout << PURPLE "Destructors" RESET << std::endl;   
+        for (int i = 0; i < 8; i++)
+            delete j[i];
     }
-    std::cout << PURPLE "Types & Sounds" RESET << std::endl;
-    for (int i = 0; i < 8; i++)
-    {
-        std::cout << j[i]->getType() << std::endl;
-        j[i]->makeSound();
-    }
-    std::cout << PURPLE "Destructors" RESET << std::endl;   
-    for (int i = 0; i < 8; i++)
-        delete j[i];
-
-    std::cout << YELLOW "Deep copy test" RESET << std::endl;
+    // COPY TEST
+    std::cout << YELLOW "\nDeep copy test" RESET << std::endl;
     std::cout << PURPLE "Constructors Bello" RESET << std::endl;   
     Dog* Bello = new Dog();
-    std::cout << PURPLE "Brain for Bello" RESET << std::endl;
+    std::cout << PURPLE "Bello's Brain" RESET << std::endl;
     Bello->setidea(0, "Hello from idea 1");
     Bello->setidea(1, "Hello from idea 2");
     Bello->setidea(2, "Hello from idea 3");
@@ -52,15 +68,27 @@ int main()
     for(int i = 0; i < 5; i++)
         std::cout << Bello->getidea(i) << std::endl;
 
-    Dog* Luna = new Dog(*Bello);
-    std::cout << PURPLE "Brain for Luna" RESET << std::endl;   
+    std::cout << PURPLE "Constructors Luna" RESET << std::endl;   
+    Dog* Luna = new Dog(*Bello); // Calls Copy Constructor
+    std::cout << PURPLE "Constructors Lucy" RESET << std::endl;   
+    Dog Lucy;
+    Lucy = *Bello; // Calls Copy Assignment Operator
+
+    std::cout << PURPLE "Luna's Brain" RESET << std::endl;   
     for(int i = 0; i < 5; i++)
         std::cout << Luna->getidea(i) << std::endl;
+    std::cout << PURPLE "Lucy's Brain" RESET << std::endl;   
+    for(int i = 0; i < 5; i++)
+        std::cout << Lucy.getidea(i) << std::endl;
     Bello->setidea(1, "This is the new second idea 2");
-    std::cout << PURPLE "Compare Bello's with Luna's second idea'" RESET << std::endl;
+    std::cout << PURPLE "Comparison of second idea after change in Bello" RESET << std::endl;
+    std::cout << "Bello's seond idea:\t";
     std::cout << Bello->getidea(1) << std::endl;
+    std::cout << "Luna's seond idea:\t";
     std::cout << Luna->getidea(1) << std::endl; //should be unchanged/independent
-    std::cout << PURPLE "Destructors for Bello and Luna" RESET << std::endl;
+    std::cout << "Lucy's seond idea:\t";
+    std::cout << Lucy.getidea(1) << std::endl; //should be unchanged/independent
+    std::cout << PURPLE "Destructors" RESET << std::endl;
     delete (Bello);
     delete (Luna);
     return 0;

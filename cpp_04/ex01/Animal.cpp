@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 11:30:43 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:43:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ Animal::Animal()
 
 Animal::Animal(const Animal &copyclass)
 {
-    Animal::operator= (copyclass);
     std::cout << "Copy Constructor Animal" << std::endl;
+    type_ = copyclass.type_;
 }
 
 Animal& Animal::operator= (const Animal& copyop)
 {
-    type_ = copyop.type_;
+    if (this != &copyop)
+        type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Animal" << std::endl;
     return(*this);
 }

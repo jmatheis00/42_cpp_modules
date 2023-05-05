@@ -6,14 +6,13 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/21 11:32:46 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:42:19 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
-#include "Brain.hpp"
 
-Cat::Cat() : Animal()
+Cat::Cat()
 {
     type_ = "Cat";
     brain_ = new Brain;
@@ -22,17 +21,20 @@ Cat::Cat() : Animal()
 
 Cat::Cat(const Cat &copyclass) : Animal(copyclass)
 {
+    std::cout << "Copy Constructor Cat" << std::endl;
     brain_ = new Brain(*copyclass.brain_);
     type_ = copyclass.type_;
-    std::cout << "Copy Constructor Cat" << std::endl;
 }
 
 Cat& Cat::operator= (const Cat& copyop)
 {
-    type_ = copyop.type_;
-    if (brain_)
-        delete brain_;
-    brain_ = new Brain(*copyop.brain_);
+    if (this != &copyop)
+    {
+        if(brain_)
+            delete(brain_);
+        brain_ = new Brain(*copyop.brain_);
+        type_ = copyop.type_;
+    }
     std::cout << "Copy Assignment Operator Cat" << std::endl;
     return(*this);
 }
@@ -49,7 +51,7 @@ void Cat::makeSound() const
     std::cout << getType() << ":\tMEOOOOOWWWWW" << std::endl;
 }
 
-// Brain ideas
+// Brain
 std::string Cat::getidea(int i)
 {
     return(brain_->get_idea(i));
