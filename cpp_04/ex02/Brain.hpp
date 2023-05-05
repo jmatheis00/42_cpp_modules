@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 11:56:38 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 14:05:54 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/04/27 13:51:13 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class Brain
         Brain(); //Default Constructor
 		Brain(const Brain &copyclass); //Copy Constructor
 		Brain& operator= (const Brain& copyop); //copy assignment operator
-		virtual ~Brain(); //Destructor
+		~Brain(); //Destructor
         
         std::string get_idea(int i);
         void set_idea(int i, std::string content);
