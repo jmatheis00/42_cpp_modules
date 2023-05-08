@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:47:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/07 23:01:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:51:45 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,20 +54,46 @@ int main()
     // delete bob;
     // delete me;
     // delete src;
-    IMateriaSource* src = new MateriaSource();
-    src->learnMateria(new Ice());
-    src->learnMateria(new Cure());
-    ICharacter* me = new Character("me");
-    AMateria* tmp;
-    tmp = src->createMateria("ice");
-    me->equip(tmp);
-    tmp = src->createMateria("cure");
-    me->equip(tmp);
-    ICharacter* bob = new Character("bob");
-    me->use(0, *bob);
-    me->use(1, *bob);
-    delete bob;
-    delete me;
-    delete src;
+    {
+        std::cout << YELLOW "MAIN FROM SUBJECT" RESET << std::endl;
+        // learn Materia from Source (that they exist)
+        IMateriaSource* src = new MateriaSource();
+        src->learnMateria(new Ice());
+        src->learnMateria(new Cure());
+        // Create Character that can use the Materias
+        ICharacter* me = new Character("me");
+        // create Materia with specific type and put
+        // them in the inventory of the character
+        AMateria* tmp;
+        tmp = src->createMateria("ice");
+        me->equip(tmp);
+        tmp = src->createMateria("cure");
+        me->equip(tmp);
+        // create Character that gets attacked
+        ICharacter* bob = new Character("bob");
+        std::cout << PURPLE "OUTPUT" RESET << std::endl;
+        me->use(0, *bob);
+        me->use(1, *bob);
+        std::cout << PURPLE "Destructors" RESET << std::endl;
+        delete bob;
+        delete me;
+        delete src;
+    }
+    {
+        std::cout << YELLOW "Error Testing" RESET << std::endl;
+        IMateriaSource* src = new MateriaSource();
+        src->learnMateria(new Ice());
+        AMateria* tmp;
+        tmp = src->createMateria("cure");
+        tmp = src->createMateria("ice");            
+        Character* me = new Character("me");
+        for(int i = 0; i < 5; i++)
+            me->equip(tmp);
+        me->print_inventory();
+        me->unequip(2);
+        me->print_inventory();
+        me->equip(tmp);
+        me->print_inventory();
+    }
     return (0);
 }

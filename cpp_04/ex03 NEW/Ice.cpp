@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/07 22:51:49 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:50:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ Ice::~Ice()
 }
 
 // OTHER MEMBER FUNCTIONS
+
+std::string const& Ice::getType() const
+{
+    return(type_);
+}
 
 // Return a new instance of the same type
 AMateria* Ice::clone() const

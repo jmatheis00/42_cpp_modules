@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/07 22:51:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 12:50:01 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,11 @@ Cure::~Cure()
 }
 
 // OTHER MEMBER FUNCTIONS
+
+std::string const& Cure::getType() const
+{
+    return(type_);
+}
 
 // Return a new instance of the same type
 AMateria* Cure::clone() const

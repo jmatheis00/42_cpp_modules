@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 18:14:09 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:50:12 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ Character::Character() : name_("Default"), current_(0)
     std::cout << "Default Constructor Character" << std::endl;
 }
 
-Character::Character(std::string name) : name_(name)
+Character::Character(std::string name) : name_(name) , current_(0)
 {
+    for(int i = 0; i < 4; i++)
+        inventory_[i] = NULL;
     std::cout << "Constructor Character with name " << name_ << std::endl;
 }
 
@@ -50,6 +52,25 @@ Character::~Character()
     std::cout << RED "Destructor Character" RESET << std::endl;
 }
 
+
+// Other member functions
+
+void Character::print_inventory()
+{
+    int i = 0;
+
+    while(i < 4)
+    {
+        std::cout << "pos: " << i << "\t";
+        if (inventory_[i])
+            std::cout << inventory_[i]->getType() << std::endl;
+        else
+            std::cout << "NULL" << std::endl;
+        i++;
+    }
+}
+
+
 // INTERFACE MEMBER FUNCTIONS
 
 std::string const & Character::getName() const
@@ -59,14 +80,27 @@ std::string const & Character::getName() const
 
 void Character::equip(AMateria *m)
 {
+    if (m == 0)
+    {
+        std::cout << BLUE "uncreated materia cannot get equipped" RESET << std::endl;
+        return ;
+    }
+    while(current_ < 4 && inventory_[current_] != NULL)
+        current_++;
     if (current_ < 4)
+    {
         inventory_[current_] = m;
-    current_++;
+        std::cout << BLUE "Equipped position: " << current_ << RESET << std::endl;
+    }
+    else
+        std::cout << BLUE "Inventory is full, cannot equip Materia" RESET << std::endl;
+    current_ = 0;
 }
 
 void Character::unequip(int idx)
 {
     inventory_[idx] = NULL;
+    std::cout << BLUE "Unequipped position: " << idx << RESET << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)

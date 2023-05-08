@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:21:08 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/07 23:00:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 11:48:06 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 class MateriaSource : public IMateriaSource
 {
     private:
-        AMateria* inventory_[4];
+        AMateria* sourceinventory_[4];
         int current_;
     public:
         MateriaSource(); //Default Constructor
