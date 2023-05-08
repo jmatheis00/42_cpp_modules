@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:13:20 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 17:51:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:00:28 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #define GREEN       "\033[32m"              /* Green */
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
+#define BLUE        "\033[36m"              /* Blue */
 
 // Forward declaration necessary when we use
 // reference or pointer to this class
@@ -33,17 +34,17 @@ class AMateria
 {
     protected:
         std::string type_;
-        // [...]
         AMateria(); //Default Constructor
     public:
         AMateria(std::string const& type);
 
-		AMateria(const AMateria &copyclass); //Copy Constructor
+        // virtual -> get type of ice and cure
+        virtual std::string const& getType() const; //returns the materia type
+		
+        AMateria(const AMateria &copyclass); //Copy Constructor
 		AMateria& operator= (const AMateria& copyop); //copy assignment operator
 		virtual ~AMateria(); //Destructor
 
-        // [...]
-        virtual std::string const& getType() const; //returns the materia type
         virtual AMateria* clone() const = 0;
         virtual void use(ICharacter& target);
 };

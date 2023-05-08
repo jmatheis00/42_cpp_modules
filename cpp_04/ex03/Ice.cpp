@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 17:58:52 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:03:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,14 @@ Ice::Ice()
 
 Ice::Ice(const Ice &copyclass)
 {
-    Ice::operator= (copyclass);
+    type_ = copyclass.type_;
     std::cout << "Copy Constructor Ice" << std::endl;
 }
 
 Ice& Ice::operator= (const Ice& copyop)
 {
-    type_ = copyop.type_;
+    if (this != &copyop)
+        type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Ice" << std::endl;
     return(*this);
 }
@@ -37,6 +38,11 @@ Ice::~Ice()
 }
 
 // OTHER MEMBER FUNCTIONS
+
+std::string const& Ice::getType() const
+{
+    return(type_);
+}
 
 // Return a new instance of the same type
 AMateria* Ice::clone() const

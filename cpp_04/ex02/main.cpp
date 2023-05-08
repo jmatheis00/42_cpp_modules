@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 13:54:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/05 13:59:59 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,10 @@
 #include "WrongCat.hpp"
 #include "Brain.hpp"
 
-// turn in more tests!
 // Copy Assignment Operator:
-// Bereits initialisiertes Objekt wird gleich zu einem
-// anderen bereits initialisiertem Objekt gleichgesetzt
-// Andere Cases: Copy Constructor
+// already initialized object becomes another
+// already initialized object by using equal operator
+// Copy Constructor
     // Dog bello;
     // Animal idk;
     // idk = bello; // Copy Assignment Operator 
@@ -90,9 +89,9 @@ int main()
     std::cout << "Bello's seond idea:\t";
     std::cout << Bello->getidea(1) << std::endl;
     std::cout << "Luna's seond idea:\t";
-    std::cout << Luna->getidea(1) << std::endl; //should be unchanged/independent
+    std::cout << Luna->getidea(1) << std::endl; //should remain unchanged
     std::cout << "Lucy's seond idea:\t";
-    std::cout << Lucy.getidea(1) << std::endl; //should be unchanged/independent
+    std::cout << Lucy.getidea(1) << std::endl; //should remain unchanged
     std::cout << PURPLE "Destructors" RESET << std::endl;
     delete (Bello);
     delete (Luna);

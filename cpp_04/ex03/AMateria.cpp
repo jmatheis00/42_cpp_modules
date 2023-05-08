@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 19:58:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/25 16:54:05 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 13:08:08 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 AMateria::AMateria()
 {
-    type_ = "DEFAULT AMATERIA";
     std::cout << "Default Constructor AMateria" << std::endl;
 }
 
