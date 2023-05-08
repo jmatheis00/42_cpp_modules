@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/08 12:50:33 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:03:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ Ice::Ice(const Ice &copyclass)
 
 Ice& Ice::operator= (const Ice& copyop)
 {
-    (void)copyop;
+    if (this != &copyop)
+        type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Ice" << std::endl;
     return(*this);
 }

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/08 12:50:01 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/08 18:03:43 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ Cure::Cure(const Cure &copyclass)
 
 Cure& Cure::operator= (const Cure& copyop)
 {
-    (void)copyop;
+    if (this != &copyop)
+        type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Cure" << std::endl;
     return(*this);
 }
