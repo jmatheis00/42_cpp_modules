@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:28 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 09:32:53 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/09 13:11:56 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class Dog : public Animal
         Dog(); //Default Constructor
         Dog(const Dog &copyclass); //Copy Constructor
         Dog& operator= (const Dog& copyop); //copy assignment operator
-        ~Dog(); //Destructor
+        virtual ~Dog(); //Destructor
 
         void makeSound() const;
 };
