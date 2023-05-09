@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 13:18:23 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/09 14:38:01 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,10 +52,7 @@ int main()
 
         std::cout << PURPLE "Types & Sounds" RESET << std::endl;
         for (int i = 0; i < 8; i++)
-        {
-            std::cout << j[i]->getType() << std::endl;
             j[i]->makeSound();
-        }
 
         std::cout << PURPLE "Destructors" RESET << std::endl;   
         for (int i = 0; i < 8; i++)

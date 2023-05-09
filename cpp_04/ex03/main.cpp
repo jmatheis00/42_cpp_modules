@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/21 12:47:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 14:23:55 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:13:55 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 // test if inventory is full or uninitialized materia is used
 int main()
 {
-       {
+   {
         std::cout << YELLOW "MAIN FROM SUBJECT" RESET << std::endl;
-        // learn Materia from Source (that they exist)
+        // learn Materia from Source (that they are known)
         IMateriaSource* src = new MateriaSource();
         src->learnMateria(new Ice());
         src->learnMateria(new Cure());
@@ -86,9 +86,15 @@ int main()
         me->unequip(2);
         me->print_inventory();
 
-        std::cout << PURPLE "Destructors, things don't needed anymore" RESET << std::endl;
-        delete cured;
-        delete tmp2;
+        std::cout << PURPLE "use() no materia exists at this position" RESET << std::endl;
+        ICharacter* bob = new Character("bob");
+        me->use(2, *bob);
+        
+        std::cout << PURPLE "use() out of range" RESET << std::endl;
+        me->use(4, *bob);
+
+        std::cout << PURPLE "use() working" RESET << std::endl;
+        me->use(3, *bob);
 
         std::cout << YELLOW "\nDeep copy Testing" RESET << std::endl;
         Character* other = new Character(*me);
@@ -115,6 +121,9 @@ int main()
         diff.print_inventory();
 
         std::cout << PURPLE "Destructors" RESET << std::endl;
+        delete bob;
+        delete tmp2;
+        delete cured;
         delete me;
         delete other;
         delete src;

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 14:16:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/09 15:01:31 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,11 +143,15 @@ void Character::unequip(int idx)
             std::cout << BLUE "Unequipped storage full" RESET << std::endl;
     }
     else
-        std::cout << BLUE "Unequipped position out of range"<< RESET << std::endl;
+        std::cout << BLUE "position to unequip out of range"<< RESET << std::endl;
 }
 
 void Character::use(int idx, ICharacter& target)
 {
     if (idx >= 0 && idx < 4 && inventory_[idx])
         inventory_[idx]->use(target);
+    else if (!inventory_[idx])
+        std::cout << BLUE "inventory position not equipped, use not possible" RESET << std::endl;
+    else
+        std::cout << BLUE "position to use out of range"<< RESET << std::endl;
 }
