@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 12:17:05 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 23:22:50 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ class ShrubberyCreationForm : public Form
 		~ShrubberyCreationForm(); //Destructor
 
 		std::string getTarget() const;
-		void shrubbery_execution();
-		void executionofform();
+		void executionofform(Bureaucrat const & executor);
 	private:
 		std::string target_;
 };

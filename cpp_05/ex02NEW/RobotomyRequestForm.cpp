@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 12:10:51 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 23:23:44 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,9 @@ std::string RobotomyRequestForm::getTarget() const
 }
 
 // OTHER MEMBER FUNCTIONS
-void RobotomyRequestForm::robotomy_execution()
+void RobotomyRequestForm::executionofform(Bureaucrat const & executor)
 {
+	execute(executor);
 	std::cout << "*** makes some drilling noises ***\n"
 		<< getTarget() << " has been robotomized or not???" << std::endl;
 }

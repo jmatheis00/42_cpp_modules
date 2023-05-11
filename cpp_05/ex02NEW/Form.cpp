@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 12:17:57 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 23:18:10 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,17 +83,13 @@ void Form::beSigned(Bureaucrat &bur)
 
 void Form::execute(Bureaucrat const & executor) const
 {
-	if (executor.getGrade() <= getExecuteGrade() && getIssignedBool() == true)
-	{
-		executionofform();
-		// EXECUTION 
-	}
-	else
-		throw GradeTooLowException();
+	if (executor.getGrade() > getExecuteGrade() || getIssignedBool() == false)
+		throw ExecutionNotPossible();
 }
 
-void Form::executionofform()
+void Form::executionofform(Bureaucrat const & executor)
 {
+	executor.getName();
 	// virtual function
 }
 
@@ -106,6 +102,11 @@ const char* Form::GradeTooHighException::what() const throw()
 const char* Form::GradeTooLowException::what() const throw()
 {
 	return("Form Exception: Grade is too low!");
+}
+
+const char* Form::ExecutionNotPossible::what() const throw()
+{
+	return("Execution not possible, form not signed or grade too low!");
 }
 
 // OUTPUT OPERATOR OVERLOADING

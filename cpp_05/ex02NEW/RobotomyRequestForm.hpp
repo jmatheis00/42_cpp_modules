@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:39 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 12:07:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 23:23:51 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class RobotomyRequestForm : public Form
 		~RobotomyRequestForm(); //Destructor
 
 		std::string getTarget() const;
-		void robotomy_execution();
+		void executionofform(Bureaucrat const & executor);
 	private:
 		std::string target_;	
 };
