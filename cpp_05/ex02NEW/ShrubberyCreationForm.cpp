@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 11:55:22 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:17:37 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,19 @@ std::string ShrubberyCreationForm::getTarget() const
 }
 
 // OTHER MEMBER FUNCTIONS
+void ShrubberyCreationForm::shrubbery_execution()
+{
+	std::string outfile = getTarget() + "_shrubbery";
+	std::ofstream newfile(outfile);
+	std::cout << "outfile created, writes ASCII trees inside it" << std::endl;
+}
 
+void ShrubberyCreationForm::executionofform()
+{
+	std::string outfile = getTarget() + "_shrubbery";
+	std::ofstream newfile(outfile);
+	std::cout << "outfile created, writes ASCII trees inside it" << std::endl;	
+}
 
 // OUTPUT OPERATOR OVERLOADING
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& i)

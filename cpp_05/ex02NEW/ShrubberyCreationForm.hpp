@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 11:55:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:17:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iostream>
 # include <string>
 # include "Form.hpp"
+# include <fstream>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -35,6 +36,8 @@ class ShrubberyCreationForm : public Form
 		~ShrubberyCreationForm(); //Destructor
 
 		std::string getTarget() const;
+		void shrubbery_execution();
+		void executionofform();
 	private:
 		std::string target_;
 };

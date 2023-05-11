@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 12:01:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:17:57 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,18 @@ void Form::beSigned(Bureaucrat &bur)
 
 void Form::execute(Bureaucrat const & executor) const
 {
-	executor.getName();
+	if (executor.getGrade() <= getExecuteGrade() && getIssignedBool() == true)
+	{
+		executionofform();
+		// EXECUTION 
+	}
+	else
+		throw GradeTooLowException();
+}
+
+void Form::executionofform()
+{
+	// virtual function
 }
 
 // EXCEPTION FUNCTIONS

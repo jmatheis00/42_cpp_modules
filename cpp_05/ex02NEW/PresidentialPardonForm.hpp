@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 11:54:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:08:32 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class PresidentialPardonForm : public Form
 		~PresidentialPardonForm(); //Destructor
 
 		std::string getTarget() const;
+		void presidential_execution();
 	private:
 		std::string target_;
 };

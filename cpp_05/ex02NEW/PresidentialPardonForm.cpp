@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 11:55:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 12:09:38 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,10 @@ std::string PresidentialPardonForm::getTarget() const
 }
 
 // OTHER MEMBER FUNCTIONS
-
+void PresidentialPardonForm::presidential_execution()
+{
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebox" << std::endl;
+}
 
 // OUTPUT OPERATOR OVERLOADING
 std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& i)
