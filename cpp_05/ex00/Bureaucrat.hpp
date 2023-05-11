@@ -17,25 +17,31 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &copyclass); //Copy Constructor
 		Bureaucrat& operator= (const Bureaucrat& copyop); //copy assignment operator
 		~Bureaucrat(); //Destructor
-	
-		std::string getName() const;
-		int getGrade() const;
-		void incrementGrade(); //increment should give a lower grade (Better)
-		void decrementGrade(); //decrement should give a higher grade (Worse)
 
-		// Exceptions
+		// GETTER
+		const std::string getName() const;
+		int getGrade() const;
+
+		// OTHER
+		void incrementGrade();
+		void decrementGrade();
+
+		// EXCEPTIONS
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
+
 		class GradeTooLowException: public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
+
 	private:
 		Bureaucrat(); //Default Constructor
-		std::string const name_;
+		const std::string name_;
 		int grade_;
+
 		
 };
 

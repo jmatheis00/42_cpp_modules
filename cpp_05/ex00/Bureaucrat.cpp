@@ -6,15 +6,16 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/01 00:31:37 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 09:46:52 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name_("Default"), grade_(1)
+Bureaucrat::Bureaucrat() : name_("Default"), grade_(75)
 {
-    std::cout << "Default Constructor Bureaucrat" << std::endl;
+    std::cout << GREEN "Bureaucrat named " << name_
+		<< " woke up with grade " << grade_  << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
@@ -23,7 +24,8 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
 		throw GradeTooHighException();
 	else if (grade_ > 150)
 		throw GradeTooLowException();
-    std::cout << "Constructor with parameters Bureaucrat" << std::endl;
+    std::cout << GREEN "Bureaucrat named " << name_
+		<< " woke up with grade " << grade_ << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat &copyclass) : name_(copyclass.name_), grade_(copyclass.grade_)
@@ -33,26 +35,23 @@ Bureaucrat::Bureaucrat(const Bureaucrat &copyclass) : name_(copyclass.name_), gr
 
 Bureaucrat& Bureaucrat::operator= (const Bureaucrat& copyop)
 {
-	Bureaucrat tmp = copyop;
+	if (this != &copyop)
+	{
+		// name_ = copyop.name_; ??????????
+		grade_ = copyop.grade_;
+	}
     std::cout << "Copy Assignment Operator Bureaucrat" << std::endl;
     return(*this);
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Destructor Bureaucrat: " << getName() << std::endl;
+    std::cout << GREEN "Bureaucrat named " << name_
+		<< " with grade " << grade_ << " died" RESET << std::endl;
 }
 
-// OUTPUT OPERATOR OVERLOADING
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& i)
-{
-	os << i.getName() << ", bureaucrat grade " << i.getGrade() << ".";
-	return (os);
-}
-
-// OTHER MEMBER FUNCTIONS
-
-std::string Bureaucrat::getName() const
+// GETTER FUNCTIONS
+const std::string Bureaucrat::getName() const
 {
 	return(name_);
 }
@@ -62,6 +61,8 @@ int Bureaucrat::getGrade() const
 	return(grade_);
 }
 
+// OTHER MEMBER FUNCTIONS
+// 1 is the highest grade
 void Bureaucrat::incrementGrade()
 {
 	grade_--;
@@ -69,6 +70,7 @@ void Bureaucrat::incrementGrade()
 		throw GradeTooHighException();
 }
 
+// 150 is the lowest grade
 void Bureaucrat::decrementGrade()
 {
 	grade_++;
@@ -77,12 +79,20 @@ void Bureaucrat::decrementGrade()
 }
 
 // EXCEPTION FUNCTIONS
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too high, not possible!");
+	return("Exception: Grade is too high!");
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low, not possible!");
+	return("Exception: Grade is too low!");
 }
+
+// OUTPUT OPERATOR OVERLOADING
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& i)
+{
+	os << i.getName() << ", bureaucrat grade " << i.getGrade() << ".";
+	return (os);
+}
+
