@@ -1,9 +1,9 @@
-#ifndef BUREAUCRAT_HPP
-# define BUREAUCRAT_HPP
+#ifndef FORM_HPP
+# define FORM_HPP
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "Bureaucrat.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -11,24 +11,24 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-class Form;
+class Bureaucrat;
 
-class Bureaucrat
+class Form
 {
     public:
-		Bureaucrat(std::string name, int grade);
-		Bureaucrat(const Bureaucrat &copyclass); //Copy Constructor
-		Bureaucrat& operator= (const Bureaucrat& copyop); //copy assignment operator
-		~Bureaucrat(); //Destructor
+		Form(std::string name, int signgrade, int executegrade);
+		Form(const Form &copyclass); //Copy Constructor
+		Form& operator= (const Form& copyop); //copy assignment operator
+		~Form(); //Destructor
 
 		// GETTER
-		const std::string getName() const;
-		int getGrade() const;
+		std::string getName() const;
+		int getSignGrade() const;
+		int getExecuteGrade() const;
+		bool getIssignedBool() const;
 
 		// OTHER
-		void incrementGrade();
-		void decrementGrade();
-		void signForm(Form &fo);
+		void beSigned(Bureaucrat &bur);
 
 		// EXCEPTIONS
 		class GradeTooHighException: public std::exception {
@@ -42,14 +42,16 @@ class Bureaucrat
 		};
 
 	private:
-		Bureaucrat(); //Default Constructor
+		Form(); //Default Constructor
 		const std::string name_;
-		int grade_;
+		bool issigned_;
+		const int signgrade_;
+		const int executegrade_;
 
 		
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& i);
+std::ostream& operator<<(std::ostream& os, const Form& i);
 
 #endif

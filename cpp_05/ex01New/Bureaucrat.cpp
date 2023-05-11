@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 09:46:52 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 10:58:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ Bureaucrat& Bureaucrat::operator= (const Bureaucrat& copyop)
 {
 	if (this != &copyop)
 	{
-		// name_ = copyop.name_; ??????????
 		grade_ = copyop.grade_;
 	}
     std::cout << "Copy Assignment Operator Bureaucrat" << std::endl;
@@ -76,6 +75,20 @@ void Bureaucrat::decrementGrade()
 	grade_++;
 	if (grade_ > 150)
 		throw GradeTooLowException();
+}
+
+void Bureaucrat::signForm(Form &fo)
+{
+	try
+	{
+		fo.beSigned(*this);
+		std::cout << getName() << " signed " << fo.getName() << std::endl;
+	}
+	catch (std::exception &e)
+	{
+		std::cout << RED << getName() << " couldn't sign " << fo.getName()
+			<< " because " << e.what() << RESET << std::endl;
+	}
 }
 
 // EXCEPTION FUNCTIONS

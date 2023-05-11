@@ -4,9 +4,11 @@ CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
-				Bureaucrat.cpp
+				Bureaucrat.cpp \
+				Form.cpp
 
-HEADER		:= Bureaucrat.hpp
+HEADER		:= Bureaucrat.hpp \
+				Form.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
