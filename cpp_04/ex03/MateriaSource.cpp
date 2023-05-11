@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:52 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 14:15:05 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:38:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ MateriaSource::MateriaSource() : current_(0)
     std::cout << "Default Constructor MateriaSource" << std::endl;
 }
 
-MateriaSource::MateriaSource(const MateriaSource &copyclass)
+MateriaSource::MateriaSource(const MateriaSource &copyclass) : IMateriaSource(copyclass)
 {
     for(int i = 0; i < 4; i ++)
         sourceinventory_[i] = copyclass.sourceinventory_[i]->clone();

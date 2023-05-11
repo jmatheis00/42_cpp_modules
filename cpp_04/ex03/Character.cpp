@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 15:01:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:36:49 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ Character::Character(std::string name) : name_(name) , current_(0), count_(0)
     std::cout << "Constructor Character with name " << name_ << std::endl;
 }
 
-Character::Character(const Character &copyclass)
+Character::Character(const Character &copyclass) : ICharacter(copyclass)
 {
     name_ = copyclass.name_;
     current_ = copyclass.current_;

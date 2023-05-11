@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:22 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/08 18:03:43 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:37:49 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Cure::Cure()
     std::cout << "Default Constructor Cure" << std::endl;
 }
 
-Cure::Cure(const Cure &copyclass)
+Cure::Cure(const Cure &copyclass) : AMateria(copyclass)
 {
     type_ = copyclass.type_;
     std::cout << "Copy Constructor Cure" << std::endl;

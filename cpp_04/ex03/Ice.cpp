@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/08 18:03:20 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/11 08:37:58 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ Ice::Ice()
     std::cout << "Default Constructor Ice" << std::endl;
 }
 
-Ice::Ice(const Ice &copyclass)
+Ice::Ice(const Ice &copyclass) : AMateria(copyclass)
 {
     type_ = copyclass.type_;
     std::cout << "Copy Constructor Ice" << std::endl;
