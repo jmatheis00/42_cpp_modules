@@ -6,11 +6,13 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 23:23:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/14 18:36:50 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
+
+int RobotomyRequestForm::fiftypercent_ = 0;
 
 RobotomyRequestForm::RobotomyRequestForm() : Form("Robotomy", 72, 45), target_("Default")
 {
@@ -26,6 +28,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 
 
 RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copyclass)  : Form(copyclass), target_(copyclass.target_)
 {
+	fiftypercent_ = copyclass.fiftypercent_;
     std::cout << "Copy Constructor RobotomyRequestForm" << std::endl;
 }
 
@@ -33,6 +36,7 @@ RobotomyRequestForm& RobotomyRequestForm::operator= (const RobotomyRequestForm& 
 {
 	if (this != &copyop)
 	{
+		fiftypercent_ = copyop.fiftypercent_;
 		target_ = copyop.target_;
 	}
     std::cout << "Copy Assignment Operator RobotomyRequestForm" << std::endl;
@@ -54,8 +58,14 @@ std::string RobotomyRequestForm::getTarget() const
 void RobotomyRequestForm::executionofform(Bureaucrat const & executor)
 {
 	execute(executor);
-	std::cout << "*** makes some drilling noises ***\n"
-		<< getTarget() << " has been robotomized or not???" << std::endl;
+	std::cout << "*** makes some drilling noises ***" << std::endl;
+		
+	fiftypercent_++;
+	if (fiftypercent_ % 2 == 0)
+		std::cout << getTarget() << " has been robotomized" << std::endl;
+	else
+		std::cout << getTarget() << " robotomization failed" << std::endl;
+
 }
 
 // OUTPUT OPERATOR OVERLOADING

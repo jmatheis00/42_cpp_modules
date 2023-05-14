@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:39 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 23:23:51 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/14 18:36:07 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 # include <iostream>
 # include <string>
 # include "Form.hpp"
+# include "Bureaucrat.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
 #define GREEN       "\033[32m"              /* Green */
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
+
+class Bureaucrat;
 
 // Makes some drilling noises.
 // Then, informs that <target> has been robotomized successfully 50% of the time.
@@ -36,9 +39,11 @@ class RobotomyRequestForm : public Form
 		~RobotomyRequestForm(); //Destructor
 
 		std::string getTarget() const;
-		void executionofform(Bureaucrat const & executor);
+		void executionofform(Bureaucrat const& executor);
 	private:
-		std::string target_;	
+		std::string target_;
+		static int fiftypercent_;
+	
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
