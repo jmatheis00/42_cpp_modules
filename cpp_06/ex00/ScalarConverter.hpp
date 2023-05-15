@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 15:02:18 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:05:51 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ class ScalarConverter
 		~ScalarConverter(); //Destructor
 
 
-		// void check_for_char();
-		// void check_for_special();
 		void check_for_type(char* input);
-
+		
 		void convert(char* input);
 
 		void staticcast_conversion(char* input);

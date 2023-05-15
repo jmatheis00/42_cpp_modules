@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 15:04:28 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:31:15 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,9 @@ void ScalarConverter::check_for_type(char* input)
 {
 	if(in_.length() == 1 && std::isprint(in_[0]))
 		type_ = "CHAR";
-	else if (in_ == "-inff" || in_ == "+inff" || in_ == "nanf"
-		|| in_ == "-inf" || in_ == "+inf" || in_ == "nan")
+	if (in_ == "-inff" || in_ == "+inff" || in_ == "nanf"
+		|| in_ == "-inf" || in_ == "+inf" || in_ == "nan"
+		|| (in_.length() == 1 && in_[0] == '0'))
 		type_ = "SPECIAL";
 	if (in_[in_.length() - 1] == 'f' && in_.find(".") != std::string::npos
 		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
@@ -71,16 +72,23 @@ void ScalarConverter::staticcast_conversion(char* input)
 		std::cout << "char: Non displayable" << std::endl;
 
 	int i = static_cast<int>(start);
-	if (type_ == "SPECIAL")
+	if (type_ == "SPECIAL" || (start > INT_MAX || start < INT_MIN))
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << i << std::endl;
 
-	float f = static_cast<float>(start);
-	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
+	std::cout.precision(1); //CHANGE NUMBER OF POSITIONS BEHIND POINT
 
+	float f = static_cast<float>(start);
+	if ((start > __FLT_MAX__ || start < __FLT_MIN__) && type_ != "SPECIAL")
+		std::cout << "float: impossible" << std::endl;
+	else
+		std::cout << "float: " << std::fixed << f << "f" << std::endl;
 	double d = static_cast<double>(start);
-	std::cout << "double: " << std::fixed << std::setprecision(1) << d << std::endl;
+	if ((start > __DBL_MAX__ || start < __DBL_MIN__) && type_ != "SPECIAL")
+		std::cout << "double: impossible" << std::endl;
+	else
+		std::cout << "double: " << std::fixed  << d << std::endl;
 }
 
 void ScalarConverter::convert(char* input)
@@ -89,8 +97,8 @@ void ScalarConverter::convert(char* input)
 	check_for_type(input);
 	if (type_ == "Default")
 	{
-		std::cout << "Input is just a string, nothing else" << std::endl;		
-		exit(1);
+		std::cout << "Input is invalid, try again" << std::endl;		
+		exit(EXIT_FAILURE);
 	}
 	staticcast_conversion(input);
 }
