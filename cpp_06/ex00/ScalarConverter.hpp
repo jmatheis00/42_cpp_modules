@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 15:01:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:02:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # include <limits>
 # include <numeric>
 # include <cmath>
+# include <iomanip>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 15:01:30 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:04:28 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,25 +58,6 @@ void ScalarConverter::check_for_type(char* input)
 		type_ = "INT";
 }
 
-// void ScalarConverter::check_for_special()
-// {
-
-// }
-
-// void ScalarConverter::check_for_numbertype(char* input)
-// {
-// 	if (in_[in_.length() - 1] == 'f' && in_.find(".") != std::string::npos
-// 		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
-// 		type_ = "FLOAT";
-// 	else if (in_.find(".") != std::string::npos
-// 		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
-// 		type_ = "DOUBLE";
-// 	else if (atoi(input) != 0)
-// 		type_ = "INT";
-// }
-
-#include <iomanip>
-
 void ScalarConverter::staticcast_conversion(char* input)
 {
 	double start = atof(input);
@@ -111,5 +92,5 @@ void ScalarConverter::convert(char* input)
 		std::cout << "Input is just a string, nothing else" << std::endl;		
 		exit(1);
 	}
-	int_conversion(input);
+	staticcast_conversion(input);
 }
