@@ -1,21 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
+/*   Intern.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 23:23:58 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/05/15 08:50:57 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/05/15 09:34:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PRESIDENTIALPARDONFORM_HPP
-# define PRESIDENTIALPARDONFORM_HPP
+#ifndef INTERN_HPP
+# define INTERN_HPP
 
 # include <iostream>
 # include <string>
 # include "Form.hpp"
+# include "ShrubberyCreationForm.hpp"
+# include "RobotomyRequestForm.hpp"
+# include "PresidentialPardonForm.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -23,23 +26,23 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-// Informs that <target> has been pardoned by Zaphod Beeblebrox.
-class PresidentialPardonForm : public Form
+class Form;
+
+class Intern
 {
     public:
-		PresidentialPardonForm(); //Default Constructor PRIVATE???
-		PresidentialPardonForm(std::string target);
-		PresidentialPardonForm(const PresidentialPardonForm &copyclass); //Copy Constructor
-		PresidentialPardonForm& operator= (const PresidentialPardonForm& copyop); //copy assignment operator
-		~PresidentialPardonForm(); //Destructor
+		Intern();
+		Intern(const Intern &copyclass); //Copy Constructor
+		Intern& operator= (const Intern& copyop); //copy assignment operator
+		~Intern(); //Destructor
 
-		std::string getTarget() const;
-		void executionofform(Bureaucrat const & executor);
+		Form* makeForm(std::string formname, std::string target);
+		Form* shrubbery(std::string target);
+		Form* robotomy(std::string target);
+		Form* presidential(std::string target);
+		Form* (Intern::*funcpoin[3])(std::string target);
 	private:
-		std::string target_;
+		std::string comparison[3];
 };
-
-// OUTSTREAM OPERATOR OVERLOAD
-std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& i);
 
 #endif

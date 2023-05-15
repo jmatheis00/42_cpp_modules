@@ -19,7 +19,7 @@ class Form
 		Form(std::string name, int signgrade, int executegrade);
 		Form(const Form &copyclass); //Copy Constructor
 		Form& operator= (const Form& copyop); //copy assignment operator
-		~Form(); //Destructor
+		virtual ~Form(); //Destructor
 
 		// GETTER
 		std::string getName() const;

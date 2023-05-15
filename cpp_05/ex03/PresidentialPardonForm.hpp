@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/11 11:52:39 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/14 18:36:07 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/05/15 09:39:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ROBOTOMYREQUESTFORM_HPP
-# define ROBOTOMYREQUESTFORM_HPP
+#ifndef PRESIDENTIALPARDONFORM_HPP
+# define PRESIDENTIALPARDONFORM_HPP
 
 # include <iostream>
 # include <string>
 # include "Form.hpp"
-# include "Bureaucrat.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -24,29 +23,23 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-class Bureaucrat;
-
-// Makes some drilling noises.
-// Then, informs that <target> has been robotomized successfully 50% of the time.
-// Otherwise, informs that the robotomy failed.
-class RobotomyRequestForm : public Form
+// Informs that <target> has been pardoned by Zaphod Beeblebrox.
+class PresidentialPardonForm : public Form
 {
     public:
-		RobotomyRequestForm(); //Default Constructor PRIVATE???
-		RobotomyRequestForm(std::string target);
-		RobotomyRequestForm(const RobotomyRequestForm &copyclass); //Copy Constructor
-		RobotomyRequestForm& operator= (const RobotomyRequestForm& copyop); //copy assignment operator
-		~RobotomyRequestForm(); //Destructor
+		PresidentialPardonForm(); //Default Constructor PRIVATE???
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm &copyclass); //Copy Constructor
+		PresidentialPardonForm& operator= (const PresidentialPardonForm& copyop); //copy assignment operator
+		virtual ~PresidentialPardonForm(); //Destructor
 
 		std::string getTarget() const;
-		void executionofform(Bureaucrat const& executor);
+		void executionofform() const;
 	private:
 		std::string target_;
-		static int fiftypercent_;
-	
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
-std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& i);
+std::ostream& operator<<(std::ostream& os, const PresidentialPardonForm& i);
 
 #endif

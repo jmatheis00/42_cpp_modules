@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:39 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 08:41:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 09:39:55 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class RobotomyRequestForm : public Form
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm &copyclass); //Copy Constructor
 		RobotomyRequestForm& operator= (const RobotomyRequestForm& copyop); //copy assignment operator
-		~RobotomyRequestForm(); //Destructor
+		virtual ~RobotomyRequestForm(); //Destructor
 
 		std::string getTarget() const;
 		void executionofform() const;

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 23:22:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 08:44:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,8 @@ std::string ShrubberyCreationForm::getTarget() const
 }
 
 // OTHER MEMBER FUNCTIONS
-void ShrubberyCreationForm::executionofform(Bureaucrat const & executor)
+void ShrubberyCreationForm::executionofform() const
 {
-	execute(executor);
 	std::string outfile = getTarget() + "_shrubbery";
 	std::ofstream newf(outfile);
 	newf << ".. . .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. ..\n"

@@ -19,7 +19,7 @@ class Form
 		Form(std::string name, int signgrade, int executegrade);
 		Form(const Form &copyclass); //Copy Constructor
 		Form& operator= (const Form& copyop); //copy assignment operator
-		~Form(); //Destructor
+		virtual ~Form(); //Destructor
 
 		// GETTER
 		std::string getName() const;
@@ -31,7 +31,7 @@ class Form
 		void beSigned(Bureaucrat &bur);
 		void execute(Bureaucrat const & executor) const;
 
-		virtual void executionofform(Bureaucrat const & executor) = 0;
+		virtual void executionofform() const = 0;
 		// EXCEPTIONS
 		class GradeTooHighException: public std::exception {
 			public:

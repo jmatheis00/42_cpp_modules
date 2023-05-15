@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/14 18:36:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 08:41:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm() : Form("Robotomy", 72, 45), target_("
 		<< " woke up" << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 145, 137), target_(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target) : Form("Robotomy", 72, 45), target_(target)
 {
     std::cout << GREEN "RobotomyRequestForm with target " << target_
 		<< " woke up" << RESET << std::endl;
@@ -55,9 +55,8 @@ std::string RobotomyRequestForm::getTarget() const
 }
 
 // OTHER MEMBER FUNCTIONS
-void RobotomyRequestForm::executionofform(Bureaucrat const & executor)
+void RobotomyRequestForm::executionofform() const
 {
-	execute(executor);
 	std::cout << "*** makes some drilling noises ***" << std::endl;
 		
 	fiftypercent_++;
