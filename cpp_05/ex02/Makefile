@@ -1,16 +1,20 @@
-NAME		:= ex00
+NAME		:= ex02
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
 				Bureaucrat.cpp \
-				AForm.cpp \
-				ShrubberyCreationForm.cpp
+				Form.cpp \
+				ShrubberyCreationForm.cpp \
+				RobotomyRequestForm.cpp \
+				PresidentialPardonForm.cpp
 
 HEADER		:= Bureaucrat.hpp \
-				AForm.hpp \
-				ShrubberyCreationForm.hpp
+				Form.hpp \
+				ShrubberyCreationForm.hpp \
+				RobotomyRequestForm.hpp \
+				PresidentialPardonForm.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 

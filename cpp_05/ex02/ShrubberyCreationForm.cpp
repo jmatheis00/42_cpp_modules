@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/01 15:38:52 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/01 19:27:22 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/05/15 08:44:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,50 +14,88 @@
 
 ShrubberyCreationForm::ShrubberyCreationForm() : Form("Shrubbery", 145, 137), target_("Default")
 {
-    std::cout << "Default Constructor ShrubberyCreationForm" << std::endl;
+    std::cout << GREEN "ShrubberyCreationForm with target " << target_
+		<< " woke up" << RESET << std::endl;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string target) : Form("Shrubbery", 145, 137), target_(target)
 {
-    std::cout << "Constructor with parameters ShrubberyCreationForm" << std::endl;
+    std::cout << GREEN "ShrubberyCreationForm with target " << target_
+		<< " woke up" << RESET << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copyclass) : Form(copyclass)
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm &copyclass)  : Form(copyclass), target_(copyclass.target_)
 {
-    target_ = copyclass.target_;
     std::cout << "Copy Constructor ShrubberyCreationForm" << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator= (const ShrubberyCreationForm& copyop) 
+ShrubberyCreationForm& ShrubberyCreationForm::operator= (const ShrubberyCreationForm& copyop)
 {
-	target_ = copyop.target_;
+	if (this != &copyop)
+	{
+		target_ = copyop.target_;
+	}
     std::cout << "Copy Assignment Operator ShrubberyCreationForm" << std::endl;
     return(*this);
 }
 
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
-    std::cout << "Destructor ShrubberyCreationForm: " << getName() << std::endl;
+    std::cout << GREEN "ShrubberyCreationForm with target " << target_ << " died" RESET << std::endl;
+}
+
+// GETTER FUNCTIONS
+std::string ShrubberyCreationForm::getTarget() const
+{
+	return(target_);
+}
+
+// OTHER MEMBER FUNCTIONS
+void ShrubberyCreationForm::executionofform() const
+{
+	std::string outfile = getTarget() + "_shrubbery";
+	std::ofstream newf(outfile);
+	newf << ".. . .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. .  . .. ..\n"
+		<< ".. .  . .. .  . .. .  . .. .  . .. .  . .% .  . .. .  . .. .  . .. .  . .. .  .\n" 
+		<< ".. .  . .. .  . .. .  . .. .%%( .*../%%&(.(/*#%(..(%, . .. .  . .. .  . .. .  .\n" 
+		<< ".. .  . .. .  . .. .  . .. .*/#((%(%%%#%.%%%%%&#&(%(/   .. .  . .. .  . .. .  .\n" 
+		<< ".. .  . .. .  . .. . %*%,. &(%#####%&(#%&%##(%(&%  ,%#%*(%#.  . .. .  . .. .  .\n"
+		<< ".. .  . .. .  . .. /  #.%& &%&//%&%%&&%##%/%(%#&%%,(&%(((&..  . .. .  . .. .  .\n"
+		<< ".. .  . .. .  . .(%%%%%( ###%#((%#%&&#,#&&&%#/#%&#,%%(#* %#%  . .. .  . .. .  .\n"
+		<< ".. .  . .. .  . #&##% *%*%&(#%%%%%##%%*%./%.&&##%%/#&/%%##%.. . .. .  . .. .  .\n" 
+		<< ".. .  . .. .  . .%%(#%&&.&&&*%& #(&%/#%#%#&#*#%&#&%&#  %*#*#&/. .. .  . .. .  .\n" 
+		<< ".  .. .  . .. . &. &/&%#/%%&%%&%#&#(%(.&%&%%%%%(%% #(%#%/,./&%* #(... .  . .. .\n"
+		<< ".  .. .  . .. .  . . %%%%&&&%(%&&&%&%&%/&&&&%%%#/(%(&%&##%&%,%((###*. .  . .. .\n"
+		<< ".  .. .  . .. .  ./&,#%&&% %&&&&%*%%%%%&&#,%%#,%(%%%(&&%&&#%%((#,. .. .  . .. .\n"
+		<< ".  .. .  . .%&#%%%&&&&%/#%&&%#/&*/%&#&#&& %##//&/&(/&&%%%(&#&#(&#. .. .  . .. .\n"
+		<< ".  .. .  . .. %&%&%###%%%%%&&%,# #&&&*/((%##%%%*#%%&%%%%&/##%&%( /#(/%/  . .. .\n"
+		<< ".  .. .  . .. . #.%&%%&&%%&&#&&&&&%&###(&&%%#%%%&&%/#%%/&%%%##%(%(%(. .  . .. .\n"
+		<< ".  .. .  . .,&&& &&%#%%&#%&%& #&#.&&&%&&%%&%&&&&&&%%%%%&%&#&&&%  . .. .  . .. .\n"
+		<< ".  .. .  . ..  *&..% #%&&&#&,&&&&&%.%&#%%#&&%*&%&&%&&&&%%&&#%%#/(, .. .  . .. .\n"
+		<< ".. .  . .. .  .  &&&  &&&&%** . & %&%&#, & #&%,,&(#&&%&(%/&&%&##%. .  . .. .  .\n" 
+		<< ".. .  . .. .  . (*%&&%%&%%&% %%, .//%&&&%&%%#(#*#&&%/&& (#% *% %%, .  . .. .  .\n" 
+		<< ".. .  . .. .  ./&&&&.(% .%&&&&,%%&&,%%&&#%&&&&##(((&%/(&#(%%%%//....  . .. .  .\n"
+		<< ".. .  . .. .  . .. .  *,*(,%#%&%&%&&&%*%## &,&(%(#&%/%#%&(,.%%% &(/%# . .. .  .\n"
+		<< ".. .  . .. .  . .. . .#&&*..  &&(&*&&% (( .&&&#%&#&*%/&%&&#&,(&&%%,#  . .. .  .\n"
+		<< ".. .  . .. .  . .%%%%#(&%&%&&%.&, (&&&&&%%%&  /%(&%(((&&/. && &%%. .  . .. .  .\n" 
+		<< ".. .  . .. .  . ..   #&%.. .  . .. .  . &#%#  . ,. .  .*.. .  . .. .  . .. .  .\n" 
+		<< ".. .  . .. .  . .. .  . .. .  . .. .  . %&%/  . .. .  . .. .  . .. .  . .. .  .\n" 
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. . %%# . .  . .. .  . .. .  . .. .  . .. .\n"
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. . (&# . .  . .. .  . .. .  . .. .  . .. .\n"
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. . %(& . .  . .. .  . .. .  . .. .  . .. .\n"
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. . ##) . .  . .. .  . .. .  . .. .  . .. .\n"
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. ./#(& . .  . .. .  . .. .  . .. .  . .. .\n"
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. .#((# . .  . .. .  . .. .  . .. .  . .. .\n"
+		<< ".  .. .  . .. .  . .. .  . .. .  . .. . .. .. .  . .. .  . .. .  . .. .  . .. ."
+		<< std::endl;
+	newf.close();
 }
 
 // OUTPUT OPERATOR OVERLOADING
 std::ostream& operator<<(std::ostream& os, const ShrubberyCreationForm& i)
 {
-	os << "ShrubberyCreationForm name: " << i.getName()
-        << "\nis signed: " << i.isSignedOrNot()
-        << "\ngrade required to sign: " << i.getSignedGrade()
-        << "\ngrade required to execute: " << i.getExecutedGrade();
+	os << "ShrubberyCreationForm with target: " << i.getTarget()
+		<< ", sign grade: " << i.getSignGrade()
+		<< ", execute grade: " << i.getExecuteGrade();
 	return (os);
-}
-
-// Member functions
-
-std::string ShrubberyCreationForm::gettarget() const
-{
-    return(target_);
-}
-
-void ShrubberyCreationForm::execute(Bureaucrat const &executor)
-{
-    (void)executor;
 }

@@ -1,21 +1,9 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/28 16:51:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/01 15:27:49 by jmatheis         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #ifndef BUREAUCRAT_HPP
 # define BUREAUCRAT_HPP
 
 # include <iostream>
 # include <string>
-# include "AForm.hpp"
+# include "Form.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -32,28 +20,33 @@ class Bureaucrat
 		Bureaucrat(const Bureaucrat &copyclass); //Copy Constructor
 		Bureaucrat& operator= (const Bureaucrat& copyop); //copy assignment operator
 		~Bureaucrat(); //Destructor
-	
-		std::string getName() const;
+
+		// GETTER
+		const std::string getName() const;
 		int getGrade() const;
-		void incrementGrade(); //increment should give a lower grade (Better)
-		void decrementGrade(); //decrement should give a higher grade (Worse)
 
-		void signForm(Form &forms);
-		void executeForm(Form const& form);
+		// OTHER
+		void incrementGrade();
+		void decrementGrade();
+		void signForm(Form &fo);
+		void executeForm(Form const & form);
 
-		// Exceptions
+		// EXCEPTIONS
 		class GradeTooHighException: public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
+
 		class GradeTooLowException: public std::exception {
 			public:
 				virtual const char* what() const throw();
 		};
+
 	private:
 		Bureaucrat(); //Default Constructor
-		std::string const name_;
+		const std::string name_;
 		int grade_;
+
 		
 };
 

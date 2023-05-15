@@ -6,15 +6,16 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/01 15:36:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 08:46:01 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat() : name_("Default"), grade_(1)
+Bureaucrat::Bureaucrat() : name_("Default"), grade_(75)
 {
-    std::cout << "Default Constructor Bureaucrat" << std::endl;
+    std::cout << GREEN "Bureaucrat named " << name_
+		<< " woke up with grade " << grade_  << RESET << std::endl;
 }
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
@@ -23,37 +24,33 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : name_(name), grade_(grade)
 		throw GradeTooHighException();
 	else if (grade_ > 150)
 		throw GradeTooLowException();
-    std::cout << "Constructor with parameters Bureaucrat" << std::endl;
+    std::cout << GREEN "Bureaucrat named " << name_
+		<< " woke up with grade " << grade_ << RESET << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &copyclass)
+Bureaucrat::Bureaucrat(const Bureaucrat &copyclass) : name_(copyclass.name_), grade_(copyclass.grade_)
 {
     std::cout << "Copy Constructor Bureaucrat" << std::endl;
-	Bureaucrat::operator= (copyclass);
 }
 
 Bureaucrat& Bureaucrat::operator= (const Bureaucrat& copyop)
 {
-	grade_ = copyop.grade_;
+	if (this != &copyop)
+	{
+		grade_ = copyop.grade_;
+	}
     std::cout << "Copy Assignment Operator Bureaucrat" << std::endl;
     return(*this);
 }
 
 Bureaucrat::~Bureaucrat()
 {
-    std::cout << "Destructor Bureaucrat: " << getName() << std::endl;
+    std::cout << GREEN "Bureaucrat named " << name_
+		<< " with grade " << grade_ << " died" RESET << std::endl;
 }
 
-// OUTPUT OPERATOR OVERLOADING
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& i)
-{
-	os << i.getName() << ", bureaucrat grade " << i.getGrade() << ".";
-	return (os);
-}
-
-// OTHER MEMBER FUNCTIONS
-
-std::string Bureaucrat::getName() const
+// GETTER FUNCTIONS
+const std::string Bureaucrat::getName() const
 {
 	return(name_);
 }
@@ -63,6 +60,8 @@ int Bureaucrat::getGrade() const
 	return(grade_);
 }
 
+// OTHER MEMBER FUNCTIONS
+// 1 is the highest grade
 void Bureaucrat::incrementGrade()
 {
 	grade_--;
@@ -70,6 +69,7 @@ void Bureaucrat::incrementGrade()
 		throw GradeTooHighException();
 }
 
+// 150 is the lowest grade
 void Bureaucrat::decrementGrade()
 {
 	grade_++;
@@ -77,45 +77,44 @@ void Bureaucrat::decrementGrade()
 		throw GradeTooLowException();
 }
 
-void Bureaucrat::signForm(Form &forms)
+void Bureaucrat::signForm(Form &fo)
 {
 	try
 	{
-		forms.beSigned(*this);
-		std::cout << GREEN << this->getName() << " signed "
-			<< forms.getName() << RESET << std::endl;
+		fo.beSigned(*this);
+		std::cout << PURPLE << getName() << " signed "
+			<< fo.getName() << RESET << std::endl;
 	}
-	catch(std::exception &b)
+	catch (std::exception &e)
 	{
-		std::cout << RED << this->getName() << " couldn't sign "
-			<< forms.getName() << " because " RESET << std::endl;		
-		std::cout << RED << b.what() << RESET << std::endl;
+		std::cout << RED << getName() << " couldn't sign " << fo.getName()
+			<< " because " << e.what() << RESET << std::endl;
 	}
 }
 
-void Bureaucrat::executeForm(Form const&form)
+void Bureaucrat::executeForm(const Form &form)
 {
-	try
-	{
-		// form.execute(*this);
-		std::cout << GREEN << this->getName() << " executed "
-			<< form.getName() << RESET << std::endl;
-	}
-	catch(std::exception &b)
-	{
-		std::cout << RED << this->getName() << " couldn't execute "
-			<< form.getName() << " because " RESET << std::endl;		
-		std::cout << RED << b.what() << RESET << std::endl;
-	}
+	form.execute(*this);
+	std::cout << PURPLE << getName() << " executed "
+		<< form.getName() << RESET << std::endl;
+	form.executionofform();
 }
 
 // EXCEPTION FUNCTIONS
-const char *Bureaucrat::GradeTooHighException::what() const throw()
+const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
-	return ("Grade is too high, not possible!");
+	return("Exception: Grade is too high!");
 }
 
-const char *Bureaucrat::GradeTooLowException::what() const throw()
+const char* Bureaucrat::GradeTooLowException::what() const throw()
 {
-	return ("Grade is too low, not possible!");
+	return("Exception: Grade is too low!");
 }
+
+// OUTPUT OPERATOR OVERLOADING
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& i)
+{
+	os << i.getName() << ", bureaucrat grade " << i.getGrade() << ".";
+	return (os);
+}
+
