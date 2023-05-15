@@ -6,12 +6,12 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 16:22:12 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:09:47 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef C_HPP
-# define C_HPP
+#define C_HPP
 
 # include <iostream>
 # include "Base.hpp"
@@ -25,7 +25,9 @@
 
 class C : public Base
 {
-
+    public:
+        C();
+        virtual ~C();
 };
 
 #endif

@@ -6,15 +6,14 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 16:21:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 20:10:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef B_HPP
-# define B_HPP
+#define B_HPP
 
-# include <iostream>
-# include "Base.hpp"
+#include "Base.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -22,10 +21,11 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-
 class B : public Base
 {
-
+    public:
+        B();
+        virtual ~B();
 };
 
 #endif

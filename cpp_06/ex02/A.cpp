@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   A.hpp                                              :+:      :+:    :+:   */
+/*   A.cpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 20:09:27 by jmatheis         ###   ########.fr       */
+/*   Created: 2023/05/15 20:08:46 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/05/15 20:10:54 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef A_HPP
-#define A_HPP
+#include "A.hpp"
 
-# include "Base.hpp"
-
-#define RESET       "\033[0m"               /* Reset */
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
-#define PURPLE      "\033[35m"              /* Purple */
-
-
-class A : public Base
+A::A()
 {
-    public:
-        A();
-        virtual ~A();
-};
+    std::cout << "CONSTRUCTOR A" << std::endl;
+}
 
-#endif
+A::~A()
+{
+    std::cout << "DESTRUCTOR A" << std::endl;
+}

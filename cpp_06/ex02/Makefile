@@ -1,10 +1,13 @@
-NAME		:= serializer
+NAME		:= ex02
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
-				Base.cpp
+				Base.cpp \
+				A.cpp \
+				B.cpp \
+				C.cpp
 
 HEADER		:= 	Base.hpp \
 				A.hpp \
