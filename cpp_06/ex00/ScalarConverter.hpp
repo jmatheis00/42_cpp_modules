@@ -1,0 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ScalarConverter.hpp                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
+/*   Updated: 2023/05/15 15:01:34 by jmatheis         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SCALARCONVERTER_HPP
+# define SCALARCONVERTER_HPP
+
+# include <iostream>
+# include <string>
+# include <limits>
+# include <numeric>
+# include <cmath>
+
+#define RESET       "\033[0m"               /* Reset */
+#define RED         "\033[31m"              /* Red */
+#define GREEN       "\033[32m"              /* Green */
+#define YELLOW      "\033[33m"              /* Yellow */
+#define PURPLE      "\033[35m"              /* Purple */
+
+class ScalarConverter
+{
+    public:
+		ScalarConverter(); //Default Constructor
+		ScalarConverter(const ScalarConverter &copyclass); //Copy Constructor
+		ScalarConverter& operator= (const ScalarConverter& copyop); //copy assignment operator
+		~ScalarConverter(); //Destructor
+
+
+		// void check_for_char();
+		// void check_for_special();
+		void check_for_type(char* input);
+
+		void convert(char* input);
+
+		void staticcast_conversion(char* input);
+
+	private:
+		std::string type_;
+		std::string in_;
+
+
+		
+};
+
+#endif
