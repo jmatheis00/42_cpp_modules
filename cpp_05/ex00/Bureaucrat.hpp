@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <exception>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */

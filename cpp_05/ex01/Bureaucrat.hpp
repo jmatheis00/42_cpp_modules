@@ -3,6 +3,7 @@
 
 # include <iostream>
 # include <string>
+# include <exception>
 # include "Form.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
