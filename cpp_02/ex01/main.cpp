@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/24 08:16:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 13:27:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int main(void)
 {
     Fixed a;
     Fixed const b( 10 );
-    Fixed const c( 42.42f );
+    Fixed const c( 420.0f );
 
     // Calls Copy Constructor
     Fixed const d( b );

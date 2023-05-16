@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 08:50:57 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:34:18 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:05:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ class Intern
 		~Intern(); //Destructor
 
 		Form* makeForm(std::string formname, std::string target);
+
+		// functionpointer
 		Form* shrubbery(std::string target);
 		Form* robotomy(std::string target);
 		Form* presidential(std::string target);

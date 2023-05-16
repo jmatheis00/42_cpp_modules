@@ -5,13 +5,13 @@ CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
 				Bureaucrat.cpp \
-				Form.cpp \
+				AForm.cpp \
 				ShrubberyCreationForm.cpp \
 				RobotomyRequestForm.cpp \
 				PresidentialPardonForm.cpp
 
 HEADER		:= Bureaucrat.hpp \
-				Form.hpp \
+				AForm.hpp \
 				ShrubberyCreationForm.hpp \
 				RobotomyRequestForm.hpp \
 				PresidentialPardonForm.hpp

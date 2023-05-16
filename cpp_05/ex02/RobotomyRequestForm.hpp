@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:39 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:39:55 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:57:42 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 # include "Bureaucrat.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
@@ -29,10 +29,10 @@ class Bureaucrat;
 // Makes some drilling noises.
 // Then, informs that <target> has been robotomized successfully 50% of the time.
 // Otherwise, informs that the robotomy failed.
-class RobotomyRequestForm : public Form
+class RobotomyRequestForm : public AForm
 {
     public:
-		RobotomyRequestForm(); //Default Constructor PRIVATE???
+		RobotomyRequestForm(); //Default Constructor
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm &copyclass); //Copy Constructor
 		RobotomyRequestForm& operator= (const RobotomyRequestForm& copyop); //copy assignment operator
@@ -43,7 +43,6 @@ class RobotomyRequestForm : public Form
 	private:
 		std::string target_;
 		static int fiftypercent_;
-	
 };
 
 // OUTSTREAM OPERATOR OVERLOAD

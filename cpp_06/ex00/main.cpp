@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 10:59:08 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/15 15:48:44 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ int main(int ac, char *ag[])
         std::cout << "invalid number of arguments" << std::endl;
         return (EXIT_FAILURE);
     }
-    ScalarConverter* sc = new ScalarConverter;
-    sc = static_cast<ScalarConverter*> (sc);
+    ScalarConverter sc;
+    sc = static_cast<ScalarConverter> (sc);
 
-    sc->convert(ag[1]);
+    sc.convert(ag[1]);
     return 0;
 }

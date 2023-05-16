@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:39:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:45:11 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -24,10 +24,10 @@
 #define PURPLE      "\033[35m"              /* Purple */
 
 // Informs that <target> has been pardoned by Zaphod Beeblebrox.
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
     public:
-		PresidentialPardonForm(); //Default Constructor PRIVATE???
+		PresidentialPardonForm(); //Default Constructor
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm &copyclass); //Copy Constructor
 		PresidentialPardonForm& operator= (const PresidentialPardonForm& copyop); //copy assignment operator

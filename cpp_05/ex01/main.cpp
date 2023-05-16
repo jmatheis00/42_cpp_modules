@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 11:49:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:40:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,7 @@ int main()
             std::cout << Form3 << std::endl;
             Bob1.incrementGrade();
             Bob1.incrementGrade();
+            std::cout << Bob1 << std::endl;
             Bob1.signForm(Form3);
         }
         catch(std::exception &b)

@@ -41,8 +41,6 @@ class Bureaucrat
 		Bureaucrat(); //Default Constructor
 		const std::string name_;
 		int grade_;
-
-		
 };
 
 // OUTSTREAM OPERATOR OVERLOAD

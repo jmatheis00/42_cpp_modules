@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:39:20 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:58:19 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 class PresidentialPardonForm : public Form
 {
     public:
-		PresidentialPardonForm(); //Default Constructor PRIVATE???
+		PresidentialPardonForm(); //Default Constructor
 		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm &copyclass); //Copy Constructor
 		PresidentialPardonForm& operator= (const PresidentialPardonForm& copyop); //copy assignment operator

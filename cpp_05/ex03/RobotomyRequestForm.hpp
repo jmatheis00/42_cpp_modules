@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:39 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:39:26 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:58:15 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Bureaucrat;
 class RobotomyRequestForm : public Form
 {
     public:
-		RobotomyRequestForm(); //Default Constructor PRIVATE???
+		RobotomyRequestForm(); //Default Constructor
 		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm &copyclass); //Copy Constructor
 		RobotomyRequestForm& operator= (const RobotomyRequestForm& copyop); //copy assignment operator
@@ -43,7 +43,6 @@ class RobotomyRequestForm : public Form
 	private:
 		std::string target_;
 		static int fiftypercent_;
-	
 };
 
 // OUTSTREAM OPERATOR OVERLOAD

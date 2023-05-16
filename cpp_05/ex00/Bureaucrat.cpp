@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 10:09:00 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:26:09 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ int Bureaucrat::getGrade() const
 // 1 is the highest grade
 void Bureaucrat::incrementGrade()
 {
-	grade_--;
-	if (grade_ < 1)
+	if (grade_ <= 1)
 		throw GradeTooHighException();
+	grade_--;
 }
 
 // 150 is the lowest grade
 void Bureaucrat::decrementGrade()
 {
-	grade_++;
-	if (grade_ > 150)
+	if (grade_ >= 150)
 		throw GradeTooLowException();
+	grade_++;
 }
 
 // EXCEPTION FUNCTIONS

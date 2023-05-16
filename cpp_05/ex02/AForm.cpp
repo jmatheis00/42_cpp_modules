@@ -1,79 +1,79 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 08:42:18 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:51:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() : name_("Default"), issigned_(false), signgrade_(1), executegrade_(1)
+AForm::AForm() : name_("Default"), issigned_(false), signgrade_(1), executegrade_(1)
 {
-    std::cout << GREEN "Form named " << name_
+    std::cout << GREEN "AForm named " << name_
 		<< " woke up" << RESET << std::endl;
 }
 
-Form::Form(std::string name, int signgrade, int executegrade) : name_(name), issigned_(false),
+AForm::AForm(std::string name, int signgrade, int executegrade) : name_(name), issigned_(false),
 	signgrade_(signgrade), executegrade_(executegrade)
 {
 	if (signgrade_ < 1 || executegrade_ < 1)
 		throw GradeTooHighException();
 	else if (signgrade_ > 150 || executegrade_ > 150)
 		throw GradeTooLowException();
-    std::cout << GREEN "Form named " << name_
+    std::cout << GREEN "AForm named " << name_
 		<< " woke up" << RESET << std::endl;
 }
 
-Form::Form(const Form &copyclass) : name_(copyclass.name_), issigned_(copyclass.issigned_),
+AForm::AForm(const AForm &copyclass) : name_(copyclass.name_), issigned_(copyclass.issigned_),
 	signgrade_(copyclass.signgrade_), executegrade_(copyclass.executegrade_)
 {
-    std::cout << "Copy Constructor Form" << std::endl;
+    std::cout << "Copy Constructor AForm" << std::endl;
 }
 
-Form& Form::operator= (const Form& copyop)
+AForm& AForm::operator= (const AForm& copyop)
 {
 	if (this != &copyop)
 	{
 		issigned_ = copyop.issigned_;
 	}
-    std::cout << "Copy Assignment Operator Form" << std::endl;
+    std::cout << "Copy Assignment Operator AForm" << std::endl;
     return(*this);
 }
 
-Form::~Form()
+AForm::~AForm()
 {
-    std::cout << GREEN "Form named " << name_ << " died" RESET << std::endl;
+    std::cout << GREEN "AForm named " << name_ << " died" RESET << std::endl;
 }
 
 // GETTER FUNCTIONS
-std::string Form::getName() const
+std::string AForm::getName() const
 {
 	return(name_);
 }
 
-int Form::getSignGrade() const
+int AForm::getSignGrade() const
 {
 	return(signgrade_);
 }
 
-int Form::getExecuteGrade() const
+int AForm::getExecuteGrade() const
 {
 	return(executegrade_);
 }
 
-bool Form::getIssignedBool() const
+bool AForm::getIssignedBool() const
 {
 	return(issigned_);
 }
 
 // OTHER MEMBER FUNCTIONS
 
-void Form::beSigned(Bureaucrat &bur)
+void AForm::beSigned(Bureaucrat &bur)
 {
 	if (bur.getGrade() > signgrade_)
 		throw GradeTooLowException();
@@ -81,36 +81,37 @@ void Form::beSigned(Bureaucrat &bur)
 		issigned_ = true;
 }
 
-void Form::execute(Bureaucrat const & executor) const
+void AForm::execute(Bureaucrat const & executor) const
 {
 	if (executor.getGrade() > getExecuteGrade() || getIssignedBool() == false)
 		throw ExecutionNotPossible();
+	executionofform();
 }
 
-	// virtual function
-void Form::executionofform() const
+// virtual function
+void AForm::executionofform() const
 {
 
 }
 
 // EXCEPTION FUNCTIONS
-const char* Form::GradeTooHighException::what() const throw()
+const char* AForm::GradeTooHighException::what() const throw()
 {
-	return("Form Exception: Grade is too high!");
+	return("AForm Exception: Grade is too high!");
 }
 
-const char* Form::GradeTooLowException::what() const throw()
+const char* AForm::GradeTooLowException::what() const throw()
 {
-	return("Form Exception: Grade is too low!");
+	return("AForm Exception: Grade is too low!");
 }
 
-const char* Form::ExecutionNotPossible::what() const throw()
+const char* AForm::ExecutionNotPossible::what() const throw()
 {
 	return("Execution not possible, form not signed or grade too low!");
 }
 
 // OUTPUT OPERATOR OVERLOADING
-std::ostream& operator<<(std::ostream& os, const Form& i)
+std::ostream& operator<<(std::ostream& os, const AForm& i)
 {
 	os << i.getName() << ", sign grade: " << i.getSignGrade()
 		<< ", execute grade: " <<  i.getExecuteGrade()

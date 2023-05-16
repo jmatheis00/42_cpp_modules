@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/11 11:52:34 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:39:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:58:27 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 class ShrubberyCreationForm : public Form
 {
     public:
-		ShrubberyCreationForm(); //Default Constructor PRIVATE???
+		ShrubberyCreationForm(); //Default Constructor
 		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm &copyclass); //Copy Constructor
 		ShrubberyCreationForm& operator= (const ShrubberyCreationForm& copyop); //copy assignment operator

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 08:46:01 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:04:13 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,17 +64,17 @@ int Bureaucrat::getGrade() const
 // 1 is the highest grade
 void Bureaucrat::incrementGrade()
 {
-	grade_--;
-	if (grade_ < 1)
+	if (grade_ <= 1)
 		throw GradeTooHighException();
+	grade_--;
 }
 
 // 150 is the lowest grade
 void Bureaucrat::decrementGrade()
 {
-	grade_++;
-	if (grade_ > 150)
+	if (grade_ >= 150)
 		throw GradeTooLowException();
+	grade_++;
 }
 
 void Bureaucrat::signForm(Form &fo)
@@ -97,7 +97,6 @@ void Bureaucrat::executeForm(const Form &form)
 	form.execute(*this);
 	std::cout << PURPLE << getName() << " executed "
 		<< form.getName() << RESET << std::endl;
-	form.executionofform();
 }
 
 // EXCEPTION FUNCTIONS

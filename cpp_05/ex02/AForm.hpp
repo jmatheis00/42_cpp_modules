@@ -13,13 +13,13 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
     public:
-		Form(std::string name, int signgrade, int executegrade);
-		Form(const Form &copyclass); //Copy Constructor
-		Form& operator= (const Form& copyop); //copy assignment operator
-		virtual ~Form(); //Destructor
+		AForm(std::string name, int signgrade, int executegrade);
+		AForm(const AForm &copyclass); //Copy Constructor
+		AForm& operator= (const AForm& copyop); //copy assignment operator
+		virtual ~AForm(); //Destructor
 
 		// GETTER
 		std::string getName() const;
@@ -49,7 +49,7 @@ class Form
 		};
 
 	private:
-		Form(); //Default Constructor
+		AForm(); //Default Constructor
 		const std::string name_;
 		bool issigned_;
 		const int signgrade_;
@@ -59,6 +59,6 @@ class Form
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
-std::ostream& operator<<(std::ostream& os, const Form& i);
+std::ostream& operator<<(std::ostream& os, const AForm& i);
 
 #endif

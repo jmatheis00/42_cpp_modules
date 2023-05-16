@@ -3,7 +3,7 @@
 
 # include <iostream>
 # include <string>
-# include "Form.hpp"
+# include "AForm.hpp"
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -11,7 +11,7 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-class Form;
+class AForm;
 
 class Bureaucrat
 {
@@ -28,8 +28,8 @@ class Bureaucrat
 		// OTHER
 		void incrementGrade();
 		void decrementGrade();
-		void signForm(Form &fo);
-		void executeForm(Form const & form);
+		void signForm(AForm &fo);
+		void executeForm(AForm const & form);
 
 		// EXCEPTIONS
 		class GradeTooHighException: public std::exception {
@@ -46,8 +46,6 @@ class Bureaucrat
 		Bureaucrat(); //Default Constructor
 		const std::string name_;
 		int grade_;
-
-		
 };
 
 // OUTSTREAM OPERATOR OVERLOAD

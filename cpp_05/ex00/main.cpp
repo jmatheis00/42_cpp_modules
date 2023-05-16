@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 09:40:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 11:56:38 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main()
         catch(std::exception &b)
         {
             std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+        }
     }
     {
         std::cout << YELLOW "\nTEST: CONSTRUCTOR WITH GRADE TOO HIGH" RESET << std::endl;

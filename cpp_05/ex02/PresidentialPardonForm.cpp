@@ -6,25 +6,25 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 08:41:07 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:44:57 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm() : Form("Presidential", 25, 5), target_("Default")
+PresidentialPardonForm::PresidentialPardonForm() : AForm("Presidential", 25, 5), target_("Default")
 {
     std::cout << GREEN "PresidentialPardonForm with target " << target_
 		<< " woke up" << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string target) : Form("Presidential", 25, 5), target_(target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target) : AForm("Presidential", 25, 5), target_(target)
 {
     std::cout << GREEN "PresidentialPardonForm with target " << target_
 		<< " woke up" << RESET << std::endl;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copyclass)  : Form(copyclass), target_(copyclass.target_)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &copyclass)  : AForm(copyclass), target_(copyclass.target_)
 {
     std::cout << "Copy Constructor PresidentialPardonForm" << std::endl;
 }
@@ -53,7 +53,7 @@ std::string PresidentialPardonForm::getTarget() const
 // OTHER MEMBER FUNCTIONS
 void PresidentialPardonForm::executionofform() const
 {
-	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebox" << std::endl;
+	std::cout << getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
 
 // OUTPUT OPERATOR OVERLOADING

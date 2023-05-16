@@ -54,8 +54,6 @@ class Form
 		bool issigned_;
 		const int signgrade_;
 		const int executegrade_;
-
-		
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
