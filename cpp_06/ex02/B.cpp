@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 20:10:56 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 20:11:09 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:17:43 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,4 @@
 B::B()
 {
     std::cout << "CONSTRUCTOR B" << std::endl;
-}
-
-B::~B()
-{
-    std::cout << "DESTRUCTOR B" << std::endl;
 }

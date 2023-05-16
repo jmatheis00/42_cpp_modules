@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 20:51:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:18:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,7 @@
 // time(NULL) returns no of seconds sind 1970 --> always different
 Base* generate(void)
 {
-    /* using nano-seconds instead of seconds */
-    struct timespec timesp;
-    clock_gettime(CLOCK_MONOTONIC, &timesp);
-    srand((time_t)timesp.tv_nsec);
-    // srand(time(NULL));
+    srand(time(NULL));
 	int random = rand() % 3;
 
 	if (random == 0)
@@ -37,47 +33,59 @@ Base* generate(void)
 void identify(Base* p)
 {
     if (dynamic_cast<A*>(p) != NULL)
-        std::cout << PURPLE "Actual type is A" RESET << std::endl;
+        std::cout << PURPLE "type is A" RESET << std::endl;
     else if (dynamic_cast<B*>(p) != NULL)
-        std::cout << PURPLE "Actual type is B" RESET << std::endl;
+        std::cout << PURPLE "type is B" RESET << std::endl;
     else if (dynamic_cast<C*>(p) != NULL)
-        std::cout << PURPLE "Actual type is C" RESET << std::endl;
+        std::cout << PURPLE "type is C" RESET << std::endl;
 	else
-        std::cout << "Error while generating" << std::endl;
+        std::cout << "cannot identify type" << std::endl;
 }
 
-// void identify(Base& p)
-// {
-    // should use try and catch block to 
-    // check if cast failed
-// // 	// A, B or C??? is base pointing to
-// // 	// no pointer allowed inside the function
-// // 	// no typeinfo
-// }
+// failing dynamic cast to a reference throws a bad_cast exception
+void identify(Base& p)
+{
+    bool istype = 0;
+    try
+    {
+        (Base)dynamic_cast<A&>(p);
+        std::cout << BLUE << "Type is A" << RESET <<std::endl;
+        istype = 1;
+    }
+    catch(std::bad_cast)
+    {
+    }
+    try
+    {
+        (Base)dynamic_cast<B&>(p);
+        std::cout << BLUE << "Type is B" << RESET <<std::endl;
+        istype = 1;
+    }
+    catch(std::bad_cast)
+    {
+    }
+    try
+    {
+        (Base)dynamic_cast<C&>(p);
+        std::cout << BLUE << "Type is C" << RESET <<std::endl;
+        istype = 1;
+    }
+    catch(std::bad_cast)
+    {
+    }
+    if (istype == 0)
+        std::cout << "cannot identify type" << std::endl;
+}
 
 int main()
 {
     {
         Base* b1 = generate();
-        Base* b2 = generate();
-        Base* b3 = generate();
-        Base* b4 = generate();
-        Base* b5 = generate();
 
         identify(b1);
-        identify(b2);
-        identify(b3);
-        identify(b4);
-        identify(b5);
+        identify(*b1);
 
         delete b1;
-        delete b2;
-        delete b3;
-        delete b4;
-        delete b5;
     }
-	// p->identify(*p);
-	// p1->identify(*p1);
-
 	return (0);
 }

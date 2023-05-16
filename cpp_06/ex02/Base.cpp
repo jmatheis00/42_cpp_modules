@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:22:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 20:24:00 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/16 10:15:13 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,6 @@
 #include "B.hpp"
 #include "C.hpp"
 
-Base::Base()
-{
-	std::cout << "Base Constructor" << std::endl;
-}
-
 Base::~Base()
 {
-	std::cout << "Base Destructor" << std::endl;
 }
