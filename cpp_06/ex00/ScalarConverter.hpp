@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 15:05:51 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:38:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ class ScalarConverter
 		void convert(char* input);
 
 		void staticcast_conversion(char* input);
+		void char_conversion(void);
 
 	private:
 		std::string type_;

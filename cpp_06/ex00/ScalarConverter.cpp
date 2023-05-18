@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 15:31:15 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/18 14:42:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,27 @@ void ScalarConverter::check_for_type(char* input)
 		type_ = "INT";
 }
 
+void ScalarConverter::char_conversion(void)
+{
+	char c = static_cast<char>(in_[0]);
+	if (std::isprint(c))
+		std::cout << "char: " << c << std::endl;
+	else
+		std::cout << "char: Non displayable" << std::endl;
+	std::cout << "int: " << static_cast<int>(c) << std::endl;
+	std::cout.precision(1); //CHANGE NUMBER OF POSITIONS BEHIND POINT
+	std::cout << "float: " << std::fixed
+		<< static_cast<float>(c) << "f" << std::endl;
+	std::cout << "double: " << std::fixed
+		<< static_cast<double>(c) << std::endl;	
+}
+
 void ScalarConverter::staticcast_conversion(char* input)
 {
 	double start = atof(input);
-	
+
 	char c = static_cast<char>(start);
+
 	if (std::isprint(c))
 		std::cout << "char: " << c << std::endl;
 	else if (type_ == "SPECIAL")
@@ -100,5 +116,8 @@ void ScalarConverter::convert(char* input)
 		std::cout << "Input is invalid, try again" << std::endl;		
 		exit(EXIT_FAILURE);
 	}
-	staticcast_conversion(input);
+	if (type_ == "CHAR")
+		char_conversion();
+	else
+		staticcast_conversion(input);
 }
