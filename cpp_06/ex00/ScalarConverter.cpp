@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/18 14:42:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:02:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ ScalarConverter::ScalarConverter()
 {
 	type_ = "Default";
 	in_ = "Default";
+	overflowflevel_ = 0;
 }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &copyclass)
 {
 	type_ = copyclass.type_;
 	in_ = copyclass.in_;
+	overflowflevel_ = 0;
 }
 
 ScalarConverter& ScalarConverter::operator= (const ScalarConverter& copyop)
@@ -59,11 +61,37 @@ void ScalarConverter::check_for_type(char* input)
 		type_ = "INT";
 }
 
+void ScalarConverter::check_overflow(char* input)
+{
+	double d = strtod(input, NULL);
+	if (d > std::numeric_limits<double>::max() ||
+		d < std::numeric_limits<double>::min())
+	{
+		overflowflevel_ = 3;
+		std::cout << "OVERFLOW DOUBLE" << std::endl;
+		return ;
+	}
+	if (d > std::numeric_limits<float>::max() ||
+		d < std::numeric_limits<float>::min())
+	{
+		overflowflevel_ = 2;
+		std::cout << "OVERFLOW FLOAT" << std::endl;
+		return ;
+	}
+	if (d > std::numeric_limits<int>::max() ||
+		d < std::numeric_limits<int>::min())
+	{
+		overflowflevel_ = 1;
+		std::cout << "OVERFLOW INT" << std::endl;
+		return ;
+	}
+}
+
 void ScalarConverter::char_conversion(void)
 {
 	char c = static_cast<char>(in_[0]);
 	if (std::isprint(c))
-		std::cout << "char: " << c << std::endl;
+		std::cout << "char: '" << c << "'" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 	std::cout << "int: " << static_cast<int>(c) << std::endl;
@@ -78,33 +106,29 @@ void ScalarConverter::staticcast_conversion(char* input)
 {
 	double start = atof(input);
 
-	char c = static_cast<char>(start);
-
-	if (std::isprint(c))
-		std::cout << "char: " << c << std::endl;
+	if (std::isprint(static_cast<char>(start)))
+		std::cout << "char: '" << static_cast<char>(start) << "'" << std::endl;
 	else if (type_ == "SPECIAL")
 		std::cout << "char: impossible" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
 
-	int i = static_cast<int>(start);
-	if (type_ == "SPECIAL" || (start > INT_MAX || start < INT_MIN))
+	if (type_ == "SPECIAL" || overflowflevel_ > 0)
 		std::cout << "int: impossible" << std::endl;
 	else
-		std::cout << "int: " << i << std::endl;
+		std::cout << "int: " << static_cast<int>(start) << std::endl;
 
 	std::cout.precision(1); //CHANGE NUMBER OF POSITIONS BEHIND POINT
 
-	float f = static_cast<float>(start);
-	if ((start > __FLT_MAX__ || start < __FLT_MIN__) && type_ != "SPECIAL")
+	if (overflowflevel_ > 1 && type_ != "SPECIAL")
 		std::cout << "float: impossible" << std::endl;
 	else
-		std::cout << "float: " << std::fixed << f << "f" << std::endl;
-	double d = static_cast<double>(start);
-	if ((start > __DBL_MAX__ || start < __DBL_MIN__) && type_ != "SPECIAL")
+		std::cout << "float: " << std::fixed << static_cast<float>(start) << "f" << std::endl;
+
+	if (overflowflevel_ > 2 && type_ != "SPECIAL")
 		std::cout << "double: impossible" << std::endl;
 	else
-		std::cout << "double: " << std::fixed  << d << std::endl;
+		std::cout << "double: " << std::fixed  << static_cast<double>(start) << std::endl;
 }
 
 void ScalarConverter::convert(char* input)
@@ -119,5 +143,8 @@ void ScalarConverter::convert(char* input)
 	if (type_ == "CHAR")
 		char_conversion();
 	else
+	{
+		check_overflow(input);
 		staticcast_conversion(input);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/18 14:38:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/18 15:59:22 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class ScalarConverter
 
 
 		void check_for_type(char* input);
+		void check_overflow(char* input);
 		
 		void convert(char* input);
 
@@ -45,9 +46,10 @@ class ScalarConverter
 	private:
 		std::string type_;
 		std::string in_;
-
-
-		
+		int overflowflevel_;
+		// 1: int
+		// 2: float
+		// 3: double
 };
 
 #endif
