@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/18 16:02:14 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/18 16:03:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,21 +68,18 @@ void ScalarConverter::check_overflow(char* input)
 		d < std::numeric_limits<double>::min())
 	{
 		overflowflevel_ = 3;
-		std::cout << "OVERFLOW DOUBLE" << std::endl;
 		return ;
 	}
 	if (d > std::numeric_limits<float>::max() ||
 		d < std::numeric_limits<float>::min())
 	{
 		overflowflevel_ = 2;
-		std::cout << "OVERFLOW FLOAT" << std::endl;
 		return ;
 	}
 	if (d > std::numeric_limits<int>::max() ||
 		d < std::numeric_limits<int>::min())
 	{
 		overflowflevel_ = 1;
-		std::cout << "OVERFLOW INT" << std::endl;
 		return ;
 	}
 }
