@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   whatever.hpp                                       :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/20 14:08:32 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/20 14:46:43 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#ifndef ITER_HPP
+# define ITER_HPP
 
 # include <iostream>
 
@@ -21,25 +21,10 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-template <typename T>
-void swap(T& a, T& b) {
-	T tmp = a;
-	a = b;
-	b = tmp;
-}
-
-template <typename T>
-T min(T a, T b) {
-	if (a < b)
-		return (a);
-	return (b);
-}
-
-template <typename T>
-T max(T a, T b) {
-	if (a > b)
-		return (a);
-	return (b);
+template <typename T, typename F>
+void iter(T* array, int size, F func) {
+	for (int i = 0; i < size; i++)
+		func(array[i]);
 }
 
 #endif

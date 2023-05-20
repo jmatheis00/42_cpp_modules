@@ -1,11 +1,11 @@
-NAME		:= ex00
+NAME		:= ex01
 
 CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
-SRCS		:= main.cpp
+SRCS		:= main.cpp \
 
-HEADER		:= whatever.hpp
+HEADER		:= iter.hpp
 
 OBJS		:= $(SRCS:%.cpp=%.o)
 
