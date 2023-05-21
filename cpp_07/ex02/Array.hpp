@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/21 18:03:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:07:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,16 @@ class Array {
 				arr_ = new T[size_];
 		} //creates an array of n elements initialized by default
 
+		// Array(const Array &copyclass) {
+		// 	std::cout << "Copy Constructor" << std::endl;
+		// 	size_ = copyclass.size_;
+		// 	arr_ = new T[size_];
+		// 	for (int i = 0; i < size_; i++)
+		// 		arr_[i] = copyclass.arr_[i];
+		// } //Copy Constructor
 		Array(const Array &copyclass) {
 			std::cout << "Copy Constructor" << std::endl;
-			size_ = copyclass.size_;
-			arr_ = new T[size_];
-			for (int i = 0; i < size_; i++)
-				arr_[i] = copyclass.arr_[i];
+			*this = copyclass; //calls copy assignment operator
 		} //Copy Constructor
 
 		Array& operator= (const Array& copyop) {
