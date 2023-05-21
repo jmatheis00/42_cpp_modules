@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/21 18:07:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/21 18:47:12 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,22 @@
 template <typename T>
 class Array {
 	public:
+		// DEFAULT CONSTRUCTOR
 		Array() : size_(0) {
 			std::cout << "Default Constructor" << std::endl;
 			arr_ = new T[0];
-		} //creates an empty array
-
+		}
+		// CONSTRUCTOR WITH SIZE
 		Array(unsigned int n) : size_(n) {
 			std::cout << "Constructor with size" << std::endl;
 				arr_ = new T[size_];
-		} //creates an array of n elements initialized by default
-
-		// Array(const Array &copyclass) {
-		// 	std::cout << "Copy Constructor" << std::endl;
-		// 	size_ = copyclass.size_;
-		// 	arr_ = new T[size_];
-		// 	for (int i = 0; i < size_; i++)
-		// 		arr_[i] = copyclass.arr_[i];
-		// } //Copy Constructor
+		}
+		// COPY CONSTRUCTOR
 		Array(const Array &copyclass) {
 			std::cout << "Copy Constructor" << std::endl;
-			*this = copyclass; //calls copy assignment operator
-		} //Copy Constructor
-
+			*this = copyclass;
+		}
+		// COPY ASSIGNMENT OPERATOR
 		Array& operator= (const Array& copyop) {
 			std::cout << "Copy Assignment Operator" << std::endl;
 			if (this != &copyop)
@@ -57,27 +51,28 @@ class Array {
 					arr_[i] = copyop.arr_[i];	
 			}
 			return (*this);
-		} //copy assignment operator
-
+		}
+		// DESTRUCTOR
 		~Array() {
 			std::cout << "Destructor" << std::endl;
 			delete[] arr_;
-		} //Destructor
+		}
 
+		//GETTER
 		int size() const {
 			return (size_);
-		} //GETTER
-
+		}
+		// SUBSCRIPT OPERATOR OVERLOAD
 		T& operator[] (int i) {
 			if (i >= size_)
 				throw IndexOutOfBounds();
 			return (arr_[i]);
 		}
-
+		// EXCEPTION
 		class IndexOutOfBounds: public std::exception {
 			public:
 				virtual const char* what() const throw();
-		}; //EXCEPTION
+		};
 	private:
 		T* arr_;
 		int size_;
