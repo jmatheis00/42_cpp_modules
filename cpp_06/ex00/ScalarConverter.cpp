@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/22 11:56:26 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/22 12:45:19 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 ScalarConverter::ScalarConverter()
 {
+	// std::cout << "Constructor" << std::endl;
 	type_ = "Default";
 	in_ = "Default";
 	c_ = 0;
@@ -26,18 +27,13 @@ ScalarConverter::ScalarConverter()
 
 ScalarConverter::ScalarConverter(const ScalarConverter &copyclass)
 {
-	type_ = copyclass.type_;
-	in_ = copyclass.in_;
-	c_ = copyclass.c_;
-	i_ = copyclass.i_;
-	f_ = copyclass.f_;
-	d_ = copyclass.d_;
-	li_ = copyclass.d_;
-	ld_ = copyclass.ld_;
+	// std::cout << "Copy Constructor" << std::endl;
+	*this = copyclass;
 }
 
 ScalarConverter& ScalarConverter::operator= (const ScalarConverter& copyop)
 {
+	// std::cout << "Copy Assignment Operator" << std::endl;
 	if (this != &copyop)
 	{
 		type_ = copyop.type_;
@@ -54,16 +50,18 @@ ScalarConverter& ScalarConverter::operator= (const ScalarConverter& copyop)
 
 ScalarConverter::~ScalarConverter()
 {
-	
+	// std::cout << "Destructor" << std::endl;
 }
 
 // OTHER MEMBER FUNCTIONS
 
-void ScalarConverter::check_for_type(char* input)
+// FIND TYPE (CHAR, INT, FLOAT, DOUBLE)
+void ScalarConverter::check_for_type(void)
 {
 	if(in_.length() == 1 && std::isprint(in_[0]))
 		type_ = "CHAR";
-	if ((in_[in_.length() - 1] == 'f' && in_.find(".") != std::string::npos
+	if ((in_[in_.length() - 1] == 'f'
+		&& in_.find(".") != std::string::npos
 		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
 		|| in_ == "-inff" || in_ == "+inff" || in_ == "nanf")
 		type_ = "FLOAT";
@@ -71,9 +69,11 @@ void ScalarConverter::check_for_type(char* input)
 		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
 		|| in_ == "-inf" || in_ == "+inf" || in_ == "nan")
 		type_ = "DOUBLE";
-	else if (atoi(input) != 0 || (in_.length() == 1 && in_[0] == '0'))
+	else if (atoi(in_.c_str()) != 0 || (in_.length() == 1 && in_[0] == '0'))
 		type_ = "INT";
 }
+
+// CONVERT FROM ORIGINAL TYPE TO OTHER TYPES
 
 void ScalarConverter::char_conversion(void)
 {
@@ -115,12 +115,15 @@ void ScalarConverter::double_conversion(void)
 	li_ = static_cast<long int>(d_);
 }
 
+// PRINTING FUNCTIONS FOR EVERY TYPE
+
 void ScalarConverter::print_char(void)
 {
 	std::cout << "char: ";
 	if (std::isprint(c_))
 		std::cout << "\'" << c_ << "\'" << std::endl;
-	else if(std::isinf(f_) || std::isinf(d_) || std::isnan(f_) || std::isnan(d_))
+	else if(std::isinf(f_) || std::isnan(f_)
+			|| std::isinf(d_) || std::isnan(d_))
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << "non displayable" << std::endl;
@@ -174,10 +177,11 @@ void ScalarConverter::print_double(void)
 	}
 }
 
+// CONVERTING INPUT TO THE FOUR TYPES & PRINTING THEM
 void ScalarConverter::convert(char* input)
 {
 	in_ = (std::string)input;
-	check_for_type(input);
+	check_for_type();
 	if (type_ == "Default")
 	{
 		std::cout << "Input is invalid, try again" << std::endl;		
@@ -191,10 +195,8 @@ void ScalarConverter::convert(char* input)
 		float_conversion();
 	if (type_ == "DOUBLE")
 		double_conversion();
-	// std::cout << RED "INT: " << i_ << "\nFLOAT: " << f_ << "\nDOUBLE: " << d_ << RESET << std::endl;
 	print_char();
 	print_int();
 	print_float();
 	print_double();
-	
 }
