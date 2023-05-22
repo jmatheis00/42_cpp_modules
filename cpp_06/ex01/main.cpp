@@ -6,35 +6,34 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 16:14:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:23:32 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Serializer.hpp"
 #include "Data.hpp"
 
-int main(int ac, char *ag[])
+int main(void)
 {
-    if (ac != 2)
-    {
-        std::cout << "invalid number of arguments" << std::endl;
-        return (EXIT_FAILURE);
-    }
-    Serializer sc;
-    sc = static_cast<Serializer> (sc);
+    Serializer s;
 
-    struct Data d;
+    std::cout << GREEN "data that should get serialized" RESET << std::endl;
+    Data d;
     d.age = 55;
-    d.name = ag[1];
+    d.name = "Bob";
     std::cout << "Name: " << d.name << ", age: " << d.age << std::endl;
 
-    std::cout << "Original address:\t" << &d << std::endl;
-    uintptr_t u = sc.serialize(&d);
-    std::cout << "uintptr_t: " << u << std::endl;
+    uintptr_t u = s.serialize(&d);
+    std::cout << GREEN "Data is serialized under the following number: " RESET << std::endl;
+    std::cout << u << std::endl;
 
-    Data* second;
-    second = sc.deserialize(u);
-    std::cout << "Address after:\t\t" << second << std::endl;
+    Data* second = s.deserialize(u);
+    std::cout << GREEN "data in new struct after deserialized" RESET << std::endl;
     std::cout << "Name: " << second->name << ", age: " << second->age << std::endl;
+    
+    std::cout << PURPLE "Comparison of addresses" RESET << std::endl;
+    std::cout << YELLOW "Original address:\t" << &d << RESET << std::endl;
+    std::cout << YELLOW "Address second struct:\t" << second << RESET << std::endl;
+
     return 0;
 }

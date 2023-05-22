@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 16:06:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:12:52 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,14 @@ Serializer::~Serializer()
 
 uintptr_t Serializer::serialize(Data* ptr)
 {
-	uintptr_t u;
-
-	u = reinterpret_cast<uintptr_t>(ptr);
+	std::cout << RED "*** seralize ***" RESET << std::endl;
+	uintptr_t u = reinterpret_cast<uintptr_t>(ptr);
 	return(u);
 }
 
 Data* Serializer::deserialize(uintptr_t raw)
 {
-	struct Data* d;
-
-	d = reinterpret_cast<Data*>(raw);
+	std::cout << RED "*** deserialize ***" RESET << std::endl;
+	struct Data* d = reinterpret_cast<Data*>(raw);
 	return(d);
 }
