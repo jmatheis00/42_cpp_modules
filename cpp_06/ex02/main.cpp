@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 10:18:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:26:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ Base* generate(void)
 void identify(Base* p)
 {
     if (dynamic_cast<A*>(p) != NULL)
-        std::cout << PURPLE "type is A" RESET << std::endl;
+        std::cout << PURPLE "Type is A" RESET << std::endl;
     else if (dynamic_cast<B*>(p) != NULL)
-        std::cout << PURPLE "type is B" RESET << std::endl;
+        std::cout << PURPLE "Type is B" RESET << std::endl;
     else if (dynamic_cast<C*>(p) != NULL)
-        std::cout << PURPLE "type is C" RESET << std::endl;
+        std::cout << PURPLE "Type is C" RESET << std::endl;
 	else
         std::cout << "cannot identify type" << std::endl;
 }
@@ -81,9 +81,11 @@ int main()
 {
     {
         Base* b1 = generate();
-
+        Base* b2 = generate();
         identify(b1);
         identify(*b1);
+        identify(b2);
+        identify(*b2);
 
         delete b1;
     }
