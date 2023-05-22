@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/22 12:45:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/22 18:24:45 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void ScalarConverter::int_conversion(void)
 
 void ScalarConverter::float_conversion(void)
 {
-	f_ = static_cast<float>(strtof(in_.c_str(), NULL));
+	f_ = static_cast<float>(strtod(in_.c_str(), NULL));
 	c_ = static_cast<char>(f_);
 	i_ = static_cast<int>(f_);
 	d_ = static_cast<double>(f_);
@@ -108,7 +108,7 @@ void ScalarConverter::float_conversion(void)
 void ScalarConverter::double_conversion(void)
 {
 	d_ = static_cast<double>(strtod(in_.c_str(), NULL));
-	ld_ = static_cast<long double>(strtold(in_.c_str(), NULL));	
+	ld_ = static_cast<long double>(d_);	
 	c_ = static_cast<char>(d_);
 	i_ = static_cast<int>(d_);
 	f_ = static_cast<float>(d_);
@@ -122,8 +122,11 @@ void ScalarConverter::print_char(void)
 	std::cout << "char: ";
 	if (std::isprint(c_))
 		std::cout << "\'" << c_ << "\'" << std::endl;
-	else if(std::isinf(f_) || std::isnan(f_)
-			|| std::isinf(d_) || std::isnan(d_))
+	else if(f_ == -std::numeric_limits<float>::infinity() ||
+		f_ == std::numeric_limits<float>::infinity() ||
+		d_ == -std::numeric_limits<double>::infinity() ||
+		d_ == std::numeric_limits<double>::infinity() ||
+		in_ == "nanf" || in_ == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << "non displayable" << std::endl;
@@ -132,8 +135,13 @@ void ScalarConverter::print_char(void)
 void ScalarConverter::print_int(void)
 {
 	std::cout << "int: ";
-	if (li_ > std::numeric_limits<int>::max() ||
-		li_ < std::numeric_limits<int>::min())
+	if ((li_ > std::numeric_limits<int>::max() ||
+		li_ < std::numeric_limits<int>::min()) ||
+		f_ == -std::numeric_limits<float>::infinity() ||
+		f_ == std::numeric_limits<float>::infinity() ||
+		d_ == -std::numeric_limits<double>::infinity() ||
+		d_ == std::numeric_limits<double>::infinity() ||
+		in_ == "nanf" || in_ == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << i_ << std::endl;
@@ -142,38 +150,38 @@ void ScalarConverter::print_int(void)
 void ScalarConverter::print_float(void)
 {
 	std::cout << "float: ";
-	if (std::isinf(f_) == true && d_ < std::numeric_limits<float>::min())
+	if (f_ == -std::numeric_limits<float>::infinity())
 		std::cout << "-inff" << std::endl;
-	else if (std::isinf(f_) == true && d_ > std::numeric_limits<float>::max())
+	else if (f_ == std::numeric_limits<float>::infinity())
 		std::cout << "+inff" << std::endl;
 	else if ((d_ > std::numeric_limits<float>::max() ||
 		d_ < std::numeric_limits<float>::min()) && f_ != 0)
 		std::cout << "impossible" << std::endl;
-	else if (std::isnan(f_) == true)
+	else if (in_ == "nanf" || in_ == "nan")
 		std::cout << "nanf" << std::endl;
 	else
 	{
-		std::cout.precision(1);
-		std::cout << std::fixed << f_ << "f" << std::endl;
+		std::cout << std::setprecision(1) << std::fixed
+			<< f_ << "f" << std::endl;
 	}
 }
 
 void ScalarConverter::print_double(void)
 {
 	std::cout << "double: ";
-	if (std::isinf(d_) == true && ld_ < std::numeric_limits<double>::min())
+	if (d_ == -std::numeric_limits<double>::infinity())
 		std::cout << "-inf" << std::endl;
-	else if (std::isinf(d_) == true && ld_ > std::numeric_limits<double>::max())
+	else if (d_ == std::numeric_limits<double>::infinity())
 		std::cout << "+inf" << std::endl;
 	else if ((ld_ > std::numeric_limits<double>::max() ||
 		ld_ < std::numeric_limits<double>::min()) && d_ != 0)
 		std::cout << "impossible" << std::endl;
-	else if (std::isnan(d_) == true)
+	else if (in_ == "nanf" || in_ == "nan")
 		std::cout << "nan" << std::endl;
 	else
 	{
-		std::cout.precision(1);
-		std::cout << std::fixed << d_ << std::endl;
+		std::cout << std::setprecision(1) << std::fixed
+			<< d_ << std::endl;
 	}
 }
 
