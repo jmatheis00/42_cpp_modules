@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/22 12:15:35 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:15:47 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,9 @@ class ScalarConverter
 		ScalarConverter& operator= (const ScalarConverter& copyop); //copy assignment operator
 		~ScalarConverter(); //Destructor
 
-
+		int check_for_error(void);
 		void check_for_type(void);
+		void check_overflows(void);
 		
 		void convert(char* input);
 

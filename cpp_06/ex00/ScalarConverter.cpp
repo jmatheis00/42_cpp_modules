@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/22 18:24:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/23 13:23:36 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,21 @@ ScalarConverter::~ScalarConverter()
 
 // OTHER MEMBER FUNCTIONS
 
+// Check for nonnumeric, etc.
+int ScalarConverter::check_for_error()
+{
+	if (in_ == "nan" || in_ == "nanf" || in_ == "+inf"
+		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff")
+		return(0);
+	for(int i = 0; i < (int)in_.length(); i++)
+	{
+		if (std::isdigit(in_[i]) == false && in_[i] != '.'
+			&& in_[in_.length()-1] != 'f')
+			return(1);	
+	}
+	return(0);
+}
+
 // FIND TYPE (CHAR, INT, FLOAT, DOUBLE)
 void ScalarConverter::check_for_type(void)
 {
@@ -69,8 +84,21 @@ void ScalarConverter::check_for_type(void)
 		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
 		|| in_ == "-inf" || in_ == "+inf" || in_ == "nan")
 		type_ = "DOUBLE";
-	else if (atoi(in_.c_str()) != 0 || (in_.length() == 1 && in_[0] == '0'))
+	else if (strtod(in_.c_str(), NULL) != 0 || (in_.length() == 1 && in_[0] == '0'))
 		type_ = "INT";
+	check_overflows();
+}
+
+// IF INT OVERFLOWS -> MUST BE FLOAT, IF FLOAT OVERFLOW -> DOUBLE
+void ScalarConverter::check_overflows(void)
+{
+	double test = strtod(in_.c_str(), NULL);
+	if (type_ == "INT" && (test > std::numeric_limits<int>::max() ||
+		test < std::numeric_limits<int>::min()))
+		type_ = "FLOAT";
+	if (type_ == "FLOAT" && (test > std::numeric_limits<float>::max() ||
+		test < std::numeric_limits<float>::min()))
+		type_ = "DOUBLE";	
 }
 
 // CONVERT FROM ORIGINAL TYPE TO OTHER TYPES
@@ -87,7 +115,7 @@ void ScalarConverter::char_conversion(void)
 
 void ScalarConverter::int_conversion(void)
 {
-	i_ = static_cast<int>(atoi(in_.c_str()));
+	i_ = static_cast<int>(strtod(in_.c_str(), NULL));
 	li_ = static_cast<long int>(strtol(in_.c_str(), NULL, 0));
 	c_ = static_cast<char>(i_);
 	f_ = static_cast<float>(i_);
@@ -129,7 +157,7 @@ void ScalarConverter::print_char(void)
 		in_ == "nanf" || in_ == "nan")
 		std::cout << "impossible" << std::endl;
 	else
-		std::cout << "non displayable" << std::endl;
+		std::cout << "Non displayable" << std::endl;
 }
 
 void ScalarConverter::print_int(void)
@@ -189,6 +217,11 @@ void ScalarConverter::print_double(void)
 void ScalarConverter::convert(char* input)
 {
 	in_ = (std::string)input;
+	if (check_for_error() == 1)
+	{
+		std::cout << "Input is invalid, try again" << std::endl;		
+		exit(EXIT_FAILURE);
+	}		
 	check_for_type();
 	if (type_ == "Default")
 	{

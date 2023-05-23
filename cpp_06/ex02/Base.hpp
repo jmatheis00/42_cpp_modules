@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 10:15:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:18:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define BASE_HPP
 
 # include <iostream>
+# include <cstdlib>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 10:17:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:25:26 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 class B : public Base
 {
     public:
-        B();
+        // B() { std::cout << "Constructor B" << std::endl;}
 };
 
 #endif

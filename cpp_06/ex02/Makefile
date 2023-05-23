@@ -4,10 +4,7 @@ CXX			:= c++
 CXXFLAGS	:= -Wall -Werror -Wextra -std=c++98
 
 SRCS		:= main.cpp \
-				Base.cpp \
-				A.cpp \
-				B.cpp \
-				C.cpp
+				Base.cpp
 
 HEADER		:= 	Base.hpp \
 				A.hpp \

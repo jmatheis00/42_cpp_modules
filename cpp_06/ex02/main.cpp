@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/22 13:26:18 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/23 12:25:00 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 #include "B.hpp"
 #include "C.hpp"
 
-//srand() different numbers for each execution
+//srand() different numbers for each execution -> sets seed for rand()
 // time(NULL) returns no of seconds sind 1970 --> always different
+// calling srand() with different numbers--> different random numbers
 Base* generate(void)
 {
-    srand(time(NULL));
-	int random = rand() % 3;
+    std::srand(std::time(NULL));
+	int random = (std::rand() % 99) + 1;
 
-	if (random == 0)
+	if (random % 3 == 0)
 		return(new (A));
-	else if (random == 1)
+	else if (random % 3 == 1)
 		return(new (B));
-	else if (random == 2)
+	else if (random % 3 == 2)
 		return(new (C));
 	return(NULL);
 }
@@ -79,15 +80,11 @@ void identify(Base& p)
 
 int main()
 {
-    {
-        Base* b1 = generate();
-        Base* b2 = generate();
-        identify(b1);
-        identify(*b1);
-        identify(b2);
-        identify(*b2);
+    Base* b1 = generate();
+    identify(b1);
+    identify(*b1);
+    
+    delete b1;
 
-        delete b1;
-    }
 	return (0);
 }
