@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/23 12:18:04 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 09:57:22 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ class Base
 {
 	public:
 		virtual ~Base();
+	protected:
+		Base();
 };
 
 #endif

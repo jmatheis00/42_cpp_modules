@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 16:22:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/23 11:38:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 09:55:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+
+Base::Base()
+{	
+}
 
 Base::~Base()
 {

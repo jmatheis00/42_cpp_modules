@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/22 13:23:32 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 09:13:54 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int main(void)
     
     std::cout << PURPLE "Comparison of addresses" RESET << std::endl;
     std::cout << YELLOW "Original address:\t" << &d << RESET << std::endl;
-    std::cout << YELLOW "Address second struct:\t" << second << RESET << std::endl;
+    std::cout << YELLOW "Address second struct:\t" << &(*second) << RESET << std::endl;
+    // address second points to
 
     return 0;
 }

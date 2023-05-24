@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/23 13:23:36 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 09:53:22 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,18 +55,29 @@ ScalarConverter::~ScalarConverter()
 
 // OTHER MEMBER FUNCTIONS
 
-// Check for nonnumeric, etc.
+// Check for nonnumeric, max. 1 point, max 1 f at the end
 int ScalarConverter::check_for_error()
 {
+	int pointcount = 0;
+	int length = (int)in_.length() - 1;
+
 	if (in_ == "nan" || in_ == "nanf" || in_ == "+inf"
-		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff")
+		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff"
+		|| (in_.length() == 1 && std::isprint(in_[0])))
 		return(0);
-	for(int i = 0; i < (int)in_.length(); i++)
+	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-')
+		|| in_ == "-f")
+		return(1);
+	for (int i = 1; i < length; i++)
 	{
-		if (std::isdigit(in_[i]) == false && in_[i] != '.'
-			&& in_[in_.length()-1] != 'f')
-			return(1);	
+		if (std::isdigit(in_[i]) == false && in_[i] != '.')
+			return(1);
+		if (in_[i] == '.')
+			pointcount++;
 	}
+	if (pointcount > 1 || (std::isdigit(in_[length]) == false
+			&& in_[length] != '.' && in_[length] != 'f'))
+		return(1);
 	return(0);
 }
 
@@ -75,16 +86,13 @@ void ScalarConverter::check_for_type(void)
 {
 	if(in_.length() == 1 && std::isprint(in_[0]))
 		type_ = "CHAR";
-	if ((in_[in_.length() - 1] == 'f'
-		&& in_.find(".") != std::string::npos
-		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
+	if ((in_[in_.length() - 1] == 'f' && in_.length() != 1)
 		|| in_ == "-inff" || in_ == "+inff" || in_ == "nanf")
 		type_ = "FLOAT";
-	else if ((in_.find(".") != std::string::npos
-		&& in_.find(".", in_.find(".") + 1) == std::string::npos)
+	else if (in_.find(".") != std::string::npos
 		|| in_ == "-inf" || in_ == "+inf" || in_ == "nan")
 		type_ = "DOUBLE";
-	else if (strtod(in_.c_str(), NULL) != 0 || (in_.length() == 1 && in_[0] == '0'))
+	else if (strtod(in_.c_str(), NULL) != 0 || in_ == "0")
 		type_ = "INT";
 	check_overflows();
 }
@@ -98,7 +106,7 @@ void ScalarConverter::check_overflows(void)
 		type_ = "FLOAT";
 	if (type_ == "FLOAT" && (test > std::numeric_limits<float>::max() ||
 		test < std::numeric_limits<float>::min()))
-		type_ = "DOUBLE";	
+		type_ = "DOUBLE";
 }
 
 // CONVERT FROM ORIGINAL TYPE TO OTHER TYPES
@@ -145,10 +153,11 @@ void ScalarConverter::double_conversion(void)
 
 // PRINTING FUNCTIONS FOR EVERY TYPE
 
+// printable chars : 32 - 126
 void ScalarConverter::print_char(void)
 {
-	std::cout << "char: ";
-	if (std::isprint(c_))
+	std::cout << RED "char: " RESET;
+	if (std::isprint(c_) && d_ < 127 && d_ > 31)
 		std::cout << "\'" << c_ << "\'" << std::endl;
 	else if(f_ == -std::numeric_limits<float>::infinity() ||
 		f_ == std::numeric_limits<float>::infinity() ||
@@ -162,7 +171,7 @@ void ScalarConverter::print_char(void)
 
 void ScalarConverter::print_int(void)
 {
-	std::cout << "int: ";
+	std::cout << RED "int: " RESET;
 	if ((li_ > std::numeric_limits<int>::max() ||
 		li_ < std::numeric_limits<int>::min()) ||
 		f_ == -std::numeric_limits<float>::infinity() ||
@@ -177,13 +186,13 @@ void ScalarConverter::print_int(void)
 
 void ScalarConverter::print_float(void)
 {
-	std::cout << "float: ";
+	std::cout << RED "float: " RESET;
 	if (f_ == -std::numeric_limits<float>::infinity())
 		std::cout << "-inff" << std::endl;
 	else if (f_ == std::numeric_limits<float>::infinity())
 		std::cout << "+inff" << std::endl;
-	else if ((d_ > std::numeric_limits<float>::max() ||
-		d_ < std::numeric_limits<float>::min()) && f_ != 0)
+	else if (d_ > std::numeric_limits<float>::max() ||
+		d_ < -std::numeric_limits<float>::max())
 		std::cout << "impossible" << std::endl;
 	else if (in_ == "nanf" || in_ == "nan")
 		std::cout << "nanf" << std::endl;
@@ -196,13 +205,13 @@ void ScalarConverter::print_float(void)
 
 void ScalarConverter::print_double(void)
 {
-	std::cout << "double: ";
+	std::cout << RED "double: " RESET;
 	if (d_ == -std::numeric_limits<double>::infinity())
 		std::cout << "-inf" << std::endl;
 	else if (d_ == std::numeric_limits<double>::infinity())
 		std::cout << "+inf" << std::endl;
-	else if ((ld_ > std::numeric_limits<double>::max() ||
-		ld_ < std::numeric_limits<double>::min()) && d_ != 0)
+	else if (ld_ > std::numeric_limits<double>::max() ||
+		ld_ < -std::numeric_limits<double>::max())
 		std::cout << "impossible" << std::endl;
 	else if (in_ == "nanf" || in_ == "nan")
 		std::cout << "nan" << std::endl;
