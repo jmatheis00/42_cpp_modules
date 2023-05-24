@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 16:09:09 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:26:34 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,14 @@ struct Data;
 class Serializer
 {
     public:
+		static uintptr_t serialize(Data* ptr);
+		static Data* deserialize(uintptr_t raw);
+
+	private:
 		Serializer(); //Default Constructor
 		Serializer(const Serializer &copyclass); //Copy Constructor
 		Serializer& operator= (const Serializer& copyop); //copy assignment operator
 		~Serializer(); //Destructor
-
-		uintptr_t serialize(Data* ptr);
-		Data* deserialize(uintptr_t raw);
 };
 
 #endif

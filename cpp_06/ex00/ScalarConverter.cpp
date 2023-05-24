@@ -6,23 +6,25 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/24 09:53:22 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 11:50:35 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
+// NECESSARY for avoiding linker errors
+std::string ScalarConverter::type_ = "Default";
+std::string ScalarConverter::in_ = "Default";
+char ScalarConverter::c_ = 0;
+int ScalarConverter::i_ = 0;
+float ScalarConverter::f_ = 0;
+double ScalarConverter::d_ = 0;
+long int ScalarConverter::li_ = 0;
+long double ScalarConverter::ld_ = 0;
+
 ScalarConverter::ScalarConverter()
 {
 	// std::cout << "Constructor" << std::endl;
-	type_ = "Default";
-	in_ = "Default";
-	c_ = 0;
-	i_ = 0;
-	f_ = 0;
-	d_ = 0;
-	li_ = 0;
-	ld_ = 0;
 }
 
 ScalarConverter::ScalarConverter(const ScalarConverter &copyclass)
@@ -36,14 +38,6 @@ ScalarConverter& ScalarConverter::operator= (const ScalarConverter& copyop)
 	// std::cout << "Copy Assignment Operator" << std::endl;
 	if (this != &copyop)
 	{
-		type_ = copyop.type_;
-		in_ = copyop.in_;
-		c_ = copyop.c_;
-		i_ = copyop.i_;
-		f_ = copyop.f_;
-		d_ = copyop.d_;
-		li_ = copyop.d_;
-		ld_ = copyop.ld_;
 	}
 	return(*this);
 }
@@ -56,13 +50,13 @@ ScalarConverter::~ScalarConverter()
 // OTHER MEMBER FUNCTIONS
 
 // Check for nonnumeric, max. 1 point, max 1 f at the end
-int ScalarConverter::check_for_error()
+int ScalarConverter::check_for_error(void)
 {
 	int pointcount = 0;
 	int length = (int)in_.length() - 1;
 
-	if (in_ == "nan" || in_ == "nanf" || in_ == "+inf"
-		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff"
+	if (in_ == "nan" || in_ == "nanf" || in_ == "+in_f"
+		|| in_ == "+in_ff" || in_ == "-in_f" || in_ == "-inff"
 		|| (in_.length() == 1 && std::isprint(in_[0])))
 		return(0);
 	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-')

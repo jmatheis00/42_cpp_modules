@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/23 13:15:47 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/24 12:29:15 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,37 +29,37 @@
 class ScalarConverter
 {
     public:
+		static int check_for_error(void);
+		static void check_for_type(void);
+		static void check_overflows(void);
+		
+		static void convert(char* input);
+
+		static void char_conversion(void);
+		static void int_conversion(void);
+		static void float_conversion(void);
+		static void double_conversion(void);
+		
+		static void print_char(void);
+		static void print_int(void);
+		static void print_float(void);
+		static void print_double(void);
+
+	private:
 		ScalarConverter(); //Default Constructor
 		ScalarConverter(const ScalarConverter &copyclass); //Copy Constructor
 		ScalarConverter& operator= (const ScalarConverter& copyop); //copy assignment operator
 		~ScalarConverter(); //Destructor
 
-		int check_for_error(void);
-		void check_for_type(void);
-		void check_overflows(void);
-		
-		void convert(char* input);
+		static std::string type_;
+		static std::string in_;
 
-		void char_conversion(void);
-		void int_conversion(void);
-		void float_conversion(void);
-		void double_conversion(void);
-		
-		void print_char(void);
-		void print_int(void);
-		void print_float(void);
-		void print_double(void);
-
-	private:
-		std::string type_;
-		std::string in_;
-
-		char c_;
-		int	i_;
-		float f_;
-		double d_;
-		long int li_;
-		long double ld_;
+		static char c_;
+		static int	i_;
+		static float f_;
+		static double d_;
+		static long int li_;
+		static long double ld_;
 };
 
 #endif
