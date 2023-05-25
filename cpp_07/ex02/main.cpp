@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/21 19:14:27 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/25 15:01:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@ int main()
         std::cout << YELLOW "INT Array test" RESET << std::endl;
         std::cout << PURPLE "Constructor with size" RESET << std::endl;
         Array<int> test1(5);
-        std::cout << test1.size() << std::endl;
+        std::cout << "size of test1: " << test1.size() << std::endl;
         std::cout << PURPLE "Default Constructor" RESET << std::endl;
         Array<int> test2;
-        std::cout << test2.size() << std::endl;
+        std::cout << "size of test2: " << test2.size() << std::endl;
         std::cout << PURPLE "Filling values + out of range test" RESET << std::endl;
         try
         {
@@ -42,25 +42,25 @@ int main()
         std::cout << PURPLE "copy assignment operator" RESET << std::endl;
         test2 = test1;
         std::cout << PURPLE "values test1" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test1.size(); i++)
             std::cout << test1[i] << std::endl;
         std::cout << PURPLE "values test2" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test2.size(); i++)
             std::cout << test2[i] << std::endl;
         std::cout << PURPLE "values test3" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test3.size(); i++)
             std::cout << test3[i] << std::endl;
         std::cout << PURPLE "change of values in test1" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test1.size(); i++)
         {
             test1[i] = -1;
             std::cout << test1[i] << std::endl;
         }
         std::cout << PURPLE "values test2" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test2.size(); i++)
             std::cout << test2[i] << std::endl;
         std::cout << PURPLE "values test3" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test3.size(); i++)
             std::cout << test3[i] << std::endl;
         std::cout << PURPLE "Destructors" RESET << std::endl;
     }
@@ -68,10 +68,10 @@ int main()
         std::cout << YELLOW "STRING Array test" RESET << std::endl;
         std::cout << PURPLE "Constructor with size" RESET << std::endl;
         Array<std::string> test1(5);
-        std::cout << test1.size() << std::endl;
+        std::cout << "size of test1: " << test1.size() << std::endl;
         std::cout << PURPLE "Default Constructor" RESET << std::endl;
         Array<std::string> test2;
-        std::cout << test2.size() << std::endl;
+        std::cout << "size of test2: " << test2.size() << std::endl;
         std::cout << PURPLE "Filling values + out of range test" RESET << std::endl;
         try
         {
@@ -92,25 +92,25 @@ int main()
         std::cout << PURPLE "copy assignment operator" RESET << std::endl;
         test2 = test1;
         std::cout << PURPLE "values test1" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test1.size(); i++)
             std::cout << test1[i] << std::endl;
         std::cout << PURPLE "values test2" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test2.size(); i++)
             std::cout << test2[i] << std::endl;
         std::cout << PURPLE "values test3" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test3.size(); i++)
             std::cout << test3[i] << std::endl;
         std::cout << PURPLE "change of values in test1" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test1.size(); i++)
         {
             test1[i] = "changed string";
             std::cout << test1[i] << std::endl;
         }
         std::cout << PURPLE "values test2" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test2.size(); i++)
             std::cout << test2[i] << std::endl;
         std::cout << PURPLE "values test3" RESET << std::endl;
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < test3.size(); i++)
             std::cout << test3[i] << std::endl;
         std::cout << PURPLE "Destructors" RESET << std::endl;
     }

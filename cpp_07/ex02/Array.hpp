@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/21 18:47:12 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:53:15 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,24 +27,30 @@ class Array {
 		// DEFAULT CONSTRUCTOR
 		Array() : size_(0) {
 			std::cout << "Default Constructor" << std::endl;
-			arr_ = new T[0];
+			arr_ = new T[size_];
 		}
+
 		// CONSTRUCTOR WITH SIZE
 		Array(unsigned int n) : size_(n) {
 			std::cout << "Constructor with size" << std::endl;
 				arr_ = new T[size_];
 		}
+
 		// COPY CONSTRUCTOR
-		Array(const Array &copyclass) {
+		Array(const Array &copyclass) : size_(copyclass.size_) {
 			std::cout << "Copy Constructor" << std::endl;
-			*this = copyclass;
+			arr_ = new T[size_];
+			for (int i = 0; i < size_; i++)
+				arr_[i] = copyclass.arr_[i];
 		}
+
 		// COPY ASSIGNMENT OPERATOR
 		Array& operator= (const Array& copyop) {
 			std::cout << "Copy Assignment Operator" << std::endl;
 			if (this != &copyop)
 			{
-				delete[] arr_;
+				if(arr_)
+					delete[] arr_;
 				size_ = copyop.size_;
 				arr_ = new T[size_];
 				for (int i = 0; i < size_; i++)
@@ -52,6 +58,7 @@ class Array {
 			}
 			return (*this);
 		}
+
 		// DESTRUCTOR
 		~Array() {
 			std::cout << "Destructor" << std::endl;
@@ -62,12 +69,14 @@ class Array {
 		int size() const {
 			return (size_);
 		}
+
 		// SUBSCRIPT OPERATOR OVERLOAD
 		T& operator[] (int i) {
 			if (i >= size_)
 				throw IndexOutOfBounds();
 			return (arr_[i]);
 		}
+
 		// EXCEPTION
 		class IndexOutOfBounds: public std::exception {
 			public:

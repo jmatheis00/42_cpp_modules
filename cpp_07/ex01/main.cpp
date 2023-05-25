@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/21 19:44:47 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/25 14:20:03 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,23 @@ int main()
         std::cout << YELLOW "INT TEST" RESET << std::endl;
         int test1[] = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
         std::cout << PURPLE << "starting values" RESET<< std::endl;
-        iter(test1, 10, printing<int>);
+        iter(test1, 10, printing);
         std::cout << PURPLE << "calculate power" RESET << std::endl;
-        iter(test1, 10, calculatepower<int>);
+        iter(test1, 10, calculatepower);
+    }
+    {
+        std::cout << YELLOW "CHAR TEST" RESET << std::endl;
+        char test1[] = {'a', 'b', 'c'};
+        std::cout << PURPLE << "values printed" RESET<< std::endl;
+        iter(test1, 3, printing);
     }
     {
         std::cout << YELLOW "STRING TEST" RESET << std::endl;
         std::string test1[] = {"value 0", "value 1", "value 2", "value 3"};
         std::cout << PURPLE << "starting values" RESET<< std::endl;
-        iter(test1, 4, printing<std::string>);
+        iter(test1, 4, printing);
         std::cout << PURPLE << "add point at the end" RESET << std::endl;
-        iter(test1, 4, addpoint<std::string>);
+        iter(test1, 4, addpoint);
     }
 }
 
@@ -68,8 +74,8 @@ int main()
 //     int tab[] = {0, 1, 2, 3, 4};
 //     Awesome tab2[5];
 
-//     iter(tab, 5, print<int>);
-//     iter(tab2, 5, print<Awesome>);
+//     iter(tab, 5, print);
+//     iter(tab2, 5, print);
 
 //     return (0);
 // }
