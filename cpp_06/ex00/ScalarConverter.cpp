@@ -6,13 +6,14 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/24 11:50:35 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/25 12:46:27 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScalarConverter.hpp"
 
 // NECESSARY for avoiding linker errors
+// static variables exist without functions
 std::string ScalarConverter::type_ = "Default";
 std::string ScalarConverter::in_ = "Default";
 char ScalarConverter::c_ = 0;
@@ -55,8 +56,8 @@ int ScalarConverter::check_for_error(void)
 	int pointcount = 0;
 	int length = (int)in_.length() - 1;
 
-	if (in_ == "nan" || in_ == "nanf" || in_ == "+in_f"
-		|| in_ == "+in_ff" || in_ == "-in_f" || in_ == "-inff"
+	if (in_ == "nan" || in_ == "nanf" || in_ == "+inf"
+		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff"
 		|| (in_.length() == 1 && std::isprint(in_[0])))
 		return(0);
 	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-')
@@ -118,7 +119,7 @@ void ScalarConverter::char_conversion(void)
 void ScalarConverter::int_conversion(void)
 {
 	i_ = static_cast<int>(strtod(in_.c_str(), NULL));
-	li_ = static_cast<long int>(strtol(in_.c_str(), NULL, 0));
+	li_ = static_cast<long int>(i_);
 	c_ = static_cast<char>(i_);
 	f_ = static_cast<float>(i_);
 	d_ = static_cast<double>(i_);
