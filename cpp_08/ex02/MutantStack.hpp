@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   easyfind.hpp                                       :+:      :+:    :+:   */
+/*   MutantStack.hpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/26 11:22:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/30 19:16:38 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef EASYFIND_HPP
-# define EASYFIND_HPP
+#ifndef MutantStack_HPP
+# define MutantStack_HPP
 
 # include <iostream>
-# include <vector>
-# include <list>
-# include <deque>
+# include <stack>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -24,22 +22,12 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-class NoOccurenceFound: public std::exception {
-	public:
-		virtual const char* what() const throw(){
-			return("Occurence not found in Container!");
-		}
-};
-
 template <typename T>
-int easyfind(T a, int i)
+class MutantStack : public std::stack<T>
 {
-	typename T::const_iterator it = std::find(a.begin(), a.end(), i);
-	
-	if(it != a.end())
-		return (*it);
-	else
-		throw NoOccurenceFound();
-}
+    public:
+		iterator begin();
+		iterator end();
+};
 
 #endif
