@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:23:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/26 12:58:21 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:38:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,42 +54,32 @@ void Span::addNumber(int i)
 
 unsigned int Span::shortestSpan()
 {
-    if (N_ < 2)
+    if (vec_.size() < 2)
         throw NoSpanFound();
-
     std::vector<int>::iterator itb = vec_.begin();
     std::vector<int>::iterator ite = vec_.end();
     std::sort(itb, ite);
 
-    unsigned int smallestspan = std::abs(itb[0] - itb[1]);
-    while(itb != ite)
+    unsigned int smallestspan = static_cast <unsigned int> (std::abs(itb[0] - itb[1]));
+    itb++;
+    while(itb < ite - 1)
     {
-        int tmp = *itb++;
+        int tmp = *itb;
+        itb++;
         if (smallestspan > static_cast <unsigned int> (std::abs(*itb - tmp)))
             smallestspan = std::abs(*itb - tmp);
-        itb++;
     }
     return(smallestspan);
 }
 
 unsigned int Span::longestSpan()
 {
-    if (N_ < 2)
+    if (vec_.size() < 2)
         throw NoSpanFound();
+    std::vector<int>::iterator min = std::min_element(vec_.begin(), vec_.end());
+    std::vector<int>::iterator max = std::max_element(vec_.begin(), vec_.end());
 
-    std::vector<int>::iterator itb = vec_.begin();
-    std::vector<int>::iterator ite = vec_.end();
-    std::sort(itb, ite);
-
-    unsigned int biggestspan = std::abs(itb[0] - itb[1]);
-    while(itb != ite)
-    {
-        int tmp = *itb++;
-        if (biggestspan < static_cast <unsigned int> (std::abs(*itb - tmp)))
-            biggestspan = std::abs(*itb - tmp);
-        itb++;
-    }
-    return(biggestspan);
+    return(static_cast <unsigned int> (std::abs(*max - *min)));
 }
 
 void Span::addmanyNumber(std::vector<int> range) //Parameter: vector or similar
@@ -101,6 +91,20 @@ void Span::addmanyNumber(std::vector<int> range) //Parameter: vector or similar
     std::vector<int>::iterator re = range.end();
 
     vec_.insert(vec_.end(), rb, re); //re + 1?
+}
+
+// GET SPAN
+void Span::getSpan()
+{
+    std::vector<int>::iterator beg = vec_.begin();
+    std::vector<int>::iterator end = vec_.end();
+    std::cout << RED "SPAN" RESET << std::endl;
+    while (beg < end)
+    {
+        std::cout << *beg << "\t";
+        beg++;
+    }
+    std::cout << std::endl;
 }
 
 // EXCEPTIONS

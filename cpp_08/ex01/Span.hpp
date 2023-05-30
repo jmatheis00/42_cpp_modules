@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/26 12:41:06 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/30 18:31:44 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Span
 		~Span(); //Destructor
 
 		// GETTER
-
+		void getSpan();
 		// OTHER
 		void addNumber(int i); //add single number to Span
 		unsigned int shortestSpan();
@@ -56,25 +56,5 @@ class Span
 		unsigned int N_;
 		std::vector<int> vec_;
 };
-
-
-
-// class NoOccurenceFound: public std::exception {
-// 	public:
-// 		virtual const char* what() const throw(){
-// 			return("Occurence not found in Container!");
-// 		}
-// };
-
-// template <typename T>
-// int easyfind(T a, int i)
-// {
-// 	typename T::const_iterator it = std::find(a.begin(), a.end(), i);
-	
-// 	if(it != a.end())
-// 		return (*it);
-// 	else
-// 		throw NoOccurenceFound();
-// }
 
 #endif
