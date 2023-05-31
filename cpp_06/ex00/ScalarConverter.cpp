@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/25 12:46:27 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/31 11:28:35 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int ScalarConverter::check_for_error(void)
 		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff"
 		|| (in_.length() == 1 && std::isprint(in_[0])))
 		return(0);
-	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-')
+	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-' && in_[0] != '+')
 		|| in_ == "-f")
 		return(1);
 	for (int i = 1; i < length; i++)
