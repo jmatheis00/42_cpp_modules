@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/25 13:05:29 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:26:40 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,24 @@
 #define PURPLE      "\033[35m"              /* Purple */
 
 template <typename T>
-void swap(T& a, T& b) {
+void swap(T& a, T& b)
+{
 	T tmp = a;
 	a = b;
 	b = tmp;
 }
 
 template <typename T>
-T min(T a, T b) {
+T min(T a, T b)
+{
 	if (a < b)
 		return (a);
 	return (b);
 }
 
 template <typename T>
-T max(T a, T b) {
+T max(T a, T b)
+{
 	if (a > b)
 		return (a);
 	return (b);

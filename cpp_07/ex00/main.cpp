@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/25 13:06:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/31 17:24:44 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,10 @@ int main(void)
     std::cout << YELLOW "CHAR TEST" RESET << std::endl;
     char e = 'a';
     char f = 'b';
-    ::swap(e, f);
+    swap(e, f);
     std::cout << "e = " << e << ", f = " << f << std::endl;
-    std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
-    std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
+    std::cout << "min( e, f ) = " << min( e, f ) << std::endl;
+    std::cout << "max( e, f ) = " << max( e, f ) << std::endl;
 
     return 0;
 }

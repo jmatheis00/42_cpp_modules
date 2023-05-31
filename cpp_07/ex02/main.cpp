@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/25 15:01:33 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/05/31 18:10:48 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int main()
         }
         catch(const std::exception& e)
         {
-            std::cerr << e.what() << std::endl;
+            std::cerr << RED << e.what() << RESET << std::endl;
         }
         std::cout << YELLOW "\nDEEP COPY TEST" RESET << std::endl;
         std::cout << PURPLE "copy constructor" RESET << std::endl;
@@ -84,7 +84,7 @@ int main()
         }
         catch(const std::exception& e)
         {
-            std::cerr << e.what() << std::endl;
+            std::cerr << RED << e.what() << RESET << std::endl;
         }
         std::cout << YELLOW "\nDEEP COPY TEST" RESET << std::endl;
         std::cout << PURPLE "copy constructor" RESET << std::endl;
