@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/30 19:16:38 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 01:50:06 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,21 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
+// template class derived from std::stack<T>
+// all functions from stack usuable through class
+// Bitte beachte, dass this->c auf den 
+// zugrunde liegenden Container von std::stack verweist,
+// dessen tatsächlicher Name abhängig von der Implementierung
+//  von std::stack ist. In der Regel ist es ein std::deque.
 template <typename T>
 class MutantStack : public std::stack<T>
 {
     public:
-		iterator begin();
-		iterator end();
+		// defines new iterator for type T
+		typedef typename std::stack<T>::container_type::iterator iterator;
+		// this->c pointer to container of std::stack<T>
+		iterator begin() {return(this->c.begin());}
+		iterator end() {return(this->c.end());}
 };
 
 #endif
