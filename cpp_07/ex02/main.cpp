@@ -6,11 +6,18 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/31 18:10:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 15:10:06 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Array.hpp"
+#include <ostream>
+
+template <typename T>
+const char* Array<T>::IndexOutOfBounds::what() const throw()
+{
+    return("Index position doesn't exist in array!");
+}
 
 int main()
 {

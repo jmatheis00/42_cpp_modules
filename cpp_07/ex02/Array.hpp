@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/25 14:53:15 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 14:56:12 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define ARRAY_HPP
 
 # include <iostream>
+# include <string>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -22,20 +23,19 @@
 #define PURPLE      "\033[35m"              /* Purple */
 
 template <typename T>
-class Array {
+class Array
+{
 	public:
 		// DEFAULT CONSTRUCTOR
 		Array() : size_(0) {
 			std::cout << "Default Constructor" << std::endl;
 			arr_ = new T[size_];
 		}
-
 		// CONSTRUCTOR WITH SIZE
 		Array(unsigned int n) : size_(n) {
 			std::cout << "Constructor with size" << std::endl;
 				arr_ = new T[size_];
 		}
-
 		// COPY CONSTRUCTOR
 		Array(const Array &copyclass) : size_(copyclass.size_) {
 			std::cout << "Copy Constructor" << std::endl;
@@ -43,7 +43,6 @@ class Array {
 			for (int i = 0; i < size_; i++)
 				arr_[i] = copyclass.arr_[i];
 		}
-
 		// COPY ASSIGNMENT OPERATOR
 		Array& operator= (const Array& copyop) {
 			std::cout << "Copy Assignment Operator" << std::endl;
@@ -58,7 +57,6 @@ class Array {
 			}
 			return (*this);
 		}
-
 		// DESTRUCTOR
 		~Array() {
 			std::cout << "Destructor" << std::endl;
@@ -88,10 +86,5 @@ class Array {
 		
 };
 
-template <typename T>
-const char* Array<T>::IndexOutOfBounds::what() const throw()
-{
-    return("Index position doesn't exist in array!");
-}
 
 #endif
