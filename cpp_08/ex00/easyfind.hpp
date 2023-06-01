@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/26 11:22:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 15:58:28 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@
 
 class NoOccurenceFound: public std::exception {
 	public:
-		virtual const char* what() const throw(){
-			return("Occurence not found in Container!");
-		}
+		virtual const char* what() const throw();
 };
 
 template <typename T>

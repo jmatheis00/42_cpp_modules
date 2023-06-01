@@ -6,11 +6,18 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/26 11:44:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 15:58:21 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
+
+class NoOccurenceFound: public std::exception {
+	public:
+		virtual const char* what() const throw(){
+			return("Occurence not found in Container!");
+		}
+};
 
 int main(void)
 {
