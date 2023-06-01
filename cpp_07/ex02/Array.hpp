@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 16:37:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 17:59:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,10 @@ class Array
 		}
 		// CONSTRUCTOR WITH SIZE
 		Array(unsigned int n) : size_(n) {
+			if (size_ < 0)
+				size_ = 0;
 			std::cout << "Constructor with size" << std::endl;
-				arr_ = new T[size_];
+			arr_ = new T[size_];
 		}
 		// COPY CONSTRUCTOR
 		Array(const Array &copyclass) : size_(copyclass.size_) {
@@ -70,7 +72,7 @@ class Array
 
 		// SUBSCRIPT OPERATOR OVERLOAD
 		T& operator[] (int i) const{
-			if (i >= size_)
+			if (i >= size_ || i < 0)
 				throw IndexOutOfBounds();
 			return (arr_[i]);
 		}

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 16:53:55 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 18:31:22 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ const char* Array<T>::IndexOutOfBounds::what() const throw()
 {
     return("Index position doesn't exist in array!");
 }
-
-
 
 class Person
 {
@@ -46,19 +44,8 @@ class Person
 
 std::ostream& operator<<(std::ostream& os, const Person& i){os << i.getname(); return(os);}
 
-
 int main()
 {
-    {
-        Person bob("Bob");
-        Person amy("Amy");
-        Array<Person> ar(2);
-        ar[0] = bob;
-        ar[1] = amy;
-        
-        
-        
-    }
     {
         std::cout << YELLOW "CLASS Array test" RESET << std::endl;
         std::cout << PURPLE "Constructor with size" RESET << std::endl;
