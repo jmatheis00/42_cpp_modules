@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 18:31:22 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:03:08 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ class Person
 };
 
 std::ostream& operator<<(std::ostream& os, const Person& i){os << i.getname(); return(os);}
+
 
 int main()
 {
@@ -196,5 +197,12 @@ int main()
             std::cout << test3[i] << std::endl;
         std::cout << PURPLE "Destructors" RESET << std::endl;
     }
+    // {
+    //     const Array<int> test(2);
+    //     test[0] = 1;
+    //     test[1] = 2;
+    //     for (int i = 0; i < test.size(); i++)
+    //         std::cout << test[i] << std::endl;
+    // }
     return (0);
 }

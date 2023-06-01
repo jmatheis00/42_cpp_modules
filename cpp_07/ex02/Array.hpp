@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 17:59:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/01 19:01:28 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,14 @@ class Array
 		}
 
 		// SUBSCRIPT OPERATOR OVERLOAD
-		T& operator[] (int i) const{
+		T& operator[] (int i) {
+			if (i >= size_ || i < 0)
+				throw IndexOutOfBounds();
+			return (arr_[i]);
+		}
+
+		// SUBSCRIPT OPERATOR OVERLOAD CONST OBJECTS
+		const T& operator[] (int i) const {
 			if (i >= size_ || i < 0)
 				throw IndexOutOfBounds();
 			return (arr_[i]);
