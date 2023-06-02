@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 19:01:28 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/02 13:00:38 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
+
+// new T[size_]() --> brackets: default value initialization
 template <typename T>
 class Array
 {
@@ -29,14 +31,14 @@ class Array
 		// DEFAULT CONSTRUCTOR
 		Array() : size_(0) {
 			std::cout << "Default Constructor" << std::endl;
-			arr_ = new T[size_];
+			arr_ = new T[size_]();
 		}
 		// CONSTRUCTOR WITH SIZE
 		Array(unsigned int n) : size_(n) {
 			if (size_ < 0)
 				size_ = 0;
 			std::cout << "Constructor with size" << std::endl;
-			arr_ = new T[size_];
+			arr_ = new T[size_]();
 		}
 		// COPY CONSTRUCTOR
 		Array(const Array &copyclass) : size_(copyclass.size_) {
@@ -95,5 +97,10 @@ class Array
 		
 };
 
+template <typename T>
+const char* Array<T>::IndexOutOfBounds::what() const throw()
+{
+    return("Index position doesn't exist in array!");
+}
 
 #endif
