@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/02 16:58:36 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:07:00 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,3 +58,6 @@ int main()
     }
     return(0);
 }
+
+// using calculatorpower<int> -> creates copy of element which gets changed
+// using int& -> reference -> access to original element, remains changed
