@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 01:50:06 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/02 17:17:26 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,14 @@ class MutantStack : public std::stack<T>
 {
     public:
 		// defines new iterator for type T
+		// two nested typedefs (iterator)
 		typedef typename std::stack<T>::container_type::iterator iterator;
+		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 		// this->c pointer to container of std::stack<T>
 		iterator begin() {return(this->c.begin());}
 		iterator end() {return(this->c.end());}
+		const_iterator begin() const {return(this->c.begin());}
+		const_iterator end() const {return(this->c.end());}
 };
 
 #endif
