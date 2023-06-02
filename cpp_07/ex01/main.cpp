@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 18:43:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/02 13:40:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,4 +54,5 @@ int main()
         std::cout << PURPLE << "add point at the end" RESET << std::endl;
         iter(test1, 4, addpoint);
     }
+    return(0);
 }

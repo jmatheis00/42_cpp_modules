@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/02 12:25:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/02 13:38:15 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 // void(*f)(T)
 // can be any function that accepts T as parameter and returns void
 template <typename T>
-void iter(const T* array, unsigned int size, void(*f)(const T& t))
+void iter(T* array, unsigned int size, void(*f)(const T& t))
 {
 	for (unsigned int i = 0; i < size; i++)
 		f(array[i]);
