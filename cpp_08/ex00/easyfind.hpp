@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/06 15:54:57 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/07 17:16:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 # define EASYFIND_HPP
 
 # include <iostream>
+# include <algorithm>
+// sequence containers
 # include <vector>
 # include <list>
 # include <deque>
@@ -29,6 +31,8 @@ class NoOccurenceFound: public std::exception {
 		virtual const char* what() const throw();
 };
 
+// T is a container of integers
+// find first occurrence of the second param in first param
 template <typename T>
 int easyfind(T a, int i)
 {

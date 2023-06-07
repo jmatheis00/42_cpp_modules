@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:23:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/30 18:38:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:23:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ unsigned int Span::longestSpan()
     return(static_cast <unsigned int> (std::abs(*max - *min)));
 }
 
-void Span::addmanyNumber(std::vector<int> range) //Parameter: vector or similar
+void Span::addmanyNumbers(std::vector<int> range) //Parameter: vector or similar
 {
     if (N_ - vec_.size() < range.size())
         throw SpanIsAlreadyFilled();
@@ -90,7 +90,18 @@ void Span::addmanyNumber(std::vector<int> range) //Parameter: vector or similar
     std::vector<int>::iterator rb = range.begin();
     std::vector<int>::iterator re = range.end();
 
-    vec_.insert(vec_.end(), rb, re); //re + 1?
+    vec_.insert(vec_.end(), rb, re);
+}
+
+void Span::addmanyNumbers(std::vector<int>::iterator itb, std::vector<int>::iterator ite)
+{
+    unsigned int range = 0;
+    for (std::vector<int>::iterator tmp = itb; tmp < ite; tmp++)
+        range++;
+
+    if (N_ - vec_.size() < range)
+        throw SpanIsAlreadyFilled();
+    vec_.insert(vec_.end(), itb, ite);
 }
 
 // GET SPAN
@@ -98,13 +109,18 @@ void Span::getSpan()
 {
     std::vector<int>::iterator beg = vec_.begin();
     std::vector<int>::iterator end = vec_.end();
-    std::cout << RED "SPAN" RESET << std::endl;
+    std::cout << PURPLE "SPAN PRINTED" RESET << std::endl;
     while (beg < end)
     {
         std::cout << *beg << "\t";
         beg++;
     }
     std::cout << std::endl;
+}
+
+int Span::getSize()
+{
+    return(vec_.size());
 }
 
 // EXCEPTIONS

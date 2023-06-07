@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/30 18:31:44 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/07 19:06:36 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,13 @@ class Span
 
 		// GETTER
 		void getSpan();
+		int getSize();
 		// OTHER
 		void addNumber(int i); //add single number to Span
 		unsigned int shortestSpan();
 		unsigned int longestSpan();
-		void addmanyNumber(std::vector<int> range); //add many number to Span
+		void addmanyNumbers(std::vector<int> range); //add many number to Span
+		void addmanyNumbers(std::vector<int>::iterator itb, std::vector<int>::iterator ite); //add many number to Span
 
 		// EXCEPTIONS
 		class SpanIsAlreadyFilled: public std::exception {
