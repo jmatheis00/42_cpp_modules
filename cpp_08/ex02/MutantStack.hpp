@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/08 12:39:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/12 16:58:48 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 # include <iostream>
 # include <stack>
+# include <list>
+# include <vector>
+# include <deque>
 
 #define RESET       "\033[0m"               /* Reset */
 #define RED         "\033[31m"              /* Red */
@@ -32,6 +35,26 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
     public:
+		MutantStack() {
+			std::cout << "Default Constructor" << std::endl;
+		}
+		MutantStack(const MutantStack &copyclass) {
+			std::cout << "Copy Constructor" << std::endl;
+			std::stack<T>::operator =(copyclass);
+		}
+		MutantStack& operator= (const MutantStack& copyop) {
+			std::cout << "Copy Assignment Operator" << std::endl;
+			if (this != &copyop)
+			{
+				while(this->empty() != 1)
+					this->pop();
+				std::stack<T>::operator =(copyop);
+			}
+			return(*this);
+		}
+		~MutantStack(){
+			std::cout << "Destructor" << std::endl;
+		}
 		// defines new iterator for type T
 		// two nested typedefs (iterator)
 		typedef typename std::stack<T>::container_type::iterator iterator;
