@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/13 13:17:31 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/13 15:39:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,20 +63,36 @@ void RPN::Split()
     {
         if (token == "-" || token == "+" || token == "/" || token == "*")
             calculate(token);
-        std::cout << i << std::endl;
+        else if (strtod(token.c_str(), NULL) < 10 && strtod(token.c_str(), NULL) >= 0)
+            stack_.push(strtod(token.c_str(), NULL));
+        else
+            std::cout << "Invalid numbers" << std::endl;
     }
+    std::cout << YELLOW "RESULT: " << stack_.top() << RESET << std::endl;
+    stack_.pop();
     
 }
 
+// isOperator function?
 void RPN::calculate(std::string t)
 {
     if (stack_.size() < 2)
         std::cout << "Calculation not possible, invalid string" << std::endl;
     else
     {
+        int one = stack_.top();
+        stack_.pop();
+        int two = stack_.top();
+        stack_.pop();
+        int result = 0;
         if (t == "-")
-            stack_[0] - stack[1];
+            result = two - one;
         else if (t == "+")
-            stack_[0] - stack[1];
+            result = two + one;
+        else if (t == "*")
+            result = two * one;
+        else if (t == "/")
+            result = two / one;
+        stack_.push(result);
     }
 }
