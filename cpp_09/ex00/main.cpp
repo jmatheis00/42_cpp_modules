@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/12 19:06:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:29:25 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ int main(int ac, char* ag[])
     else
     {
         BitcoinExchange b(infile);
-        
     }
     return 0;
 }
