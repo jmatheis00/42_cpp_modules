@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/02 00:14:50 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/13 08:59:08 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define BITCOINEXCHANGE_HPP
 
 # include <iostream>
+# include <string>
 # include <map>
 # include <fstream>
 
@@ -26,13 +27,18 @@
 class BitcoinExchange
 {
 	public:
+		~BitcoinExchange(); //Destructor
+		BitcoinExchange(std::ifstream& infile);
+		void addElement(std::string s, float i);
+		void printMap();
+		bool checkDate(std::string buff);
+		bool checkInputFormat(std::string line);
+		void output();
+	private:
 		BitcoinExchange(); //Default Constructor
 		BitcoinExchange(const BitcoinExchange &copyclass); //Copy Constructor
 		BitcoinExchange& operator= (const BitcoinExchange& copyop); //copy assignment operator
-		~BitcoinExchange(); //Destructor
-		BitcoinExchange(std::string file);
-	private:
-		std::map<std::string, int> map_; //float?
+		std::map<std::string, float> map_; //float?
 		std::string file_;
 };
 
