@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/13 08:59:08 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:07:48 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,18 @@ class BitcoinExchange
 		void addElement(std::string s, float i);
 		void printMap();
 		bool checkDate(std::string buff);
+		int	checkValue(float val_f);
 		bool checkInputFormat(std::string line);
-		void output();
+		void checkExchangeRate(std::string date, float val_f);
 	private:
 		BitcoinExchange(); //Default Constructor
 		BitcoinExchange(const BitcoinExchange &copyclass); //Copy Constructor
 		BitcoinExchange& operator= (const BitcoinExchange& copyop); //copy assignment operator
 		std::map<std::string, float> map_; //float?
 		std::string file_;
+		float yearf_;
+		float monthf_;
+		float dayf_;
 };
 
 #endif
