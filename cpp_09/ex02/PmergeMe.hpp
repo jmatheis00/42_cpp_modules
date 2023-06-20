@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/20 11:32:26 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/20 13:05:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <iostream>
 # include <string>
 # include <vector>
-# include <list>
+# include <deque>
 # include <fstream>
 # include <sstream>
 
@@ -51,10 +51,14 @@ class PmergeMe
 
 		// recursive: part list with 2
 		// until only one element left
-		std::vector<int> MergeSort(std::vector<int>& a);
+		std::vector<int> MergeSort(std::vector<int> a);
 		
 		// IMPLEMENT TIME TRACKING UNTIL SORTED
-		void sortContainer(std::vector<int> a);
+		void sortVector(std::vector<int> a);
+		// LIST
+		void sortdeque(std::deque<int> a);
+		std::deque<int> InsertionSortdeque(std::deque<int> res, std::deque<int> b);
+		std::deque<int> MergeSortdeque(std::deque<int> a);
 
 	private:
 		PmergeMe(); //Default Constructor
@@ -64,7 +68,10 @@ class PmergeMe
 		std::vector<int>vecleft_;
 		std::vector<int>vecright_;
 		std::vector<int>final_;
-		std::list<int>list_;
+		std::deque<int>deque_;
+		std::deque<int>dequeleft_;
+		std::deque<int>dequeright_;
+		std::deque<int>finaldeque_;
 		// std::multimap
 };
 
