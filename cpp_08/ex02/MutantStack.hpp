@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/12 16:58:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/21 15:00:13 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ class MutantStack : public std::stack<T>
 			std::cout << "Copy Assignment Operator" << std::endl;
 			if (this != &copyop)
 			{
-				while(this->empty() != 1)
+				while(this->empty() != true)
 					this->pop();
 				std::stack<T>::operator =(copyop);
 			}
