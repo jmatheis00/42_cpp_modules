@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/21 15:00:13 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/26 22:29:48 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,12 @@ class MutantStack : public std::stack<T>
 		MutantStack() {
 			std::cout << "Default Constructor" << std::endl;
 		}
+
 		MutantStack(const MutantStack &copyclass) {
 			std::cout << "Copy Constructor" << std::endl;
 			std::stack<T>::operator =(copyclass);
 		}
+
 		MutantStack& operator= (const MutantStack& copyop) {
 			std::cout << "Copy Assignment Operator" << std::endl;
 			if (this != &copyop)
@@ -52,36 +54,20 @@ class MutantStack : public std::stack<T>
 			}
 			return(*this);
 		}
+		
 		~MutantStack(){
 			std::cout << "Destructor" << std::endl;
 		}
-		// defines new iterator for type T
-		// two nested typedefs (iterator)
+
 		typedef typename std::stack<T>::container_type::iterator iterator;
-		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
-		// this->c pointer to container of std::stack<T>
 		iterator begin() {return(this->c.begin());}
 		iterator end() {return(this->c.end());}
+
+		typedef typename std::stack<T>::container_type::const_iterator const_iterator;
 		const_iterator begin() const {return(this->c.begin());}
 		const_iterator end() const {return(this->c.end());}
 };
 
-
-// typedef: assigning an alternative name to  a specific type
-// typename: used to tell compiler
-// that std::stack<T>::container_type::iterator
-// is a valid type and should be named as iterator.
-// without typename: compiler would not recognize iterator as type automatically
-// -> typename helps compiler to understand the right context
-// and to assign the right type
-
-// std::stack = a container adapter class
-// -> takes another existing container as base
-// which provides a LIFO (Last-In-First-Out) Data structure
-// the container used as base can be accessed via
-// the container_type member type of the std::stack class 
-// container_type = an alias for the underlying container
-// which is by default a std::deque
 
 // underlying container stores every information of the stack elements
 // -> it's the base
