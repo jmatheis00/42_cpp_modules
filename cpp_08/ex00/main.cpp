@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/07 17:01:17 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:25:41 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,6 @@ const char* NoOccurenceFound::what() const throw()
 {
 	return("Occurence not found in Container!");
 }
-
-// std::cout << YELLOW "CONST VECTOR TEST" RESET << std::endl;
-// const std::vector<int> test = v;
-// try
-// {
-//     std::cout << PURPLE "Find int = 98" RESET << std::endl;
-//     std::cout << easyfind(test, 98) << std::endl;
-//     std::cout << PURPLE "Find int = 3" RESET << std::endl;
-//     std::cout << easyfind(test, 3) << std::endl;
-//     std::cout << PURPLE "Find int = 2" RESET << std::endl;
-//     std::cout << easyfind(test, 2) << std::endl;
-//     std::cout << PURPLE "Find int = 100" RESET << std::endl;
-//     std::cout << easyfind(test, 100) << std::endl;
-// }
-// catch(const std::exception& e)
-// {
-//     std::cerr << RED << e.what() << RESET << '\n';
-// }
 
 int main(void)
 {
@@ -115,10 +97,10 @@ int main(void)
             std::cout << easyfind(v, 3) << std::endl;
             std::cout << PURPLE "Find int = 22" RESET << std::endl;
             std::cout << easyfind(v, 22) << std::endl;
-            std::cout << PURPLE "Find int = 290" RESET << std::endl;
-            std::cout << easyfind(v, 290) << std::endl;
-            std::cout << PURPLE "Find int = 4" RESET << std::endl;
-            std::cout << easyfind(v, 4) << std::endl;
+            std::cout << PURPLE "Find int = 490" RESET << std::endl;
+            std::cout << easyfind(v, 490) << std::endl;
+            std::cout << PURPLE "Find int = 101" RESET << std::endl;
+            std::cout << easyfind(v, 101) << std::endl;
         }
         catch(const std::exception& e)
         {

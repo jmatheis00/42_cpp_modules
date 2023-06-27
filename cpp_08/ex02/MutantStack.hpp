@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/26 22:29:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/27 11:03:52 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,9 @@
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
 
-// template class derived from std::stack<T>
-// all functions from stack usuable through class
-// Bitte beachte, dass this->c auf den 
-// zugrunde liegenden Container von std::stack verweist,
-// dessen tatsächlicher Name abhängig von der Implementierung
-//  von std::stack ist. In der Regel ist es ein std::deque.
+// underlying container as base, default std::deque as base
+// c.begin() is equal to std::stack<T>::container_type::begin()
+
 template <typename T>
 class MutantStack : public std::stack<T>
 {
@@ -68,12 +65,4 @@ class MutantStack : public std::stack<T>
 		const_iterator end() const {return(this->c.end());}
 };
 
-
-// underlying container stores every information of the stack elements
-// -> it's the base
-// usually deque if there is no other container type stated explicitly
-// Ein Beispiel dafür wäre std::stack<int, std::vector<int>>,
-// wobei std::vector<int> als der zugrundeliegende Container verwendet wird
-// c stand for the underlying container -> container_type
-// c.begin() is equal to std::stack<T>::container_type::begin()
 #endif

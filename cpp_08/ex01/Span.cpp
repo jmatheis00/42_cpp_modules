@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:23:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/07 19:23:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/27 10:38:46 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ Span& Span::operator= (const Span& copyop)
     std::cout << "Copy Assignment Operator" << std::endl;
     if(this != &copyop)
     {
-
+        N_ = copyop.N_;
+        vec_ = copyop.vec_;
     }
     return(*this);
 }
@@ -79,7 +80,7 @@ unsigned int Span::longestSpan()
     std::vector<int>::iterator min = std::min_element(vec_.begin(), vec_.end());
     std::vector<int>::iterator max = std::max_element(vec_.begin(), vec_.end());
 
-    return(static_cast <unsigned int> (std::abs(*max - *min)));
+    return(static_cast<unsigned int>(std::abs(*max - *min)));
 }
 
 void Span::addmanyNumbers(std::vector<int> range) //Parameter: vector or similar
@@ -108,9 +109,8 @@ void Span::addmanyNumbers(std::vector<int>::iterator itb, std::vector<int>::iter
 void Span::getSpan()
 {
     std::vector<int>::iterator beg = vec_.begin();
-    std::vector<int>::iterator end = vec_.end();
     std::cout << PURPLE "SPAN PRINTED" RESET << std::endl;
-    while (beg < end)
+    while (beg != vec_.end())
     {
         std::cout << *beg << "\t";
         beg++;
