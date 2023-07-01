@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/01 16:47:27 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/13 12:12:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,33 +29,28 @@ class BitcoinExchange
 {
 	public:
 		~BitcoinExchange(); //Destructor
-		BitcoinExchange(std::string& infile);
-
-		bool checkDate(std::string date);
-
-		int	checkFloatValue(std::string value);
-		void checkExchangeRate(float val, std::string date);
-
-		void getDatabase();
-		void MainProccess();
-		class CouldNotOpenFile: public std::exception {
-			public:
-				virtual const char* what() const throw();
-		};
-		class FormatError: public std::exception {
-			public:
-				virtual const char* what() const throw();
-		};
+		BitcoinExchange(std::ifstream& infile);
+		void addElement(std::string s, float i);
+		bool DateIsValid();
+		int	checkFloatValue();
+		bool checkInputFormat(std::string line);
+		void checkExchangeRate();
+		bool checkDatabase();
 	private:
-
-		bool DateIsNotTooOld(std::string date);
+		bool DateIsNotTooOld();
+		bool initAttributes(std::string buff);
 		BitcoinExchange(); //Default Constructor
 		BitcoinExchange(const BitcoinExchange &copyclass); //Copy Constructor
 		BitcoinExchange& operator= (const BitcoinExchange& copyop); //copy assignment operator
-		
 		std::map<std::string, float> map_;
-		std::ifstream infile_;
-		std::ifstream data_;
+
+		std::string value_;
+		std::string date_;
+		float valf_;
+
+		float yearf_;
+		float monthf_;
+		float dayf_;
 };
 
 #endif

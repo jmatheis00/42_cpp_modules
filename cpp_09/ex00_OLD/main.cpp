@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/01 15:29:10 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/06/13 11:29:25 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,25 +16,15 @@
 // this database is provided with this subject
 // takes as input a second database, storing the different prices/dates to evaluate
 // using map
-// one argument: input.csv
 int main(int ac, char* ag[])
 {
-    if (ac != 2)
-        std::cout << "Error: Wrong number of arguments" << std::endl;
+    std::ifstream infile;
+    infile.open(ag[1]);
+    if (ac != 2 || !infile.is_open())
+        std::cout << "Error: could not open file" << std::endl;
     else
     {
-        std::string s = ag[1];
-        try
-        {
-            BitcoinExchange b(s);
-            b.getDatabase();
-            b.MainProccess();
-        }
-        catch(const std::exception& e)
-        {
-            std::cerr << e.what() << '\n';
-        }
-        
+        BitcoinExchange b(infile);
     }
     return 0;
 }
