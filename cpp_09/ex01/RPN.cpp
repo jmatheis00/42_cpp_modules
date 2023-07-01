@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/13 15:39:14 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:16:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,12 @@ RPN& RPN::operator= (const RPN& copyop)
 
 RPN::~RPN()
 {
-    std::cout << "Destructor" << std::endl;
+    // std::cout << "Destructor" << std::endl;
 }
 
-RPN::RPN(std::string input)
+RPN::RPN(std::string input) : s_(input)
 {
-    std::cout << "Constructor with string" << std::endl;
-    s_ = input;
+    // std::cout << "Constructor with string" << std::endl;
 }
 
 bool RPN::CheckCharacters()
@@ -63,10 +62,10 @@ void RPN::Split()
     {
         if (token == "-" || token == "+" || token == "/" || token == "*")
             calculate(token);
-        else if (strtod(token.c_str(), NULL) < 10 && strtod(token.c_str(), NULL) >= 0)
+        else if (token.length() == 1 && strtod(token.c_str(), NULL) < 10 && strtod(token.c_str(), NULL) >= 0)
             stack_.push(strtod(token.c_str(), NULL));
         else
-            std::cout << "Invalid numbers" << std::endl;
+            throw TokenError();
     }
     std::cout << YELLOW "RESULT: " << stack_.top() << RESET << std::endl;
     stack_.pop();
@@ -77,7 +76,7 @@ void RPN::Split()
 void RPN::calculate(std::string t)
 {
     if (stack_.size() < 2)
-        std::cout << "Calculation not possible, invalid string" << std::endl;
+        throw CalculationError();
     else
     {
         int one = stack_.top();
@@ -95,4 +94,16 @@ void RPN::calculate(std::string t)
             result = two / one;
         stack_.push(result);
     }
+}
+
+// EXCEPTIONS
+
+const char* RPN::TokenError::what() const throw()
+{
+	return("Error: Invalid token, check string!");
+}
+
+const char* RPN::CalculationError::what() const throw()
+{
+	return("Error: Calculation not possible, invalid string!");
 }

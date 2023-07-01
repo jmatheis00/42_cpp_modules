@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/01 15:29:10 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:12:01 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int main(int ac, char* ag[])
         catch(const std::exception& e)
         {
             std::cerr << e.what() << '\n';
-        }
-        
+        } 
     }
     return 0;
 }

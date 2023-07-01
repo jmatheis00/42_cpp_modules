@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/13 13:15:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/01 17:09:42 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,14 @@ class RPN
 		bool CheckCharacters();
 		void Split();
 		void calculate(std::string t);
+		class TokenError: public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
+		class CalculationError: public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 	private:
 		RPN(); //Default Constructor
 		RPN(const RPN &copyclass); //Copy Constructor
