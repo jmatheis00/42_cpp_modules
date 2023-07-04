@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/20 13:05:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:08:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 #define GREEN       "\033[32m"              /* Green */
 #define YELLOW      "\033[33m"              /* Yellow */
 #define PURPLE      "\033[35m"              /* Purple */
-
+#define BLUE     	"\033[34m"              /* Blue */
 
 class PmergeMe
 {
@@ -46,6 +46,19 @@ class PmergeMe
 			std::cout << std::endl;
 		}
 
+		template <typename T>
+		void CheckAndStoreElements(T& a)
+		{
+			for(int i = 1; input_[i] != NULL; i++)
+			{
+				double num = std::strtod(input_[i], NULL);
+				if (num < 0 || num > std::numeric_limits<int>::max())
+					throw InvalidElement();
+				a.push_back(num);
+			}
+		}
+
+		void MainProcess();
 		// take two lists and put them together
 		std::vector<int> InsertionSort(std::vector<int> res, std::vector<int> b);
 
@@ -59,20 +72,22 @@ class PmergeMe
 		void sortdeque(std::deque<int> a);
 		std::deque<int> InsertionSortdeque(std::deque<int> res, std::deque<int> b);
 		std::deque<int> MergeSortdeque(std::deque<int> a);
-
+		//EXCEPTION
+		class InvalidElement: public std::exception {
+			public:
+				virtual const char* what() const throw();
+		};
 	private:
 		PmergeMe(); //Default Constructor
 		PmergeMe(const PmergeMe &copyclass); //Copy Constructor
 		PmergeMe& operator= (const PmergeMe& copyop); //copy assignment operator
+		char** input_;
 		std::vector<int>vec_;
-		std::vector<int>vecleft_;
-		std::vector<int>vecright_;
 		std::vector<int>final_;
 		std::deque<int>deque_;
-		std::deque<int>dequeleft_;
-		std::deque<int>dequeright_;
 		std::deque<int>finaldeque_;
-		// std::multimap
+		double vectime_;
+		double dequetime_;
 };
 
 

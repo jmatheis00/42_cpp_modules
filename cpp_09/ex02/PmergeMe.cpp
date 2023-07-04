@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/20 13:06:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/04 14:22:34 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 PmergeMe::PmergeMe()
 {
+    vectime_ = 0;
+    dequetime_ = 0;
     std::cout << "Default Constructor" << std::endl;
 }
 
@@ -36,59 +38,50 @@ PmergeMe::~PmergeMe()
     std::cout << "Destructor" << std::endl;
 }
 
-PmergeMe::PmergeMe(char* ag[])
+PmergeMe::PmergeMe(char* ag[]) : input_(ag)
 {
     std::cout << "Constructor with string" << std::endl;
+    vectime_ = 0;
+    dequetime_ = 0;
+}
 
-    for(int i = 1; ag[i] != NULL; i++)
-    {
-        int num = std::atoi(ag[i]);
-        vec_.push_back(num);
-        deque_.push_back(num);
-    }
+void PmergeMe::MainProcess()
+{
+    // VECTOR
+    std::clock_t time = std::clock();
+    CheckAndStoreElements(vec_);
+    sortVector(vec_);
+    std::clock_t endtime = std::clock();
+    vectime_ = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
+
+    // DEQUE
+    time = std::clock();
+    CheckAndStoreElements(deque_);
+    sortdeque(deque_);
+    endtime = std::clock();
+    dequetime_ = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
+
+    // OUTPUT
     std::cout << "Before:\t";
     getContainerElements(vec_);
-    sortVector(vec_);
-    sortdeque(deque_);
-    // getContainerElements(deque);
-
-//    getTokens(ag);
+    std::cout << PURPLE "After std::vector:\t" RESET;
+    getContainerElements(final_);
+    std::cout << BLUE "After std::deque:\t" RESET;
+    getContainerElements(finaldeque_);
+    std::cout << PURPLE "Time to process a range of " << final_.size()
+        << " elements with std::vector : " RESET << vectime_ << " µs" << std::endl;
+    std::cout << BLUE "Time to process a range of "<< finaldeque_.size()
+        << " elements with std::deque  : " RESET << dequetime_ << " µs" << std::endl;
 }
 
 void PmergeMe::sortVector(std::vector<int> a)
 {
-    std::clock_t time = std::clock();
-
-    // get first and second
-    std::vector<int> first;
-    std::vector<int> second;
     if(a.size() <= 1)
     {
         final_ = a;
         return ;
     }
-    std::vector<int>::iterator it = a.begin();
-    for(unsigned int i = 0; i <= a.size()/2; i++)
-    {
-        first.push_back(*it);
-        a.erase(it);
-    }
-    second = a;
-
-    vecleft_ = MergeSort(first);
-    vecright_ = MergeSort(second);
-
-    final_ = InsertionSort(vecleft_, vecright_);
-
-    std::cout << "After:\t";
-    for(unsigned int i = 0; i < final_.size(); i++)
-        std::cout << final_[i] << " ";
-    std::cout << std::endl;
-
-    std::clock_t endtime = std::clock();
-    double sortedtime = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
-    std::cout << "Time to process a range of " << final_.size()
-        << " elements with std::vector : " << sortedtime << " µs" << std::endl;
+    final_ = MergeSort(vec_);
 }
 
 
@@ -121,7 +114,7 @@ std::vector<int> PmergeMe::InsertionSort(std::vector<int> res, std::vector<int> 
         else
             newres.push_back(b[j++]);
     }
-    // Füge die restlichen Elemente von res bzw. bhinzu, falls vorhanden
+    // Füge die restlichen Elemente von res bzw. b hinzu, falls vorhanden
     while (i < res.size())
         newres.push_back(res[i++]);
     while (j < b.size())
@@ -133,33 +126,12 @@ std::vector<int> PmergeMe::InsertionSort(std::vector<int> res, std::vector<int> 
 
 void PmergeMe::sortdeque(std::deque<int> a)
 {
-    std::clock_t time = std::clock();
-
-    // get first and second
-    std::deque<int> first;
-    std::deque<int> second;
     if(a.size() <= 1)
     {
         finaldeque_ = a;
         return ;
     }
-    std::deque<int>::iterator it = a.begin();
-    for(unsigned int i = 0; i <= a.size()/2; i++)
-    {
-        first.push_back(*it);
-        a.erase(it);
-    }
-    second = a;
-
-    dequeleft_ = MergeSortdeque(first);
-    dequeright_ = MergeSortdeque(second);
-
-    finaldeque_ = InsertionSortdeque(dequeleft_, dequeright_);
-
-    std::clock_t endtime = std::clock();
-    double sortedtime = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
-    std::cout << "Time to process a range of " << finaldeque_.size()
-        << " elements with std::deque  : " << sortedtime << " µs" << std::endl;
+    finaldeque_ = MergeSortdeque(deque_);
 }
 
 std::deque<int> PmergeMe::MergeSortdeque(std::deque<int> a)
@@ -210,7 +182,7 @@ std::deque<int> PmergeMe::InsertionSortdeque(std::deque<int> res, std::deque<int
             itb++;
         }
     }
-    // Füge die restlichen Elemente von res bzw. bhinzu, falls vorhanden
+    // Füge die restlichen Elemente von res bzw. b hinzu, falls vorhanden
     while (itres != res.end())
     {
         newres.push_back(*itres);
@@ -222,4 +194,11 @@ std::deque<int> PmergeMe::InsertionSortdeque(std::deque<int> res, std::deque<int
         itb++;
     }
     return(newres);
+}
+
+// EXCEPTIONS
+
+const char* PmergeMe::InvalidElement::what() const throw()
+{
+	return("Error: check elements!");
 }
