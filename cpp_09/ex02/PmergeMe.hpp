@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/04 14:08:04 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:45:23 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ class PmergeMe
 		std::deque<int>finaldeque_;
 		double vectime_;
 		double dequetime_;
+		int number_;
 };
 
 

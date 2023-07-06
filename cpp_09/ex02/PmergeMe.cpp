@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/04 14:22:34 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/06 10:55:29 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ PmergeMe::PmergeMe(char* ag[]) : input_(ag)
     std::cout << "Constructor with string" << std::endl;
     vectime_ = 0;
     dequetime_ = 0;
+    number_ = 0;
 }
 
 void PmergeMe::MainProcess()
@@ -68,6 +69,7 @@ void PmergeMe::MainProcess()
     getContainerElements(final_);
     std::cout << BLUE "After std::deque:\t" RESET;
     getContainerElements(finaldeque_);
+    // std::cout << YELLOW "NUMBER OF COMPARISONS: " << number_ << RESET << std::endl;
     std::cout << PURPLE "Time to process a range of " << final_.size()
         << " elements with std::vector : " RESET << vectime_ << " µs" << std::endl;
     std::cout << BLUE "Time to process a range of "<< finaldeque_.size()
@@ -90,7 +92,6 @@ std::vector<int> PmergeMe::MergeSort(std::vector<int> a)
     std::vector<int> tmp;
     if(a.size() <= 1)
         return (a);
-    
     std::vector<int>left(a.begin(), a.begin() + a.size() / 2);
     std::vector<int>right(a.begin() + a.size() / 2, a.end());
 
@@ -107,6 +108,7 @@ std::vector<int> PmergeMe::InsertionSort(std::vector<int> res, std::vector<int> 
     unsigned int j = 0;
     unsigned int i = 0;
 
+    // number_++;
     while (i < res.size() && j < b.size())
     {
         if(b[j] > res[i])
