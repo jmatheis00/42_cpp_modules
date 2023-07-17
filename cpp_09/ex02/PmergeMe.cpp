@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/06 10:55:29 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:00:33 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ PmergeMe::PmergeMe(char* ag[]) : input_(ag)
     std::cout << "Constructor with string" << std::endl;
     vectime_ = 0;
     dequetime_ = 0;
-    number_ = 0;
 }
 
 void PmergeMe::MainProcess()
@@ -69,7 +68,6 @@ void PmergeMe::MainProcess()
     getContainerElements(final_);
     std::cout << BLUE "After std::deque:\t" RESET;
     getContainerElements(finaldeque_);
-    // std::cout << YELLOW "NUMBER OF COMPARISONS: " << number_ << RESET << std::endl;
     std::cout << PURPLE "Time to process a range of " << final_.size()
         << " elements with std::vector : " RESET << vectime_ << " µs" << std::endl;
     std::cout << BLUE "Time to process a range of "<< finaldeque_.size()
@@ -86,29 +84,32 @@ void PmergeMe::sortVector(std::vector<int> a)
     final_ = MergeSort(vec_);
 }
 
-
+// Part vector in half until only 2 or in odd case 1 element left
 std::vector<int> PmergeMe::MergeSort(std::vector<int> a)
 {
     std::vector<int> tmp;
+
     if(a.size() <= 1)
         return (a);
+    // std::cout << "VECTOR Merge Sort:" << std::endl;
     std::vector<int>left(a.begin(), a.begin() + a.size() / 2);
     std::vector<int>right(a.begin() + a.size() / 2, a.end());
 
+    // getContainerElements(a);
     left = MergeSort(left);
     right = MergeSort(right);
     tmp = InsertionSort(left, right);
-
     return(tmp);
 }
 
+// sort two vectors in a final by combining them
 std::vector<int> PmergeMe::InsertionSort(std::vector<int> res, std::vector<int> b)
 {
     std::vector<int> newres;
     unsigned int j = 0;
     unsigned int i = 0;
 
-    // number_++;
+    std::cout << "VECTOR Insertion Sort:" << std::endl;
     while (i < res.size() && j < b.size())
     {
         if(b[j] > res[i])
@@ -116,11 +117,12 @@ std::vector<int> PmergeMe::InsertionSort(std::vector<int> res, std::vector<int> 
         else
             newres.push_back(b[j++]);
     }
-    // Füge die restlichen Elemente von res bzw. b hinzu, falls vorhanden
+    // In case of different sizes of res & b -> rest would be missing
     while (i < res.size())
         newres.push_back(res[i++]);
     while (j < b.size())
         newres.push_back(b[j++]);
+    // getContainerElements(newres);
     return(newres);
 }
 
@@ -184,7 +186,7 @@ std::deque<int> PmergeMe::InsertionSortdeque(std::deque<int> res, std::deque<int
             itb++;
         }
     }
-    // Füge die restlichen Elemente von res bzw. b hinzu, falls vorhanden
+    // In case of different sizes of res & b -> rest would be missing
     while (itres != res.end())
     {
         newres.push_back(*itres);

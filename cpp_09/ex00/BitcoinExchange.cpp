@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/01 16:46:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:30:32 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ BitcoinExchange::~BitcoinExchange()
 
 }
 
+// Check both files if opening is possible
 BitcoinExchange::BitcoinExchange(std::string& infile) : infile_(infile)
 {
     data_.open("./data.csv");
@@ -52,7 +53,7 @@ BitcoinExchange::BitcoinExchange(std::string& infile) : infile_(infile)
     }
 }
 
-// CHECK FOR FILE WITH .CSV END
+// Fill map with date & exchange_rate
 void BitcoinExchange::getDatabase()
 {
     std::string buff;
@@ -77,6 +78,12 @@ void BitcoinExchange::getDatabase()
     data_.close();
 }
 
+// check infile for
+// 1. valid delimiters all existing
+// 2. valid Date
+// 3. Float value valid (between 0 and 1000) -> get exchange rate
+// 4. Float value negative
+// 5. Float value > 1000
 void BitcoinExchange::MainProccess()
 {   
     std::string buff;
@@ -90,7 +97,7 @@ void BitcoinExchange::MainProccess()
                 || buff.find('|', buff.find('-', buff.find('-') + 1) + 1) == std::string::npos)
                 std::cout << RED "Error: bad input => " RESET << buff;
             else if (checkDate(buff.substr(0, buff.find('|'))) == false)
-                std::cout << RED "Error: OTHER bad input => " << buff << RESET;
+                std::cout << RED "Error: bad input => " << buff << RESET;
             else if (checkFloatValue(buff.substr(buff.find('|') + 1, buff.length())) == 0)
             {
                 std::string value = buff.substr(buff.find('|') + 1, buff.length());
@@ -109,6 +116,8 @@ void BitcoinExchange::MainProccess()
     infile_.close();
 }
 
+// date must be in the past or present and valid
+// SCHALTJAHRE ?!?!?!?!
 bool BitcoinExchange::checkDate(std::string date)
 {
     // GET YEAR MONTH AND DAY
@@ -124,10 +133,14 @@ bool BitcoinExchange::checkDate(std::string date)
 	tm *timeunit = localtime(&now);
 
     if(year > 1900 + timeunit->tm_year || year < 0
-        || month > 12 || month < 0 || day > 31 || day < 0
+        || month > 12 || month < 1 || day > 31 || day < 1
         || (year == 1900 + timeunit->tm_year && month > 1 + timeunit->tm_mon)
         || (year == 1900 + timeunit->tm_year && month == 1 + timeunit->tm_mon
             &&  day > timeunit->tm_mday))
+        return(false);
+    if (((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
+        || (month == 2 && day > 29) || (month == 2 && static_cast<int>(year) % 4 == 0 
+            && static_cast<int>(year) % 1000 != 0 && day > 28))
         return(false);
     return(true);
 }
@@ -157,6 +170,7 @@ void BitcoinExchange::checkExchangeRate(float valf, std::string date)
     }
 }
 
+// Check for date in infile not older than dates in data.csv
 bool BitcoinExchange::DateIsNotTooOld(std::string date)
 {
     size_t delim1 = map_.begin()->first.find("-");
@@ -168,7 +182,6 @@ bool BitcoinExchange::DateIsNotTooOld(std::string date)
     float mf = strtod(m.c_str(), NULL);
     float df = strtod(d.c_str(), NULL);
 
-    // VYEARF MONTHF DAYF
     std::string ye = date.substr(0, date.find('-'));
     float year = strtod(ye.c_str(), NULL);
     std::string mo = date.substr(date.find('-') + 1, date.find('-', date.find('-') + 1));

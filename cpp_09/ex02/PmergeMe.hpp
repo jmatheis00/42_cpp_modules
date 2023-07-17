@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/06 10:45:23 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:09:29 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ class PmergeMe
 	public:
 		~PmergeMe(); //Destructor
 		PmergeMe(char* ag[]);
-		void getTokens();
-		// PRINTS 0 AT BEGINNING???
+
 		template <typename T>
 		void getContainerElements(T a)
 		{
@@ -51,6 +50,11 @@ class PmergeMe
 		{
 			for(int i = 1; input_[i] != NULL; i++)
 			{
+				for (int j = 0; input_[i][j] != '\0'; j++)
+				{
+					if (std::isdigit(input_[i][j]) == false)
+						throw InvalidElement();
+				}
 				double num = std::strtod(input_[i], NULL);
 				if (num < 0 || num > std::numeric_limits<int>::max())
 					throw InvalidElement();
@@ -59,19 +63,13 @@ class PmergeMe
 		}
 
 		void MainProcess();
-		// take two lists and put them together
-		std::vector<int> InsertionSort(std::vector<int> res, std::vector<int> b);
-
-		// recursive: part list with 2
-		// until only one element left
-		std::vector<int> MergeSort(std::vector<int> a);
-		
-		// IMPLEMENT TIME TRACKING UNTIL SORTED
 		void sortVector(std::vector<int> a);
-		// LIST
+		std::vector<int> InsertionSort(std::vector<int> res, std::vector<int> b);
+		std::vector<int> MergeSort(std::vector<int> a);
 		void sortdeque(std::deque<int> a);
 		std::deque<int> InsertionSortdeque(std::deque<int> res, std::deque<int> b);
 		std::deque<int> MergeSortdeque(std::deque<int> a);
+
 		//EXCEPTION
 		class InvalidElement: public std::exception {
 			public:
@@ -88,7 +86,6 @@ class PmergeMe
 		std::deque<int>finaldeque_;
 		double vectime_;
 		double dequetime_;
-		int number_;
 };
 
 

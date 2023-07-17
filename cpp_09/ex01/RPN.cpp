@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/01 17:16:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/15 20:53:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,10 @@ void RPN::Split()
         else
             throw TokenError();
     }
-    std::cout << YELLOW "RESULT: " << stack_.top() << RESET << std::endl;
+    if (stack_.size() == 1)
+        std::cout << YELLOW "RESULT: " << stack_.top() << RESET << std::endl;
+    else
+        throw CalculationError();
     stack_.pop();
     
 }
@@ -83,6 +86,9 @@ void RPN::calculate(std::string t)
         stack_.pop();
         int two = stack_.top();
         stack_.pop();
+        std::cout << "STACK : ";
+        std::cout << two << "\t" << one; 
+        std::cout << "\t" << t << std::endl;   
         int result = 0;
         if (t == "-")
             result = two - one;
