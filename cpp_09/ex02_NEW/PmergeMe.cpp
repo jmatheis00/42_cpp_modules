@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/17 17:46:37 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:07:29 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,31 +64,137 @@ void PmergeMe::SortInsidePairs()
 {
     for(unsigned int i = 0; i < vecpairs_.size(); i++)
     {
-        if(vecpairs_[i].first > vecpairs_[i].second)
+        if(vecpairs_[i].first < vecpairs_[i].second)
             std::swap(vecpairs_[i].first, vecpairs_[i].second);
         
     }
 }
 
-void PmergeMe::SortOutsidePairsRecursively(std::vector<std::pair<int, int> >& pairs)
+std::vector<std::pair<int, int> >PmergeMe::MergeSort_SortPairs(std::vector<std::pair<int, int> > pairs)
 {
-    if (pairs.size() <= 1) {
-        return;
+    std::vector<std::pair<int, int> >tmp;
+
+    if(pairs.size() <= 1)
+        return (pairs);
+    std::vector<std::pair<int, int> >left(pairs.begin(), pairs.begin() + pairs.size() / 2);
+    std::vector<std::pair<int, int> >right(pairs.begin() + pairs.size() / 2, pairs.end());
+
+    left = MergeSort_SortPairs(left);
+    right = MergeSort_SortPairs(right);
+    tmp = InsertionSort_SortPairs(left, right);
+    return(tmp);
+}
+
+std::vector<std::pair<int, int> >PmergeMe::InsertionSort_SortPairs(std::vector<std::pair<int, int> >res, std::vector<std::pair<int, int> >b)
+{
+    std::vector<std::pair<int, int> > newres;
+    unsigned int j = 0;
+    unsigned int i = 0;
+
+    while (i < res.size() && j < b.size())
+    {
+        if(b[j].first > res[i].first)
+            newres.push_back(res[i++]);
+        else
+            newres.push_back(b[j++]);
     }
-    std::vector<std::pair<int, int> > sortedPairs;
-    for (unsigned int i = 0; i < pairs.size(); i += 2) {
-        if (i + 1 < pairs.size()) {
-            std::pair<int, int> currentPair(pairs[i].second, pairs[i + 1].second);
-            sortedPairs.push_back(currentPair);
-        } else {
-            sortedPairs.push_back(pairs[i]);
+    while (i < res.size())
+        newres.push_back(res[i++]);
+    while (j < b.size())
+        newres.push_back(b[j++]);
+    return(newres);
+}
+
+void PmergeMe::CreateMainAndPendChain()
+{
+    main_.push_back(vecpairssorted_[0].second);
+    for(unsigned int i = 0; i < vecpairssorted_.size(); i++)
+        main_.push_back(vecpairssorted_[i].first);
+    for(unsigned int i = 1; i < vecpairssorted_.size(); i++)
+        pend_.push_back(vecpairssorted_[i].second);    
+}
+
+int PmergeMe::Jacobstahl(int index)
+{
+    if (index == 0)
+        return (0);
+    if (index == 1)
+        return(1);
+    int jacobs;
+    int first = 0;
+    int second = 1;
+    for (int i = 2; i <= index; i++)
+    {
+        jacobs = second + 2 * first;
+        first = second;
+        second = jacobs;
+    }
+    return(jacobs);
+}
+
+int PmergeMe::CombinedSequence(int index)
+{
+    std::vector<int> sequence;
+    sequence.push_back(3);  // Startwert der Jacobsthal-Zahlen
+    sequence.push_back(2);  // Startwert der Indexe
+
+    int jacobs[2] = {3, 2};  // Aktuelle Jacobsthal-Zahl und Index
+    int nextIndex = 2;
+
+    while (nextIndex <= index)
+    {
+        int diff = jacobs[0] - jacobs[1];
+
+        if (diff > 1)
+        {
+            for (int i = jacobs[0] - 1; i > jacobs[1]; i--)
+            {
+                sequence.push_back(i);
+                sequence.push_back(i - 1);
+                nextIndex += 2;
+                if (nextIndex > index)
+                    break;
+            }
         }
+
+        jacobs[0] = jacobs[0] + 2 * jacobs[1];
+        jacobs[1]++;
+        
+        sequence.push_back(jacobs[0]);
+        sequence.push_back(jacobs[1]);
+        nextIndex += 2;
     }
-    pairs = sortedPairs;
-    std::cout << "PAIRS RECURSION" << std::endl;
-    for(unsigned int i = 0; i < pairs.size(); i++)
-        std::cout << pairs[i].first << ", " << pairs[i].second << std::endl;       
-    SortOutsidePairsRecursively(pairs);
+
+    return sequence[index * 2 - 1];
+}
+
+void PmergeMe::InsertPend()
+{
+    int j = Jacobstahl(8);
+    // std::cout << "COMBINED: " << s << std::endl;
+    for(int i = 0; i < 10; i++)
+    {
+        std::cout << CombinedSequence(i) << std::endl;
+    }
+    // int s = CombinedSequence(7);
+    std::cout << "JACOBS: " << std::endl;
+    std::cout << j << std::endl;
+}
+
+int PmergeMe::BinarySearch(int start, int end, int val)
+{
+    int middle = start + (end - start) / 2;
+    if(main_[middle] == val
+        || (main_[middle] > val && middle - 1 < 0)
+        || (main_[middle] > val && middle - 1 >= 0 && main_[middle - 1] < val )
+        || (main_[middle] < val && middle + 1 > end)
+        || (main_[middle] < val && middle + 1 <= end && main_[middle + 1] > val ))
+            return (middle);
+    if(main_[middle] > val)
+        return (BinarySearch(start, middle - 1, val));
+    if(main_[middle] < val)
+        return (BinarySearch(middle + 1, end, val));
+    return(-1);
 }
 
 void PmergeMe::MainProcess()
@@ -99,163 +205,44 @@ void PmergeMe::MainProcess()
 
     CreateVectorPairs();
     SortInsidePairs();
-    // PRINTING PAIRS
-    for(unsigned int i = 0; i < vecpairs_.size(); i++)
-        std::cout << vecpairs_[i].first << ", " << vecpairs_[i].second << std::endl;
-    // PRINTING PAIRS
-    // for(unsigned int i = 0; i < vecpairs_.size(); i++)
-    //     std::cout << vecpairs_[i].first << ", " << vecpairs_[i].second << std::endl;    
-    // sortVector(vec_);
-    // std::clock_t endtime = std::clock();
-    // vectime_ = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
-    // DEQUE
-    // time = std::clock();
-    // CheckAndStoreElements(deque_);
-    // sortdeque(deque_);
-    // endtime = std::clock();
-    // dequetime_ = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
-
-    // // OUTPUT
-    // std::cout << "Before:\t";
-    // getContainerElements(vec_);
-    // std::cout << PURPLE "After std::vector:\t" RESET;
-    // getContainerElements(final_);
-    // std::cout << BLUE "After std::deque:\t" RESET;
-    // getContainerElements(finaldeque_);
-    // std::cout << PURPLE "Time to process a range of " << final_.size()
-    //     << " elements with std::vector : " RESET << vectime_ << " µs" << std::endl;
-    // std::cout << BLUE "Time to process a range of "<< finaldeque_.size()
-    //     << " elements with std::deque  : " RESET << dequetime_ << " µs" << std::endl;
-}
-
-void PmergeMe::sortVector(std::vector<int> a)
-{
-    if(a.size() <= 1)
+    if(vecpairs_.size() <= 1)
     {
-        final_ = a;
+        vecpairssorted_ = vecpairs_;
         return ;
     }
-    final_ = MergeSort(vec_);
-}
-
-// Part vector in half until only 2 or in odd case 1 element left
-std::vector<int> PmergeMe::MergeSort(std::vector<int> a)
-{
-    std::vector<int> tmp;
-
-    if(a.size() <= 1)
-        return (a);
-    // std::cout << "VECTOR Merge Sort:" << std::endl;
-    std::vector<int>left(a.begin(), a.begin() + a.size() / 2);
-    std::vector<int>right(a.begin() + a.size() / 2, a.end());
-
-    // getContainerElements(a);
-    left = MergeSort(left);
-    right = MergeSort(right);
-    tmp = InsertionSort(left, right);
-    return(tmp);
-}
-
-// sort two vectors in a final by combining them
-std::vector<int> PmergeMe::InsertionSort(std::vector<int> res, std::vector<int> b)
-{
-    std::vector<int> newres;
-    unsigned int j = 0;
-    unsigned int i = 0;
-
-    std::cout << "VECTOR Insertion Sort:" << std::endl;
-    while (i < res.size() && j < b.size())
-    {
-        if(b[j] > res[i])
-            newres.push_back(res[i++]);
-        else
-            newres.push_back(b[j++]);
-    }
-    // In case of different sizes of res & b -> rest would be missing
-    while (i < res.size())
-        newres.push_back(res[i++]);
-    while (j < b.size())
-        newres.push_back(b[j++]);
-    // getContainerElements(newres);
-    return(newres);
-}
-
-// LIST FUNCTIONS
-
-void PmergeMe::sortdeque(std::deque<int> a)
-{
-    if(a.size() <= 1)
-    {
-        finaldeque_ = a;
-        return ;
-    }
-    finaldeque_ = MergeSortdeque(deque_);
-}
-
-std::deque<int> PmergeMe::MergeSortdeque(std::deque<int> a)
-{
-    std::deque<int> tmp;
-    if(a.size() <= 1)
-        return (a);
+    vecpairssorted_ = MergeSort_SortPairs(vecpairs_);
+    // PRINTING PAIRS
+    // for(unsigned int i = 0; i < vecpairssorted_.size(); i++)
+    //     std::cout << vecpairssorted_[i].first << ", " << vecpairssorted_[i].second << std::endl;
+    // CREATE MAIN CHAIN AND PEND CHAIN
+    CreateMainAndPendChain();
+    std::cout << "MAIN" << std::endl;
+    getContainerElements(main_);
+    std::cout << "PEND" << std::endl;
+    getContainerElements(pend_);
+    InsertPend();
     
-    std::deque<int>::iterator it = a.begin();
-    std::deque<int>left;
-    std::deque<int>right;
+    // int pos = BinarySearch(0, main_.size(), pend_[2]);
+    // if (pos == -1)
+    // {
+    //     std::cout << "POS: " << pos << std::endl;
+    //     exit(1);
+    // }
+    // std::vector<int>::iterator it = main_.begin() + pos;
+    // main_.insert(it, pend_[2]);
+    // if (straggler_ != -1)
+    //     pos = BinarySearch(0, main_.size(), straggler_);
+    // std::cout << "POS: " << pos << std::endl;
+    // it = main_.begin() + pos;
+    // main_.insert(it, straggler_);
+    // std::cout << "after binary" << std::endl;
+    // getContainerElements(main_);
+    
 
-    for(unsigned int i = 0; i < a.size()/2; i++)
-    {
-        left.push_back(*it);
-        it++;
-    }
-    for(unsigned int i = a.size()/2; i < a.size(); i++)
-    {
-        right.push_back(*it);
-        it++;
-    }
-
-    left = MergeSortdeque(left);
-    right = MergeSortdeque(right);
-    tmp = InsertionSortdeque(left, right);
-
-    return(tmp);
 }
 
-std::deque<int> PmergeMe::InsertionSortdeque(std::deque<int> res, std::deque<int> b)
-{
-    std::deque<int> newres;
-
-    std::deque<int>::iterator itres = res.begin();
-    std::deque<int>::iterator itb = b.begin();
-
-    while (itres != res.end() && itb != b.end())
-    {
-        if(*itb > *itres)
-        {
-            newres.push_back(*itres);
-            itres++;
-        }
-        else
-        {
-            newres.push_back(*itb);
-            itb++;
-        }
-    }
-    // In case of different sizes of res & b -> rest would be missing
-    while (itres != res.end())
-    {
-        newres.push_back(*itres);
-        itres++;
-    }
-    while (itb != b.end())
-    {
-        newres.push_back(*itb);
-        itb++;
-    }
-    return(newres);
-}
 
 // EXCEPTIONS
-
 const char* PmergeMe::InvalidElement::what() const throw()
 {
 	return("Error: check elements!");

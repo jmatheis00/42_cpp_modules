@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/17 17:38:04 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/18 16:42:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,15 +61,16 @@ class PmergeMe
 		}
 		void CreateVectorPairs();
 		void SortInsidePairs();
-		void SortOutsidePairsRecursively(std::vector<std::pair<int, int> >& pairs);
-		void SortVector(std::vector<int>v);
+		std::vector<std::pair<int, int> >MergeSort_SortPairs(std::vector<std::pair<int, int> > pairs);
+		std::vector<std::pair<int, int> >InsertionSort_SortPairs(std::vector<std::pair<int, int> >res, std::vector<std::pair<int, int> >b);
+		void CreateMainAndPendChain();
+		std::vector<std::pair<int, int> >BinarySearch(std::vector<std::pair<int, int> > pairs);
+
+		int CombinedSequence(int index);
+		int Jacobstahl(int index);
+		void InsertPend();
 		void MainProcess();
-		void sortVector(std::vector<int> a);
-		std::vector<int> InsertionSort(std::vector<int> res, std::vector<int> b);
-		std::vector<int> MergeSort(std::vector<int> a);
-		void sortdeque(std::deque<int> a);
-		std::deque<int> InsertionSortdeque(std::deque<int> res, std::deque<int> b);
-		std::deque<int> MergeSortdeque(std::deque<int> a);
+		int BinarySearch(int start, int end, int val);
 
 		//EXCEPTION
 		class InvalidElement: public std::exception {
@@ -92,6 +93,9 @@ class PmergeMe
 		std::vector<int>smaller_;
 		int straggler_;
 		std::vector<std::pair<int,int> >vecpairs_;
+		std::vector<std::pair<int,int> >vecpairssorted_;
+		std::vector<int>main_;
+		std::vector<int>pend_;
 };
 
 
