@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/18 16:42:14 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/19 16:48:43 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,29 @@ class PmergeMe
 					throw InvalidElement();
 			}
 		}
-		void CreateVectorPairs();
-		void SortInsidePairs();
-		std::vector<std::pair<int, int> >MergeSort_SortPairs(std::vector<std::pair<int, int> > pairs);
-		std::vector<std::pair<int, int> >InsertionSort_SortPairs(std::vector<std::pair<int, int> >res, std::vector<std::pair<int, int> >b);
-		void CreateMainAndPendChain();
-		std::vector<std::pair<int, int> >BinarySearch(std::vector<std::pair<int, int> > pairs);
 
+		// VECTORFUNCTIONS
+		void V_CreatePairs();
+		void V_SortInsidePairs();
+		std::vector<std::pair<int, int> >V_MergeSort_SortPairs(std::vector<std::pair<int, int> > pairs);
+		std::vector<std::pair<int, int> >V_InsertionSort_SortPairs(std::vector<std::pair<int, int> >res, std::vector<std::pair<int, int> >b);
+		void V_CreateMainAndPendChain();
+		void V_InsertPend();
+		int V_BinarySearch(int start, int end, int val);
+
+		// DEQUEFUNCTIONS
+		void D_CreatePairs();
+		void D_SortInsidePairs();
+		std::deque<std::pair<int, int> >D_MergeSort_SortPairs(std::deque<std::pair<int, int> > pairs);
+		std::deque<std::pair<int, int> >D_InsertionSort_SortPairs(std::deque<std::pair<int, int> >res, std::deque<std::pair<int, int> >b);
+		void D_CreateMainAndPendChain();
+		void D_InsertPend();
+		int D_BinarySearch(int start, int end, int val);
+
+		// FUNCTIONS FOR BOTH
 		int CombinedSequence(int index);
-		int Jacobstahl(int index);
-		void InsertPend();
 		void MainProcess();
-		int BinarySearch(int start, int end, int val);
+		bool TEST();
 
 		//EXCEPTION
 		class InvalidElement: public std::exception {
@@ -81,21 +92,24 @@ class PmergeMe
 		PmergeMe(); //Default Constructor
 		PmergeMe(const PmergeMe &copyclass); //Copy Constructor
 		PmergeMe& operator= (const PmergeMe& copyop); //copy assignment operator
+
 		char** input_;
-		std::vector<int>vec_;
-		std::vector<int>final_;
-		std::deque<int>deque_;
-		std::deque<int>finaldeque_;
-		double vectime_;
+
+		// DEQUE
+		int Dstraggler_;
 		double dequetime_;
-		// std::vector<std::vector<int> >vector_;
-		std::vector<int>bigger_;
-		std::vector<int>smaller_;
-		int straggler_;
-		std::vector<std::pair<int,int> >vecpairs_;
-		std::vector<std::pair<int,int> >vecpairssorted_;
-		std::vector<int>main_;
-		std::vector<int>pend_;
+		std::deque<std::pair<int,int> >Dpairs_;
+		std::deque<std::pair<int,int> >Dpairssorted_;
+		std::deque<int>Dmain_;
+		std::deque<int>Dpend_;
+		
+		// VECTOR
+		int Vstraggler_;
+		double vectime_;
+		std::vector<std::pair<int,int> >Vpairs_;
+		std::vector<std::pair<int,int> >Vpairssorted_;
+		std::vector<int>Vmain_;
+		std::vector<int>Vpend_;
 };
 
 
