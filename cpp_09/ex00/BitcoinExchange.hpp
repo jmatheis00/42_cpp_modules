@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/01 16:47:27 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/22 12:54:42 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ class BitcoinExchange
 		BitcoinExchange(std::string& infile);
 
 		bool checkDate(std::string date);
+		bool checkInputDelimiters(std::string buff);
 
 		int	checkFloatValue(std::string value);
 		void checkExchangeRate(float val, std::string date);

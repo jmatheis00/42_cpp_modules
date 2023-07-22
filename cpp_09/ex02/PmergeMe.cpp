@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/19 16:53:46 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:18:11 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 PmergeMe::PmergeMe()
 {
-    vectime_ = 0;
-    dequetime_ = 0;
-    std::cout << "Default Constructor" << std::endl;
+    // std::cout << "Default Constructor" << std::endl;
+    Vstraggler_ = -1;
+    Dstraggler_ = -1;
 }
 
 PmergeMe::PmergeMe(const PmergeMe &copyclass)
@@ -35,21 +35,19 @@ PmergeMe& PmergeMe::operator= (const PmergeMe& copyop)
 
 PmergeMe::~PmergeMe()
 {
-    std::cout << "Destructor" << std::endl;
+    // std::cout << "Destructor" << std::endl;
 }
 
 PmergeMe::PmergeMe(char* ag[]) : input_(ag)
 {
-    std::cout << "Constructor with string" << std::endl;
-    vectime_ = 0;
-    dequetime_ = 0;
+    // std::cout << "Constructor with string" << std::endl;
     Vstraggler_ = -1;
     Dstraggler_ = -1;
 }
 
 //  VECTOR FUNTIONS
 
-void PmergeMe::V_CreatePairs()
+void PmergeMe::V_CreateAndSortInsidePairs()
 {
     int i = 1;
     while(input_[i] != NULL && input_[i + 1] != NULL)
@@ -59,18 +57,16 @@ void PmergeMe::V_CreatePairs()
         Vpairs_.push_back(std::make_pair(num, num2));
         i++;
     }
-    if(input_[i] != NULL)
+    if (input_[i] != NULL)
         Vstraggler_ = std::strtod(input_[i], NULL);
-}
 
-void PmergeMe::V_SortInsidePairs()
-{
     for(unsigned int i = 0; i < Vpairs_.size(); i++)
     {
         if(Vpairs_[i].first < Vpairs_[i].second)
-            std::swap(Vpairs_[i].first, Vpairs_[i].second); 
+            std::swap(Vpairs_[i].first, Vpairs_[i].second);
     }
 }
+
 
 std::vector<std::pair<int, int> >PmergeMe::V_MergeSort_SortPairs(std::vector<std::pair<int, int> > pairs)
 {
@@ -109,6 +105,8 @@ std::vector<std::pair<int, int> >PmergeMe::V_InsertionSort_SortPairs(std::vector
 
 void PmergeMe::V_CreateMainAndPendChain()
 {
+    if (Vpairssorted_.size() == 0)
+        return ;
     Vmain_.push_back(Vpairssorted_[0].second);
     for(unsigned int i = 0; i < Vpairssorted_.size(); i++)
         Vmain_.push_back(Vpairssorted_[i].first);
@@ -116,6 +114,9 @@ void PmergeMe::V_CreateMainAndPendChain()
         Vpend_.push_back(Vpairssorted_[i].second);    
 }
 
+// Use Index via Combination of real indexes & Jacobstahl
+// do Binary search for insertion pend element in main
+// range = index + added elements
 void PmergeMe::V_InsertPend()
 {
     int j = 0;
@@ -135,11 +136,18 @@ void PmergeMe::V_InsertPend()
     }
     if (Vstraggler_ != -1)
     {
+        if(Vmain_.size() == 0)
+        {
+            Vmain_.push_back(Vstraggler_);
+            return ;
+        }
         int pos = V_BinarySearch(0, Vmain_.size() - 1, Vstraggler_);
-        Vmain_.insert(Vmain_.begin() + pos, Vstraggler_);      
+        Vmain_.insert(Vmain_.begin() + pos, Vstraggler_);
     }
 }
 
+// search ranges until val found or only one element in range left
+// bigger -> +1, smaller -> -1
 int PmergeMe::V_BinarySearch(int start, int end, int val)
 {
     if (start > end)
@@ -152,7 +160,6 @@ int PmergeMe::V_BinarySearch(int start, int end, int val)
         return (V_BinarySearch(start, middle - 1, val));
     if(Vmain_[middle] < val)
         return (V_BinarySearch(middle + 1, end, val));
-    // FIND POSITION IF NO RANGE LEFT
     if (Vmain_[middle] < val)
         return(middle+1);
     if (Vmain_[middle] > val)
@@ -162,7 +169,7 @@ int PmergeMe::V_BinarySearch(int start, int end, int val)
 
 // DEQUE FUNCTIONS
 
-void PmergeMe::D_CreatePairs()
+void PmergeMe::D_CreateAndSortInsidePairs()
 {
     int i = 1;
     while(input_[i] != NULL && input_[i + 1] != NULL)
@@ -174,10 +181,7 @@ void PmergeMe::D_CreatePairs()
     }
     if(input_[i] != NULL)
         Dstraggler_ = std::strtod(input_[i], NULL);
-}
 
-void PmergeMe::D_SortInsidePairs()
-{
     for(unsigned int i = 0; i < Dpairs_.size(); i++)
     {
         if(Dpairs_[i].first < Dpairs_[i].second)
@@ -202,7 +206,7 @@ std::deque<std::pair<int, int> >PmergeMe::D_MergeSort_SortPairs(std::deque<std::
 
 std::deque<std::pair<int, int> >PmergeMe::D_InsertionSort_SortPairs(std::deque<std::pair<int, int> >res, std::deque<std::pair<int, int> >b)
 {
-    std::deque<std::pair<int, int> > newres;
+    std::deque<std::pair<int, int> >newres;
     unsigned int j = 0;
     unsigned int i = 0;
 
@@ -222,6 +226,8 @@ std::deque<std::pair<int, int> >PmergeMe::D_InsertionSort_SortPairs(std::deque<s
 
 void PmergeMe::D_CreateMainAndPendChain()
 {
+    if (Dpairssorted_.size() == 0)
+        return ;
     Dmain_.push_back(Dpairssorted_[0].second);
     for(unsigned int i = 0; i < Dpairssorted_.size(); i++)
         Dmain_.push_back(Dpairssorted_[i].first);
@@ -248,6 +254,11 @@ void PmergeMe::D_InsertPend()
     }
     if (Dstraggler_ != -1)
     {
+        if(Dmain_.size() == 0)
+        {
+            Dmain_.push_back(Dstraggler_);
+            return ;
+        }
         int pos = D_BinarySearch(0, Dmain_.size() - 1, Dstraggler_);
         Dmain_.insert(Dmain_.begin() + pos, Dstraggler_);      
     }
@@ -302,58 +313,62 @@ int PmergeMe::CombinedSequence(int index)
     return(jacobs);
 }
 
+void PmergeMe::Output(int dequetime, int vectime)
+{
+    std::cout << YELLOW "Before:\t" RESET;
+    getContainerElements(before_);
+
+    std::cout << YELLOW "After:\t" RESET;
+    getContainerElements(Vmain_);
+    std::cout << YELLOW "After:\t" RESET;
+    getContainerElements(Dmain_);
+
+    std::cout << PURPLE "Time to process a range of " << Vmain_.size()
+        << " elements with std::vector : " RESET << vectime << " µs" << std::endl;
+    std::cout << BLUE "Time to process a range of "<< Dmain_.size()
+        << " elements with std::deque  : " RESET << dequetime << " µs" << std::endl;
+
+    // UNCOMMENT TEST() to check if containers are sorted correctly
+    // TEST();
+}
+
 void PmergeMe::MainProcess()
 {
     std::clock_t time;
     std::clock_t endtime;
-    CheckElements();
+    CheckElements();   
+    for(unsigned int i = 1; input_[i] != NULL; i++)
+    {
+        int num = std::strtod(input_[i], NULL);
+        before_.push_back(num);
+    }
 
     // VECTOR
     time = std::clock();
-    V_CreatePairs();
-    V_SortInsidePairs();
-    if(Vpairs_.size() <= 1)
-    {
+    V_CreateAndSortInsidePairs();
+    if(Vpairs_.size() == 1)
         Vpairssorted_ = Vpairs_;
-        return ;
-    }
-    Vpairssorted_ = V_MergeSort_SortPairs(Vpairs_);
+    else
+        Vpairssorted_ = V_MergeSort_SortPairs(Vpairs_);
     V_CreateMainAndPendChain();
     V_InsertPend();
     endtime = std::clock();
-    vectime_ = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
+    int vectime = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
     
     // DEQUE
     time = std::clock();
-    D_CreatePairs();
-    D_SortInsidePairs();
-    if(Dpairs_.size() <= 1)
-    {
+    D_CreateAndSortInsidePairs();
+    if(Dpairs_.size() == 1)
         Dpairssorted_ = Dpairs_;
-        return ;
-    }
-    Dpairssorted_ = D_MergeSort_SortPairs(Dpairs_);
+    else
+        Dpairssorted_ = D_MergeSort_SortPairs(Dpairs_);
     D_CreateMainAndPendChain();
     D_InsertPend();
     endtime = std::clock();
-    dequetime_ = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
-
+    int dequetime = 1000 * 1000 * (endtime - time) / (CLOCKS_PER_SEC); //mikroseconds µs
 
     // OUTPUT
-    std::cout << YELLOW "Before:\t" RESET;
-    for (unsigned int i = 0; i < Vpairs_.size(); i++)
-        std::cout << Vpairs_[i].first << " " << Vpairs_[i].second << " ";
-    std::cout << std::endl;
-    // getContainerElements(vec_);
-    std::cout << YELLOW "After:\t" RESET;
-    getContainerElements(Vmain_);
-    // std::cout << BLUE "After std::deque:\t" RESET;
-    // getContainerElements(Dmain_);
-    std::cout << PURPLE "Time to process a range of " << Vmain_.size()
-        << " elements with std::vector : " RESET << vectime_ << " µs" << std::endl;
-    std::cout << BLUE "Time to process a range of "<< Dmain_.size()
-        << " elements with std::deque  : " RESET << dequetime_ << " µs" << std::endl;    
-    // TEST();
+    Output(dequetime, vectime);
 }
 
 bool PmergeMe::TEST()

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/15 20:30:32 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:24:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,13 +91,10 @@ void BitcoinExchange::MainProccess()
     {
         if (buff != "date | value")
         {
-            // Checking for delimiters (Bad input)
-            if ( buff.find('-') == std::string::npos
-                || buff.find('-', buff.find('-') + 1) == std::string::npos
-                || buff.find('|', buff.find('-', buff.find('-') + 1) + 1) == std::string::npos)
+            if (checkInputDelimiters(buff) == false)
                 std::cout << RED "Error: bad input => " RESET << buff;
             else if (checkDate(buff.substr(0, buff.find('|'))) == false)
-                std::cout << RED "Error: bad input => " << buff << RESET;
+                std::cout << RED "Error: bad input => " RESET << buff;
             else if (checkFloatValue(buff.substr(buff.find('|') + 1, buff.length())) == 0)
             {
                 std::string value = buff.substr(buff.find('|') + 1, buff.length());
@@ -116,8 +113,27 @@ void BitcoinExchange::MainProccess()
     infile_.close();
 }
 
+// Checking for delimiters (Bad input), invalid syntax of number
+bool BitcoinExchange::checkInputDelimiters(std::string buff)
+{
+    if (buff.find('-') == std::string::npos
+        || buff.find('-', buff.find('-') + 1) == std::string::npos
+        || buff.find('|', buff.find('-', buff.find('-') + 1) + 1) == std::string::npos)
+        return(false);
+    unsigned int numb = buff.find('|', buff.find('-', buff.find('-') + 1) + 1) + 1;
+    while(buff[numb] == ' ')
+        numb++;
+    if (buff[numb] == '\0')
+        return(false);
+    if ((std::isdigit(buff[numb]) == false && buff[numb] != '-')
+        || (buff[numb] == '-' && std::isdigit(buff[numb+1]) == false))
+        return(false);
+    return (true);
+}
+
 // date must be in the past or present and valid
-// SCHALTJAHRE ?!?!?!?!
+// handle leap years and different no of days per month
+// handle future dates
 bool BitcoinExchange::checkDate(std::string date)
 {
     // GET YEAR MONTH AND DAY
@@ -140,7 +156,8 @@ bool BitcoinExchange::checkDate(std::string date)
         return(false);
     if (((month == 4 || month == 6 || month == 9 || month == 11) && day > 30)
         || (month == 2 && day > 29) || (month == 2 && static_cast<int>(year) % 4 == 0 
-            && static_cast<int>(year) % 1000 != 0 && day > 28))
+            && static_cast<int>(year) % 100 != 0 && day > 28)
+        || (month == 2 && static_cast<int>(year) % 400 == 0 && day > 28))
         return(false);
     return(true);
 }

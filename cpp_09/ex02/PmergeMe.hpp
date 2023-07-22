@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/19 16:48:43 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:12:47 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ class PmergeMe
 		}
 
 		// VECTORFUNCTIONS
-		void V_CreatePairs();
-		void V_SortInsidePairs();
+		void V_CreateAndSortInsidePairs();
 		std::vector<std::pair<int, int> >V_MergeSort_SortPairs(std::vector<std::pair<int, int> > pairs);
 		std::vector<std::pair<int, int> >V_InsertionSort_SortPairs(std::vector<std::pair<int, int> >res, std::vector<std::pair<int, int> >b);
 		void V_CreateMainAndPendChain();
@@ -70,8 +69,7 @@ class PmergeMe
 		int V_BinarySearch(int start, int end, int val);
 
 		// DEQUEFUNCTIONS
-		void D_CreatePairs();
-		void D_SortInsidePairs();
+		void D_CreateAndSortInsidePairs();
 		std::deque<std::pair<int, int> >D_MergeSort_SortPairs(std::deque<std::pair<int, int> > pairs);
 		std::deque<std::pair<int, int> >D_InsertionSort_SortPairs(std::deque<std::pair<int, int> >res, std::deque<std::pair<int, int> >b);
 		void D_CreateMainAndPendChain();
@@ -79,6 +77,7 @@ class PmergeMe
 		int D_BinarySearch(int start, int end, int val);
 
 		// FUNCTIONS FOR BOTH
+		void Output(int dequetime, int vectime);
 		int CombinedSequence(int index);
 		void MainProcess();
 		bool TEST();
@@ -97,7 +96,6 @@ class PmergeMe
 
 		// DEQUE
 		int Dstraggler_;
-		double dequetime_;
 		std::deque<std::pair<int,int> >Dpairs_;
 		std::deque<std::pair<int,int> >Dpairssorted_;
 		std::deque<int>Dmain_;
@@ -105,7 +103,7 @@ class PmergeMe
 		
 		// VECTOR
 		int Vstraggler_;
-		double vectime_;
+		std::vector<int>before_;
 		std::vector<std::pair<int,int> >Vpairs_;
 		std::vector<std::pair<int,int> >Vpairssorted_;
 		std::vector<int>Vmain_;

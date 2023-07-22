@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/15 20:53:05 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/22 13:35:52 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ bool RPN::CheckCharacters()
     return(true);
 }
 
+// read tokens from stream, initialized as s_ (input)
 void RPN::Split()
 {
     std::istringstream stream(s_);
@@ -86,9 +87,6 @@ void RPN::calculate(std::string t)
         stack_.pop();
         int two = stack_.top();
         stack_.pop();
-        std::cout << "STACK : ";
-        std::cout << two << "\t" << one; 
-        std::cout << "\t" << t << std::endl;   
         int result = 0;
         if (t == "-")
             result = two - one;
