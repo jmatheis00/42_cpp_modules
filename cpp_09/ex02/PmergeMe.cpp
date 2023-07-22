@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/22 14:18:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/22 14:53:16 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -276,11 +276,6 @@ int PmergeMe::D_BinarySearch(int start, int end, int val)
         return (D_BinarySearch(start, middle - 1, val));
     if(Dmain_[middle] < val)
         return (D_BinarySearch(middle + 1, end, val));
-    // FIND POSITION IF NO RANGE LEFT
-    if (Dmain_[middle] < val)
-        return(middle+1);
-    if (Dmain_[middle] > val)
-        return(middle-1);
     return(-1);
 }
 
