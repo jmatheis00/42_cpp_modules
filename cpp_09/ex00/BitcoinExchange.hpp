@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/22 12:54:42 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/24 10:38:30 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class BitcoinExchange
 		bool checkInputDelimiters(std::string buff);
 
 		int	checkFloatValue(std::string value);
-		void checkExchangeRate(float val, std::string date);
+		bool checkExchangeRate(float val, std::string date);
 
 		void getDatabase();
 		void MainProccess();
@@ -49,7 +49,6 @@ class BitcoinExchange
 		};
 	private:
 
-		bool DateIsNotTooOld(std::string date);
 		BitcoinExchange(); //Default Constructor
 		BitcoinExchange(const BitcoinExchange &copyclass); //Copy Constructor
 		BitcoinExchange& operator= (const BitcoinExchange& copyop); //copy assignment operator
