@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/24 12:53:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:45:54 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -277,7 +277,7 @@ int PmergeMe::D_BinarySearch(int start, int end, int val)
 
 // FUNCTIONS FOR BOTH
 
-void CheckElements()
+void PmergeMe::CheckElements()
 {
     for(int i = 1; input_[i] != NULL; i++)
     {

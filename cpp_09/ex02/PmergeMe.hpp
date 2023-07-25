@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/24 12:53:20 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/25 10:46:20 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ class PmergeMe
 		int D_BinarySearch(int start, int end, int val);
 
 		// FUNCTIONS FOR BOTH
+		void CheckElements();
 		void Output(int dequetime, int vectime);
 		int CombinedSequence(int index);
 		void MainProcess();
