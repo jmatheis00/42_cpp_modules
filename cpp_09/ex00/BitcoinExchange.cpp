@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/24 10:42:29 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/26 10:33:38 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,13 @@ void BitcoinExchange::MainProccess()
                 std::string value = buff.substr(buff.find('|') + 1, buff.length());
                 float valf = strtod(value.c_str(), NULL);
                 
-                if (checkExchangeRate(valf, buff.substr(0, buff.find('|'))) == false)
+                std::string date;
+                if (buff[buff.find('|')-1] == ' ')
+                    date = buff.substr(0, buff.find('|')-1);
+                else
+                    date = buff.substr(0, buff.find('|'));
+
+                if (checkExchangeRate(valf, date) == false)
                     std::cout << RED "Error: bad input (date too old) => " RESET << buff;
             }
             else if (checkFloatValue(buff.substr(buff.find('|') + 1, buff.length())) == -1)
@@ -177,10 +183,9 @@ int BitcoinExchange::checkFloatValue(std::string value)
 bool BitcoinExchange::checkExchangeRate(float valf, std::string date)
 {
     std::map<std::string, float>::const_iterator it = map_.lower_bound(date);
-    
     if (it != map_.end() && it->first == date)
         std::cout << date << " => " << valf << " = " << valf * it->second;
-    else if (it != map_.end() && it->first != date)
+    else if (it->first != date)
     {
         if (it == map_.begin())
             return (false);

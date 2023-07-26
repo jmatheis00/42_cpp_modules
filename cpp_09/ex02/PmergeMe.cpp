@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/25 10:45:54 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/07/25 14:55:38 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,6 +281,8 @@ void PmergeMe::CheckElements()
 {
     for(int i = 1; input_[i] != NULL; i++)
     {
+        if (input_[i][0] == '\0')
+            throw InvalidElement();
         for (int j = 0; input_[i][j] != '\0'; j++)
         {
             if (std::isdigit(input_[i][j]) == false)
