@@ -14,4 +14,4 @@
 |[CPP_06](./cpp_06) | C++ casts|
 |[CPP_07](./cpp_07) | C++ templates|
 |[CPP_08](./cpp_08) | Templated containers, iterators, algorithms|
-|[CPP_09](./cpp_09) | Templated containers, iterators, algorithms|
+|[CPP_09](./cpp_09) | STL|
