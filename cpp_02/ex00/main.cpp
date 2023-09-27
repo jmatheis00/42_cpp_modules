@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/24 08:16:36 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:13:46 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int main(void)
     Fixed c;
 
     // Calls Copy Assignment Operator
-    c = b; 
+    c = b;
 
     std::cout << a.getRawBits() << std::endl;
     std::cout << b.getRawBits() << std::endl;

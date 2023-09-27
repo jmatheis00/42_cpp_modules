@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/24 09:54:13 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:14:49 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,18 +15,17 @@
 
 const int Fixed::fractbits_ = 8;
 
-// ORTHODOX CANONICAL
+// ORTHODOX CANONICAL FORM
 Fixed::Fixed() : fixedval_(0)
 {
-
 }
 
-Fixed::Fixed(const Fixed& copyclass)
+Fixed::Fixed(const Fixed &copyclass)
 {
-	Fixed::operator= (copyclass);
+	Fixed::operator=(copyclass);
 }
 
-Fixed& Fixed::operator= (const Fixed& copyop)
+Fixed &Fixed::operator=(const Fixed &copyop)
 {
 	fixedval_ = copyop.getRawBits();
 	return (*this);
@@ -34,7 +33,6 @@ Fixed& Fixed::operator= (const Fixed& copyop)
 
 Fixed::~Fixed()
 {
-
 }
 
 // OTHER MEMBER FUNCTIONS
@@ -50,7 +48,7 @@ Fixed::Fixed(float const i)
 
 int Fixed::getRawBits(void) const
 {
-	return(fixedval_);
+	return (fixedval_);
 }
 
 void Fixed::setRawBits(int const raw)
@@ -71,79 +69,79 @@ int Fixed::toInt(void) const
 	int tmp;
 
 	tmp = fixedval_ / (1 << fractbits_);
-	return(tmp);
+	return (tmp);
 }
 
 // OUTPUT OPERATOR OVERLOADING
-std::ostream& operator<<(std::ostream& os, const Fixed& i)
+std::ostream &operator<<(std::ostream &os, const Fixed &i)
 {
 	os << i.toFloat();
 	return (os);
 }
 
 // COMPARISON OPERATOR OVERLOADING
-bool Fixed::operator==(const Fixed& a) const
+bool Fixed::operator==(const Fixed &a) const
 {
-	return(this->getRawBits() == a.getRawBits());
+	return (this->getRawBits() == a.getRawBits());
 }
 
-bool Fixed::operator!=(const Fixed& a) const
+bool Fixed::operator!=(const Fixed &a) const
 {
-	return(this->getRawBits() != a.getRawBits());
+	return (this->getRawBits() != a.getRawBits());
 }
 
-bool Fixed::operator<=(const Fixed& a) const
+bool Fixed::operator<=(const Fixed &a) const
 {
-	return(this->getRawBits() <= a.getRawBits());
+	return (this->getRawBits() <= a.getRawBits());
 }
 
-bool Fixed::operator>=(const Fixed& a) const
+bool Fixed::operator>=(const Fixed &a) const
 {
-	return(this->getRawBits() >= a.getRawBits());
+	return (this->getRawBits() >= a.getRawBits());
 }
 
-bool Fixed::operator<(const Fixed& a) const
+bool Fixed::operator<(const Fixed &a) const
 {
-	return(this->getRawBits() < a.getRawBits());
+	return (this->getRawBits() < a.getRawBits());
 }
 
-bool Fixed::operator>(const Fixed& a) const
+bool Fixed::operator>(const Fixed &a) const
 {
-	return(this->getRawBits() > a.getRawBits());
+	return (this->getRawBits() > a.getRawBits());
 }
 
 // ARITHMETIC OPERATOR OVERLOADING
-Fixed Fixed::operator+(const Fixed& a) const
+Fixed Fixed::operator+(const Fixed &a) const
 {
-	return(this->toFloat() + a.toFloat());
+	return (this->toFloat() + a.toFloat());
 }
 
-Fixed Fixed::operator-(const Fixed& a) const
+Fixed Fixed::operator-(const Fixed &a) const
 {
-	return(this->toFloat() - a.toFloat());
+	return (this->toFloat() - a.toFloat());
 }
 
-Fixed Fixed::operator*(const Fixed& a) const
+Fixed Fixed::operator*(const Fixed &a) const
 {
-	return(this->toFloat() * a.toFloat());
+	return (this->toFloat() * a.toFloat());
 }
 
-Fixed Fixed::operator/(const Fixed& a) const
+Fixed Fixed::operator/(const Fixed &a) const
 {
-	return(this->toFloat() / a.toFloat());
+	return (this->toFloat() / a.toFloat());
 }
 
 // PRE X-CREMENT OPERATOR OVERLOADING
-Fixed& Fixed::operator++()
+Fixed &Fixed::operator++()
 {
 	++(this->fixedval_);
-	return(*this);
+	return (*this);
 }
 
-Fixed& Fixed::operator--()
+Fixed &Fixed::operator--()
 {
 	--(this->fixedval_);
-	return(*this);
+	return (*this);
 }
 
 // POST X-CREMENT OPERATOR OVERLOADING
@@ -153,7 +151,7 @@ Fixed Fixed::operator++(int i)
 	Fixed a = *this;
 	i = (int)i;
 	(this->fixedval_)++;
-	return(a);
+	return (a);
 }
 
 Fixed Fixed::operator--(int i)
@@ -161,34 +159,34 @@ Fixed Fixed::operator--(int i)
 	Fixed a = *this;
 	i = (int)i;
 	(this->fixedval_)--;
-	return(a);
+	return (a);
 }
 
 // OVERLOADED MEMBER FUNCTIONS
-Fixed& Fixed::min(Fixed& a, Fixed& b)
+Fixed &Fixed::min(Fixed &a, Fixed &b)
 {
 	if (a.getRawBits() < b.getRawBits())
 		return (a);
-	return(b);
+	return (b);
 }
 
-const Fixed& Fixed::min(const Fixed& a, const Fixed& b)
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
 {
 	if (a.getRawBits() < b.getRawBits())
 		return (a);
-	return(b);
+	return (b);
 }
 
-Fixed& Fixed::max(Fixed& a, Fixed& b)
+Fixed &Fixed::max(Fixed &a, Fixed &b)
 {
 	if (a.getRawBits() > b.getRawBits())
 		return (a);
-	return(b);
+	return (b);
 }
 
-const Fixed& Fixed::max(const Fixed& a, const Fixed& b)
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
 {
 	if (a.getRawBits() > b.getRawBits())
 		return (a);
-	return(b);
+	return (b);
 }

@@ -6,20 +6,20 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/16 13:50:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 10:11:48 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:19:23 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
 #include "ClapTrap.hpp"
 
-FragTrap::FragTrap(): ClapTrap()
+FragTrap::FragTrap() : ClapTrap()
 {
     name_ = "Default";
     hitpoints_ = 100;
     energypoints_ = 100;
     attackdamage_ = 30;
-    std::cout << RED "Default FragTrap wakes up"  RESET << std::endl;
+    std::cout << RED "Default FragTrap wakes up" RESET << std::endl;
 }
 
 FragTrap::FragTrap(std::string name) : ClapTrap(name)
@@ -28,23 +28,23 @@ FragTrap::FragTrap(std::string name) : ClapTrap(name)
     hitpoints_ = 100;
     energypoints_ = 100;
     attackdamage_ = 30;
-    std::cout << RED "FragTrap with name " << name << " wakes up"  RESET << std::endl;
+    std::cout << RED "FragTrap with name " << name << " wakes up" RESET << std::endl;
 }
 
-FragTrap::FragTrap(const FragTrap &copyclass): ClapTrap(copyclass)
+FragTrap::FragTrap(const FragTrap &copyclass) : ClapTrap(copyclass)
 {
     std::cout << "Copy Constructor FragTrap" << std::endl;
-    FragTrap::operator= (copyclass);
+    FragTrap::operator=(copyclass);
 }
 
-FragTrap& FragTrap::operator= (const FragTrap& copyop)
+FragTrap &FragTrap::operator=(const FragTrap &copyop)
 {
     name_ = copyop.get_name();
     hitpoints_ = copyop.get_hitpoints();
     energypoints_ = copyop.get_energypoints();
     attackdamage_ = copyop.get_attackdamage();
     std::cout << "Copy Assignment Operator FragTrap" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 FragTrap::~FragTrap()
@@ -58,11 +58,11 @@ void FragTrap::highFivesGuys()
 }
 
 // OUTPUT OPERATOR OVERLOADING
-std::ostream& operator<<(std::ostream& os, const FragTrap& i)
+std::ostream &operator<<(std::ostream &os, const FragTrap &i)
 {
-	os << "NAME\t\t" << i.get_name() << std::endl;
+    os << "NAME\t\t" << i.get_name() << std::endl;
     os << "HIT POINTS\t" << i.get_hitpoints() << std::endl;
     os << "ENERGY POINTS\t" << i.get_energypoints() << std::endl;
     os << "ATTACK DAMAGE\t" << i.get_attackdamage() << std::endl;
-	return (os);
+    return (os);
 }

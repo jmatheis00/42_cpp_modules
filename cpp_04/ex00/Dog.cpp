@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 13:46:47 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:20:37 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ Dog::Dog(const Dog &copyclass) : Animal(copyclass)
     type_ = copyclass.type_;
 }
 
-Dog& Dog::operator= (const Dog& copyop)
+Dog &Dog::operator=(const Dog &copyop)
 {
     if (this != &copyop)
         type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Dog" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 Dog::~Dog()

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 11:58:31 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/11 08:37:58 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:25:48 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ Ice::Ice(const Ice &copyclass) : AMateria(copyclass)
     std::cout << "Copy Constructor Ice" << std::endl;
 }
 
-Ice& Ice::operator= (const Ice& copyop)
+Ice &Ice::operator=(const Ice &copyop)
 {
     if (this != &copyop)
         type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Ice" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 Ice::~Ice()
@@ -39,19 +39,19 @@ Ice::~Ice()
 
 // OTHER MEMBER FUNCTIONS
 
-std::string const& Ice::getType() const
+std::string const &Ice::getType() const
 {
-    return(type_);
+    return (type_);
 }
 
 // Return a new instance of the same type
-AMateria* Ice::clone() const
+AMateria *Ice::clone() const
 {
-    return(new Ice(*this));
+    return (new Ice(*this));
 }
 
-void Ice::use(ICharacter& target)
+void Ice::use(ICharacter &target)
 {
     std::cout << "* shoots an ice bolt at "
-    << target.getName() << " *" << std::endl;
+              << target.getName() << " *" << std::endl;
 }

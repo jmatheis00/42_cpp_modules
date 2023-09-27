@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/02 17:39:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:18:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,22 @@ int main(void)
 {
     {
         std::cout << YELLOW "\nTEST: FRAGTRAP" RESET << std::endl;
-        std::cout << PURPLE "Constructors" RESET<< std::endl;
+        std::cout << PURPLE "Constructors" RESET << std::endl;
         FragTrap tommy("Tommy");
         FragTrap other(tommy);
         FragTrap diff;
         diff = tommy;
         std::cout << GREEN "Starting values" RESET << std::endl;
         std::cout << tommy << std::endl;
-        std::cout << PURPLE "attack() function" RESET<< std::endl;    
+        std::cout << PURPLE "attack() function" RESET << std::endl;
         tommy.attack("OTHER");
-        std::cout << PURPLE "takeDamage() function" RESET<< std::endl;    
+        std::cout << PURPLE "takeDamage() function" RESET << std::endl;
         tommy.takeDamage(20);
-        std::cout << PURPLE "beRepaired() function" RESET<< std::endl;    
+        std::cout << PURPLE "beRepaired() function" RESET << std::endl;
         tommy.beRepaired(5);
-        std::cout << PURPLE "highFivesGuys() function" RESET<< std::endl;    
+        std::cout << PURPLE "highFivesGuys() function" RESET << std::endl;
         tommy.highFivesGuys();
-        std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
+        std::cout << PURPLE "takeDamage() function" RESET << std::endl;
         tommy.takeDamage(85);
         std::cout << PURPLE "Copy Test" RESET << std::endl;
         std::cout << GREEN "tommy (original Tommy)" RESET << std::endl;
@@ -45,12 +45,13 @@ int main(void)
         std::cout << other;
         std::cout << GREEN "diff (Copy Assignment Operator)" RESET << std::endl;
         std::cout << diff;
-        std::cout << PURPLE "ScavTrap() is dead" RESET<< std::endl;
+        std::cout << PURPLE "ScavTrap() is dead" RESET << std::endl;
         tommy.beRepaired(10);
         tommy.takeDamage(10);
         tommy.attack("OTHER");
-        std::cout << PURPLE "Destructors" RESET<< std::endl;
+        std::cout << PURPLE "Destructors" RESET << std::endl;
     }
+    // TESTS FROM PREVIOUS EXERCISES
     // {
     //     std::cout << YELLOW "\nTEST: SCAVTRAP" RESET << std::endl;
     //     std::cout << PURPLE "Constructors" RESET<< std::endl;
@@ -59,16 +60,16 @@ int main(void)
     //     ScavTrap diff;
     //     diff = sammy;
     //     std::cout << GREEN "Starting values" RESET << std::endl;
-    //     std::cout << sammy << std::endl; 
-    //     std::cout << PURPLE "attack() function" RESET << std::endl;    
+    //     std::cout << sammy << std::endl;
+    //     std::cout << PURPLE "attack() function" RESET << std::endl;
     //     sammy.attack("OTHER");
-    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
+    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;
     //     sammy.takeDamage(20);
     //     std::cout << PURPLE "beRepaired() function" RESET << std::endl;
     //     sammy.beRepaired(5);
     //     std::cout << PURPLE "guardGate() function" RESET << std::endl;
     //     sammy.guardGate();
-    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
+    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;
     //     sammy.takeDamage(85);
     //     std::cout << PURPLE "Copy Test" RESET << std::endl;
     //     std::cout << GREEN "sammy (original Sammy)" RESET << std::endl;

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:20:59 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 13:27:05 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:14:11 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 int main(void)
 {
     Fixed a;
-    Fixed const b( 10 );
-    Fixed const c( 420.0f );
+    Fixed const b(10);
+    Fixed const c(420.0f);
 
     // Calls Copy Constructor
-    Fixed const d( b );
+    Fixed const d(b);
 
     // Calls Copy Assignment Operator
-    a = Fixed( 1234.4321f );
+    a = Fixed(1234.4321f);
 
     std::cout << "a is " << a << std::endl;
     std::cout << "b is " << b << std::endl;

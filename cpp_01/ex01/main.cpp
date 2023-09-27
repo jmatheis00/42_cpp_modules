@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 13:46:09 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/12 14:23:23 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:09:47 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,11 @@
 // delete[] calls Destructor for an array of objects
 int main(void)
 {
-	int	no;
+	int no;
 
 	no = 7;
-	std::cout << GREEN << "\nzombieHorde Test\n" << RESET;
+	std::cout << GREEN << "\nzombieHorde Test\n"
+			  << RESET;
 	Zombie *example = zombieHorde(no, "Foo1");
 	for (int i = 0; i < no; i++)
 		example[i].announce();

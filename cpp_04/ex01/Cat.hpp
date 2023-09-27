@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:28 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 12:54:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:22:07 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,19 +18,20 @@
 
 class Cat : public Animal
 {
-    private:
-        Brain* brain_;
-    public:
-        Cat(); //Default Constructor
-        Cat(const Cat &copyclass); //Copy Constructor
-        Cat& operator= (const Cat& copyop); //copy assignment operator
-        virtual ~Cat(); //Destructor
+private:
+    Brain *brain_;
 
-        void makeSound() const;
+public:
+    Cat();                             // Default Constructor
+    Cat(const Cat &copyclass);         // Copy Constructor
+    Cat &operator=(const Cat &copyop); // copy assignment operator
+    virtual ~Cat();                    // Destructor
 
-        // Brain
-        std::string getidea(int i);
-        void setidea(int i, std::string content);
+    void makeSound() const;
+
+    // Brain
+    std::string getidea(int i);
+    void setidea(int i, std::string content);
 };
 
 #endif

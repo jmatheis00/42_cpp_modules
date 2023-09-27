@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/11 20:31:24 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/27 10:06:39 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:20:04 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@
 #include <iostream>
 #include "ClapTrap.hpp"
 
-#define RESET       "\033[0m"               /* Reset */
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
+#define RESET "\033[0m"   /* Reset */
+#define RED "\033[31m"    /* Red */
+#define GREEN "\033[32m"  /* Green */
+#define YELLOW "\033[33m" /* Yellow */
 
 // INHERITED FROM CLAPTRAP
 // constructors & destructor
@@ -28,21 +28,22 @@
 // new function: void guardGate();
 class ScavTrap : virtual public ClapTrap
 {
-    public:
-        ScavTrap(); //Default Constructor
-		ScavTrap(std::string name);
-		ScavTrap(const ScavTrap &copyclass); //Copy Constructor
-		ScavTrap& operator= (const ScavTrap& copyop); //copy assignment operator
-		~ScavTrap(); //Destructor
+public:
+    ScavTrap(); // Default Constructor
+    ScavTrap(std::string name);
+    ScavTrap(const ScavTrap &copyclass);         // Copy Constructor
+    ScavTrap &operator=(const ScavTrap &copyop); // copy assignment operator
+    ~ScavTrap();                                 // Destructor
 
-        void attack(const std::string& target); //overwritten
-        void guardGate();
+    void attack(const std::string &target); // overwritten
+    void guardGate();
 
-        int get_energy();
-    private:
-        int energy_;
+    int get_energy();
+
+private:
+    int energy_;
 };
 
-std::ostream& operator<<(std::ostream& os, const ScavTrap& i);
+std::ostream &operator<<(std::ostream &os, const ScavTrap &i);
 
 #endif

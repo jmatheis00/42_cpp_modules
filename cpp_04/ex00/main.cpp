@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/03 11:57:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:23:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@
 #include "WrongAnimal.hpp"
 #include "WrongCat.hpp"
 
-// turn in more tests!
 int main()
 {
     {
         std::cout << YELLOW "\nANIMAL & DOG & CAT TEST" RESET << std::endl;
         std::cout << PURPLE "Constructors" RESET << std::endl;
-        const Animal* meta = new Animal();
-        const Animal* j = new Dog();
-        const Animal* i = new Cat();
+        const Animal *meta = new Animal();
+        const Animal *j = new Dog();
+        const Animal *i = new Cat();
         std::cout << PURPLE "Types" RESET << std::endl;
         std::cout << meta->getType() << std::endl;
         std::cout << j->getType() << std::endl;
@@ -32,7 +31,7 @@ int main()
         std::cout << PURPLE "Sounds" RESET << std::endl;
         meta->makeSound();
         j->makeSound();
-        i->makeSound(); //will output the cat sound!
+        i->makeSound(); // will output the cat sound!
         std::cout << PURPLE "Destructors" RESET << std::endl;
         delete meta;
         delete j;
@@ -41,13 +40,13 @@ int main()
     {
         std::cout << YELLOW "\nWRONGCAT & WRONGANIMAL IN ANIMAL" RESET << std::endl;
         std::cout << PURPLE "Constructors" RESET << std::endl;
-        const WrongAnimal* Wrongy = new WrongAnimal();
-        const WrongAnimal* Writty = new WrongCat();
+        const WrongAnimal *Wrongy = new WrongAnimal();
+        const WrongAnimal *Writty = new WrongCat();
         std::cout << PURPLE "Types" RESET << std::endl;
         std::cout << Writty->getType() << std::endl;
         std::cout << Wrongy->getType() << std::endl;
         std::cout << PURPLE "Sounds" RESET << std::endl;
-        Writty->makeSound(); //won't output the cat sound!
+        Writty->makeSound(); // won't output the cat sound!
         Wrongy->makeSound();
         std::cout << PURPLE "Destructors" RESET << std::endl;
         delete Wrongy;
@@ -56,13 +55,13 @@ int main()
     {
         std::cout << YELLOW "\nWRONGCAT IN WRONGCAT" RESET << std::endl;
         std::cout << PURPLE "Constructors" RESET << std::endl;
-        const WrongAnimal* Wrongy = new WrongAnimal();
+        const WrongAnimal *Wrongy = new WrongAnimal();
         const WrongCat *Writty = new WrongCat();
         std::cout << PURPLE "Types" RESET << std::endl;
         std::cout << Writty->getType() << std::endl;
         std::cout << Wrongy->getType() << std::endl;
         std::cout << PURPLE "Sounds" RESET << std::endl;
-        Writty->makeSound(); //won't output the cat sound!
+        Writty->makeSound(); // won't output the cat sound!
         Wrongy->makeSound();
         std::cout << PURPLE "Destructors" RESET << std::endl;
         delete Wrongy;

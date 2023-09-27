@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:28 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 14:55:59 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:24:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@
 
 class WrongCat : public WrongAnimal
 {
-    public:
-        WrongCat(); //Default Constructor
-        WrongCat(const WrongCat &copyclass); //Copy Constructor
-        WrongCat& operator= (const WrongCat& copyop); //copy assignment operator
-        virtual ~WrongCat(); //Destructor
+public:
+    WrongCat();                                  // Default Constructor
+    WrongCat(const WrongCat &copyclass);         // Copy Constructor
+    WrongCat &operator=(const WrongCat &copyop); // copy assignment operator
+    virtual ~WrongCat();                         // Destructor
 
-        void makeSound() const;
+    void makeSound() const;
 };
 
 #endif

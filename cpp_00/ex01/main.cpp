@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 10:56:56 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/05 13:18:36 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:07:43 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 #include "Contact.hpp"
 #include <iostream>
 
-void    main_menu()
+void main_menu()
 {
-    std::cout << GREEN "Choose one of the following actions:\n" << std::endl
-                << "\t\U0001F464\tADD\n"
-                << "\t\U0001F50E\tSEARCH\n"
-                << "\t\U0000274C\tEXIT\n" RESET
-                << std::endl << "your action: ";
+    std::cout << GREEN "Choose one of the following actions:\n"
+              << std::endl
+              << "\t\U0001F464\tADD\n"
+              << "\t\U0001F50E\tSEARCH\n"
+              << "\t\U0000274C\tEXIT\n" RESET
+              << std::endl
+              << "your action: ";
 }
 
 int main(void)

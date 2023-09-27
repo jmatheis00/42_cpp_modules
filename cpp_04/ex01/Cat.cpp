@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 13:42:19 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:22:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ Cat::Cat(const Cat &copyclass) : Animal(copyclass)
     type_ = copyclass.type_;
 }
 
-Cat& Cat::operator= (const Cat& copyop)
+Cat &Cat::operator=(const Cat &copyop)
 {
     if (this != &copyop)
     {
-        if(brain_)
-            delete(brain_);
+        if (brain_)
+            delete (brain_);
         brain_ = new Brain(*copyop.brain_);
         type_ = copyop.type_;
     }
     std::cout << "Copy Assignment Operator Cat" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 Cat::~Cat()
@@ -54,7 +54,7 @@ void Cat::makeSound() const
 // Brain
 std::string Cat::getidea(int i)
 {
-    return(brain_->get_idea(i));
+    return (brain_->get_idea(i));
 }
 
 void Cat::setidea(int i, std::string content)

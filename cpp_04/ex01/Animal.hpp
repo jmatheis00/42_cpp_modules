@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 19:27:27 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/09 12:34:20 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:21:47 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,24 +15,25 @@
 
 #include <iostream>
 
-#define RESET       "\033[0m"               /* Reset */
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
-#define PURPLE      "\033[35m"              /* Purple */
+#define RESET "\033[0m"   /* Reset */
+#define RED "\033[31m"    /* Red */
+#define GREEN "\033[32m"  /* Green */
+#define YELLOW "\033[33m" /* Yellow */
+#define PURPLE "\033[35m" /* Purple */
 
 class Animal
 {
-    protected:
-        std::string type_;
-    public:
-        Animal(); //Default Constructor
-		Animal(const Animal &copyclass); //Copy Constructor
-		Animal& operator= (const Animal& copyop); //copy assignment operator
-		virtual ~Animal(); //Destructor
+protected:
+    std::string type_;
 
-        virtual void makeSound() const;
-        std::string getType() const;
+public:
+    Animal();                                // Default Constructor
+    Animal(const Animal &copyclass);         // Copy Constructor
+    Animal &operator=(const Animal &copyop); // copy assignment operator
+    virtual ~Animal();                       // Destructor
+
+    virtual void makeSound() const;
+    std::string getType() const;
 };
 
 #endif

@@ -6,7 +6,7 @@
 #    By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/11 10:57:42 by jmatheis          #+#    #+#              #
-#    Updated: 2023/03/27 15:54:46 by jmatheis         ###   ########.fr        #
+#    Updated: 2023/09/28 00:06:58 by jmatheis         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ YELLOW		=	\e[93;5;226m
 $(NAME) : $(OBJS) $(HEADER)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 	@printf "$(GREEN)Successful compilation\n$(RESET)"
-#@printf "$(_SUCCESS) $(GREEN)Successful compilation\n$(RESET)"
 
 %.o: %.cpp $(HEADER)
 	$(CXX) $(CXXFLAGS) -c $< -o $@

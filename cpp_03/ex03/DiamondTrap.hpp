@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/18 15:53:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/19 13:49:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:19:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 #include "FragTrap.hpp"
 #include "ScavTrap.hpp"
 
-#define RESET       "\033[0m"               /* Reset */
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
+#define RESET "\033[0m"	  /* Reset */
+#define RED "\033[31m"	  /* Red */
+#define GREEN "\033[32m"  /* Green */
+#define YELLOW "\033[33m" /* Yellow */
 
 // INHERITED FROM CLAPTRAP
 // constructors & destructor
@@ -29,21 +29,22 @@
 // new function: void guardGate();
 class DiamondTrap : public ScavTrap, public FragTrap
 {
-    public:
-        DiamondTrap(); //Default Constructor
-		DiamondTrap(std::string name);
-		DiamondTrap(const DiamondTrap &copyclass); //Copy Constructor
-		DiamondTrap& operator= (const DiamondTrap& copyop); //copy assignment operator
-		~DiamondTrap(); //Destructor
+public:
+	DiamondTrap(); // Default Constructor
+	DiamondTrap(std::string name);
+	DiamondTrap(const DiamondTrap &copyclass);		   // Copy Constructor
+	DiamondTrap &operator=(const DiamondTrap &copyop); // copy assignment operator
+	~DiamondTrap();									   // Destructor
 
-        void attack(const std::string& target); //overwritten
-		void whoAmI();
+	void attack(const std::string &target); // overwritten
+	void whoAmI();
 
-		std::string get_name()const;
-	private:
-		std::string name_;
+	std::string get_name() const;
+
+private:
+	std::string name_;
 };
 
-std::ostream& operator<<(std::ostream& os, const DiamondTrap& i);
+std::ostream &operator<<(std::ostream &os, const DiamondTrap &i);
 
 #endif

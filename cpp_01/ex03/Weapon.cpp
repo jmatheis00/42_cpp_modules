@@ -6,23 +6,21 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:21:06 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/09 16:02:41 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:11:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Weapon.hpp"
 
-Weapon::Weapon(std::string type): type_(type)
+Weapon::Weapon(std::string type) : type_(type)
 {
-
 }
 
 Weapon::~Weapon()
 {
-
 }
 
-const std::string& Weapon::getType()
+const std::string &Weapon::getType()
 {
     return (type_);
 }

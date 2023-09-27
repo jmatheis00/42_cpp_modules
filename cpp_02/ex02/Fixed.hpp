@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/24 08:23:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:14:56 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,61 +16,61 @@
 #include <cmath>
 #include <ostream>
 
-#define RESET       "\033[0m"
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
+#define RESET "\033[0m"
+#define RED "\033[31m"	  /* Red */
+#define GREEN "\033[32m"  /* Green */
+#define YELLOW "\033[33m" /* Yellow */
 
 class Fixed
 {
-	private:
-		int	fixedval_;
-		static const int fractbits_;
-	public:
-		Fixed(); //Default Constructor
-		Fixed(const Fixed &copyclass); //Copy Constructor
-		Fixed& operator= (const Fixed& copyop); //copy assignment operator
-		~Fixed(); //Destructor
+private:
+	int fixedval_;
+	static const int fractbits_;
 
-		Fixed(int const i);
-		Fixed(float const i);
+public:
+	Fixed();							   // Default Constructor
+	Fixed(const Fixed &copyclass);		   // Copy Constructor
+	Fixed &operator=(const Fixed &copyop); // copy assignment operator
+	~Fixed();							   // Destructor
 
-		// COMPARISON OPERATOR OVERLOADING
-		bool operator==(const Fixed& a) const;
-		bool operator!=(const Fixed& a) const;
-		bool operator<=(const Fixed& a) const;
-		bool operator>=(const Fixed& a) const;
-		bool operator<(const Fixed& a) const;
-		bool operator>(const Fixed& a) const;
+	Fixed(int const i);
+	Fixed(float const i);
 
-		// ARITHMETIC OPERATOR OVERLOADING
-		Fixed operator+(const Fixed& a) const;
-		Fixed operator-(const Fixed& a) const;
-		Fixed operator*(const Fixed& a) const;
-		Fixed operator/(const Fixed& a) const;
-		
-		// PRAE X-CREMENT OPERATOR OVERLOADING
-		Fixed& operator++();
-		Fixed& operator--();
-		// POST X-CREMENT OPERATOR OVERLOADING
-		// fictive argument to seperate between prae and post
-		Fixed operator++(int i);
-		Fixed operator--(int i);
+	// COMPARISON OPERATOR OVERLOADING
+	bool operator==(const Fixed &a) const;
+	bool operator!=(const Fixed &a) const;
+	bool operator<=(const Fixed &a) const;
+	bool operator>=(const Fixed &a) const;
+	bool operator<(const Fixed &a) const;
+	bool operator>(const Fixed &a) const;
 
-		int getRawBits(void) const;
-		void setRawBits(int const raw);
-		float toFloat(void) const;
-		int toInt(void) const;
-		
-		// OVERLOADED MEMBER FUNCTIONS
-		static Fixed& min(Fixed& a, Fixed& b);
-		static const Fixed& min(const Fixed& a, const Fixed& b);
-		static Fixed& max(Fixed& a, Fixed& b);
-		static const Fixed& max(const Fixed& a, const Fixed& b);		
+	// ARITHMETIC OPERATOR OVERLOADING
+	Fixed operator+(const Fixed &a) const;
+	Fixed operator-(const Fixed &a) const;
+	Fixed operator*(const Fixed &a) const;
+	Fixed operator/(const Fixed &a) const;
 
+	// PRAE X-CREMENT OPERATOR OVERLOADING
+	Fixed &operator++();
+	Fixed &operator--();
+	// POST X-CREMENT OPERATOR OVERLOADING
+	// fictive argument to seperate between prae and post
+	Fixed operator++(int i);
+	Fixed operator--(int i);
+
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
+	float toFloat(void) const;
+	int toInt(void) const;
+
+	// OVERLOADED MEMBER FUNCTIONS
+	static Fixed &min(Fixed &a, Fixed &b);
+	static const Fixed &min(const Fixed &a, const Fixed &b);
+	static Fixed &max(Fixed &a, Fixed &b);
+	static const Fixed &max(const Fixed &a, const Fixed &b);
 };
 
 // OUTSTREAM OPERATOR OVERLOAD
-std::ostream& operator<<(std::ostream& os, const Fixed& i);
+std::ostream &operator<<(std::ostream &os, const Fixed &i);
 
 #endif

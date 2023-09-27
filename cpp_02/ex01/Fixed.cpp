@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:11:13 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/24 08:20:28 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:13:58 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ Fixed::Fixed(float const i)
 }
 
 // calling copy assignment operator here
-Fixed::Fixed(const Fixed& copyclass)
+Fixed::Fixed(const Fixed &copyclass)
 {
 	std::cout << "Copy constructor called" << std::endl;
-	Fixed::operator= (copyclass);
+	Fixed::operator=(copyclass);
 }
 
-//return the existing object
-Fixed& Fixed::operator= (const Fixed& copyop)
+// return the existing object
+Fixed &Fixed::operator=(const Fixed &copyop)
 {
 	std::cout << "Copy assignment operator called" << std::endl;
 	fixedval_ = copyop.getRawBits();
@@ -59,7 +59,7 @@ Fixed::~Fixed()
 // returns raw value of the fixed-point value
 int Fixed::getRawBits(void) const
 {
-	return(fixedval_);
+	return (fixedval_);
 }
 
 // sets the raw value of the fixed-point number
@@ -68,7 +68,7 @@ void Fixed::setRawBits(int const raw)
 	fixedval_ = raw;
 }
 
-//converts fixed point value to a floating point value
+// converts fixed point value to a floating point value
 float Fixed::toFloat(void) const
 {
 	float temp;
@@ -84,10 +84,10 @@ int Fixed::toInt(void) const
 	int tmp;
 
 	tmp = fixedval_ / (1 << fractbits_);
-	return(tmp);
+	return (tmp);
 }
 
-std::ostream& operator<<(std::ostream& os, const Fixed& i)
+std::ostream &operator<<(std::ostream &os, const Fixed &i)
 {
 	os << i.toFloat();
 	return (os);

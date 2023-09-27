@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/28 00:06:41 by jmatheis          #+#    #+#              #
+#    Updated: 2023/09/28 00:06:50 by jmatheis         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		:= megaphone
 
 CXX			:= c++
@@ -23,7 +35,6 @@ YELLOW		=	\e[93;5;226m
 $(NAME) : $(OBJS)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 	@printf "$(GREEN)Successful compilation\n$(RESET)"
-#@printf "$(_SUCCESS) $(GREEN)Successful compilation\n$(RESET)"
 
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@

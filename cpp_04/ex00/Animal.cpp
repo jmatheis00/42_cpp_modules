@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 13:46:15 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:20:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ Animal::Animal(const Animal &copyclass)
     type_ = copyclass.type_;
 }
 
-Animal& Animal::operator= (const Animal& copyop)
+Animal &Animal::operator=(const Animal &copyop)
 {
     if (this != &copyop)
         type_ = copyop.type_;
     std::cout << "Copy Assignment Operator Animal" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 Animal::~Animal()
@@ -45,5 +45,5 @@ void Animal::makeSound() const
 
 std::string Animal::getType() const
 {
-    return(type_);
+    return (type_);
 }

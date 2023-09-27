@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 12:56:26 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/10 20:31:12 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:09:52 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ Zombie::~Zombie()
 	std::cout << "Destroyed Zombie named: " << _name << std::endl;
 }
 
-void	Zombie::set_name(std::string s)
+void Zombie::set_name(std::string s)
 {
 	_name = s;
 }

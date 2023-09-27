@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/22 12:26:12 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/22 13:12:45 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:26:05 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,10 @@
 
 class IMateriaSource
 {
-   public:
+public:
         virtual ~IMateriaSource() {}
-        virtual void learnMateria(AMateria*) = 0;
-        virtual AMateria* createMateria(std::string const& type) = 0;
+        virtual void learnMateria(AMateria *) = 0;
+        virtual AMateria *createMateria(std::string const &type) = 0;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/02 17:36:07 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:19:40 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,31 +19,32 @@ int main(void)
 {
     {
         std::cout << YELLOW "\nTEST: DIAMONDTRAP" RESET << std::endl;
-        std::cout << PURPLE "Constructors" RESET<< std::endl;
+        std::cout << PURPLE "Constructors" RESET << std::endl;
         DiamondTrap danny("Danny");
         std::cout << GREEN "Starting values" RESET << std::endl;
-        std::cout << danny << std::endl;    
-        std::cout << PURPLE "attack() function" RESET<< std::endl;
+        std::cout << danny << std::endl;
+        std::cout << PURPLE "attack() function" RESET << std::endl;
         danny.attack("other");
-        std::cout << PURPLE "takeDamage() function" RESET<< std::endl;    
+        std::cout << PURPLE "takeDamage() function" RESET << std::endl;
         danny.takeDamage(20);
-        std::cout << PURPLE "beRepaired() function" RESET<< std::endl;       
+        std::cout << PURPLE "beRepaired() function" RESET << std::endl;
         danny.beRepaired(5);
-        std::cout << PURPLE "whoAmI() function" RESET<< std::endl;    
+        std::cout << PURPLE "whoAmI() function" RESET << std::endl;
         danny.whoAmI();
-        std::cout << PURPLE "guardGate() function" RESET<< std::endl;    
+        std::cout << PURPLE "guardGate() function" RESET << std::endl;
         danny.guardGate();
-        std::cout << PURPLE "highFivesGuys() function" RESET<< std::endl;    
+        std::cout << PURPLE "highFivesGuys() function" RESET << std::endl;
         danny.highFivesGuys();
-        std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
+        std::cout << PURPLE "takeDamage() function" RESET << std::endl;
         danny.takeDamage(85);
         std::cout << danny << std::endl;
-        std::cout << PURPLE "DiamondTrap() is dead" RESET<< std::endl;
+        std::cout << PURPLE "DiamondTrap() is dead" RESET << std::endl;
         danny.beRepaired(10);
         danny.takeDamage(10);
         danny.attack("other");
-        std::cout << PURPLE "Destructors" RESET<< std::endl;
+        std::cout << PURPLE "Destructors" RESET << std::endl;
     }
+    // TESTS FROM PREVIOUS EXERCISES
     // {
     //     std::cout << YELLOW "\nTEST: FRAGTRAP" RESET << std::endl;
     //     std::cout << PURPLE "Constructors" RESET<< std::endl;
@@ -53,13 +54,13 @@ int main(void)
     //     diff = tommy;
     //     std::cout << GREEN "Starting values" RESET << std::endl;
     //     std::cout << tommy << std::endl;
-    //     std::cout << PURPLE "attack() function" RESET<< std::endl;    
+    //     std::cout << PURPLE "attack() function" RESET<< std::endl;
     //     tommy.attack("OTHER");
-    //     std::cout << PURPLE "takeDamage() function" RESET<< std::endl;    
+    //     std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
     //     tommy.takeDamage(20);
-    //     std::cout << PURPLE "beRepaired() function" RESET<< std::endl;    
+    //     std::cout << PURPLE "beRepaired() function" RESET<< std::endl;
     //     tommy.beRepaired(5);
-    //     std::cout << PURPLE "highFivesGuys() function" RESET<< std::endl;    
+    //     std::cout << PURPLE "highFivesGuys() function" RESET<< std::endl;
     //     tommy.highFivesGuys();
     //     std::cout << PURPLE "takeDamage() function" RESET<< std::endl;
     //     tommy.takeDamage(85);
@@ -84,16 +85,16 @@ int main(void)
     //     ScavTrap diff;
     //     diff = sammy;
     //     std::cout << GREEN "Starting values" RESET << std::endl;
-    //     std::cout << sammy << std::endl; 
-    //     std::cout << PURPLE "attack() function" RESET << std::endl;    
+    //     std::cout << sammy << std::endl;
+    //     std::cout << PURPLE "attack() function" RESET << std::endl;
     //     sammy.attack("OTHER");
-    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
+    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;
     //     sammy.takeDamage(20);
     //     std::cout << PURPLE "beRepaired() function" RESET << std::endl;
     //     sammy.beRepaired(5);
     //     std::cout << PURPLE "guardGate() function" RESET << std::endl;
     //     sammy.guardGate();
-    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;    
+    //     std::cout << PURPLE "takeDamage() function" RESET << std::endl;
     //     sammy.takeDamage(85);
     //     std::cout << PURPLE "Copy Test" RESET << std::endl;
     //     std::cout << GREEN "sammy (original Bobby)" RESET << std::endl;

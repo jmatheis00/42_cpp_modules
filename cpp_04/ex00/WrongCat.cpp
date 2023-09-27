@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 09:11:16 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 13:47:16 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:21:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ WrongCat::WrongCat(const WrongCat &copyclass) : WrongAnimal(copyclass)
     type_ = copyclass.type_;
 }
 
-WrongCat& WrongCat::operator= (const WrongCat& copyop)
+WrongCat &WrongCat::operator=(const WrongCat &copyop)
 {
     if (this != &copyop)
         type_ = copyop.type_;
     std::cout << "Copy Assignment Operator WrongCat" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 WrongCat::~WrongCat()

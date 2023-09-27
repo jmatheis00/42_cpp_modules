@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/09 17:45:37 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/15 09:17:11 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:12:44 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,38 +27,44 @@ Harl::Harl()
 
 Harl::~Harl()
 {
-	
 }
 
 void Harl::debug()
 {
-	std::cout << RED << "debug message: \n" << RESET \
-	"I love having extra bacon for my "\
-	"7XL-double-cheese-triple-pickle-special- ketchup burger. "\
-	"I really do!" << std::endl;
+	std::cout << RED << "debug message: \n"
+			  << RESET
+		"I love having extra bacon for my "
+		"7XL-double-cheese-triple-pickle-special- ketchup burger. "
+		"I really do!"
+			  << std::endl;
 }
 
 void Harl::info()
 {
-	std::cout << RED << "info message: \n" << RESET \
-	"I cannot believe adding extra bacon costs more money. "\
-	"You didn’t put enough bacon in my burger! "\
-	"If you did, I wouldn’t be asking for more!" << std::endl;
+	std::cout << RED << "info message: \n"
+			  << RESET
+		"I cannot believe adding extra bacon costs more money. "
+		"You didn’t put enough bacon in my burger! "
+		"If you did, I wouldn’t be asking for more!"
+			  << std::endl;
 }
 
 void Harl::warning()
 {
-	std::cout << RED << "warning message: \n" << RESET \
-	"I think I deserve to have some extra bacon for free. "\
-	"I’ve been coming for years whereas you started working here "\
-	"since last month." << std::endl;
+	std::cout << RED << "warning message: \n"
+			  << RESET
+		"I think I deserve to have some extra bacon for free. "
+		"I’ve been coming for years whereas you started working here "
+		"since last month."
+			  << std::endl;
 }
 
 void Harl::error()
 {
-	std::cout << RED << "error message: \n" << RESET \
-	"This is unacceptable! I want to speak to the manager now."\
-	<< std::endl;
+	std::cout << RED << "error message: \n"
+			  << RESET
+		"This is unacceptable! I want to speak to the manager now."
+			  << std::endl;
 }
 
 // this->* for calling the member function pointer
@@ -66,13 +72,13 @@ void Harl::error()
 // for accessing member function (debug, info, ...)
 void Harl::complain(std::string level)
 {
-	int	i = 0;
+	int i = 0;
 	while (i < 4)
 	{
 		if (level == levels[i])
 		{
 			(this->*functionpointer[i])();
-			return ;
+			return;
 		}
 		i++;
 	}

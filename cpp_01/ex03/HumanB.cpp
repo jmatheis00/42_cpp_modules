@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/08 10:29:35 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/03/09 15:56:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:10:50 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void HumanB::attack()
 }
 
 // Weapn* weap_ = Weapon &w --> address manipulation
-void HumanB::setWeapon(Weapon& w)
+void HumanB::setWeapon(Weapon &w)
 {
     weap_ = &w;
     std::cout << name_ << " took weapon named " << weap_->getType() << std::endl;

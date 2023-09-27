@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 13:07:44 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/04/12 19:38:33 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:13:27 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 #define FIXED_HPP
 #include <iostream>
 
-#define RESET       "\033[0m"
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
+#define RESET "\033[0m"
+#define RED "\033[31m"	  /* Red */
+#define GREEN "\033[32m"  /* Green */
+#define YELLOW "\033[33m" /* Yellow */
 
 class Fixed
 {
-	private:
-		int	fixedval_;
-		static const int fractbits_;
-	public:
-		Fixed(); //Default Constructor
-		Fixed(const Fixed &copyclass); //Copy Constructor
-		Fixed& operator= (const Fixed& copyop); //copy assignment operator
-		~Fixed(); //Destructor
-		int getRawBits(void) const;
-		void setRawBits(int const raw);
+private:
+	int fixedval_;
+	static const int fractbits_;
+
+public:
+	Fixed();							   // Default Constructor
+	Fixed(const Fixed &copyclass);		   // Copy Constructor
+	Fixed &operator=(const Fixed &copyop); // copy assignment operator
+	~Fixed();							   // Destructor
+	int getRawBits(void) const;
+	void setRawBits(int const raw);
 };
 
 #endif

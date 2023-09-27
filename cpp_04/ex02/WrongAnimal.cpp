@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:28:01 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/05 13:43:17 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/28 00:24:26 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ WrongAnimal::WrongAnimal(const WrongAnimal &copyclass)
     type_ = copyclass.type_;
 }
 
-WrongAnimal& WrongAnimal::operator= (const WrongAnimal& copyop)
+WrongAnimal &WrongAnimal::operator=(const WrongAnimal &copyop)
 {
     if (this != &copyop)
         type_ = copyop.type_;
     std::cout << "Copy Assignment Operator WrongAnimal" << std::endl;
-    return(*this);
+    return (*this);
 }
 
 WrongAnimal::~WrongAnimal()
@@ -45,5 +45,5 @@ void WrongAnimal::makeSound() const
 
 std::string WrongAnimal::getType() const
 {
-    return(type_);
+    return (type_);
 }
