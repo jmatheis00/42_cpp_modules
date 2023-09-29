@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 11:23:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/27 10:38:46 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:35:14 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,15 +28,15 @@ Span::Span(const Span &copyclass)
     *this = copyclass;
 }
 
-Span& Span::operator= (const Span& copyop)
+Span &Span::operator=(const Span &copyop)
 {
     std::cout << "Copy Assignment Operator" << std::endl;
-    if(this != &copyop)
+    if (this != &copyop)
     {
         N_ = copyop.N_;
         vec_ = copyop.vec_;
     }
-    return(*this);
+    return (*this);
 }
 
 Span::~Span()
@@ -61,16 +61,16 @@ unsigned int Span::shortestSpan()
     std::vector<int>::iterator ite = vec_.end();
     std::sort(itb, ite);
 
-    unsigned int smallestspan = static_cast <unsigned int> (std::abs(itb[0] - itb[1]));
+    unsigned int smallestspan = static_cast<unsigned int>(std::abs(itb[0] - itb[1]));
     itb++;
-    while(itb < ite - 1)
+    while (itb < ite - 1)
     {
         int tmp = *itb;
         itb++;
-        if (smallestspan > static_cast <unsigned int> (std::abs(*itb - tmp)))
+        if (smallestspan > static_cast<unsigned int>(std::abs(*itb - tmp)))
             smallestspan = std::abs(*itb - tmp);
     }
-    return(smallestspan);
+    return (smallestspan);
 }
 
 unsigned int Span::longestSpan()
@@ -80,10 +80,10 @@ unsigned int Span::longestSpan()
     std::vector<int>::iterator min = std::min_element(vec_.begin(), vec_.end());
     std::vector<int>::iterator max = std::max_element(vec_.begin(), vec_.end());
 
-    return(static_cast<unsigned int>(std::abs(*max - *min)));
+    return (static_cast<unsigned int>(std::abs(*max - *min)));
 }
 
-void Span::addmanyNumbers(std::vector<int> range) //Parameter: vector or similar
+void Span::addmanyNumbers(std::vector<int> range) // Parameter: vector or similar
 {
     if (N_ - vec_.size() < range.size())
         throw SpanIsAlreadyFilled();
@@ -120,16 +120,16 @@ void Span::getSpan()
 
 int Span::getSize()
 {
-    return(vec_.size());
+    return (vec_.size());
 }
 
 // EXCEPTIONS
-const char* Span::SpanIsAlreadyFilled::what() const throw()
+const char *Span::SpanIsAlreadyFilled::what() const throw()
 {
-    return("Span is already completely filled!");
+    return ("Span is already completely filled!");
 }
 
-const char* Span::NoSpanFound::what() const throw()
+const char *Span::NoSpanFound::what() const throw()
 {
-    return("Could not found a Span!");
+    return ("Could not found a Span!");
 }

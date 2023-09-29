@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/06 13:35:03 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:34:01 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,32 +15,41 @@
 
 class Person
 {
-	public:
-		Person() : name_("default Person") {
-			std::cout << "Default Constructor Person" << std::endl;
-		}
-		Person(std::string name) : name_(name) {
-			std::cout << "Person Constructor with name" << std::endl;
-		}
-		Person(const Person &copyclass) : name_(copyclass.name_) {
-			std::cout << "Copy Constructor Person" << std::endl;
-		}
-		Person& operator= (const Person& copyop) {
-			std::cout << "Copy Assignment Operator Person" << std::endl;
-			if (this != &copyop)
-				name_ = copyop.name_;
-			return (*this);
-		}
-        ~Person(){
-			std::cout << "Destructor Person" << std::endl;
-		}
-        std::string getname() const {return(name_);}
-    private:
-        std::string name_;
+public:
+    Person() : name_("default Person")
+    {
+        std::cout << "Default Constructor Person" << std::endl;
+    }
+    Person(std::string name) : name_(name)
+    {
+        std::cout << "Person Constructor with name" << std::endl;
+    }
+    Person(const Person &copyclass) : name_(copyclass.name_)
+    {
+        std::cout << "Copy Constructor Person" << std::endl;
+    }
+    Person &operator=(const Person &copyop)
+    {
+        std::cout << "Copy Assignment Operator Person" << std::endl;
+        if (this != &copyop)
+            name_ = copyop.name_;
+        return (*this);
+    }
+    ~Person()
+    {
+        std::cout << "Destructor Person" << std::endl;
+    }
+    std::string getname() const { return (name_); }
+
+private:
+    std::string name_;
 };
 
-std::ostream& operator<<(std::ostream& os, const Person& i){os << i.getname(); return(os);}
-
+std::ostream &operator<<(std::ostream &os, const Person &i)
+{
+    os << i.getname();
+    return (os);
+}
 
 int main()
 {
@@ -60,9 +69,9 @@ int main()
             test1[2] = Person("Marvin");
             test1[3] = Person("Anna");
             test1[4] = Person("Tim");
-            test1[5] = Person("Chiara");  
+            test1[5] = Person("Chiara");
         }
-        catch(const std::exception& e)
+        catch (const std::exception &e)
         {
             std::cerr << RED << e.what() << RESET << std::endl;
         }
@@ -110,9 +119,9 @@ int main()
             test1[2] = 3;
             test1[3] = 4;
             test1[4] = 5;
-            test1[5] = 6;  
+            test1[5] = 6;
         }
-        catch(const std::exception& e)
+        catch (const std::exception &e)
         {
             std::cerr << RED << e.what() << RESET << std::endl;
         }
@@ -144,6 +153,7 @@ int main()
             std::cout << test3[i] << std::endl;
         std::cout << PURPLE "Destructors" RESET << std::endl;
     }
+    // TESTS FROM PREVIOUS EXERCISES
     // {
     //     std::cout << YELLOW "STRING Array test" RESET << std::endl;
     //     std::cout << PURPLE "Constructor with size" RESET << std::endl;
@@ -160,7 +170,7 @@ int main()
     //         test1[2] = "value position 2";
     //         test1[3] = "value position 3";
     //         test1[4] = "value position 4";
-    //         test1[5] = "value position 5"; 
+    //         test1[5] = "value position 5";
     //     }
     //     catch(const std::exception& e)
     //     {

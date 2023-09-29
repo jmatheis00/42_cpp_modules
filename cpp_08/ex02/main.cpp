@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/27 11:04:54 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:35:49 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int main()
         }
     }
     // {
-        // can replace vector with deque or list
+    // can replace vector with deque or list
     //     std::cout << YELLOW "VECTOR TEST" RESET << std::endl;
     //     std::vector<int> mstack;
 
@@ -114,7 +114,7 @@ int main()
         {
             std::cout << s.top() << std::endl;
             s.pop();
-        }   
+        }
     }
     return 0;
 }

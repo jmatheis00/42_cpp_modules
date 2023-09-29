@@ -6,23 +6,23 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:14 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/31 17:26:40 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:32:39 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef WHATEVER_HPP
-# define WHATEVER_HPP
+#define WHATEVER_HPP
 
-# include <iostream>
+#include <iostream>
 
-#define RESET       "\033[0m"               /* Reset */
-#define RED         "\033[31m"              /* Red */
-#define GREEN       "\033[32m"              /* Green */
-#define YELLOW      "\033[33m"              /* Yellow */
-#define PURPLE      "\033[35m"              /* Purple */
+#define RESET "\033[0m"	  /* Reset */
+#define RED "\033[31m"	  /* Red */
+#define GREEN "\033[32m"  /* Green */
+#define YELLOW "\033[33m" /* Yellow */
+#define PURPLE "\033[35m" /* Purple */
 
 template <typename T>
-void swap(T& a, T& b)
+void swap(T &a, T &b)
 {
 	T tmp = a;
 	a = b;
