@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 11:56:38 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:22:02 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ int main()
             std::cout << "Grade: 151" << std::endl;
             Bureaucrat("Bob1", 151);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
+            std::cout << RED << b.what() << RESET << std::endl;
         }
     }
     {
@@ -33,10 +33,10 @@ int main()
             std::cout << "Grade: 0" << std::endl;
             Bureaucrat Bob2("Bob2", 0);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        } 
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nTEST: INCREMENT GRADE -> TOO HIGH" RESET << std::endl;
@@ -47,10 +47,10 @@ int main()
             Bob3.incrementGrade();
             Bob3.incrementGrade();
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
             std::cout << Bob3 << std::endl;
-            std::cout << RED << b.what() << RESET<< std::endl;
+            std::cout << RED << b.what() << RESET << std::endl;
         }
     }
     {
@@ -65,10 +65,10 @@ int main()
             Bob4->decrementGrade();
             std::cout << "This should not get printed" << std::endl;
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
             std::cout << *Bob4 << std::endl;
-            std::cout << RED << b.what() << RESET<< std::endl;
+            std::cout << RED << b.what() << RESET << std::endl;
         }
         delete Bob4;
     }
@@ -83,11 +83,11 @@ int main()
             Bob5->decrementGrade();
             Bob5->incrementGrade();
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
             std::cout << "This should not get printed" << std::endl;
             std::cout << *Bob5 << std::endl;
-            std::cout << RED << b.what() << RESET<< std::endl;
+            std::cout << RED << b.what() << RESET << std::endl;
         }
         std::cout << *Bob5 << std::endl;
         delete Bob5;

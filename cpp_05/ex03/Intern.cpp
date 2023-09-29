@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 08:50:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 12:43:28 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:26:28 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,20 @@ Intern::Intern()
 
 Intern::Intern(const Intern &copyclass)
 {
-	for(int i = 0; i < 3; i++)
+	for (int i = 0; i < 3; i++)
 		comparison_[i] = copyclass.comparison_[i];
 	std::cout << "Copy Constructor Intern" << std::endl;
 }
 
-Intern& Intern::operator= (const Intern& copyop)
+Intern &Intern::operator=(const Intern &copyop)
 {
 	if (this != &copyop)
 	{
-		for(int i = 0; i < 3; i++)
+		for (int i = 0; i < 3; i++)
 			comparison_[i] = copyop.comparison_[i];
 	}
-    std::cout << "Copy Assignment Operator Intern" << std::endl;
-	return(*this);
+	std::cout << "Copy Assignment Operator Intern" << std::endl;
+	return (*this);
 }
 
 Intern::~Intern()
@@ -43,9 +43,7 @@ Intern::~Intern()
 	std::cout << GREEN "Destructor Intern " << RESET << std::endl;
 }
 
-// SHOULD USE SOME KIND OF ARRAY POINTERS TO MEMBER FUNCTIONS
-// TO HANDLE THE CREATION OF FORMS
-Form* Intern::makeForm(std::string formname, std::string target)
+Form *Intern::makeForm(std::string formname, std::string target)
 {
 	funcpoin[0] = &Intern::shrubbery;
 	funcpoin[1] = &Intern::robotomy;
@@ -56,25 +54,25 @@ Form* Intern::makeForm(std::string formname, std::string target)
 		if (comparison_[i] == formname)
 		{
 			std::cout << "Intern creates " << formname
-				<< " with target " << target << std::endl;
-			return((this->*funcpoin[i])(target));
+					  << " with target " << target << std::endl;
+			return ((this->*funcpoin[i])(target));
 		}
 	}
 	std::cout << formname << " doesn't exist" << std::endl;
 	return (NULL);
 }
 
-Form* Intern::shrubbery(std::string target)
+Form *Intern::shrubbery(std::string target)
 {
 	return (new ShrubberyCreationForm(target));
 }
 
-Form* Intern::robotomy(std::string target)
+Form *Intern::robotomy(std::string target)
 {
-	return(new RobotomyRequestForm(target));
+	return (new RobotomyRequestForm(target));
 }
 
-Form* Intern::presidential(std::string target)
+Form *Intern::presidential(std::string target)
 {
-	return(new PresidentialPardonForm(target));
+	return (new PresidentialPardonForm(target));
 }

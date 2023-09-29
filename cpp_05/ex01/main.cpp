@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 11:40:20 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:23:18 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ int main()
             std::cout << "Grade: 151" << std::endl;
             Form Form1("Form1", 151, 70);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nTEST: FORM CONSTRUCTOR WITH GRADE TOO HIGH" RESET << std::endl;
@@ -34,10 +34,10 @@ int main()
             std::cout << "Grade: 0" << std::endl;
             Form Form2("Form2", 70, 0);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        } 
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nTEST: GRADE TOO LOW TO GET SIGNED" RESET << std::endl;
@@ -51,10 +51,10 @@ int main()
             Bob1.incrementGrade();
             Bob1.signForm(Form3);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
             std::cout << Bob1 << std::endl;
-            std::cout << RED << b.what() << RESET<< std::endl;
+            std::cout << RED << b.what() << RESET << std::endl;
         }
     }
     {
@@ -70,10 +70,10 @@ int main()
             std::cout << Bob1 << std::endl;
             Bob1.signForm(Form3);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
             std::cout << Bob1 << std::endl;
-            std::cout << RED << b.what() << RESET<< std::endl;
+            std::cout << RED << b.what() << RESET << std::endl;
         }
     }
     return 0;

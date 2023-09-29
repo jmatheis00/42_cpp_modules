@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 11:42:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:24:24 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nShrubbery: Grade too low for executing" RESET << std::endl;
@@ -41,10 +41,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nShrubbery: Execution works" RESET << std::endl;
@@ -55,10 +55,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nRobotomy: Grade not signed, executing not working" RESET << std::endl;
@@ -69,10 +69,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nRobotomy: Grade too low for executing" RESET << std::endl;
@@ -83,10 +83,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nRobotomy: Execution works" RESET << std::endl;
@@ -102,10 +102,10 @@ int main()
             bob.executeForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nPresidential: Grade not signed, executing not working" RESET << std::endl;
@@ -116,10 +116,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nPresidential: Grade too low for executing" RESET << std::endl;
@@ -130,10 +130,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     {
         std::cout << YELLOW "\nPresidential: Execution works" RESET << std::endl;
@@ -144,10 +144,10 @@ int main()
             bob.signForm(home);
             bob.executeForm(home);
         }
-        catch(std::exception &b)
+        catch (std::exception &b)
         {
-            std::cout << RED << b.what() << RESET<< std::endl;
-        }   
+            std::cout << RED << b.what() << RESET << std::endl;
+        }
     }
     return 0;
 }

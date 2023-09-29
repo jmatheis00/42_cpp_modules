@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 11:43:47 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:27:40 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int main()
 {
     {
         Intern random;
-        Form* rrf;
+        Form *rrf;
 
         rrf = random.makeForm("robotomy request", "Bender");
         delete rrf;
@@ -30,7 +30,7 @@ int main()
         rrf = random.makeForm("presidential pardon", "Bender");
         delete rrf;
         rrf = random.makeForm("unexisting form", "Bender");
-        delete rrf; 
+        delete rrf;
     }
     // Intern random;
     // {
@@ -61,7 +61,7 @@ int main()
     //     {
     //         std::cout << RED << b.what() << RESET<< std::endl;
     //     }
-    //     delete home;  
+    //     delete home;
     // }
     // {
     //     std::cout << YELLOW "\nShrubbery: Execution works" RESET << std::endl;
@@ -106,7 +106,7 @@ int main()
     //     {
     //         std::cout << RED << b.what() << RESET<< std::endl;
     //     }
-    //     delete home;  
+    //     delete home;
     // }
     // {
     //     std::cout << YELLOW "\nRobotomy: Execution works" RESET << std::endl;
@@ -126,7 +126,7 @@ int main()
     //     {
     //         std::cout << RED << b.what() << RESET<< std::endl;
     //     }
-    //     delete home;  
+    //     delete home;
     // }
     // {
     //     std::cout << YELLOW "\nPresidential: Grade not signed, executing not working" RESET << std::endl;

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 15:37:33 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/16 10:44:23 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:24:54 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,42 +16,42 @@ int RobotomyRequestForm::fiftypercent_ = 0;
 
 RobotomyRequestForm::RobotomyRequestForm() : AForm("Robotomy", 72, 45), target_("Default")
 {
-    std::cout << GREEN "RobotomyRequestForm with target " << target_
-		<< " woke up" << RESET << std::endl;
+	std::cout << GREEN "RobotomyRequestForm with target " << target_
+			  << " woke up" << RESET << std::endl;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("Robotomy", 72, 45), target_(target)
 {
-    std::cout << GREEN "RobotomyRequestForm with target " << target_
-		<< " woke up" << RESET << std::endl;
+	std::cout << GREEN "RobotomyRequestForm with target " << target_
+			  << " woke up" << RESET << std::endl;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copyclass)  : AForm(copyclass), target_(copyclass.target_)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &copyclass) : AForm(copyclass), target_(copyclass.target_)
 {
 	fiftypercent_ = copyclass.fiftypercent_;
-    std::cout << "Copy Constructor RobotomyRequestForm" << std::endl;
+	std::cout << "Copy Constructor RobotomyRequestForm" << std::endl;
 }
 
-RobotomyRequestForm& RobotomyRequestForm::operator= (const RobotomyRequestForm& copyop)
+RobotomyRequestForm &RobotomyRequestForm::operator=(const RobotomyRequestForm &copyop)
 {
 	if (this != &copyop)
 	{
 		fiftypercent_ = copyop.fiftypercent_;
 		target_ = copyop.target_;
 	}
-    std::cout << "Copy Assignment Operator RobotomyRequestForm" << std::endl;
-    return(*this);
+	std::cout << "Copy Assignment Operator RobotomyRequestForm" << std::endl;
+	return (*this);
 }
 
 RobotomyRequestForm::~RobotomyRequestForm()
 {
-    std::cout << GREEN "RobotomyRequestForm with target " << target_ << " died" RESET << std::endl;
+	std::cout << GREEN "RobotomyRequestForm with target " << target_ << " died" RESET << std::endl;
 }
 
 // GETTER FUNCTIONS
 std::string RobotomyRequestForm::getTarget() const
 {
-	return(target_);
+	return (target_);
 }
 
 // OTHER MEMBER FUNCTIONS
@@ -66,11 +66,10 @@ void RobotomyRequestForm::executionofform() const
 }
 
 // OUTPUT OPERATOR OVERLOADING
-std::ostream& operator<<(std::ostream& os, const RobotomyRequestForm& i)
+std::ostream &operator<<(std::ostream &os, const RobotomyRequestForm &i)
 {
 	os << "RobotomyRequestForm with target: " << i.getTarget()
-		<< ", sign grade: " << i.getSignGrade()
-		<< ", execute grade: " << i.getExecuteGrade();
+	   << ", sign grade: " << i.getSignGrade()
+	   << ", execute grade: " << i.getExecuteGrade();
 	return (os);
 }
-
