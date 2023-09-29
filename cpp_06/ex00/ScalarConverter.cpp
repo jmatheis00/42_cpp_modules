@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/15 10:42:18 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/06/01 17:31:32 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:29:52 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,13 @@ ScalarConverter::ScalarConverter(const ScalarConverter &copyclass)
 	*this = copyclass;
 }
 
-ScalarConverter& ScalarConverter::operator= (const ScalarConverter& copyop)
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &copyop)
 {
 	// std::cout << "Copy Assignment Operator" << std::endl;
 	if (this != &copyop)
 	{
 	}
-	return(*this);
+	return (*this);
 }
 
 ScalarConverter::~ScalarConverter()
@@ -56,36 +56,30 @@ int ScalarConverter::check_for_error(void)
 	int pointcount = 0;
 	int length = (int)in_.length() - 1;
 
-	if (in_ == "nan" || in_ == "nanf" || in_ == "+inf"
-		|| in_ == "+inff" || in_ == "-inf" || in_ == "-inff"
-		|| (in_.length() == 1 && std::isprint(in_[0])))
-		return(0);
-	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-' && in_[0] != '+')
-		|| in_ == "-f")
-		return(1);
+	if (in_ == "nan" || in_ == "nanf" || in_ == "+inf" || in_ == "+inff" || in_ == "-inf" || in_ == "-inff" || (in_.length() == 1 && std::isprint(in_[0])))
+		return (0);
+	if ((std::isdigit(in_[0]) == false && in_[0] != '.' && in_[0] != '-' && in_[0] != '+') || in_ == "-f")
+		return (1);
 	for (int i = 1; i < length; i++)
 	{
 		if (std::isdigit(in_[i]) == false && in_[i] != '.')
-			return(1);
+			return (1);
 		if (in_[i] == '.')
 			pointcount++;
 	}
-	if (pointcount > 1 || (std::isdigit(in_[length]) == false
-			&& in_[length] != '.' && in_[length] != 'f'))
-		return(1);
-	return(0);
+	if (pointcount > 1 || (std::isdigit(in_[length]) == false && in_[length] != '.' && in_[length] != 'f'))
+		return (1);
+	return (0);
 }
 
 // FIND TYPE (CHAR, INT, FLOAT, DOUBLE)
 void ScalarConverter::check_for_type(void)
 {
-	if(in_.length() == 1 && std::isprint(in_[0]))
+	if (in_.length() == 1 && std::isprint(in_[0]))
 		type_ = "CHAR";
-	if ((in_[in_.length() - 1] == 'f' && in_.length() != 1)
-		|| in_ == "-inff" || in_ == "+inff" || in_ == "nanf")
+	if ((in_[in_.length() - 1] == 'f' && in_.length() != 1) || in_ == "-inff" || in_ == "+inff" || in_ == "nanf")
 		type_ = "FLOAT";
-	else if (in_.find(".") != std::string::npos
-		|| in_ == "-inf" || in_ == "+inf" || in_ == "nan")
+	else if (in_.find(".") != std::string::npos || in_ == "-inf" || in_ == "+inf" || in_ == "nan")
 		type_ = "DOUBLE";
 	else if (strtod(in_.c_str(), NULL) != 0 || in_ == "0")
 		type_ = "INT";
@@ -97,10 +91,10 @@ void ScalarConverter::check_overflows(void)
 {
 	double test = strtod(in_.c_str(), NULL);
 	if (type_ == "INT" && (test > std::numeric_limits<int>::max() ||
-		test < std::numeric_limits<int>::min()))
+						   test < std::numeric_limits<int>::min()))
 		type_ = "FLOAT";
 	if (type_ == "FLOAT" && (test > std::numeric_limits<float>::max() ||
-		test < std::numeric_limits<float>::min()))
+							 test < std::numeric_limits<float>::min()))
 		type_ = "DOUBLE";
 }
 
@@ -133,13 +127,13 @@ void ScalarConverter::float_conversion(void)
 	i_ = static_cast<int>(f_);
 	d_ = static_cast<double>(f_);
 	li_ = static_cast<long int>(f_);
-	ld_ = static_cast<long double>(f_);	
+	ld_ = static_cast<long double>(f_);
 }
 
 void ScalarConverter::double_conversion(void)
 {
 	d_ = static_cast<double>(strtod(in_.c_str(), NULL));
-	ld_ = static_cast<long double>(d_);	
+	ld_ = static_cast<long double>(d_);
 	c_ = static_cast<char>(d_);
 	i_ = static_cast<int>(d_);
 	f_ = static_cast<float>(d_);
@@ -154,11 +148,11 @@ void ScalarConverter::print_char(void)
 	std::cout << RED "char: " RESET;
 	if (std::isprint(c_) && d_ < 127 && d_ > 31)
 		std::cout << "\'" << c_ << "\'" << std::endl;
-	else if(f_ == -std::numeric_limits<float>::infinity() ||
-		f_ == std::numeric_limits<float>::infinity() ||
-		d_ == -std::numeric_limits<double>::infinity() ||
-		d_ == std::numeric_limits<double>::infinity() ||
-		in_ == "nanf" || in_ == "nan")
+	else if (f_ == -std::numeric_limits<float>::infinity() ||
+			 f_ == std::numeric_limits<float>::infinity() ||
+			 d_ == -std::numeric_limits<double>::infinity() ||
+			 d_ == std::numeric_limits<double>::infinity() ||
+			 in_ == "nanf" || in_ == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 		std::cout << "Non displayable" << std::endl;
@@ -168,7 +162,7 @@ void ScalarConverter::print_int(void)
 {
 	std::cout << RED "int: " RESET;
 	if ((li_ > std::numeric_limits<int>::max() ||
-		li_ < std::numeric_limits<int>::min()) ||
+		 li_ < std::numeric_limits<int>::min()) ||
 		f_ == -std::numeric_limits<float>::infinity() ||
 		f_ == std::numeric_limits<float>::infinity() ||
 		d_ == -std::numeric_limits<double>::infinity() ||
@@ -187,14 +181,14 @@ void ScalarConverter::print_float(void)
 	else if (f_ == std::numeric_limits<float>::infinity())
 		std::cout << "+inff" << std::endl;
 	else if (d_ > std::numeric_limits<float>::max() ||
-		d_ < -std::numeric_limits<float>::max())
+			 d_ < -std::numeric_limits<float>::max())
 		std::cout << "impossible" << std::endl;
 	else if (in_ == "nanf" || in_ == "nan")
 		std::cout << "nanf" << std::endl;
 	else
 	{
 		std::cout << std::setprecision(1) << std::fixed
-			<< f_ << "f" << std::endl;
+				  << f_ << "f" << std::endl;
 	}
 }
 
@@ -206,30 +200,30 @@ void ScalarConverter::print_double(void)
 	else if (d_ == std::numeric_limits<double>::infinity())
 		std::cout << "+inf" << std::endl;
 	else if (ld_ > std::numeric_limits<double>::max() ||
-		ld_ < -std::numeric_limits<double>::max())
+			 ld_ < -std::numeric_limits<double>::max())
 		std::cout << "impossible" << std::endl;
 	else if (in_ == "nanf" || in_ == "nan")
 		std::cout << "nan" << std::endl;
 	else
 	{
 		std::cout << std::setprecision(1) << std::fixed
-			<< d_ << std::endl;
+				  << d_ << std::endl;
 	}
 }
 
 // CONVERTING INPUT TO THE FOUR TYPES & PRINTING THEM
-void ScalarConverter::convert(char* input)
+void ScalarConverter::convert(char *input)
 {
 	in_ = (std::string)input;
 	if (check_for_error() == 1)
 	{
-		std::cout << "Input is invalid, try again" << std::endl;		
+		std::cout << "Input is invalid, try again" << std::endl;
 		exit(EXIT_FAILURE);
-	}		
+	}
 	check_for_type();
 	if (type_ == "Default")
 	{
-		std::cout << "Input is invalid, try again" << std::endl;		
+		std::cout << "Input is invalid, try again" << std::endl;
 		exit(EXIT_FAILURE);
 	}
 	if (type_ == "CHAR")

@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/05/24 11:18:42 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:30:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@ int main(void)
     std::cout << GREEN "Data is serialized under the following number: " RESET << std::endl;
     std::cout << u << std::endl;
 
-    Data* second = Serializer::deserialize(u);
+    Data *second = Serializer::deserialize(u);
     std::cout << GREEN "data in new struct after deserialized" RESET << std::endl;
     std::cout << "Name: " << second->name << ", age: " << second->age << std::endl;
-    
+
     // std::cout << PURPLE "Comparison of addresses" RESET << std::endl;
     // std::cout << YELLOW "Original address:\t" << &d << RESET << std::endl;
     // std::cout << YELLOW "Address second struct:\t" << &(*second) << RESET << std::endl;

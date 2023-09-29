@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/09/29 23:30:21 by jmatheis          #+#    #+#              #
+#    Updated: 2023/09/29 23:30:34 by jmatheis         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME		:= serializer
 
 CXX			:= c++
@@ -27,7 +39,6 @@ YELLOW		=	\e[93;5;226m
 $(NAME) : $(OBJS) $(HEADER)
 	$(CXX) $(CXXFLAGS) $(OBJS) -o $@
 	@printf "$(GREEN)Successful compilation\n$(RESET)"
-#@printf "$(_SUCCESS) $(GREEN)Successful compilation\n$(RESET)"
 
 %.o: %.cpp $(HEADER)
 	$(CXX) $(CXXFLAGS) -c $< -o $@
