@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/12 17:19:54 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/24 10:45:12 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:38:09 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ RPN::RPN(const RPN &copyclass)
     *this = copyclass;
 }
 
-RPN& RPN::operator= (const RPN& copyop)
+RPN &RPN::operator=(const RPN &copyop)
 {
     if (this != &copyop)
     {
-
     }
-    return(*this);
+    return (*this);
 }
 
 RPN::~RPN()
@@ -43,14 +42,13 @@ RPN::RPN(std::string input) : s_(input)
 
 bool RPN::CheckCharacters()
 {
-    for(unsigned int i = 0; i < s_.length(); i++)
+    for (unsigned int i = 0; i < s_.length(); i++)
     {
         if (std::isdigit(s_[i]) == false &&
-            s_[i] != ' ' && s_[i] != '+' && s_[i] != '-'
-            && s_[i] != '/' && s_[i] != '*')
-            return(false);
+            s_[i] != ' ' && s_[i] != '+' && s_[i] != '-' && s_[i] != '/' && s_[i] != '*')
+            return (false);
     }
-    return(true);
+    return (true);
 }
 
 // read tokens from stream, initialized as s_ (input)
@@ -59,7 +57,7 @@ void RPN::Split()
     std::istringstream stream(s_);
     std::string token;
 
-    while(stream >> token)
+    while (stream >> token)
     {
         if (token == "-" || token == "+" || token == "/" || token == "*")
             calculate(token);
@@ -75,7 +73,6 @@ void RPN::Split()
     stack_.pop();
 }
 
-// isOperator function?
 void RPN::calculate(std::string t)
 {
     if (stack_.size() < 2)
@@ -101,12 +98,12 @@ void RPN::calculate(std::string t)
 
 // EXCEPTIONS
 
-const char* RPN::TokenError::what() const throw()
+const char *RPN::TokenError::what() const throw()
 {
-	return("Error: Invalid token, check string!");
+    return ("Error: Invalid token, check string!");
 }
 
-const char* RPN::CalculationError::what() const throw()
+const char *RPN::CalculationError::what() const throw()
 {
-	return("Error: Calculation not possible, invalid string!");
+    return ("Error: Calculation not possible, invalid string!");
 }

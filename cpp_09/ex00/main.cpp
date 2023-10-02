@@ -6,7 +6,7 @@
 /*   By: jmatheis <jmatheis@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/24 13:40:32 by jmatheis          #+#    #+#             */
-/*   Updated: 2023/07/22 15:00:02 by jmatheis         ###   ########.fr       */
+/*   Updated: 2023/09/29 23:37:17 by jmatheis         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 // takes as input a second database, storing the different prices/dates to evaluate
 // using map
 // one argument: input.csv
-int main(int ac, char* ag[])
+int main(int ac, char *ag[])
 {
     if (ac != 2)
         std::cout << "Error: Wrong number of arguments" << std::endl;
@@ -30,10 +30,10 @@ int main(int ac, char* ag[])
             b.getDatabase();
             b.MainProccess();
         }
-        catch(const std::exception& e)
+        catch (const std::exception &e)
         {
             std::cerr << e.what() << '\n';
-        } 
+        }
     }
     return 0;
 }
